@@ -18,19 +18,19 @@ Finding a geometric median is an optimization problem, which has no analytical s
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="../reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="../reveal.js/css/theme/mw.css" id="theme">
+		<link rel="stylesheet" href="../reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="../reveal/css/theme/mw.css" id="theme">
 
 		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="../reveal.js/lib/css/github.css">
+		<link rel="stylesheet" href="../reveal/lib/css/github.css">
 
 		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 		<script>
-			document.write( '<link rel="stylesheet" href="../reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+			document.write( '<link rel="stylesheet" href="../reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 		</script>
 
 		<!--[if lt IE 9]>
-		<script src="../reveal.js/lib/js/html5shiv.js"></script>
+		<script src="../reveal/lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
 
@@ -218,7 +218,7 @@ Slide 3
 ```html5
 <h2>Heads Up</h2>
 <p>
-    reveal.js is a framework for easily creating beautiful presentations using 
+    reveal is a framework for easily creating beautiful presentations using 
     HTML. Youll need a browser with support for CSS 3D transforms to 
     see it in its full glory.
 </p>
@@ -231,7 +231,7 @@ Slide 3
 				<section>
 					<h2>Heads Up</h2>
 					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
+						reveal is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
 						support for CSS 3D transforms to see it in its full glory.
 					</p>
 
@@ -319,14 +319,14 @@ Slide 3
 					<script type="text/template">
 						## Markdown support
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal#markdown).
 
 						```
 						<section data-markdown>
 						  ## Markdown support
 
 						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal#markdown).
 						</section>
 						```
 					</script>
@@ -350,7 +350,7 @@ Slide 3
 				<section id="themes">
 					<h2>Themes</h2>
 					<p>
-						Reveal.js comes with a few themes built in: <br>
+						Reveal comes with a few themes built in: <br>
 						<a href="?#/themes">Default</a> -
 						<a href="?theme=sky#/themes">Sky</a> -
 						<a href="?theme=beige#/themes">Beige</a> -
@@ -411,7 +411,7 @@ Reveal.addEventListener( 'customevent', function() {
 				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
 					<h2>Background Transitions</h2>
 					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
+						Pass reveal the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
 					</p>
 				</section>
 
@@ -502,7 +502,7 @@ function linkify( selector ) {
 
 				<section>
 					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
+					<p>Presentations can be <a href="https://github.com/hakimel/reveal#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
 					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
 					<script>
 						document.getElementById('slideshare').attributeName = 'allowfullscreen';
@@ -521,7 +521,7 @@ function linkify( selector ) {
 					<h2>Stellar Links</h2>
 					<ul>
 						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
+						<li><a href="https://github.com/hakimel/reveal">Source code on GitHub</a></li>
 						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
 					</ul>
 				</section>
@@ -535,13 +535,13 @@ function linkify( selector ) {
 
 		</div>
 
-		<script src="../reveal.js/lib/js/head.min.js"></script>
-		<script src="../reveal.js/js/reveal.min.js"></script>
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.min.js"></script>
 
 		<script>
 
 			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
+			// https://github.com/hakimel/reveal#configuration
 			Reveal.initialize({
 				controls: true,
 				progress: true,
@@ -558,14 +558,14 @@ function linkify( selector ) {
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
 				parallaxBackgroundSize: '2100px 900px',
 
-				// Optional libraries used to extend on reveal.js
+				// Optional libraries used to extend on reveal
 				dependencies: [
-					{ src: '../reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: '../reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
 				]
 			});
 

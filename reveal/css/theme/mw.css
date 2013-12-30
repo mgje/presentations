@@ -4,7 +4,7 @@
 @font-face {
   font-family: 'Lato';
   font-style: normal;
-  font-weight: 300;
+  font-weight: 350;
   src: local('Lato Light'), local('Lato-Light'), url(../../fonts/lato/v6/kcf5uOXucLcbFOydGU24WALUuEpTyoUstqEm5AMlJo4.woff) format('woff');
 }
 @font-face {
@@ -22,7 +22,7 @@
 @font-face {
   font-family: 'Lato';
   font-style: italic;
-  font-weight: 700;
+  font-weight: 750;
   src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(../../fonts/lato/v6/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
 }
 
@@ -55,10 +55,10 @@ body {
 
 .reveal {
   font-family: "Lato", sans-serif;
-  font-size: 36px;
-  font-weight: 300;
+  font-size: 44px;
+  font-weight: 350;
   letter-spacing: -0.02em;
-  color: #CCC; }
+  color: #c4c4c4; }
 
 ::selection {
   color: #fff;

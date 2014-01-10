@@ -60,7 +60,17 @@ Finding a geometric median is an optimization problem, which has no analytical s
 <!-- Introduction -->
 <section data-markdown data-separator="---" data-vertical="--" data-background="#222A22">
 <script type="text/template">
+## Outlook
+<br>
+<br>
 
+* Introduction
+* Mathematical exploring with GeoGebra
+* Theory around the Fermat-Weber Problem
+* Implementation of the Weiszfeld's algorithm
+
+
+---
 ### Fermat's Problem for Torricelli
 <br>
 *To find the point the sum of whose distances from the vertexes of a given triangle is the smallest possible.*
@@ -89,7 +99,7 @@ This is interpreted as finding the factory location which minimises the total we
 
 * * * *
 <small>[Drezner, Z., & Hamacher, H. W. (Eds.). (2004). Facility location: applications and theory. Springer.](http://books.google.ch/books?hl=en&lr=&id=sxpcsGN7K1YC)</small>
---
+---
 ## Modern formulation
 ![kraftwerk](media/kraftwerk.png)
 
@@ -100,43 +110,63 @@ This is interpreted as finding the factory location which minimises the total we
 
 Varignon proposed a mechanical analogue device which has actually been used in practice
 ---
-# DEMO
+# Mathematical exploring
 
 </script>
 </section>
 
-<!-- Demo -->
-<section>
-    <h4>120°</h4>
-	<video width="875" height="512" data-autoplay >
+<!-- Math Exlploring -->
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#00AA99" data-background-transition="slide">
+<script type="text/template">
+### For n=3 the angle 120° can be observed
+
+<video width="875" height="512" data-autoplay >
 	    <source src="media/movies/120degree.mp4" type="video/mp4" /> 
 		<source src="media/movies/120degree.webm" type="video/webm" />
 		<source src="media/movies/120degree.ogv" type="video/ogg" />	    
 		Your browser does not support the <code>video</code> element.
-	</video>
-</section>
+</video>
 
-<section>
-    <h4>No angle dependency for more than 3 points </h4>
-	<video width="876" height="512" data-autoplay >
+---
+### No angle dependency for more than 3 points
+
+<video width="876" height="512" data-autoplay >
 	    <source src="media/movies/morepoints.mp4" type="video/mp4" />
 		<source src="media/movies/morepoints.webm" type="video/webm" />
 		<source src="media/movies/morepoints.ogv" type="video/ogg" />
 		Your browser does not support the <code>video</code> element.
-	</video>
+</video>
+---
+### Fermat Point moves on a orbit
+<video width="998" height="712" data-autoplay >
+	    <source src="media/movies/orbit.mp4" type="video/mp4" />
+		<source src="media/movies/orbit.webm" type="video/webm" />
+		<source src="media/movies/orbit.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### Fermat Point snap to internal point 
+<video width="854" height="634" data-autoplay >
+	    <source src="media/movies/snaptopoint.mp4" type="video/mp4" />
+	    <source src="media/movies/snaptopoint.webm" type="video/webm" />
+	    <source src="media/movies/snaptopoint.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+
+</script>
 </section>
 
-
-
-
-
 <!-- Theory -->
-<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#00AA99" data-background-transition="slide">
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
 <script type="text/template">
 # Theory
-Beat
+<br>
+<br>
+###around the Fermat-Weber Problem
 ---
-### Geometric solution for 3 vertexes
+### Geometric solution for 3 location
 
 ![geometric solution](media/geometricsolution.png)
 
@@ -155,23 +185,7 @@ Beat
 		Your browser does not support the <code>video</code> element.
 </video>
 
----
-### Fermat Point moves on a orbit
-<video width="998" height="712" data-autoplay >
-	    <source src="media/movies/orbit.mp4" type="video/mp4" />
-		<source src="media/movies/orbit.webm" type="video/webm" />
-		<source src="media/movies/orbit.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
 
---
-### Fermat Point snap to adjusting point 
-<video width="854" height="634" data-autoplay >
-	    <source src="media/movies/snaptopoint.mp4" type="video/mp4" />
-	    <source src="media/movies/snaptopoint.webm" type="video/webm" />
-	    <source src="media/movies/snaptopoint.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
 
 ---
 # Optimality of a Fixed Point
@@ -183,15 +197,18 @@ Some other stuff
 </section>
 
 
-<!-- Realization -->
+<!-- Implementation -->
 <section data-markdown data-separator="---" data-vertical="--" data-background="#FF5E99" data-background-transition="slide" >
 <script type="text/template" >
 
+#Algorithm
+<br>
+<br>
+###Implementation with the programming language Python
+---
+python in geogeobra
 
-
-
-## Python
-
+---
 ```python
 class="stretch"
 class Weiszfeld(object):
@@ -213,7 +230,7 @@ class Weiszfeld(object):
 			[Point(x, y,point_size=6) for x, y in zip(xcoords, ycoords)]
 		
 ```
---
+---
 ### Interactive Python
 <video width="960" height="540" data-autoplay >
 	    <source src="media/movies/interaktiv.mp4" type="video/mp4" />
@@ -221,6 +238,19 @@ class Weiszfeld(object):
 	    <source src="media/movies/interaktiv.ogv" type="video/ogg" />
 		Your browser does not support the <code>video</code> element.
 </video>
+---
+
+# Conclusion
+
+---
+
+### Optimization Problems in dynamic Math ....
+
+---
+
+### Using JavaScript
+Demo Runs on the web an standard Geogebra4.4
+
 ---
 ## Finding the Fermat-Weber Point from
 * * * * *

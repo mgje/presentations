@@ -51,8 +51,11 @@ Finding a geometric median is an optimization problem, which has no analytical s
 					<h3>a numerical and geometric approach</h3>
 					<br>
 					<p>
-						<small>Beat Trachsler<br>
-							Martin Guggisberg
+						<small>Beat Trachsler,Martin Guggisberg
+							<br>
+							<a href="http://wiki.geogebra.org/en/GeoGebra_Institute_of_PHFHNW">GeoGebra Institute of PH FHNW</a>
+							<br>
+							Switzerland
 						</small>
 					</p>
 				</section>
@@ -68,7 +71,13 @@ Finding a geometric median is an optimization problem, which has no analytical s
 * Mathematical exploration with GeoGebra
 * Theory around the Fermat-Weber Problem
 * Implementation of the Weiszfeld algorithm
+--
 
+Abstract:
+<small> “To find the point the sum of whose distances from the vertexes of a given triangle is the smallest possible”. This historical problem from the 17th century  was put by the French mathematician Fermat to the Italian physicist Torricelli. A modern formulation of this problem could be: “To find a best location for a power plant between three cities in such a way that the sum of the connections between the powerplant and the cities is minimal”. Torricelli found several mathematical proofs, which can be nicely presented by GeoGebra. A generalization of the original problem leads to a geometric median – the problem of minimizing the sum of weighted distances.<br>
+
+Finding a geometric median is an optimization problem, which has no analytical solution for more than four points. We will present an interactive numerical solution with GeoGebra  using the Weiszfeld algorithm and the programming language Python. Our GeoGebra Materials calculat the geometric median in real-time, this allow allows dynamic observations of the solution and the convergence behavior of the Weiszfeld algorithm.
+</small>
 
 ---
 ### Fermat's Problem for Torricelli
@@ -299,18 +308,16 @@ $Anz.onupdate=init
 	    <source src="media/movies/interaktiv.ogv" type="video/ogg" />
 		Your browser does not support the <code>video</code> element.
 </video>
----
+
+</script>
+</section>
+
+<!-- Conclusion -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >
+<script type="text/template" >
+
 
 # Conclusion
-
----
-
-### Optimization Problems in dynamic Math ....
-
----
-
-### Using JavaScript
-Demo Runs on the web an standard Geogebra4.4
 ---
 ### Interactive Demo (JavaScript)
 <small>GeoGebra Materials : <a href="http://www.geogebratube.org/material/show/id/66049">http://www.geogebratube.org/material/show/id/66049</a><small>
@@ -325,7 +332,22 @@ Demo Runs on the web an standard Geogebra4.4
 		<img width="800" height="600" src="media/fermat_weber_europe.png" alt="Fermat Weber Europe">
 	</a>
 ---
+##Summary
+
+* We presented the historical fermat-weber problem
+* The use of GeoGebra to solve this problem
+* A python implementation of the Weiszfeld algorithm
+<br>
+<br>
+This presentation and all interactive material is published on github. <br><br>
+[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
+
+--
+
+### Using JavaScript
+Demo Runs on the web an standard Geogebra4.4
 ### Thanks for your attention
+---
 <video width="972" height="728" data-autoplay >
 	    <source src="media/movies/europefp.mp4" type="video/mp4" />
 	    <source src="media/movies/europefp.webm" type="video/webm" />

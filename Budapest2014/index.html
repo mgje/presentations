@@ -239,15 +239,9 @@ class Weiszfeld(object):
 		
 ```
 ---
-### Initialization of Vertexes
+### draw random points 
+### set eventlistener
 
-
-```python
-def refresh(self):
-	alg.drawSchwerPunkt()
-	alg.drawFermatPunkt()
-```
-** draw points, set action handler **
 ```python
 class Weiszfeld(object):
     def drawPoints(self):
@@ -257,19 +251,26 @@ class Weiszfeld(object):
 		self.mypoints = [Point(x, y,point_size=6, \
 			color=Color(118,175,236), label_visible=True) \
 			for x, y in zip(xcoords, ycoords)]
-		
 		...
 		for p in Point.all:
 			p.onupdate=refresh
 		...
-		
+...		
+```
+
+
+```python
+def init(self):
+	alg.drawPoints()
+	alg.drawSchwerPunkt()
+	alg.drawFermatPunkt()
 ```
 ---
 ### global Function
 
 ```python
-def init(self):
-	alg.drawPoints()
+# UPDATE CM AND FP
+def refresh(self):
 	alg.drawSchwerPunkt()
 	alg.drawFermatPunkt()
 ```
@@ -279,6 +280,7 @@ def init(self):
 ### global initialization
 
 ```python
+# GLOBAL VAR
 global alg
 alg = Weiszfeld()
 alg.drawPoints()
@@ -286,6 +288,8 @@ alg.update()
 $Anz.onupdate=init
 ```
 ---
+## Calculate next interation Position of FP
+
 ```python
 	def median_approx(self,P, points):
 		"""

@@ -113,10 +113,56 @@ updated or pressed
 ###Programming the action 
 ---
 
+## Randomly create 
+
+## 50 points
+---
+<video width="1052" height="662" data-autoplay >
+	    <source src="media/movies/PythonButton.mp4" type="video/mp4" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+[Download Gegebra File](downloads/buttonCreateRandomPointsPythonBeta.ggb)
+
+
+
+---
+### Programming the action with Python
+
+
+```python
+import random
+
+def deleteAllPoints():
+	for p in Point.all:
+			p.remove()
+
+# ACTION
+def createRandomPoints(self):
+	deleteAllPoints()
+	for i in range(51):
+		x = random.uniform(-2, 8)
+		y = random.uniform(0, 4)
+		Point(x, y,point_size=6,\
+		color=Color(118,175,236),label_visible=True,\
+		label='P_{'+str(i)+'}')
+
+# BUTTON OBJECT
+b = $button1
+
+# EVENTLISTENER
+b.onclick = createRandomPoints
+```
+---
+## Automation
+* Define an action for every created Point
 
 ---
 
 ---
+## Remarks
+
+"Python is only supported in the Beta-Version"
 
 </script>
 </section>

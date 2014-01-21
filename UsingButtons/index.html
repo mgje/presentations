@@ -54,18 +54,18 @@
 
 <br>
 
-* A user event e.g a click or a move of an object can trigger an action
+* A user event e.g. a click or a move of an object can trigger an action
 <br>
 <br>
-* An action is a GeoGebra- ,JavaScript- or Python-Programm which controls the Geogabra Playfield
+* An action is a GeoGebra- ,JavaScript- or Python-Programm which controls the behaviour
 
 ---
 ## Geogabra Objects
 
 <br>
 
-* Objects like points, lines or even textfields can trigger actions when they are 
-updated or pressed
+* Objects like points, lines or texts can trigger actions when they are 
+ pressed (clicked) or updated (moved)
 <br>
 <br>
 
@@ -107,10 +107,54 @@ updated or pressed
 <!-- PART 3 Python -->
 <section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
 <script type="text/template">
-# Python
+## A First 
+## Python Program
+## in Geogabra 5 (Beta)
+---
+### Open the python window
+<video width="824" height="662" data-autoplay >
+	    <source src="media/movies/openThePythonWindow.mp4" type="video/mp4" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### Switch to the Script Tab
+### Write a program
+<video width="824" height="662" data-autoplay >
+	    <source src="media/movies/writeAProgramm.mp4" type="video/mp4" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### save the document 
+### switch to an other document
+<video width="824" height="662" data-autoplay >
+	    <source src="media/movies/saveAndSwitch.mp4" type="video/mp4" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+
+---
+### ropen your document
+### your program runs 
+<video width="824" height="662" data-autoplay >
+	    <source src="media/movies/reopenYourProgram.mp4" type="video/mp4" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+#### change to the Interactive tab
+
+<video width="824" height="662" data-autoplay >
+	    <source src="media/movies/switchToInteractiveTab.mp4" type="video/mp4" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[Download this GeGebra file](downloads/firstPythonProgrammBeta.ggb)</small>
+---
+# Buttons
 <br>
 <br>
-###Programming the action 
+###Programming the action with Python
 ---
 
 ## Randomly create 
@@ -122,17 +166,14 @@ updated or pressed
 		Your browser does not support the <code>video</code> element.
 </video>
 
-[Download Gegebra File](downloads/buttonCreateRandomPointsPythonBeta.ggb)
-
-
+[Download this GeGebra file](downloads/buttonCreateRandomPointsPythonBeta.ggb)
 
 ---
-### Programming the action with Python
+### Programming the action
 
 
 ```python
 import random
-
 def deleteAllPoints():
 	for p in Point.all:
 			p.remove()
@@ -155,10 +196,76 @@ b.onclick = createRandomPoints
 ```
 ---
 ## Automation
-* Define an action for every created Point
+<br>
+### Define an action for every point
+### created py a program
 
 ---
 
+<video width="1168" height="772" data-autoplay >
+	    <source src="media/movies/AttachActionToPoints.mp4" type="video/mp4" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+[Download this GeGebra file](downloads/defineActionsOnCreatedObjectsPythonBeta.ggb)
+---
+
+```python
+...
+# Point ACTION
+def randomlyConnectPoints(self):
+	for i in range(10):
+		j = random.randint(0,50)
+		Segment(self,Point.all[j])
+# ACTION
+def createRandomPoints(self):
+	deleteAllPoints()
+	for i in range(51):
+		x = random.uniform(-2, 8)
+		y = random.uniform(0, 4)
+		Point(x, y,point_size=6,\
+		color=Color(118,175,236),\
+		label_visible=True,label='P'+str(i))
+	# Attach EventListner to all Points
+	for p in Point.all:
+		p.onclick = randomlyConnectPoints
+...
+```
+---
+# Invasion
+<br>
+
+## of points
+---
+<video width="1228" height="666" data-autoplay >
+	    <source src="media/movies/PointsInvasion.mp4" type="video/mp4" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+[Download this GeGebra file](downloads/PointIvasionBeta.ggb)
+---
+```python
+# ACTION
+def createRandomMorePoints(self):
+	num = len(Point.all) 
+	for i in range(num):
+		x = random.uniform(-2, 8)
+		y = random.uniform(-2, 6)
+		Point(x, y,point_size=6,\
+		color=Color((118-num)%256,175,(236-i)%256),\
+		label_visible=True)
+	# Attach EventListner to all Points
+	for p in Point.all:
+		p.onclick = createRandomMorePoints
+	
+# BUTTON OBJECT
+Point(1, 1,point_size=6,color=Color(118,175,236),\
+label_visible=True,label='P0')
+b = $P0
+
+# EVENTLISTENER
+b.onclick = createRandomMorePoints
+```
 ---
 ## Remarks
 
@@ -202,7 +309,7 @@ b.onclick = createRandomPoints
 <br>
 ###Programming the action 
 ---
-
+## This part will be uploaded soon
 ---
 
 
@@ -224,166 +331,10 @@ b.onclick = createRandomPoints
 ---
 # THE END
 ---
----
----
-#### Programming with Python in GeoGeobra (Beta)
-![geometric solution](media/Fermat_Weber_Final.png)
-<smaller>[Download Material (Geogebra 5 Beta)](Fermat_Weber/Fermat_Weber_Final_GeoGebra5.ggb)</smaller>
----
-### Weiszfeld Class
-```python
-class Weiszfeld(object):
-	mypoints = None
-	text1 = None
-	def __init__(self):
-		...
-	def drawPoints(self):
-		...
-	def distance(self,A, B):
-		...
-	def schwerpunkt(self):
-		...
-	def median_approx(self,P, points):
-		...
-	def geometric_median(self,points, epsilon):
-		...
-	def update(self):
-		...
-		
-```
----
-### Initialization of Vertexes
-
-
-```python
-def refresh(self):
-	alg.drawSchwerPunkt()
-	alg.drawFermatPunkt()
-```
-** draw points, set action handler **
-```python
-class Weiszfeld(object):
-    def drawPoints(self):
-		N = int($Anz.value)
-		xcoords = [random.uniform(3, 17) for i in range(N)]
-		ycoords = [random.uniform(3, 10) for i in range(N)]
-		self.mypoints = [Point(x, y,point_size=6, \
-			color=Color(118,175,236), label_visible=True) \
-			for x, y in zip(xcoords, ycoords)]
-		
-		...
-		for p in Point.all:
-			p.onupdate=refresh
-		...
-		
-```
----
-### global Function
-
-```python
-def init(self):
-	alg.drawPoints()
-	alg.drawSchwerPunkt()
-	alg.drawFermatPunkt()
-```
-<br>
-<br>
-
-### global initialization
-
-```python
-global alg
-alg = Weiszfeld()
-alg.drawPoints()
-alg.update()
-$Anz.onupdate=init
-```
----
-```python
-	def median_approx(self,P, points):
-		"""
-		Return a new approximation to the geometric median 
-		of `points` by applying one iteration of Weiszfeld's 
-		algorithm to the old appromixation P.
-    	"""
-		W = x = y = 0.0
-		for Q in points:
-			d = self.distance(P, Q)
-			if d != 0:
-				w = 1.0 / d
-				W += w
-				x += Q[0] * w
-				y += Q[1] * w
-		return x / W, y / W
-
-```
----
-### Interactive Python
-<video width="960" height="540" data-autoplay >
-	    <source src="media/movies/interaktiv.mp4" type="video/mp4" />
-	    <source src="media/movies/interaktiv.webm" type="video/webm" />
-	    <source src="media/movies/interaktiv.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
 
 </script>
 </section>
 
-<!-- Conclusion -->
-<section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >
-<script type="text/template" >
-
-
-# Conclusion
----
-### Interactive Demo (JavaScript)
-<small>GeoGebra Materials : <a href="http://www.geogebratube.org/material/show/id/66049">http://www.geogebratube.org/material/show/id/66049</a><small>
-	<a class="image" href="Fermat_Weber/index.html" target="_blank">
-		<img width="1000" height="600" src="media/fermat_weber_2.png" alt="Fermat_Weber">
-	</a>
-
---
-## Demo 2
-<small>GeoGebra Materials : <a href="http://www.geogebratube.org/student/m66688">http://www.geogebratube.org/student/m66688</a><small>
-	<a class="image" href="Fermat_Weber/fermat_europe.html" target="_blank">
-		<img width="800" height="600" src="media/fermat_weber_europe.png" alt="Fermat Weber Europe">
-	</a>
----
-##Summary
-
-* We presented the historical fermat-weber problem
-* The use of GeoGebra to solve this problem
-* A python implementation of the Weiszfeld algorithm
-<br>
-<br>
-This presentation and all interactive material are published on github. <br><br>
-[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
-
---
-
-### Using JavaScript
-Demo Runs on the web an standard Geogebra4.4
-### Thanks for your attention
----
-<video width="972" height="728" data-autoplay >
-	    <source src="media/movies/europefp.mp4" type="video/mp4" />
-	    <source src="media/movies/europefp.webm" type="video/webm" />
-	    <source src="media/movies/europefp.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
---
-## Finding the Fermat-Weber Point for
-* * * * *
-###Amsterdam, Berlin, Bordeaux, Brussels, Budapest, Frankfurt, London, Lyon, Marseille, Milan, Paris, Prague, Rome, Turin and Vienna
-
---
-## THE END
-<br>
-### Questions ?
-<br>
-### Thanks to Hakim El Hattab / hakim.se for reveal.js
-</script>
-</section>
 			</div>
 
 		</div>

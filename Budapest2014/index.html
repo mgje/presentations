@@ -260,7 +260,7 @@ class Weiszfeld(object):
 ```
 ---
 ### draw random points 
-### set eventlistener
+### define eventlisteners
 
 ```python
 class Weiszfeld(object):
@@ -280,24 +280,14 @@ class Weiszfeld(object):
 
 
 ```python
-def init(self):
-	alg.drawPoints()
-	alg.drawSchwerPunkt()
-	alg.drawFermatPunkt()
-```
----
-### global Function
-
-```python
-# UPDATE CM AND FP
 def refresh(self):
 	alg.drawSchwerPunkt()
 	alg.drawFermatPunkt()
 ```
-<br>
-<br>
 
-### global initialization
+--
+### Using a global object
+
 
 ```python
 # GLOBAL VAR
@@ -307,6 +297,31 @@ alg.drawPoints()
 alg.update()
 $Anz.onupdate=init
 ```
+--
+
+### deleting all points
+
+```python
+for p in Point.all:
+	p.remove()
+```
+
+### Calculation Center of mass 
+
+```python
+def schwerpunkt(self):
+		x0=y0=0
+		n = len(self.mypoints)
+		for P in self.mypoints:
+			x0=x0+P.x.value
+			y0=y0+P.y.value
+		return (x0/n,y0/n)
+```
+
+
+
+
+
 ---
 ## Calculate next interation Position of FP
 
@@ -328,6 +343,28 @@ $Anz.onupdate=init
 		return x / W, y / W
 
 ```
+--
+
+### Main Loop
+
+```python
+def geometric_median(self,points, epsilon):
+	"""
+	Return an approximation to the geometric median for 
+	`points`. Start with the centroid and apply Weiszfeld's 
+	algorithm until the distance between steps is less 
+	than `epsilon`.
+	"""
+	n = float(len(points))
+		P = tuple(sum(P[i] for P in points) / n for i in range(2))
+		while True:
+			Q = self.median_approx(P, points)
+			if self.distance(P, Q) < epsilon:
+				return Q
+			P = Q
+
+```
+
 ---
 ### Interactive Python
 <video width="960" height="540" data-autoplay >

@@ -331,6 +331,22 @@ b.onclick = createRandomMorePoints
 ---
 # THE END
 ---
+# Ping Pong Stuff
+---
+
+```math´´
+ $$\frac{1}{n}\sqrt{e^\frac{1}{n} - e^\frac{1}{n+1}}\sim\frac{1}{n^2}$$
+```
+
+```math
+\[\begin{aligned} \dot{x} & = \sigma(y-x) \\ \dot{y} & = \rho x - y - xz \\ \dot{z} & = -\beta z + xy \end{aligned} \]
+```
+---
+$$\frac{1}{n}\sqrt{e^\frac{1}{n} - e^\frac{1}{n+1}}\sim\frac{1}{n^2}$$
+
+---
+
+\[\begin{aligned} \dot{x} & = \sigma(y-x) \\ \dot{y} & = \rho x - y - xz \\ \dot{z} & = -\beta z + xy \end{aligned} \]
 
 </script>
 </section>
@@ -362,6 +378,13 @@ b.onclick = createRandomMorePoints
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
 				parallaxBackgroundSize: '2100px 900px',
 
+				math: {
+					mathjax: 'http://cdn.mathjax.org/mathjax/latest/MathJax.js',
+					//mathjax: 'mathjax/MathJax.js',
+					config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+				},
+
+
 				// Optional libraries used to extend on reveal
 				dependencies: [
 					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
@@ -369,7 +392,8 @@ b.onclick = createRandomMorePoints
 					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: '../reveal/plugin/math/math.js', async: true }
 				]
 			});
 

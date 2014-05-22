@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+		<title>Solving the Fermat-Weber problem with GeoGebra – a numerical and geometric approach</title>
+
+		<meta name="description" content="P. Fermat stellte im siebzehnten Jahrhundert dem Italienischen Physiker E. Torricelli das folgenden Problem: „Wo befindet sich ein Punkt P in einem n-Eck, wenn die Summe aller Abstände von diesem Punkt P zu allen Ecken minimal sein soll. Im Gegensatz zu den meisten weiteren speziellen Punkten im Dreieck existiert der Fermat-Punkt auch in n-Ecken mit der Eckzahl n>3. Es gibt jedoch bisher keine analytische oder geometrische Methode den Fermat-Punkt für n-Ecke mit n>4 zu bestimmen. Das von Andrew Vázsonyi beschriebene numerische Lösungsverfahren kann mit GeoGebra interaktiv eingesetzt und visualisiert werden.">
+		<meta name="author" content="Martin Guggisberg">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="../reveal/css/theme/mw.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/github.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<!-- START -->
+
+				<section data-background="#222A22">
+					
+					<h3>
+						Eine interaktive Lösung des Fermat-Weber Problems mit GeoGebra
+					</h3>
+					<p><small>
+					  P. Fermat stellte im siebzehnten Jahrhundert dem Italienischen Physiker E. Torricelli das folgenden Problem: „Wo befindet sich ein Punkt P in einem n-Eck, wenn die Summe aller Abstände von diesem Punkt P zu allen Ecken minimal sein soll. Im Gegensatz zu den meisten weiteren speziellen Punkten im Dreieck existiert der Fermat-Punkt auch in n-Ecken mit der Eckzahl n>3. Es gibt jedoch bisher keine analytische oder geometrische Methode den Fermat-Punkt für n-Ecke mit n>4 zu bestimmen. Das von Andrew Vázsonyi beschriebene numerische Lösungsverfahren kann mit GeoGebra interaktiv eingesetzt und visualisiert werden.</small>
+					</p>
+					<p>
+						<small>Martin Guggisberg
+							<br>
+							PH FHNW
+						</small>
+					</p>
+				</section>
+
+<!-- Introduction -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#222A22">
+<script type="text/template">
+## Agenda
+<br>
+<br>
+
+* Geschichtliche Betrachtung 
+* Aufgabenverständnis mit Hilfe von GeoGebra
+* Exakte Lösung für n=3
+* Numerisches Verfahren für n>3
+* Experimentieren mit dem Weiszfeld Algorithmus
+---
+## 100 Great Problems of Elementary Mathematics
+![Buch](media/buch.png)
+---
+
+![Aufgabe91](media/aufgabe91.png)
+
+"Wo befindet sich ein Punkt P in einem Dreieck, wenn die Summe aller Abstände von diesem Punkt P zu den drei Ecken minimal sein soll."
+
+<small>[Dorrie, H. (1965). 100 Great problems of elementary mathematics. Dover Publications.](http://cds.cern.ch/record/1551234)</small>
+
+---
+## Facility Location Problem
+
+<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/81814/width/786/height/600/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="786px" height="600px" style="border:0px;"> </iframe>
+---
+
+## Facility Location Problems
+### Ein Teilgebiet der kombinatorischen Optimierung 
+
+1966 findet M. L. Balinksi eine approximative Lösung einer Erweiterung des Fermat-Weber Problems
+auf n-Ecken.
+
+****
+<small>
+M. L. Balinksi. On finding integer solutions to linear programs. In Proceedings of the IBM Scientific Computing Symposium on Combinatorial Problems, pages 225–248. IBM, 1966.</small>
+--
+
+The Weber problem finds the point in a plane which minimises the sum of weighted Euclidean distances to a set of fixed points.
+
+This is interpreted as finding the factory location which minimises the total weighted distances from suppliers and customers, where weights represent relative volumes of interactions, e.g. weight of material to be transported from a supplier, or volume of finished products for a customer.
+
+* * * *
+<small>[Drezner, Z., & Hamacher, H. W. (Eds.). (2004). Facility location: applications and theory. Springer.](http://books.google.ch/books?hl=en&lr=&id=sxpcsGN7K1YC)</small>
+---
+#### Minimalisierung der Summe aller Distanzen
+![Fig 1](media/fermat_problem_fig1.png)
+---
+## Viele weitere Bezeichnungen für verwandte Probleme
+
+the Fermat problem, the Fermat-Torricelli problem, the Steiner problem, the Steiner-Weber problem, the Weber problem, **the Fermat-Weber problem**, the weber facility problem, the one median problem, the median center problem, the spatial median problem, the minimum aggregate travel point problem
+---
+## Wer hat als erstes ein numerisches Lösungsverfahren gefunden?
+---
+![Andrew_Vazsonyi](media/Andrew_Vazsonyi.png)
+
+```I was sixteen when I became intrigued with the N point 
+problem``` 
+
+***Andrew Vázsonyi, 1932***
+--
+
+```Cosider N points and one more 
+point, X. Measure the distances between X and the given 
+points, then add the distances. Find point X so 
+that this sum is the smallest possible.```
+
+Andrew Vázsonyi
+--
+```I found the point X by using an infinite, 
+recursive algorithm, a most unusual solution 
+for a problem in geometry. You start with a
+point X0, anywhere, and search for a better 
+solution.```
+
+Andrew Vázsonyi, 1937
+---
+The paper "Sur le point pour lequel les sommes
+des distances de n points donnés et minimum", 
+published in **Japan** in **1937** under the name 
+**Endre Weiszfeld** became a classic in the 
+mathematics of location analysis.
+
+--
+## Modern formulation
+![kraftwerk](media/kraftwerk.png)
+
+[Link to GeoGebra Material](http://ulrich-steinmetz.de/geogebra/kraftwerk.html)
+* * * *
+<small>[Ulrich Steinmetz. (2014)](http://www.ulrich-steinmetz.de/)</small>
+--
+### Varignon Frame
+![Varignon Frame](media/varignonFrame.png)
+
+Varignon proposed a mechanical analogue device which has actually been used in practice
+</script>
+</section>
+
+<!-- Math Exploring -->
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#00AA99" data-background-transition="slide">
+<script type="text/template">
+# Numerische Experimente
+---
+### Für n=3 kann ein Winkel von 120° beobachtet werden
+
+<video width="875" height="512" data-autoplay >
+	    <source src="media/movies/120degree.mp4" type="video/mp4" /> 
+		<source src="media/movies/120degree.webm" type="video/webm" />
+		<source src="media/movies/120degree.ogv" type="video/ogg" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+Geometrische Konstruktion des Fermat-Punkt
+![geometric solution](media/geometric_solution.png)
+---
+Zum Beispiel  LU 9 
+---
+### Keine Winkelabhängigkeit für n>3
+
+<video width="876" height="512" data-autoplay >
+	    <source src="media/movies/morepoints.mp4" type="video/mp4" />
+		<source src="media/movies/morepoints.webm" type="video/webm" />
+		<source src="media/movies/morepoints.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+### Der Fermat-Punkt bewegt sich auf einem Orbit
+<video width="998" height="712" data-autoplay >
+	    <source src="media/movies/orbit.mp4" type="video/mp4" />
+		<source src="media/movies/orbit.webm" type="video/webm" />
+		<source src="media/movies/orbit.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### Der Fermat-Punkt springt auf innere Punkte
+<video width="854" height="634" data-autoplay >
+	    <source src="media/movies/snaptopoint.mp4" type="video/mp4" />
+	    <source src="media/movies/snaptopoint.webm" type="video/webm" />
+	    <source src="media/movies/snaptopoint.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+
+</script>
+</section>
+
+<!-- Theory -->
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
+<script type="text/template">
+# Exakte Lösung
+<br>
+###für n = 3
+
+---
+### Geometrischer Beweis
+
+![geometric solution](media/geometric_proof.png)
+
+[Link to Geogebra Material](http://www.geogebratube.org/student/m71061)
+--
+<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/71061/width/960/height/786/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="960px" height="786px" style="border:0px;"> </iframe>
+---
+
+Lernumgebung XXX bla bla
+
+</script>
+</section>
+
+
+
+<!-- Implementation -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#FF5E99" data-background-transition="slide" >
+<script type="text/template" >
+
+#Weiszfeld
+<br>
+### Algorithmus
+---
+
+![Andrew Vázsonyi](media/Vazsonyi_Px.jpg) 
+
+by Endre Weiszfeld, alias Andrew Vázsonyi (1916–2003), born in Budapest
+--
+
+![Which Door has the Cadillac](media/whichdoor.jpg)
+
+
+--
+
+```Computers have the potential to turn the biggest math-phobe into a math user,
+if not a lover.``` 
+<br>
+<br>
+
+Andrew Vázsonyi in his book:
+
+Which Door has the Cadillac 
+Adventures of a Real-Life Mathematician
+---
+### Konvergenzverhalten des  Weiszfeld Algorithmus
+
+<video width="1002" height="568" data-autoplay >
+        <source src="media/movies/konvergenz.mp4" type="video/mp4" />
+		<source src="media/movies/konvergenz.webm" type="video/webm" />
+		<source src="media/movies/konvergenz.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+--
+#### Programming with Python in GeoGeobra (Beta)
+![geometric solution](media/Fermat_Weber_Final.png)
+<smaller>[Download Material (Geogebra 5 Beta)](Fermat_Weber/Fermat_Weber_Final_GeoGebra5.ggb)</smaller>
+--
+### Weiszfeld Class
+```python
+class Weiszfeld(object):
+	mypoints = None
+	text1 = None
+	def __init__(self):
+		...
+	def drawPoints(self):
+		...
+	def distance(self,A, B): 
+		...
+	def schwerpunkt(self):
+		...
+	def median_approx(self,P, points):
+		...
+	def geometric_median(self,points, epsilon):
+		...
+	def update(self):
+		...
+		
+```
+--
+### draw random points 
+### define eventlisteners
+
+```python
+class Weiszfeld(object):
+    def drawPoints(self):
+		N = int($Anz.value)
+		xcoords = [random.uniform(3, 17) for i in range(N)]
+		ycoords = [random.uniform(3, 10) for i in range(N)]
+		self.mypoints = [Point(x, y,point_size=6, \
+			color=Color(118,175,236), label_visible=True) \
+			for x, y in zip(xcoords, ycoords)]
+		...
+		for p in Point.all:
+			p.onupdate=refresh
+		...
+...		
+```
+
+
+```python
+def refresh(self):
+	alg.drawSchwerPunkt()
+	alg.drawFermatPunkt()
+```
+
+--
+### Using a global object
+
+
+```python
+# GLOBAL VAR
+global alg
+alg = Weiszfeld()
+alg.drawPoints()
+alg.update()
+$Anz.onupdate=init
+```
+--
+
+### deleting all points
+
+```python
+for p in Point.all:
+	p.remove()
+```
+
+### Calculation Center of mass 
+
+```python
+def schwerpunkt(self):
+		x0=y0=0
+		n = len(self.mypoints)
+		for P in self.mypoints:
+			x0=x0+P.x.value
+			y0=y0+P.y.value
+		return (x0/n,y0/n)
+```
+
+--
+## Calculate next interation Position of FP
+
+```python
+	def median_approx(self,P, points):
+		"""
+		Return a new approximation to the geometric median 
+		of `points` by applying one iteration of Weiszfeld's 
+		algorithm to the old appromixation P.
+    	"""
+		W = x = y = 0.0
+		for Q in points:
+			d = self.distance(P, Q)
+			if d != 0:
+				w = 1.0 / d
+				W += w
+				x += Q[0] * w
+				y += Q[1] * w
+		return x / W, y / W
+
+```
+--
+
+### Main Loop
+
+```python
+def geometric_median(self,points, epsilon):
+	"""
+	Return an approximation to the geometric median for 
+	`points`. Start with the centroid and apply Weiszfeld's 
+	algorithm until the distance between steps is less 
+	than `epsilon`.
+	"""
+	n = float(len(points))
+		P = tuple(sum(P[i] for P in points) / n for i in range(2))
+		while True:
+			Q = self.median_approx(P, points)
+			if self.distance(P, Q) < epsilon:
+				return Q
+			P = Q
+
+```
+
+--
+### Interaktiv Programmieren (beta)
+<video width="960" height="540" data-autoplay >
+	    <source src="media/movies/interaktiv.mp4" type="video/mp4" />
+	    <source src="media/movies/interaktiv.webm" type="video/webm" />
+	    <source src="media/movies/interaktiv.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+</script>
+</section>
+
+<!-- Conclusion -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >
+<script type="text/template" >
+
+#Experimente
+<br>
+### mit numerischen Verfahren
+---
+### Interactive Demo (JavaScript)
+<small>GeoGebra Materials : <a href="http://www.geogebratube.org/material/show/id/66049">http://www.geogebratube.org/material/show/id/66049</a><small>
+	<a class="image" href="Fermat_Weber/index.html" target="_blank">
+		<img width="1000" height="600" src="media/fermat_weber_2.png" alt="Fermat_Weber">
+	</a>
+
+--
+## Demo 2
+<small>GeoGebra Materials : <a href="http://www.geogebratube.org/student/m66688">http://www.geogebratube.org/student/m66688</a><small>
+	<a class="image" href="Fermat_Weber/fermat_europe.html" target="_blank">
+		<img width="800" height="600" src="media/fermat_weber_europe.png" alt="Fermat Weber Europe">
+	</a>
+---
+<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/66688/width/1000/height/736/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="1000px" height="736px" style="border:0px;"> </iframe>
+---
+# Ein weiteres Experiment
+
+---
+<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/119327/width/1290/height/644/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="1290px" height="644px" style="border:0px;"> </iframe>
+---
+##Vielen Dank 
+<br> 
+<br>
+#?
+
+
+<br>
+Vortrag, Filme und interaktive Applets sind auf GitHub. <br><br>
+[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
+
+
+---
+<video width="972" height="728" data-autoplay >
+	    <source src="media/movies/europefp.mp4" type="video/mp4" />
+	    <source src="media/movies/europefp.webm" type="video/webm" />
+	    <source src="media/movies/europefp.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+--
+
+<br>
+### Thanks to Hakim El Hattab / hakim.se for reveal.js
+</script>
+</section>
+			</div>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				keyboard: true,
+				overview: true,
+				slideNumber: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

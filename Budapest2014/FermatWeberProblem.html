@@ -226,10 +226,19 @@ Adventures of a Real-Life Mathematician
 
 ---
 ### Weiszfeld Algorithmus
+Iterative Gewichtung von quadratischen Abweichungen
 
+$ $
+
+$$  y_{k+1} = \frac{\sum_i^N  \frac{x_i}{\|| x_i-y_k \||}}{\sum_i^N  \frac{1}{\|| x_i-y_k \||} } $$
+
+$ $
 
 [The convergence of the Weiszfeld algorithm](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
 --
+
+
+
 #### Programming with Python in GeoGeobra (Beta)
 ![geometric solution](media/Fermat_Weber_Final.png)
 <smaller>[Download Material (Geogebra 5 Beta)](Fermat_Weber/Fermat_Weber_Final_GeoGebra5.ggb)</smaller>
@@ -446,7 +455,6 @@ def geometric_median(self,points, epsilon):
 	</a>
 ---
 <iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/66688/width/1000/height/736/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="1000px" height="736px" style="border:0px;"> </iframe>
----
 
 </script>
 </section>
@@ -459,7 +467,31 @@ def geometric_median(self,points, epsilon):
 # weitere Experimente 
 <br>
 ### z. B. Modellierung einer Kamera in 2D
+---
+Ein perspektivisches Abbildungssystem kann mit Hilfe von Matrizen und homogenen Koordinaten modelliert werden.
 
+$ $
+
+$$P=\left( \begin{matrix} 
+        1 & 0& 0 \\\\
+        0 & 1 & 0 \\\\
+        0 & 1/n & 0 \\\\
+        \end{matrix} 
+        \right) , \mbox{ } R=\left( \begin{matrix} 
+        \cos(\Theta) & \sin(\Theta)& 0 \\\\
+        -\sin(\Theta)& \cos(\Theta) & 0 \\\\
+        0 & 0 & 1\\\\
+        \end{matrix} 
+        \right) $$
+$ $
+
+$$T=\left( \begin{matrix} 
+        1 & 0& T_x \\\\
+        0 & 1 & T_y \\\\
+        1 & 0 & 1 \\\\
+        \end{matrix} 
+        \right)
+         $$
 ---
 <iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/119327/width/1290/height/644/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="1290px" height="644px" style="border:0px;"> </iframe>
 ---
@@ -513,7 +545,8 @@ Vortrag, Filme und interaktive Applets sind auf GitHub. <br><br>
 					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/math/math.js', async: true }
 				]
 			});
 

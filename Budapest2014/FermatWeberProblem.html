@@ -62,7 +62,6 @@
 <br>
 
 * Geschichtliche Betrachtung 
-* Aufgabenverständnis mit Hilfe von GeoGebra
 * Exakte Lösung für n=3
 * Numerisches Verfahren für n>3
 * Experimentieren mit dem Weiszfeld Algorithmus
@@ -104,11 +103,53 @@ This is interpreted as finding the factory location which minimises the total we
 #### Minimalisierung der Summe aller Distanzen
 ![Fig 1](media/fermat_problem_fig1.png)
 ---
-## Viele weitere Bezeichnungen für verwandte Probleme
+## Zahlreiche weitere Bezeichnungen
 
 the Fermat problem, the Fermat-Torricelli problem, the Steiner problem, the Steiner-Weber problem, the Weber problem, **the Fermat-Weber problem**, the weber facility problem, the one median problem, the median center problem, the spatial median problem, the minimum aggregate travel point problem
 ---
-## Wer hat als erstes ein numerisches Lösungsverfahren gefunden?
+</script>
+</section>
+
+<!-- Math Exploring -->
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#00AA99" data-background-transition="slide">
+<script type="text/template">
+# Exakte Lösung
+<br>
+###für n = 3
+---
+### Hat ein Dreieck eine Mitte? 
+
+![geometric solution](media/geometric_solution.png)
+
+LU18, Mathbuch Band8
+---
+### Geometrischer Beweis
+
+![geometric solution](media/geometric_proof.png)
+
+[Link to Geogebra Material](http://www.geogebratube.org/student/m71061)
+--
+<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/71061/width/960/height/786/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="960px" height="786px" style="border:0px;"> </iframe>
+---
+### Beweis mit Streckenzug 
+![Streckenzug Lösung](media/streckenzug_proof.png)
+(LU 18, ICT-Zusatzmaterial)
+--
+## Vorgehen:
+
+1. Im Dreieck ABC setzen wir irgendwo den Punkt P.
+
+2. Nun drehen wir das Dreieck ABP um 60° um den Punkt B. So entsteht ein gleichseitiges Dreieck
+BPP’. Der Streckenzug A’P’PC entspricht nun der Abstandssumme von P zu den Ecken des Dreiecks ABC.
+
+3. Bewegt man den Punkt P so, dass der Streckenzug A’P’PC geradlinig wird, so hat man die minimale Abstandssumme gefunden.
+--
+## Weitere Lösungen:
+
+[Approximation Algorithms for
+Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.pdf)
+---
+## **Wer** hat als erstes ein numerisches Lösungsverfahren gefunden?
 ---
 ![Andrew_Vazsonyi](media/Andrew_Vazsonyi.png)
 
@@ -140,7 +181,7 @@ published in **Japan** in **1937** under the name
 mathematics of location analysis.
 
 --
-## Modern formulation
+## Modern Formulierung
 ![kraftwerk](media/kraftwerk.png)
 
 [Link to GeoGebra Material](http://ulrich-steinmetz.de/geogebra/kraftwerk.html)
@@ -151,99 +192,10 @@ mathematics of location analysis.
 ![Varignon Frame](media/varignonFrame.png)
 
 Varignon proposed a mechanical analogue device which has actually been used in practice
-</script>
-</section>
-
-<!-- Math Exploring -->
-<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#00AA99" data-background-transition="slide">
-<script type="text/template">
-# Numerische Experimente
----
-### Für n=3 kann ein Winkel von 120° beobachtet werden
-
-<video width="875" height="512" data-autoplay >
-	    <source src="media/movies/120degree.mp4" type="video/mp4" /> 
-		<source src="media/movies/120degree.webm" type="video/webm" />
-		<source src="media/movies/120degree.ogv" type="video/ogg" />	    
-		Your browser does not support the <code>video</code> element.
-</video>
-
----
-### Keine Winkelabhängigkeit für n>3
-
-<video width="876" height="512" data-autoplay >
-	    <source src="media/movies/morepoints.mp4" type="video/mp4" />
-		<source src="media/movies/morepoints.webm" type="video/webm" />
-		<source src="media/movies/morepoints.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
----
-### Der Fermat-Punkt bewegt sich auf einem Orbit
-<video width="998" height="712" data-autoplay >
-	    <source src="media/movies/orbit.mp4" type="video/mp4" />
-		<source src="media/movies/orbit.webm" type="video/webm" />
-		<source src="media/movies/orbit.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
-
----
-### Der Fermat-Punkt springt auf innere Punkte
-<video width="854" height="634" data-autoplay >
-	    <source src="media/movies/snaptopoint.mp4" type="video/mp4" />
-	    <source src="media/movies/snaptopoint.webm" type="video/webm" />
-	    <source src="media/movies/snaptopoint.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
-
 
 </script>
 </section>
 
-<!-- Theory -->
-<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
-<script type="text/template">
-# Exakte Lösung
-<br>
-###für n = 3
----
-### LU 18 / Band 8 / Mathbuch 
-### Hat ein Dreieck eine Mitte?
-
-![geometric solution](media/geometric_solution.png)
-
----
-### Geometrischer Beweis
-
-![geometric solution](media/geometric_proof.png)
-
-[Link to Geogebra Material](http://www.geogebratube.org/student/m71061)
---
-<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/71061/width/960/height/786/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="960px" height="786px" style="border:0px;"> </iframe>
----
-### Beweis mit Streckenzug (LU 18, ICT-Zusatzmaterial)
-![Streckenzug Lösung](media/streckenzug_proof.png)
---
-## Vorgehen:
-
-1. Im Dreieck ABC setzen wir irgendwo den Punkt P.
-
-2. Nun drehen wir das Dreieck ABP um 60° um den Punkt B. So entsteht ein gleichseitiges Dreieck
-BPP’. Der Streckenzug A’P’PC entspricht nun der Abstandssumme von P zu den Ecken des Dreiecks ABC.
-
-3. Bewegt man den Punkt P so, dass der Streckenzug A’P’PC geradlinig wird, so hat man die minimale Abstandssumme gefunden.
---
-## Weitere Lösungsmethoden:
-
-[Approximation Algorithms for
-Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.pdf)
-
-
-
-</script>
-</section>
-
-
-<!-- Implementation -->
 <section data-markdown data-separator="---" data-vertical="--" data-background="#FF5E99" data-background-transition="slide" >
 <script type="text/template" >
 
@@ -271,18 +223,12 @@ Andrew Vázsonyi in his book:
 
 Which Door has the Cadillac 
 Adventures of a Real-Life Mathematician
----
-### Konvergenzverhalten des  Weiszfeld Algorithmus
 
-<video width="1002" height="568" data-autoplay >
-        <source src="media/movies/konvergenz.mp4" type="video/mp4" />
-		<source src="media/movies/konvergenz.webm" type="video/webm" />
-		<source src="media/movies/konvergenz.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
 ---
 ### Weiszfeld Algorithmus
 
+
+[The convergence of the Weiszfeld algorithm](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
 --
 #### Programming with Python in GeoGeobra (Beta)
 ![geometric solution](media/Fermat_Weber_Final.png)
@@ -424,13 +370,58 @@ def geometric_median(self,points, epsilon):
 </script>
 </section>
 
-<!-- Conclusion -->
-<section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >
-<script type="text/template" >
 
-#Experimente
-<br>
-### mit numerischen Verfahren
+
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
+<script type="text/template">
+# Numerische Experimente
+---
+### Konvergenzverhalten des  Weiszfeld Algorithmus
+
+<video width="1002" height="568" data-autoplay >
+        <source src="media/movies/konvergenz.mp4" type="video/mp4" />
+		<source src="media/movies/konvergenz.webm" type="video/webm" />
+		<source src="media/movies/konvergenz.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+### Für n=3 kann ein Winkel von 120° beobachtet werden
+
+<video width="875" height="512" data-autoplay >
+	    <source src="media/movies/120degree.mp4" type="video/mp4" /> 
+		<source src="media/movies/120degree.webm" type="video/webm" />
+		<source src="media/movies/120degree.ogv" type="video/ogg" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### Keine Winkelabhängigkeit für n>3
+
+<video width="876" height="512" data-autoplay >
+	    <source src="media/movies/morepoints.mp4" type="video/mp4" />
+		<source src="media/movies/morepoints.webm" type="video/webm" />
+		<source src="media/movies/morepoints.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+### Der Fermat-Punkt bewegt sich auf einem Orbit
+<video width="998" height="712" data-autoplay >
+	    <source src="media/movies/orbit.mp4" type="video/mp4" />
+		<source src="media/movies/orbit.webm" type="video/webm" />
+		<source src="media/movies/orbit.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### Der Fermat-Punkt springt auf innere Punkte
+<video width="854" height="634" data-autoplay >
+	    <source src="media/movies/snaptopoint.mp4" type="video/mp4" />
+	    <source src="media/movies/snaptopoint.webm" type="video/webm" />
+	    <source src="media/movies/snaptopoint.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+## Wo befindet sich der Mittelpunkt von Europa ?
 ---
 <video width="972" height="728" data-autoplay >
 	    <source src="media/movies/europefp.mp4" type="video/mp4" />
@@ -456,7 +447,18 @@ def geometric_median(self,points, epsilon):
 ---
 <iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/66688/width/1000/height/736/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="1000px" height="736px" style="border:0px;"> </iframe>
 ---
-# Ein weiteres Experiment
+
+</script>
+</section>
+
+
+<!-- Conclusion -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >
+<script type="text/template" >
+
+# weitere Experimente 
+<br>
+### z. B. Modellierung einer Kamera in 2D
 
 ---
 <iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/119327/width/1290/height/644/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="1290px" height="644px" style="border:0px;"> </iframe>

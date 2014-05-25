@@ -104,11 +104,11 @@ the Fermat problem, the Fermat-Torricelli problem, the Steiner problem, the Stei
 <br>
 ###für n = 3
 ---
-### Hat ein Dreieck eine Mitte? 
+## Hat ein Dreieck eine Mitte? 
 
+Mathbuch Band8 LU18
+---
 ![geometric solution](media/geometric_solution.png)
-
-LU18, Mathbuch Band8
 ---
 ### Geometrischer Beweis
 
@@ -120,7 +120,10 @@ LU18, Mathbuch Band8
 ---
 ### Beweis mit Streckenzug 
 ![Streckenzug Lösung](media/streckenzug_proof.png)
+
+<small>
 (LU 18, ICT-Zusatzmaterial)
+</small>
 --
 ## Vorgehen:
 
@@ -136,6 +139,8 @@ BPP’. Der Streckenzug A’P’PC entspricht nun der Abstandssumme von P zu den
 [Approximation Algorithms for
 Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.pdf)
 ---
+## **Wer** hat als erstes ein numerisches Lösungsverfahren gefunden?
+---
 ### Facility Location Problems
 
 ### Ein Teilgebiet der kombinatorischen Optimierung 
@@ -145,8 +150,6 @@ Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.
 ****
 <small>
 M. L. Balinksi. On finding integer solutions to linear programs. In Proceedings of the IBM Scientific Computing Symposium on Combinatorial Problems, pages 225–248. IBM, 1966.</small>
----
-## **Wer** hat als erstes ein numerisches Lösungsverfahren gefunden?
 ---
 ![Andrew_Vazsonyi](media/Andrew_Vazsonyi.png)
 
@@ -230,8 +233,11 @@ $ $
 $$  y_{k+1} = \frac{\sum_i^N  \frac{x_i}{\|| x_i-y_k \||}}{\sum_i^N  \frac{1}{\|| x_i-y_k \||} } $$
 
 $ $
+<small>
+[H. Üster, R.F. Love, The convergence of the Weiszfeld algorithm, Computers & Mathematics with Applications, Volume 40, Issues 4–5, August–September 2000, Pages 443-451, ISSN 0898-1221](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
+</small>
 
-[The convergence of the Weiszfeld algorithm](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
+
 --
 
 
@@ -410,7 +416,7 @@ def geometric_median(self,points, epsilon):
 		Your browser does not support the <code>video</code> element.
 </video>
 ---
-### Der Fermat-Punkt bewegt sich auf einem Orbit
+### FP bewegt sich auf einem Orbit
 <video width="998" height="712" data-autoplay >
 	    <source src="media/movies/orbit.mp4" type="video/mp4" />
 		<source src="media/movies/orbit.webm" type="video/webm" />
@@ -419,7 +425,7 @@ def geometric_median(self,points, epsilon):
 </video>
 
 ---
-### Der Fermat-Punkt springt auf innere Punkte
+### FP springt auf innere Punkte
 <video width="854" height="634" data-autoplay >
 	    <source src="media/movies/snaptopoint.mp4" type="video/mp4" />
 	    <source src="media/movies/snaptopoint.webm" type="video/webm" />
@@ -485,7 +491,7 @@ $ $
 $$T=\left( \begin{matrix} 
         1 & 0& T_x \\\\
         0 & 1 & T_y \\\\
-        1 & 0 & 1 \\\\
+        0 & 0 & 1 \\\\
         \end{matrix} 
         \right)
          $$

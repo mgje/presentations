@@ -61,12 +61,18 @@
 <!-- Introduction -->
 <section data-markdown data-separator="---" data-vertical="--" data-background="#222A22">
 <script type="text/template">
-## Outlook
+## Übersicht
 <br>
 <br>
 
-* Bla
-* bla
+* Wissenschaftliches Rechnen
+  * Mathematica auf dem Raspi
+  * Rechnen mit Python
+* Raspberry Pi as Wifi Access Point
+  * Webserver einrichten
+  * DHCP konfigurieren
+  * Access Point (hostapd)
+  * iptables 
 
 --
 
@@ -83,9 +89,79 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 <!-- Math Exploring -->
 <section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#00AA99" data-background-transition="slide">
 <script type="text/template">
-# Wissenschaftliches Rechnen
+## Wissenschaftliches Rechnen
+
+<br>
+
+## Scientific Computing
 ---
 ## Mathematica
+---
+
+## Installation <small>(ca. 1GB Download)</small>
+
+* Raspi mit Internet verbinden
+* Terminalfenster / Shell öffnen
+* die folgenden Befehle ausführen
+
+<br>
+
+
+```bash
+
+$ sudo apt-get update
+$ sudo apt-get install wolfram-engine
+
+# braucht ca. 20 - 30 Minuten
+```
+---
+
+#### 1. Test in der Kommandezeile <small>(Text‐Based Interface)</small>
+
+```bash
+$ wolfram
+
+In[1]:= In[1]:= Solve[4x+x^3 == 0,x]                                                    
+
+Out[1]= {{x -> 0}, {x -> -2 I}, {x -> 2 I}}
+
+In[2]:= HilbertMatrix[4] // MatrixForm                                          
+
+Out[2]//MatrixForm=     1   1   1
+                        -   -   -
+                    1   2   3   4
+
+                    1   1   1   1
+                    -   -   -   -
+                    2   3   4   5
+
+                    1   1   1   1
+                    -   -   -   -
+                    3   4   5   6
+
+                    1   1   1   1
+                    -   -   -   -
+                    4   5   6   7     
+In[3]:= Quit[]             
+```
+---
+Auf alle Anwenden
+
+---
+Subsitution
+
+---
+Matrizen Rechnen
+
+---
+Orthogonal Projektion 
+
+---
+Visualisieren
+
+---
+weitere Beispiele
+
 
 
 </script>

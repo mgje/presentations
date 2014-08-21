@@ -86,7 +86,7 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 </script>
 </section>
 
-<!-- Math Exploring -->
+<!-- WR - Mathematica-->
 <section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#00AA99" data-background-transition="slide">
 <script type="text/template">
 ## Wissenschaftliches Rechnen
@@ -201,18 +201,196 @@ Out[13]= {1000003, 1000033, 1000037, 1000039}
 	</tbody>
 </table>
 
-[Referenz Math Konstanten](http://reference.wolfram.com/language/tutorial/MathematicalConstants.html)
+[Referenz Math Konstanten](http://reference.wolfram.com/language/tutorial/mathematicalConstants.html)
 ---
-Auf alle Anwenden
+#### Funktionen
+
+$$
+f1(x) \mapsto x^2+1
+$$
+
+```mathematica
+f1[x_] := x^2+1
+```
+
+```mathematica
+
+In[7]:=f1[3]  
+Out[7]= 10
+In[9]:= f1[t^2]
+Out[9]= 1 + t
+
+```
+---
+#### Anwenden (map Befehl)
+
+#### Syntax
+
+```mathematica
+Map[function , List]
+
+
+Out: {f(e1),f(e2),...,f(en)}
+
+```
+
+<br>
+
+#### Beispiel
+
+```mathematica
+In[10]:= Map [f1,{1,2,3,4,5}]
+Out[10]= {2, 5, 10, 17, 26}
+
+```
 
 ---
-Subsitution
+#### Iteration
+
+Sei __f__ eine Funktion von __x__, der Befehlr __Nest[f,x,5]__ wendet die Funktion 5 Mal an.
+
+<br>
+
+```mathematica
+In[23]:= Nest[f,x,5]                                                                       
+Out[23]= f[f[f[f[f[x]]]]]
+```
+
+<br>
+
+##### Iteration zur Approximation von Wurzel 2 (Newtonverfahren)
+
+```mathematica
+In[10]:= fwurzel[x_]:= 1/2(x+2/x)                                  
+In[11]:= f8It[x_]:=Nest[fwurzel,x,8]                               
+In[12]:= f8It[0.3]                                                 
+Out[12]= 1.41421
+
+```
+---
+
+### Bild Collatz
+
+```
+zitat Mathematic ist noch nich so weit
+Erdösch
+```
 
 ---
-Matrizen Rechnen
+#### Collatz Folge
 
+```mathematica
+
+In[26]:= Collatz[n_] := If[n==1,1,If[EvenQ[n], n/2, 3n + 1]]  
+
+
+In[29]:= Collatz50[n_] :=NestList[Collatz,n,50]
+
+In[30]:= Collatz50[123]                                            
+
+
+Out[30]= {123, 370, 185, 556, 278, 139, 418, 209, 628, 314, 157, 
+>    472, 236, 118, 59, 178, 89, 268, 134, 67, 202, 101, 304, 152, 
+>    76, 38, 19, 58, 29, 88, 44, 22, 11, 34, 17, 52, 26, 13, 40, 
+>    20, 10, 5, 16, 8, 4, 2, 1, 1, 1, 1, 1}
+```
+
+---
+#### Subsitution
+
+Eine Variable in einem Ausdruck kann durch einen Wert oder
+eine neue Varible ersetzt werden.
+
+<br>
+
+```mathematica
+In[31]:= x + x^3 /. x -> 2                                        
+
+Out[31]= 10
+
+```
+
+<br>
+
+```mathematica
+In[35]:= fwurzel[x_]:= 1/2(x+2/x) 
+
+In[36]:= Nest[fwurzel,x,5] /. x -> 0.3    
+
+Out[36]= 1.41422
+```
+---
+### Substitution nutzen 
+
+### um Lösungen zu überprüfen
+
+<br>
+
+```mathematica
+In[37]:= loesungen = Solve[4x+x^3==0,x]                           
+
+Out[37]= {{x -> 0}, {x -> -2 I}, {x -> 2 I}}
+
+In[38]:= 4x+x^3 /. loesungen                                      
+
+Out[38]= {0, 0, 0}
+
+```
+
+---
+### Rechnen mit Matrizen
+
+<br>
+
+```mathematica
+In[39]:= DiagonalMatrix[{1,2,3,4}] // MatrixForm                   
+Out[39]//MatrixForm= 1   0   0   0
+
+                     0   2   0   0
+
+                     0   0   3   0
+
+                     0   0   0   4
+
+```
+
+```mathematica
+
+In[40]:= M1 = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}}     
+In[41]:= M1 // MatrixForm                                          
+Out[41]//MatrixForm= 1    2    3    4
+
+                     5    6    7    8
+
+                     9    10   11   12
+
+                     13   14   15   16
+
+```
+---
+---
+
+```mathematica
+
+
+```
 ---
 Orthogonal Projektion 
+
+```mathematica
+
+
+```
+
+```mathematica
+
+
+```
+
+```mathematica
+
+
+```
 
 ---
 Visualisieren
@@ -223,7 +401,10 @@ und ...
 Solve[11*x^3-9*x+17==0,x]
 Expand[(y+1)^10]
 Plot[{4*Sin[2*x],Cos[2*x]^2},{x,0,2*Pi}]
-Plot3D[Cos[x^2+y^2],{x,0,Pi},{y,0,Pi}] 
+Plot3D[Cos[x^2+y^2],{x,0,Pi},{y,0,Pi}]
+Sum[1/n^2,{n,1,Infinity}] 
+Floor[\[Pi]^E/3]
+Fibonacci[47] 
 ```
 
 
@@ -369,7 +550,8 @@ This presentation and all interactive material are published on github. <br><br>
 					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/math/math.js', async: true }
 				]
 			});
 

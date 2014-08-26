@@ -268,13 +268,16 @@ Out[12]= 1.41421
 
 ```
 ---
-
 ### Bild Collatz
 
+
+![Erdos](media/zitat_erdos1.png)
+---
+### Paul Erdős concerning the Collatz problem
+
 ```
-zitat Mathematic ist noch nich so weit
-Erdösch
-```
+Mathematics is not yet ready for such problems
+``` Paul Erdős
 
 ---
 #### Collatz Folge
@@ -293,6 +296,41 @@ Out[30]= {123, 370, 185, 556, 278, 139, 418, 209, 628, 314, 157,
 >    472, 236, 118, 59, 178, 89, 268, 134, 67, 202, 101, 304, 152, 
 >    76, 38, 19, 58, 29, 88, 44, 22, 11, 34, 17, 52, 26, 13, 40, 
 >    20, 10, 5, 16, 8, 4, 2, 1, 1, 1, 1, 1}
+```
+---
+### Listen von Zahlen
+
+
+```mathematica
+(* Ungerade Quadratzahlen *)
+
+In[73]:= Table[i^2,{i,1,20,2}]
+
+Out[73]= {1, 9, 25, 49, 81, 121, 169, 225, 289, 361}
+
+```
+  
+<br>
+
+
+```mathematica
+(* Zufallszahlen *)
+
+In[76]:= Table[Random[Integer,{1,10}],{i,1,16}]
+
+Out[76]= {1, 5, 4, 7, 9, 10, 9, 10, 5, 5, 8, 6, 8, 4, 9, 10}
+
+```
+
+<br>
+
+
+```mathematica
+(* Sortierte Listen *)
+
+Sort[Table[Random[Integer,{1,40}],{i,1,10}]]
+
+
 ```
 
 ---
@@ -368,32 +406,99 @@ Out[41]//MatrixForm= 1    2    3    4
 
 ```
 ---
+### Bestimmen Sie die Determinante von
+
+<br>
+
+$$
+A=\begin{pmatrix} 4 & 1 \\\\ -6 & -\frac{3}{2} \end{pmatrix} \quad \mbox{und} \quad
+B=\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 0 & -1 \\\\ 0 & -4 & -7 \end{pmatrix} 
+$$
+
+
+```mathematica
+
+In[48]:= A = {{4,1},{-6,-3/2}}
+In[49]:= Det[A]
+
+Out[49]= 0
+
+In[51]:= B = {{1,2,3},{1,0,-1},{0,-4,-7}}
+In[56]:= Det[B]
+
+Out[56]= -2
+
+```
+
+---
+### Lösen Sie das lineare Gleichungssystem
+
+$$
+\begin{eqnarray}
+x+2y+\:\:4z & = & 8 \\\\
+5x+7y+15z & = & 12 \\\\
+2x+3y+\:\:7z & = & 10
+\end{eqnarray}
+$$
+
+
+
+```mathematica
+
+In[59]:= A = {{1,2,4},{5,7,15},{2,3,7}}
+In[65]:= B = {8,12,10}
+
+In[68]:= x = Inverse[A].B
+
+Out[68]= {-14, 1, 5}
+
+```
+
+---
+#### Visualisieren 
+
+```mathematica
+Plot[Sin[x], {x, -2*Pi, 2*Pi}]
+```
+
+![sin](media/sinfunktion.png)
+
 ---
 
 ```mathematica
-
-
-```
----
-Orthogonal Projektion 
-
-```mathematica
-
-
+Plot[{Sin[x]/x, Cos[x]/x}, {x, 0, 10*Pi}, 
+PlotRange -> {{0, 10*Pi}, {-1, 2}}]
 ```
 
-```mathematica
-
-
-```
-
-```mathematica
-
-
-```
+![zweif](media/zweiPlot.png)
 
 ---
-Visualisieren
+```mathematica
+GraphicsGrid[{{Plot[Cos[x], {x, -Pi, Pi}], 
+   Plot[Sin[x], {x, -Pi, Pi}]}}]
+
+```
+
+![zweigraph](media/zweiGraph.png)
+
+---
+
+### Animation
+
+```mathematica
+f[x_, t_] := Sin[x + t] + Sin[x - 2*t]; 
+Animate[
+ Plot[x*Sin[x*t], {x, -2*Pi, 0}, 
+ PlotRange -> {-7, 7}], {t, 0.2, 6.5}] 
+
+```
+
+<video width="414" height="296" data-autoplay >
+	    <source src="media/movies/animatedgraph.mp4" type="video/mp4" />
+		<source src="media/movies/animatedgraph.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
 ---
 und ...
 
@@ -537,7 +642,7 @@ This presentation and all interactive material are published on github. <br><br>
 				slideNumber: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',

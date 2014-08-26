@@ -45,15 +45,16 @@
 						Raspberry Pi - Einsatzmöglichkeiten eines Low Budget Computers
 					</h3>
 					<br>
-					<h3>Wissenschaftliches Rechnen</h3>
-					<h3>Raspi als Webserver</h3>
+					<h4>Wissenschaftliches Rechnen</h4>
+					<br>
+					<h4>Raspberry Pi als Webserver und Access Point</h4>
 					<br>
 					<p>
 						<small>Christian Datzko, Martin Guggisberg
 							<br>
 							
 							<br>
-							Basel
+							Basel, 9. September 2014
 						</small>
 					</p>
 				</section>
@@ -61,12 +62,18 @@
 <!-- Introduction -->
 <section data-markdown data-separator="---" data-vertical="--" data-background="#222A22">
 <script type="text/template">
-## Outlook
+## Übersicht
 <br>
 <br>
 
-* Bla
-* bla
+* Wissenschaftliches Rechnen
+  * mit Mathematica 
+  * mit Python
+* Raspberry Pi als Webserver und Access Point
+  * Webserver einrichten
+  * DHCP konfigurieren
+  * Access Point (hostapd)
+  * iptables 
 
 --
 
@@ -80,12 +87,18 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 </script>
 </section>
 
+
 <!-- Math Exploring -->
 <section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#007766" data-background-transition="slide">
+
 <script type="text/template">
-# Wissenschaftliches Rechnen
+## Wissenschaftliches Rechnen
+
+<br>
+
+## Scientific Computing
 ---
-### Quellen
+### Tutorials + Quellen 
 <small>
 
 * [Wolfram Mathematica| Tutorial Collection](http://www.wolfram.com/learningcenter/tutorialcollection/) <bR> (Tutorials, wissenschaftliches Rechnen, Fr. 0.-)
@@ -99,7 +112,461 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 
 ---
 ## Mathematica
+---
 
+## Installation <small>(ca. 1GB Download)</small>
+
+* Raspi mit Internet verbinden
+* Terminalfenster / Shell öffnen
+* die folgenden Befehle ausführen
+
+<br>
+
+
+```bash
+
+$ sudo apt-get update
+$ sudo apt-get install wolfram-engine
+
+# braucht ca. 20 - 30 Minuten
+```
+---
+
+### CAS mit Kommandezeile <small>(Text‐Based Interface)</small>
+
+```bash
+$ wolfram
+
+In[1]:= Solve[4x+x^3 == 0,x]                                                    
+
+Out[1]= {{x -> 0}, {x -> -2 I}, {x -> 2 I}}
+
+In[2]:= HilbertMatrix[4] // MatrixForm                                          
+
+Out[2]//MatrixForm=     1   1   1
+                        -   -   -
+                    1   2   3   4
+
+                    1   1   1   1
+                    -   -   -   -
+                    2   3   4   5
+
+                    1   1   1   1
+                    -   -   -   -
+                    3   4   5   6
+
+                    1   1   1   1
+                    -   -   -   -
+                    4   5   6   7     
+In[3]:= Quit[]             
+```
+---
+### CAS mit graphischer Oberfläche
+
+![wolfra-graphisch](media/equation.png)
+
+--
+### Remote Desktop
+
+Am besten auf US-Tastatur stellen !
+
+![us-Tastatur](media/keyboard_us.png)
+
+
+---
+### Listen und Primzahlen (Befehl __range[]__)
+
+```mathematica
+
+In[12]:= Range[1000000,1000050]                                                 
+
+Out[12]= {1000000, 1000001, 1000002, 1000003, 1000004, 1000005, 1000006, 
+ 
+>    1000007, 1000008, 1000009, 1000010, 1000011, 1000012, 1000013, 1000014, 
+ 
+>    1000015, 1000016, 1000017, 1000018, 1000019, 1000020, 1000021, 1000022, 
+ 
+>    1000023, 1000024, 1000025, 1000026, 1000027, 1000028, 1000029, 1000030, 
+ 
+>    1000031, 1000032, 1000033, 1000034, 1000035, 1000036, 1000037, 1000038, 
+ 
+>    1000039, 1000040, 1000041, 1000042, 1000043, 1000044, 1000045, 1000046, 
+ 
+>    1000047, 1000048, 1000049, 1000050}
+
+In[13]:= Select[%,PrimeQ]                                                       
+
+Out[13]= {1000003, 1000033, 1000037, 1000039}
+
+```
+
+---
+#### Texteingabe von Konstanten
+
+<table class="mgu reveal">
+	<thead>
+		<tr>
+			<th>Texteingabe</th>
+			<th>Näherung</th>
+			<th>Wert</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>\\[Pi]</td>
+			<td>\\[Pi]//N</td>
+			<td>3.14159</td>
+		</tr>
+        <tr>
+			<td>E</td>
+			<td>E//N</td>
+			<td>2.71828</td>
+		</tr>
+		<tr>
+			<td>GoldenRatio</td>
+			<td>GoldenRatio//N </td>
+			<td>1.61803</td>
+		</tr>
+	</tbody>
+</table>
+
+[Referenz Math Konstanten](http://reference.wolfram.com/language/tutorial/mathematicalConstants.html)
+---
+#### Funktionen
+
+$$
+f1(x) \mapsto x^2+1
+$$
+
+```mathematica
+f1[x_] := x^2+1
+```
+
+```mathematica
+
+In[7]:=f1[3]  
+Out[7]= 10
+In[9]:= f1[t^2]
+Out[9]= 1 + t
+
+```
+---
+#### Anwenden (map Befehl)
+
+#### Syntax
+
+```mathematica
+Map[function , List]
+
+
+Out: {f(e1),f(e2),...,f(en)}
+
+```
+
+<br>
+
+#### Beispiel
+
+```mathematica
+In[10]:= Map [f1,{1,2,3,4,5}]
+Out[10]= {2, 5, 10, 17, 26}
+
+```
+
+---
+#### Iteration
+
+Sei __f__ eine Funktion von __x__, der Befehlr __Nest[f,x,5]__ wendet die Funktion 5 Mal an.
+
+<br>
+
+```mathematica
+In[23]:= Nest[f,x,5]                                                                       
+Out[23]= f[f[f[f[f[x]]]]]
+```
+
+<br>
+
+##### Iteration zur Approximation von Wurzel 2 (Newtonverfahren)
+
+```mathematica
+In[10]:= fwurzel[x_]:= 1/2(x+2/x)                                  
+In[11]:= f8It[x_]:=Nest[fwurzel,x,8]                               
+In[12]:= f8It[0.3]                                                 
+Out[12]= 1.41421
+
+```
+---
+### Bild Collatz
+
+
+![Erdos](media/zitat_erdos1.png)
+---
+### Paul Erdős concerning the Collatz problem
+
+```
+Mathematics is not yet ready for such problems
+``` Paul Erdős
+
+---
+#### Collatz Folge
+
+```mathematica
+
+In[26]:= Collatz[n_] := If[n==1,1,If[EvenQ[n], n/2, 3n + 1]]  
+
+
+In[29]:= Collatz50[n_] :=NestList[Collatz,n,50]
+
+In[30]:= Collatz50[123]                                            
+
+
+Out[30]= {123, 370, 185, 556, 278, 139, 418, 209, 628, 314, 157, 
+>    472, 236, 118, 59, 178, 89, 268, 134, 67, 202, 101, 304, 152, 
+>    76, 38, 19, 58, 29, 88, 44, 22, 11, 34, 17, 52, 26, 13, 40, 
+>    20, 10, 5, 16, 8, 4, 2, 1, 1, 1, 1, 1}
+```
+---
+### Listen von Zahlen
+
+
+```mathematica
+(* Ungerade Quadratzahlen *)
+
+In[73]:= Table[i^2,{i,1,20,2}]
+
+Out[73]= {1, 9, 25, 49, 81, 121, 169, 225, 289, 361}
+
+```
+  
+<br>
+
+
+```mathematica
+(* Zufallszahlen *)
+
+In[76]:= Table[Random[Integer,{1,10}],{i,1,16}]
+
+Out[76]= {1, 5, 4, 7, 9, 10, 9, 10, 5, 5, 8, 6, 8, 4, 9, 10}
+
+```
+
+<br>
+
+
+```mathematica
+(* Sortierte Listen *)
+
+Sort[Table[Random[Integer,{1,40}],{i,1,10}]]
+
+
+```
+
+---
+#### Subsitution
+
+Eine Variable in einem Ausdruck kann durch einen Wert oder
+eine neue Varible ersetzt werden.
+
+<br>
+
+```mathematica
+In[31]:= x + x^3 /. x -> 2                                        
+
+Out[31]= 10
+
+```
+
+<br>
+
+```mathematica
+In[35]:= fwurzel[x_]:= 1/2(x+2/x) 
+
+In[36]:= Nest[fwurzel,x,5] /. x -> 0.3    
+
+Out[36]= 1.41422
+```
+---
+### Substitution nutzen 
+
+### um Lösungen zu überprüfen
+
+<br>
+
+```mathematica
+In[37]:= loesungen = Solve[4x+x^3==0,x]                           
+
+Out[37]= {{x -> 0}, {x -> -2 I}, {x -> 2 I}}
+
+In[38]:= 4x+x^3 /. loesungen                                      
+
+Out[38]= {0, 0, 0}
+
+```
+
+---
+### Rechnen mit Matrizen
+
+<br>
+
+```mathematica
+In[39]:= DiagonalMatrix[{1,2,3,4}] // MatrixForm                   
+Out[39]//MatrixForm= 1   0   0   0
+
+                     0   2   0   0
+
+                     0   0   3   0
+
+                     0   0   0   4
+
+```
+
+```mathematica
+
+In[40]:= M1 = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}}     
+In[41]:= M1 // MatrixForm                                          
+Out[41]//MatrixForm= 1    2    3    4
+
+                     5    6    7    8
+
+                     9    10   11   12
+
+                     13   14   15   16
+
+```
+---
+### Bestimmen Sie die Determinante von
+
+<br>
+
+$$
+A=\begin{pmatrix} 4 & 1 \\\\ -6 & -\frac{3}{2} \end{pmatrix} \quad \mbox{und} \quad
+B=\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 0 & -1 \\\\ 0 & -4 & -7 \end{pmatrix} 
+$$
+
+
+```mathematica
+
+In[48]:= A = {{4,1},{-6,-3/2}}
+In[49]:= Det[A]
+
+Out[49]= 0
+
+In[51]:= B = {{1,2,3},{1,0,-1},{0,-4,-7}}
+In[56]:= Det[B]
+
+Out[56]= -2
+
+```
+
+---
+### Lösen Sie das lineare Gleichungssystem
+
+$$
+\begin{eqnarray}
+x+2y+\:\:4z & = & 8 \\\\
+5x+7y+15z & = & 12 \\\\
+2x+3y+\:\:7z & = & 10
+\end{eqnarray}
+$$
+
+
+
+```mathematica
+
+In[59]:= A = {{1,2,4},{5,7,15},{2,3,7}}
+In[65]:= B = {8,12,10}
+
+In[68]:= x = Inverse[A].B
+
+Out[68]= {-14, 1, 5}
+
+```
+
+---
+#### Visualisieren 
+
+```mathematica
+Plot[Sin[x], {x, -2*Pi, 2*Pi}]
+```
+
+![sin](media/sinfunktion.png)
+
+--
+#### Es braucht etwas Geduld
+
+![plotsin](media/plotsin.png)
+--
+#### Speichern mit Kontextmenü
+
+* Rechte Maustaste (Save Graphic as)
+
+![saveas](media/save_as.png)
+
+---
+
+```mathematica
+Plot[{Sin[x]/x, Cos[x]/x}, {x, 0, 10*Pi}, 
+PlotRange -> {{0, 10*Pi}, {-1, 2}}]
+```
+
+![zweif](media/zweiPlot.png)
+
+---
+```mathematica
+GraphicsGrid[{{Plot[Cos[x], {x, -Pi, Pi}], 
+   Plot[Sin[x], {x, -Pi, Pi}]}}]
+
+```
+
+![zweigraph](media/zweiGraph.png)
+
+---
+
+### Animation
+
+```mathematica
+f[x_, t_] := Sin[x + t] + Sin[x - 2*t]; 
+Animate[
+ Plot[x*Sin[x*t], {x, -2*Pi, 0}, 
+ PlotRange -> {-7, 7}], {t, 0.2, 6.5}] 
+
+```
+
+<video width="414" height="296" data-autoplay >
+	    <source src="media/movies/animatedgraph.mp4" type="video/mp4" />
+		<source src="media/movies/animatedgraph.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+und ...
+
+```mathematica
+Solve[11*x^3-9*x+17==0,x]
+Expand[(y+1)^10]
+Plot[{4*Sin[2*x],Cos[2*x]^2},{x,0,2*Pi}]
+Plot3D[Cos[x^2+y^2],{x,0,Pi},{y,0,Pi}]
+Sum[1/n^2,{n,1,Infinity}] 
+Floor[\[Pi]^E/3]
+Fibonacci[47] 
+```
+
+
+---
+![maple-mathe](media/Maple_Math.png)
+
+
+---
+#### Weitere Beispiele 
+
+Im Buch "Maple and Mathematica, A Problem Solving Approach for Mathematics,
+Second Edition" von Inna Shingareva und Carlos Lizarraga-Celaya finden sich weitere schöne
+Beispiele für den Gebrauch von Mathematica
+
+
+[Kapitel II und III](media/Blitzlicht_Mathematica.pdf)
+---
 
 </script>
 </section>
@@ -111,22 +578,34 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 <br>
 <br>
 ### Wissenschaftliches Rechnen
+#### Python
 ---
+---
+---
+
 
 </script>
 </section>
 
 
 <!-- Webserver -->
-<section data-markdown data-separator="---" data-vertical="--" data-background="#FF5E99" data-background-transition="slide" >
+<section data-markdown data-separator="---" data-vertical="--" data-background="#CF4E79" data-background-transition="slide" >
 <script type="text/template" >
 
-#Raspi
+## Raspberry Pi
 <br>
 <br>
 ###als Webserver
+--
+### Tutorials + Quellen 
+
+* [Der eigene Webserver mit dem Raspberry Pi](http://www.manfred-steger.de/tuts/20-der-eigene-webserver-mit-dem-raspberry-pi)
+* [Raspberry Pi als Webserver: So gehts](http://t3n.de/news/raspberry-pi-webserver-gehts-554954/)
+* [Raspberry Pi als Webserver - Apache 2 Installation](http://www.forum-raspberrypi.de/Thread-tutorial-raspberry-pi-als-webserver-apache-2-installation)
+* [How to Make a Raspberry Pi Web Server](http://www.wikihow.com/Make-a-Raspberry-Pi-Web-Server)
+* [Setting up a Raspberry Pi as access point](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/overview)
 ---
-#### Als Browser ist der Raspi nicht der schnellste !
+#### Zum Surfen ist der Raspberry Pi langsam!
 
 ![slow](media/slow.gif)
 
@@ -134,8 +613,9 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 ### Octane 2 Benchmark von Google
 
 ```
-Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performance by running a suite of tests representative of today’s complex and demanding web applications. Octane‘s goal is to measure the performance of JavaScript code found in large, real-world web applications, running on modern mobile and desktop browsers.
-```
+Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performance by running a suite of tests representative of today’s complex and demanding web applications. 
+``` Google
+
 [Octane Webseite](https://developers.google.com/octane/)
 
 
@@ -150,19 +630,164 @@ Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performan
 ![ipad](media/ipad2.png)
 
 ---
-### Octan Benchmark Raspberry Pi v.B (2012)
+### Octan Benchmark Raspberry Pi B 
 
-![ipad](media/raspi.png)
+![raspi](media/raspi.png)
 ---
 
 ### Fazit
 
-* Nach über 90 Minuten ist der Benchmark noch nicht fertig!
-* In den ersten 12 Tests ist der Raspi um einen Faktor 30 - 70 langsamer als eine iPad2 von 2012
-* Der Raspi ist um einen Faktor 55 - 120 langsamer als ein iphone5c  von 2013
+* Nach über 90 Minuten ist der Benchmark noch nicht beendet!
+* In den ersten 12 Tests ist der Raspberry Pi um einen Faktor __30 - 70__ langsamer als eine iPad2 von 2012
+* Der Raspberry Pi ist um einen Faktor __55 - 120__ langsamer als ein Iphone5c  von 2013
+---
+### Access Point mit integriertem Webserver
+
+<br>
+
+````Gibt es hier ein 
+W-Lan ?```` 
+
+<small>Häufige Frage einer Schülerin oder eines Schülers</small>
+---
+
+![Bild Schüler](media/learning.png)
+---
+### Installationsschritte
+
+<br>
+
+* Webserver
+* DHCP Server
+* Wifi Access Point
+* Netzwerk Konfiguration
+* Alle Namen zeigen auf den Raspberry Pi (DNS Mask)
+---
+#### Detail Anleitung steht auf Github
+[Link auf GitHub](https://github.com/mgje/RaspberryPI)
+![bildgithub](media/anleitung.png)
+---
+### Installation der Pakete
+
+```bash
+sudo apt-get install apache2
+```
 
 ---
-![ipad](media/raspi.png)
+#### Konfiguration mit nano oder vim
+
+```bash
+$ sudo nano /etc/hostapd/hostapd.conf
+```
+
+```bash
+# Schnittstelle und Treiber
+interface=wlan0
+driver=rtl871xdrv
+# WLAN-Konfiguration
+ssid=Raspi2
+channel=9
+# ESSID sichtbar
+ignore_broadcast_ssid=0
+...
+```
+---
+#### Zugangsverschlüsselung
+
+```bash
+$ sudo nano /etc/hostapd/hostapd.conf
+```
+
+```bash
+...
+wpa_key_mgmt=WPA-PSK
+#rsn_pairwise=CCMP
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+# Schluesselintervalle / Standardkonfiguration
+wpa_group_rekey=600
+wpa_ptk_rekey=600
+wpa_gmk_rekey=86400
+# Zugangsschluessel (PSK) / hier in Klartext (ASCII)
+wpa_passphrase=raspberrypi
+```
+---
+
+Patch for the RTL8188CUS hardware driver
+
+```bash
+$ wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
+$ unzip adafruit_hostapd.zip
+$ sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
+$ sudo mv hostapd /usr/sbin
+$ sudo chmod 755 /usr/sbin/hostapd
+$ sudo update-rc.d hostapd enable
+```
+
+---
+
+### Netzwerkeinstellungen
+
+```bash
+sudo nano /etc/network/interfaces
+```
+
+```bash
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+#stand alone static number
+#iface eth0 inet static
+#  address 191.168.41.1
+#  netmask 255.255.255.0
+
+allow-hotplug wlan0
+
+# static configuratin for dhcp server
+iface wlan0 inet static
+# statische  Gateway-Adresse 
+address 192.168.42.1
+netmask 255.255.255.0
+
+ up iptables-restore < /etc/iptables.ipv4.nat
+```
+---
+#### Routing mit Hilfe von iptables
+
+* wlan0 -> eth0
+
+<br>
+
+```bash
+
+$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+$ sudo iptables -A FORWARD -i eth0 -o wlan0 -m state 
+−-state RELATED,ESTABLISHED -j ACCEPT
+$ sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+$ sudo iptables -t nat -S
+$ sudo iptables -S
+$ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+
+```
+
+---
+
+### Testen der Dienste
+
+
+```bash
+$ sudo service isc-dhcp-server start
+$ sudo service isc-dhcp-server status
+$ sudo service hostapd start
+$ sudo service hostapd status
+$ sudo service apache2 restart
+$ sudo service hostapd status
+```
+
 
 </script>
 </section>
@@ -215,7 +840,7 @@ This presentation and all interactive material are published on github. <br><br>
 				slideNumber: true,
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
@@ -228,7 +853,8 @@ This presentation and all interactive material are published on github. <br><br>
 					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/math/math.js', async: true }
 				]
 			});
 

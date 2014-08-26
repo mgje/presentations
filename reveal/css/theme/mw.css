@@ -219,3 +219,20 @@ ul.check li.checked:before {
   color: #8bc74a;
   content: "\02611 \020";
 }
+
+
+/*mgu stuff*/
+ table.mgu {
+    border-collapse: collapse;
+}
+
+table.mgu th, table.mgu td {
+    padding-left: 3%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border: 4px solid white;
+}
+
+table.mgu {
+    /*border: 1px solid white;*/
+}

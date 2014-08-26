@@ -538,22 +538,34 @@ Beispiele für den Gebrauch von Mathematica
 <br>
 <br>
 ### Wissenschaftliches Rechnen
+#### Python
 ---
+---
+---
+
 
 </script>
 </section>
 
 
 <!-- Webserver -->
-<section data-markdown data-separator="---" data-vertical="--" data-background="#FF5E99" data-background-transition="slide" >
+<section data-markdown data-separator="---" data-vertical="--" data-background="#CF4E79" data-background-transition="slide" >
 <script type="text/template" >
 
-#Raspi
+## Raspberry Pi
 <br>
 <br>
 ###als Webserver
+--
+### Online Tutorials
+
+* [Der eigene Webserver mit dem Raspberry Pi](http://www.manfred-steger.de/tuts/20-der-eigene-webserver-mit-dem-raspberry-pi)
+* [Raspberry Pi als Webserver: So gehts](http://t3n.de/news/raspberry-pi-webserver-gehts-554954/)
+* [Raspberry Pi als Webserver - Apache 2 Installation](http://www.forum-raspberrypi.de/Thread-tutorial-raspberry-pi-als-webserver-apache-2-installation)
+* [How to Make a Raspberry Pi Web Server](http://www.wikihow.com/Make-a-Raspberry-Pi-Web-Server)
+* [Setting up a Raspberry Pi as access point](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/overview)
 ---
-#### Als Browser ist der Raspi nicht der schnellste !
+#### Zum Surfen ist der Raspberry Pi langsam!
 
 ![slow](media/slow.gif)
 
@@ -561,8 +573,9 @@ Beispiele für den Gebrauch von Mathematica
 ### Octane 2 Benchmark von Google
 
 ```
-Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performance by running a suite of tests representative of today’s complex and demanding web applications. Octane‘s goal is to measure the performance of JavaScript code found in large, real-world web applications, running on modern mobile and desktop browsers.
-```
+Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performance by running a suite of tests representative of today’s complex and demanding web applications. 
+``` Google
+
 [Octane Webseite](https://developers.google.com/octane/)
 
 
@@ -577,19 +590,164 @@ Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performan
 ![ipad](media/ipad2.png)
 
 ---
-### Octan Benchmark Raspberry Pi v.B (2012)
+### Octan Benchmark Raspberry Pi B 
 
-![ipad](media/raspi.png)
+![raspi](media/raspi.png)
 ---
 
 ### Fazit
 
-* Nach über 90 Minuten ist der Benchmark noch nicht fertig!
-* In den ersten 12 Tests ist der Raspi um einen Faktor 30 - 70 langsamer als eine iPad2 von 2012
-* Der Raspi ist um einen Faktor 55 - 120 langsamer als ein iphone5c  von 2013
+* Nach über 90 Minuten ist der Benchmark noch nicht beendet!
+* In den ersten 12 Tests ist der Raspberry Pi um einen Faktor __30 - 70__ langsamer als eine iPad2 von 2012
+* Der Raspberry Pi ist um einen Faktor __55 - 120__ langsamer als ein Iphone5c  von 2013
+---
+### Access Point mit integriertem Webserver
+
+<br>
+
+````Gibt es hier ein 
+W-Lan ?```` 
+
+<small>Häufige Frage einer Schülerin oder eines Schülers</small>
+---
+
+![Bild Schüler](media/learning.png)
+---
+### Installationsschritte
+
+<br>
+
+* Webserver
+* DHCP Server
+* Wifi Access Point
+* Netzwerk Konfiguration
+* Alle Namen zeigen auf den Raspberry Pi (DNS Mask)
+---
+#### Detail Anleitung steht auf Github
+[Link auf GitHub](https://github.com/mgje/RaspberryPI)
+![bildgithub](media/anleitung.png)
+---
+### Installation der Pakete
+
+```bash
+sudo apt-get install apache2
+```
 
 ---
-![ipad](media/raspi.png)
+#### Konfiguration mit nano oder vim
+
+```bash
+$ sudo nano /etc/hostapd/hostapd.conf
+```
+
+```bash
+# Schnittstelle und Treiber
+interface=wlan0
+driver=rtl871xdrv
+# WLAN-Konfiguration
+ssid=Raspi2
+channel=9
+# ESSID sichtbar
+ignore_broadcast_ssid=0
+...
+```
+---
+#### Zugangsverschlüsselung
+
+```bash
+$ sudo nano /etc/hostapd/hostapd.conf
+```
+
+```bash
+...
+wpa_key_mgmt=WPA-PSK
+#rsn_pairwise=CCMP
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+# Schluesselintervalle / Standardkonfiguration
+wpa_group_rekey=600
+wpa_ptk_rekey=600
+wpa_gmk_rekey=86400
+# Zugangsschluessel (PSK) / hier in Klartext (ASCII)
+wpa_passphrase=raspberrypi
+```
+---
+
+Patch for the RTL8188CUS hardware driver
+
+```bash
+$ wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
+$ unzip adafruit_hostapd.zip
+$ sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
+$ sudo mv hostapd /usr/sbin
+$ sudo chmod 755 /usr/sbin/hostapd
+$ sudo update-rc.d hostapd enable
+```
+
+---
+
+### Netzwerkeinstellungen
+
+```bash
+sudo nano /etc/network/interfaces
+```
+
+```bash
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+#stand alone static number
+#iface eth0 inet static
+#  address 191.168.41.1
+#  netmask 255.255.255.0
+
+allow-hotplug wlan0
+
+# static configuratin for dhcp server
+iface wlan0 inet static
+# statische  Gateway-Adresse 
+address 192.168.42.1
+netmask 255.255.255.0
+
+ up iptables-restore < /etc/iptables.ipv4.nat
+```
+---
+#### Routing mit Hilfe von iptables
+
+* wlan0 -> eth0
+
+<br>
+
+```bash
+
+$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+$ sudo iptables -A FORWARD -i eth0 -o wlan0 -m state 
+−-state RELATED,ESTABLISHED -j ACCEPT
+$ sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+$ sudo iptables -t nat -S
+$ sudo iptables -S
+$ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+
+```
+
+---
+
+### Testen der Dienste
+
+
+```bash
+$ sudo service isc-dhcp-server start
+$ sudo service isc-dhcp-server status
+$ sudo service hostapd start
+$ sudo service hostapd status
+$ sudo service apache2 restart
+$ sudo service hostapd status
+```
+
 
 </script>
 </section>

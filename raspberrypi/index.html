@@ -532,12 +532,43 @@ Animate[
  PlotRange -> {-7, 7}], {t, 0.2, 6.5}] 
 
 ```
-
+---
 <video width="414" height="296" data-autoplay >
 	    <source src="media/movies/animatedgraph.mp4" type="video/mp4" />
 		<source src="media/movies/animatedgraph.webm" type="video/webm" />
 		Your browser does not support the <code>video</code> element.
 </video>
+
+---
+### Animated Gifs
+
+```mathematica
+Export["disks.gif", 
+ Table[ Graphics[ Disk[ {0.1, 0}, Sin[t]], ImageSize -> Tiny, 
+   PlotRange -> 1.2], {t, 0, Pi, 0.2} ]]
+```
+
+![disks](media/disks.gif)
+
+---
+
+### Animated Gifs 
+
+####(lange Rechenzeit mit grossen Plots)
+
+```mathematica
+f[x_, t_] := Sin[x*t];
+Export["welle.gif", 
+Table[Plot[f[x, t], {x, 0, 5 Pi}, 
+  PlotRange -> {{0, 5 Pi}; {-1, 1}}], {t, 0.1, Pi, 0.02}]]
+```
+---
+
+$$
+f(x,t) \mapsto \sin(x \cdot t)
+$$
+
+![welle](media/welle.gif)
 
 ---
 und ...
@@ -557,7 +588,7 @@ Fibonacci[47]
 ![maple-mathe](media/Maple_Math.png)
 
 
----
+--
 #### Weitere Beispiele 
 
 Im Buch "Maple and Mathematica, A Problem Solving Approach for Mathematics,
@@ -574,13 +605,48 @@ Beispiele für den Gebrauch von Mathematica
 <!-- Python -->
 <section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
 <script type="text/template">
-# Python
-<br>
-<br>
+
+
 ### Wissenschaftliches Rechnen
-#### Python
+<br>
+<br>
+# Python
 ---
+### Komplexe Zahlen direkt in der Kommandezeile
+
+<br>
+
+```Python
+
+>>> from math import *
+>>> w = sqrt(2)
+>>> w
+1.4142135623730951
+
+>>> (1.0/w+1.0/w*1j)**6
+(-0-0.9999999999999993j)
+
+>>> (1/w+1/w*1j)**24
+(0.9999999999999973+0j)
+````
 ---
+### Welche Pakete sind installiert?
+
+```bash
+$ sudo apt-get install python-pip
+$ pip freeze 
+```
+
+### Listen von Zahlen
+---
+### Imaginäre Zahlen
+---
+
+---
+
+---
+
+
 ---
 
 

@@ -630,23 +630,165 @@ Beispiele für den Gebrauch von Mathematica
 (0.9999999999999973+0j)
 ````
 ---
-### Welche Pakete sind installiert?
+# scipy
+
+#### scientific Toolbox for Python
+---
+
+### Installation
+
+
+<br>
 
 ```bash
-$ sudo apt-get install python-pip
-$ pip freeze 
+$ sudo apt-get install python-smbus ipython bluetooth bluez-utils \
+python-cwiid python-scipy python-numpy python-pygame \
+python-setuptools libsdl-dev
+
+
+``` 
+
+---
+### SciPy
+
+* ist eine wissenschaftlicher Werkzeugkasten (Toolbox) für Mathematik und Naturwissenschaften.
+* baut auf NumPy auf, die Arrays von NumPy werden als mehrdimensionaler Datentyp verwendet
+* ist open-source
+* Es gibt auch eine Konferenz mit dem Namen SciPy.
+	* [SciPy 2012](http://conference.scipy.org/scipy2012/)  
+	* [SciPy 2013](http://conference.scipy.org/scipy2013/)
+
+
+
+---
+
+### Quellen + Tutorials
+
+
+[SciPy-Kursmaterial](http://nbviewer.ipython.org/github/profjsb/python-bootcamp/blob/master/Lectures/05_NumpyMatplotlib/Exercise-FourierImageDenoise.ipynb)
+[Online-Kurse zu PythonXXXX](http://nbviewer.ipython.org)
+http://scipy-lectures.github.com/  SciPy lecture notes, fairly complete and usefully formatted
+http://www.tau.ac.il/~kineret/amit/scipy_tutorial/ Older lecture notes (2004) by Travis Oliphant (Enthought/Continuum); incomplete but very detailed and informative.
+http://scipy-central.org/ Collection of code snippets and modules, cookbooks, miscellany
+http://docs.scipy.org/doc/scipy/reference/ SciPy reference guide, tutorial
+http://www.scipy.org/NumPy_for_Matlab_Users
+---
+![Sci-pi](media/SciPy-Packages.png)
+---
+---
+---
+## z.B. 
+
+<br>
+
+## Lineare Algebra 
+
+<br>
+
+## mit scipy.linalg
+---
+#### Matrix definieren & Matrixmultiplikation
+
+```python
+>>> from scipy import linalg
+>>> import numpy as np
+>>> A = np.mat([[1, 2],
+			[3,4]])
+
+>>> A * A
+matrix([[ 7, 10],
+		[15, 22]])
+
+#
 ```
 
-### Listen von Zahlen
 ---
-### Imaginäre Zahlen
+#### Invertieren
+
+```python
+>>> A
+matrix([[1, 2],
+		[3, 4]])
+
+>>> A_inv = np.mat(linalg.inv(A))
+
+>>> A_inv
+matrix([[-2. , 1. ],
+		[ 1.5, -0.5]])
+
+>>> A*A_inv
+matrix([[1.00000000e+00,0.00000000e+00],
+		[8.88178420e-16,1.00000000e+00]])
+
+
+#
+```
 ---
+
+```html
+<svg height="420" width="620" xmlns="http://www.w3.org/2000/svg" version="1.1">
+```
+
+
+---
+## Normalprojektion 
+
+<br>
+
+### Gesucht Normalprojektion eines Punktes auf eine Ebene 
+
+---
+Sei die Ebene definert durch eine Basis 
+
+<br>
+
+
+\\(\vec{e\_1}= \begin{pmatrix}0\\\\ 0\\\\ 1\end{pmatrix},\vec{e\_2}= \begin{pmatrix}1\\\\ 2\\\\ 1\end{pmatrix}\\)
+
+$$
+Proj_{Ebene} = A(A^TA)^{-1}A^T
+$$
+<br>
+mit 
+<br>
+$$
+A = \begin{pmatrix}\\vec{e\_1}&\vec{e\_2}\end{pmatrix}=\begin{pmatrix}0&1\\\\ 0&2\\\\ 1&1\end{pmatrix}
+$$
+
+---
+
+```python
+>>> A = np.mat([[0,1],
+				[0,2],
+				[1,1]])
+
+>>> A.T
+matrix([[0, 0, 1],
+		[1, 2, 1]])
+
+>>> proj=A*np.mat(linalg.inv(A.T*A))*A.T
+
+>>> proj
+matrix([[0.2, 0.4, 0. ],
+		[0.4, 0.8, 0. ],
+		[0. , 0. , 1. ]])
+
+#
+```
+---
+
+<video width="1072" height="720" data-autoplay muted >
+	    <source src="media/movies/ProjEbene.m4v" type="video/mp4" />
+	    <source src="media/movies/ProjEbene.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
 
 ---
 
 ---
+---
 
-
+---
 ---
 
 

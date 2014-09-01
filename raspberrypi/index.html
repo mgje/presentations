@@ -570,6 +570,29 @@ $$
 
 ![welle](media/welle.gif)
 
+--
+
+### Plot 
+
+$$
+ f(x)\mapsto x + 2 \cdot cos(x)
+$$
+
+
+```mathematica
+f[x_] := x +2 * Cos[x];
+Export["nichtlinfig.png", 
+Plot[f[x], {x, 0, 5 Pi}, 
+  PlotRange -> {{0, 5 Pi}; {-0.5, 17}}, 
+  ImageSize -> 800]]
+```
+--
+$$
+ f(x)\mapsto x + 2 \cdot cos(x)
+$$
+
+![nichtlinfig](media/nichtlinfig.png)
+
 ---
 und ...
 
@@ -654,30 +677,126 @@ python-setuptools libsdl-dev
 * ist eine wissenschaftlicher Werkzeugkasten (Toolbox) für Mathematik und Naturwissenschaften.
 * baut auf NumPy auf, die Arrays von NumPy werden als mehrdimensionaler Datentyp verwendet
 * ist open-source
-* Es gibt auch eine Konferenz mit dem Namen SciPy.
+* Es gibt eine Konferenz mit dem Namen SciPy.
 	* [SciPy 2012](http://conference.scipy.org/scipy2012/)  
 	* [SciPy 2013](http://conference.scipy.org/scipy2013/)
 
-
-
 ---
 
-### Quellen + Tutorials
 
-
-[SciPy-Kursmaterial](http://nbviewer.ipython.org/github/profjsb/python-bootcamp/blob/master/Lectures/05_NumpyMatplotlib/Exercise-FourierImageDenoise.ipynb)
-[Online-Kurse zu PythonXXXX](http://nbviewer.ipython.org)
-http://scipy-lectures.github.com/  SciPy lecture notes, fairly complete and usefully formatted
-http://www.tau.ac.il/~kineret/amit/scipy_tutorial/ Older lecture notes (2004) by Travis Oliphant (Enthought/Continuum); incomplete but very detailed and informative.
-http://scipy-central.org/ Collection of code snippets and modules, cookbooks, miscellany
-http://docs.scipy.org/doc/scipy/reference/ SciPy reference guide, tutorial
-http://www.scipy.org/NumPy_for_Matlab_Users
----
 ![Sci-pi](media/SciPy-Packages.png)
 ---
+### Rechnen mit Polynomen
+
+```python
+>>> from scipy import *
+>>> p = poly1d([3,4,5]) 
+>>> print p
+	2
+3 x + 4 x + 5
+
+>>> print p**2
+   
+	4 	3 	 2
+9 x + 24 x + 46 x + 40 x + 25
+
+#
+```
+
 ---
+### Lösen nicht lin. Systemen 
+
+$$
+f(x) = 0
+$$
+
+
+```python
+>>> from scipy import *
+>>> from scipy.optimize import fsolve 
+
+>>> def func(x):
+	return x + 2*cos(x)
+
+>>> x0 = fsolve(func, 0.3)
+
+>>> print x0
+[-1.02986653]
+
+#
+```
+
+--
+$$
+ f(x)\mapsto x + 2 \cdot cos(x)
+$$
+
+<br> 
+
+![nichtlinfig](media/nichtlinfig.png)
+
 ---
-## z.B. 
+
+## Beispiel zu Interpolate
+
+<br>
+
+```python
+
+>>> import matplotlib
+>>> matplotlib.use("Agg") # ohne Grafikausgabe
+>>> import scipy as sp
+>>> import scipy.interpolate
+>>> import matplotlib.pyplot as plt
+>>> x = sp.arange(0, 10)
+>>> y = sp.exp(-x/3.0)
+>>> f = sp.interpolate.interp1d(x, y)
+
+>>> xnew = sp.arange(0,9, 0.1)
+>>> ynew = f(xnew)   # use interpolation function returned by `interp1d`
+
+>>> plt.plot(x, y, 'o', xnew, ynew, '-')
+>>> plt.savefig("interpolate.png")
+
+#
+```
+--
+
+<br> 
+
+![interpolate](media/interpolate.png)
+
+---
+
+```python
+import matplotlib
+matplotlib.use("Agg") # ohne Grafikausgabe
+from math import *
+import scipy as sp
+import scipy.interpolate
+import matplotlib.pyplot as plt
+ 
+x = sp.arange(0,2*pi+pi/4,2*pi/8)  
+y = sp.sin(x)  
+tck = sp.interpolate.splrep(x,y,s=0)  
+xnew = sp.arange(0,2*pi,pi/50)  
+ynew = sp.interpolate.splev(xnew,tck,der=0)  
+
+plt.figure(1)
+plt.plot(x,y,'x',label="linear")
+plt.plot(xnew,ynew,label="cubic spline")
+plt.plot(xnew,sp.sin(xnew),label="True")
+plt.plot(x,y,'b')
+plt.title('Cubic-spline interpolation')
+plt.legend()
+plt.savefig('cubicspline.png')
+
+#
+```
+--- 
+
+
+## SciPy linalg 
 
 <br>
 
@@ -691,8 +810,11 @@ http://www.scipy.org/NumPy_for_Matlab_Users
 
 ```python
 >>> from scipy import linalg
->>> import numpy as np
->>> A = np.mat([[1, 2],
+>>> import scipy as sp
+
+>>> A = sp.mat('[1,2;3,4]')
+# oder:
+>>> A = sp.mat([[1, 2],
 			[3,4]])
 
 >>> A * A
@@ -723,12 +845,6 @@ matrix([[1.00000000e+00,0.00000000e+00],
 
 #
 ```
----
-
-```html
-<svg height="420" width="620" xmlns="http://www.w3.org/2000/svg" version="1.1">
-```
-
 
 ---
 ## Normalprojektion 
@@ -784,12 +900,15 @@ matrix([[0.2, 0.4, 0. ],
 </video>
 
 ---
+### Quellen + Tutorials
 
----
----
 
----
----
+* [SciPy-Kursmaterial](http://nbviewer.ipython.org/github/profjsb/python-bootcamp/blob/master/Lectures/05_NumpyMatplotlib/Exercise-FourierImageDenoise.ipynb)
+* [Lecture Notes ](http://scipy-lectures.github.com/) Python scientific by many [Authors](http://scipy-lectures.github.io/AUTHORS.html) 
+* [Lecture notes by Travis Oliphant, 2004](http://www.tau.ac.il/~kineret/amit/scipy_tutorial/ )
+* [Reference guide, tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/) 
+* [Online-Kurse zu Python und weiteren Dingen](http://nbviewer.ipython.org)
+
 
 
 </script>
@@ -803,7 +922,7 @@ matrix([[0.2, 0.4, 0. ],
 ## Raspberry Pi
 <br>
 <br>
-###als Webserver
+###als Webserver und Access-Point
 --
 ### Tutorials + Quellen 
 
@@ -812,6 +931,33 @@ matrix([[0.2, 0.4, 0. ],
 * [Raspberry Pi als Webserver - Apache 2 Installation](http://www.forum-raspberrypi.de/Thread-tutorial-raspberry-pi-als-webserver-apache-2-installation)
 * [How to Make a Raspberry Pi Web Server](http://www.wikihow.com/Make-a-Raspberry-Pi-Web-Server)
 * [Setting up a Raspberry Pi as access point](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/overview)
+---
+
+# Motivation
+
+## Demonstartion eines digitalen Posters 
+## für den Infotag der Universität Basel
+---
+
+# Bild Infotag
+
+---
+
+## Idee: Die Besucher können 
+
+* das Informatik-Poster lesen
+* sich direkt mit einem eigenen Gerät verbinden und zu programmieren beginnen.
+
+--
+## Verwendete Technologien
+
+### Server-Seitig
+*
+
+### Client-Seitig
+
+
+
 ---
 #### Zum Surfen ist der Raspberry Pi langsam!
 

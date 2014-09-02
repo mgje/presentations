@@ -116,8 +116,7 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 
 * Raspi mit Internet verbinden
 * Terminalfenster / Shell öffnen
-* die folgenden Befehle ausführen
-
+* Folgenden Befehle ausführen
 
 
 
@@ -129,12 +128,13 @@ $ sudo apt-get install wolfram-engine
 # braucht ca. 20 - 30 Minuten
 ```
 <br>
-#### oder [clonen vorinstallierter Programme](https://github.com/mgje/RaspberryPI)
-#### Mathematica / Scientific Python (SciPy) / Webserver / Access-Point
+#### oder [klonen vorinstallierter Programme](https://github.com/mgje/RaspberryPI)
+#### Mathematica / Scientific Python / Webserver / 
+#### Access-Point
 
 ---
 
-### Mathematica in Kommandezeile <small>(Text‐Based Interface)</small>
+#### Mathematica in Kommandezeile <small>(Text‐Based Interface)</small>
 
 ```bash
 $ wolfram
@@ -163,7 +163,7 @@ Out[2]//MatrixForm=     1   1   1
 In[3]:= Quit[]             
 ```
 ---
-### Mathematica mit graphischer Oberfläche
+#### Mathematica mit graphischer Oberfläche
 
 ![wolfra-graphisch](media/equation.png)
 
@@ -176,7 +176,8 @@ Am besten auf US-Tastatur stellen !
 
 
 ---
-#### Beispiel: Erzeugen einer Liste ganzer Zahlen und filtern von Primzahlen
+#### Beispiel: Erzeugen einer Liste ganzer Zahlen 
+#### und filtern von Primzahlen
 
 ```mathematica
 
@@ -198,10 +199,10 @@ Out[13]= {1000003, 1000033, 1000037, 1000039}
 ---
 
 ### Funktionale Programmierung
-- Mathematica unterstützt funktionales programmieren und ist dynamisch typisiert. 
-- In Mathematica gibt es nur Funktionen und fest verbaute Symbole, z. B. das Zeichen ∞ für unendlich. 
+- Mathematica unterstützt __funktionales programmieren__ und ist __dynamisch typisiert__. 
+- In Mathematica gibt es __nur Funktionen__ und fest verbaute __Symbole__, z. B. das Zeichen ∞ für unendlich. 
 - Als weitere Abgrenzung zu anderen Sprachen ist eine __nicht auswertbare Zeile__ in Mathematica __kein Fehler__, sondern eine Rückgabe.
-- Seit 9. Juli 2010 Mathematica Version 10
+- Seit 9. Juli 2014 Mathematica Version 10
 
 
 ---
@@ -242,8 +243,11 @@ $$
 f1(x) \mapsto x^2+1
 $$
 
+
 ```mathematica
+
 f1[x_] := x^2+1
+
 ```
 
 ```mathematica
@@ -251,6 +255,7 @@ f1[x_] := x^2+1
 In[7]:=f1[3]  
 Out[7]= 10
 In[9]:= f1[t^2]
+			 4
 Out[9]= 1 + t
 
 ```
@@ -259,12 +264,10 @@ Out[9]= 1 + t
 
 <br>
 
-Definition einer Liste durch Aufzählung
-
-<br>
+Definition einer Liste 
 
 ```mathematica
-l1 = {1,5,9,2,5,2,1}
+In[12]:= l1 = {1,5,9,2,5,2,1}
 ```
 
 Vektor definieren und normieren
@@ -303,6 +306,9 @@ Out[10]= {2, 5, 10, 17, 26}
 ```
 
 ---
+## Funktionales Denken
+
+---
 #### Iteration
 
 Sei __f__ eine Funktion von __x__, der Befehlr __Nest[f,x,5]__ wendet die Funktion 5 Mal an.
@@ -327,7 +333,7 @@ Out[12]= 1.41421
 ```
 
 ---
-Collatz Funktion
+Collatz Folge
 
 ![collatz](media/collatz.png)
 ---
@@ -336,11 +342,15 @@ Collatz Funktion
 
 ![Erdos](media/zitat_erdos1.png)
 ---
-### Paul Erdős concerning the Collatz problem
+
 
 ```
 Mathematics is not yet ready for such problems
 ``` Paul Erdős
+
+<br>
+
+<small>P. Erdős bezieht sich auf das Collatz Problem<small>
 
 ---
 #### Definition und Berechnung der Collatz Folge
@@ -395,8 +405,7 @@ In[88]:= Sort[Table[Random[Integer,{1,40}],{i,1,10}]]
 Out[88]= {13, 14, 15, 15, 18, 19, 19, 20, 26, 34}
 
 ```
----
-## Funktionales Denken
+
 ---
 #### Subsitution
 
@@ -517,6 +526,17 @@ In[68]:= x = Inverse[A].B
 Out[68]= {-14, 1, 5}
 
 ```
+--
+$$
+x = A^{-1}B
+$$
+<br>
+mit 
+<br>
+$$
+A=\begin{pmatrix} 1 & 2 & 4 \\\\ 5 & 7 & 15 \\\\ 2 & 3 & 7 \end{pmatrix} \quad
+B=\begin{pmatrix} 8 \\\\ 12 \\\\ 10 \end{pmatrix} 
+$$
 
 ---
 #### Visualisieren 
@@ -640,23 +660,10 @@ Sum[1/n^2,{n,1,Infinity}]
 Floor[\[Pi]^E/3]
 Fibonacci[47] 
 ```
-
-
 ---
 ![maple-mathe](media/Maple_Math.png)
 
-
---
-#### Weitere Beispiele 
-
-Im Buch "Maple and Mathematica, A Problem Solving Approach for Mathematics,
-Second Edition" von Inna Shingareva und Carlos Lizarraga-Celaya finden sich weitere schöne
-Beispiele für den Gebrauch von Mathematica
-
-[Kapitel II und III](media/Blitzlicht_Mathematica.pdf)
-
 ---
-
 
 </script>
 </section>
@@ -707,19 +714,22 @@ python-setuptools libsdl-dev
 
 
 ``` 
+<br>
+
+#### oder [klonen vorinstallierter Programme](https://github.com/mgje/RaspberryPI)
+#### Mathematica / Scientific Python / Webserver / 
+#### Access-Point
 
 ---
 ### SciPy
 
-* ist eine wissenschaftlicher Werkzeugkasten (Toolbox) für Mathematik und Naturwissenschaften.
-* baut auf NumPy auf, die Arrays von NumPy werden als mehrdimensionaler Datentyp verwendet
+* ist eine wissenschaftlicher Werkzeugkasten für Mathematik und Naturwissenschaften.
+* nutzt Arrays von NumPy
 * ist open-source
-* Es gibt eine Konferenz mit dem Namen SciPy.
+* ist auch der Name einer Konferenz
 	* [SciPy 2012](http://conference.scipy.org/scipy2012/)  
 	* [SciPy 2013](http://conference.scipy.org/scipy2013/)
-
 ---
-
 
 ![Sci-pi](media/SciPy-Packages.png)
 ---
@@ -774,7 +784,7 @@ $$
 
 ---
 
-## Beispiel zu Interpolate
+## Interpolierung
 
 <br>
 
@@ -805,6 +815,8 @@ $$
 
 ---
 
+#### Sinusfunktion mit kubischen Splines approximieren
+
 ```python
 import matplotlib
 matplotlib.use("Agg") # ohne Grafikausgabe
@@ -833,9 +845,7 @@ plt.savefig('cubicspline.png')
 --- 
 
 
-## SciPy linalg 
 
-<br>
 
 ## Lineare Algebra 
 
@@ -899,7 +909,7 @@ Sei die Ebene definert durch eine Basis
 \\(\vec{e\_1}= \begin{pmatrix}0\\\\ 0\\\\ 1\end{pmatrix},\vec{e\_2}= \begin{pmatrix}1\\\\ 2\\\\ 1\end{pmatrix}\\)
 
 $$
-Proj_{Ebene} = A(A^TA)^{-1}A^T
+Proj_{Matrix} = A(A^TA)^{-1}A^T
 $$
 <br>
 mit 
@@ -1046,7 +1056,8 @@ plt.show()
 
 ---
 
-### Einsatz am Infotag 2014
+### Einsatz am Infotag 2014 
+### Universität Basel
 #### Besucherinnen und Besucher können auf Ihren mobilen Geräten [experimentieren](http://mgje.github.io/webprogramming/processing/zufallsbilder.html)!
 
 ![webprogramming](media/demo_infotag.png)
@@ -1117,10 +1128,19 @@ Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performan
 
 ---
 
+``` Schülerinnen und Schüler nutzen gerne ihre eigenen Geräte ```
+
+---
+
 ![Bild Schüler](media/learning.png)
 
 ---
-### Für Serverdienste eignet sich ein Raspberry
+
+``` Wie kommen nun schulische Inhalte auf die Geräte der 
+Schülerinnen und Schüler ? ```
+
+---
+### Ein Raspberry Pi kann als Server eingesetzt werden
 
 
 <br>
@@ -1128,7 +1148,9 @@ Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performan
 ````Gibt es hier ein 
 W-Lan ?```` 
 
-<small>Häufige Frage einer Schülerin oder eines Schülers</small>
+<br> 
+
+Diese Frage kann in Zukunft mit __Ja__ beantwortet werden.
 
 ---
 ### Installation

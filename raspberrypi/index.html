@@ -50,11 +50,12 @@
 					<h4>Raspberry Pi als Webserver und Access Point</h4>
 					<br>
 					<p>
-						<small>Christian Datzko, Martin Guggisberg
+						<small>Christian Datzko, Martin Guggisberg, Beat Trachsler
 							<br>
 							
 							<br>
-							Basel, 9. September 2014
+							Gymnasium Kirschgarten, Basel, 12. September 2014,
+							<a href="https://www.wbz-cps.ch/de/raspberry-pi-einsatzmoglichkeiten-eines-low-budget-computers">WBZ Kursangebot</a>
 						</small>
 					</p>
 				</section>
@@ -64,16 +65,13 @@
 <script type="text/template">
 ## Übersicht
 <br>
-<br>
+
 
 * Wissenschaftliches Rechnen
   * mit Mathematica 
-  * mit Python
-* Raspberry Pi als Webserver und Access Point
-  * Webserver einrichten
-  * DHCP konfigurieren
-  * Access Point (hostapd)
-  * iptables 
+  * mit Python und SciPy
+
+* Raspberry Pi als Webserver und Access Point 
 
 --
 
@@ -83,7 +81,7 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 
 </small>
 
----
+
 </script>
 </section>
 
@@ -120,7 +118,7 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 * Terminalfenster / Shell öffnen
 * die folgenden Befehle ausführen
 
-<br>
+
 
 
 ```bash
@@ -130,9 +128,13 @@ $ sudo apt-get install wolfram-engine
 
 # braucht ca. 20 - 30 Minuten
 ```
+<br>
+#### oder [clonen vorinstallierter Programme](https://github.com/mgje/RaspberryPI)
+#### Mathematica / Scientific Python (SciPy) / Webserver / Access-Point
+
 ---
 
-### CAS mit Kommandezeile <small>(Text‐Based Interface)</small>
+### Mathematica in Kommandezeile <small>(Text‐Based Interface)</small>
 
 ```bash
 $ wolfram
@@ -161,7 +163,7 @@ Out[2]//MatrixForm=     1   1   1
 In[3]:= Quit[]             
 ```
 ---
-### CAS mit graphischer Oberfläche
+### Mathematica mit graphischer Oberfläche
 
 ![wolfra-graphisch](media/equation.png)
 
@@ -174,24 +176,18 @@ Am besten auf US-Tastatur stellen !
 
 
 ---
-### Listen und Primzahlen (Befehl __range[]__)
+#### Beispiel: Erzeugen einer Liste ganzer Zahlen und filtern von Primzahlen
 
 ```mathematica
 
 In[12]:= Range[1000000,1000050]                                                 
 
 Out[12]= {1000000, 1000001, 1000002, 1000003, 1000004, 1000005, 1000006, 
- 
 >    1000007, 1000008, 1000009, 1000010, 1000011, 1000012, 1000013, 1000014, 
- 
 >    1000015, 1000016, 1000017, 1000018, 1000019, 1000020, 1000021, 1000022, 
- 
 >    1000023, 1000024, 1000025, 1000026, 1000027, 1000028, 1000029, 1000030, 
- 
 >    1000031, 1000032, 1000033, 1000034, 1000035, 1000036, 1000037, 1000038, 
- 
 >    1000039, 1000040, 1000041, 1000042, 1000043, 1000044, 1000045, 1000046, 
- 
 >    1000047, 1000048, 1000049, 1000050}
 
 In[13]:= Select[%,PrimeQ]                                                       
@@ -199,6 +195,14 @@ In[13]:= Select[%,PrimeQ]
 Out[13]= {1000003, 1000033, 1000037, 1000039}
 
 ```
+---
+
+### Funktionale Programmierung
+- Mathematica unterstützt funktionales programmieren und ist dynamisch typisiert. 
+- In Mathematica gibt es nur Funktionen und fest verbaute Symbole, z. B. das Zeichen ∞ für unendlich. 
+- Als weitere Abgrenzung zu anderen Sprachen ist eine __nicht auswertbare Zeile__ in Mathematica __kein Fehler__, sondern eine Rückgabe.
+- Seit 9. Juli 2010 Mathematica Version 10
+
 
 ---
 #### Texteingabe von Konstanten
@@ -232,7 +236,7 @@ Out[13]= {1000003, 1000033, 1000037, 1000039}
 
 [Referenz Math Konstanten](http://reference.wolfram.com/language/tutorial/mathematicalConstants.html)
 ---
-#### Funktionen
+#### Definieren von math. Funktionen
 
 $$
 f1(x) \mapsto x^2+1
@@ -250,6 +254,31 @@ In[9]:= f1[t^2]
 Out[9]= 1 + t
 
 ```
+---
+###Vektoren und Matrizen werden als Listen repräsentiert.
+
+<br>
+
+Definition einer Liste durch Aufzählung
+
+<br>
+
+```mathematica
+l1 = {1,5,9,2,5,2,1}
+```
+
+Vektor definieren und normieren
+<br>
+```mathematica
+
+In[14]:= v = {1,1,1}
+Out[14]= {1, 1, 1}
+In[15]:= Normalize[v]                                                           
+             1        1        1
+Out[15]= {_______, _______, _______}
+          Sqrt[3]  Sqrt[3]  Sqrt[3]
+```
+
 ---
 #### Anwenden (map Befehl)
 
@@ -296,8 +325,13 @@ In[12]:= f8It[0.3]
 Out[12]= 1.41421
 
 ```
+
 ---
-### Bild Collatz
+Collatz Funktion
+
+![collatz](media/collatz.png)
+---
+### Zitat Paul Erdős
 
 
 ![Erdos](media/zitat_erdos1.png)
@@ -309,7 +343,7 @@ Mathematics is not yet ready for such problems
 ``` Paul Erdős
 
 ---
-#### Collatz Folge
+#### Definition und Berechnung der Collatz Folge
 
 ```mathematica
 
@@ -356,12 +390,13 @@ Out[76]= {1, 5, 4, 7, 9, 10, 9, 10, 5, 5, 8, 6, 8, 4, 9, 10}
 
 ```mathematica
 (* Sortierte Listen *)
+In[88]:= Sort[Table[Random[Integer,{1,40}],{i,1,10}]]                           
 
-Sort[Table[Random[Integer,{1,40}],{i,1,10}]]
-
+Out[88]= {13, 14, 15, 15, 18, 19, 19, 20, 26, 34}
 
 ```
-
+---
+## Funktionales Denken
 ---
 #### Subsitution
 
@@ -594,7 +629,7 @@ $$
 ![nichtlinfig](media/nichtlinfig.png)
 
 ---
-und ...
+und weitere Beispiele...
 
 ```mathematica
 Solve[11*x^3-9*x+17==0,x]
@@ -618,9 +653,10 @@ Im Buch "Maple and Mathematica, A Problem Solving Approach for Mathematics,
 Second Edition" von Inna Shingareva und Carlos Lizarraga-Celaya finden sich weitere schöne
 Beispiele für den Gebrauch von Mathematica
 
-
 [Kapitel II und III](media/Blitzlicht_Mathematica.pdf)
+
 ---
+
 
 </script>
 </section>
@@ -630,10 +666,11 @@ Beispiele für den Gebrauch von Mathematica
 <script type="text/template">
 
 
-### Wissenschaftliches Rechnen
+### Wissenschaftliches Rechnen mit
 <br>
 <br>
 # Python
+# SciPy
 ---
 ### Komplexe Zahlen direkt in der Kommandezeile
 

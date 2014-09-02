@@ -534,7 +534,7 @@ Animate[
 ```
 ---
 <video width="414" height="296" data-autoplay >
-	    <source src="media/movies/animatedgraph.mp4" type="video/mp4" />
+	    <source src="media/movies/animatedgraph.m4v" type="video/mp4" />
 		<source src="media/movies/animatedgraph.webm" type="video/webm" />
 		Your browser does not support the <code>video</code> element.
 </video>
@@ -898,6 +898,80 @@ matrix([[0.2, 0.4, 0. ],
 	    <source src="media/movies/ProjEbene.webm" type="video/webm" />
 		Your browser does not support the <code>video</code> element.
 </video>
+---
+### Fourier Analyse mit SciPy
+
+[Bild und Quellcode](https://github.com/mgje/RaspberryPI/tree/master/numpy_fourier_BSP)
+
+![Der_Man_auf_dem_Mond](media/Der_Man_auf_dem_Mond.png)
+
+
+
+--
+
+
+```python
+import sys
+import numpy as np
+from matplotlib import pyplot as plt
+
+def plot_spectrum(F, amplify=1000, ax=None):
+	"""Normalise, amplify and plot an amplitude spectrum."""
+	mag = abs(F)
+	mag *= amplify/mag.max()
+	# Next, clip all values larger than one to one.
+	mag[mag > 1] = 1
+	if ax is None:
+		ax = plt.gca()
+	ax.imshow(mag, plt.cm.Blues)
+
+fname = 'moonlanding.png'
+im = plt.imread(fname).astype(float) 
+print "Image shape: %s" % str(im.shape)
+
+F = np.fft.fft2(im)
+
+```
+
+
+
+--
+
+```python
+# Define the fraction of coefficients (in each direction) we keep
+keep_fraction = 0.1
+# Call ff a copy of the original transform.  Numpy arrays have a copy
+# method for this purpose.
+ff = F.copy()
+
+# Set r and c to be the number of rows and columns of the array.
+r,c = ff.shape
+
+# Set to zero all rows with indices between r*keep_fraction and
+# r*(1-keep_fraction):
+ff[r*keep_fraction:r*(1-keep_fraction)] = 0
+
+# Similarly with the columns:
+ff[:, c*keep_fraction:c*(1-keep_fraction)] = 0
+
+im_new = np.fft.ifft2(ff).real
+```
+--
+```python
+fig, ax = plt.subplots(2, 2, figsize=(10,7))
+ax[0,0].set_title('Original image')
+ax[0,0].imshow(im, plt.cm.gray)
+ax[0,1].set_title('Fourier transform')
+plot_spectrum(F, ax=ax[0,1])
+ax[1,1].set_title('Filtered Spectrum')
+plot_spectrum(ff, ax=ax[1,1])
+ax[1,0].set_title('Reconstructed Image')
+ax[1,0].imshow(im_new, plt.cm.gray)
+plt.show()
+
+#
+```
+
 
 ---
 ### Quellen + Tutorials
@@ -923,47 +997,56 @@ matrix([[0.2, 0.4, 0. ],
 <br>
 <br>
 ###als Webserver und Access-Point
+
+---
+
+### Projektidee: Interaktive Postersession
+
+
+![poster](media/poster.jpg)
+
+
+
+---
+
+### Einsatz am Infotag 2014
+#### Besucherinnen und Besucher können auf Ihren mobilen Geräten [experimentieren](http://mgje.github.io/webprogramming/processing/zufallsbilder.html)!
+
+![webprogramming](media/demo_infotag.png)
+
+[Link auf Infotag 2014 Demo](http://mgje.github.io/webprogramming/processing/zufallsbilder.html)
 --
-### Tutorials + Quellen 
+### Verwendete Technologien
 
-* [Der eigene Webserver mit dem Raspberry Pi](http://www.manfred-steger.de/tuts/20-der-eigene-webserver-mit-dem-raspberry-pi)
-* [Raspberry Pi als Webserver: So gehts](http://t3n.de/news/raspberry-pi-webserver-gehts-554954/)
-* [Raspberry Pi als Webserver - Apache 2 Installation](http://www.forum-raspberrypi.de/Thread-tutorial-raspberry-pi-als-webserver-apache-2-installation)
-* [How to Make a Raspberry Pi Web Server](http://www.wikihow.com/Make-a-Raspberry-Pi-Web-Server)
-* [Setting up a Raspberry Pi as access point](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/overview)
----
+#### Client-Seitig
 
-# Motivation
+- [Bootstrap](http://getbootstrap.com/about/) Icons und Knöpfe
+- [jQuerry](http://jquery.com/) Interaktion, Events und DOM
+- [Processing.js](http://processingjs.org/) Visualisierung
+- [Modernizr](http://modernizr.com/) Browser Version
+- [Spectrum.js](http://bgrins.github.io/spectrum/) Colorpicker
+- [Ace.js](http://ace.c9.io/) Editor
+- [CoffeeScript](http://coffeescript.org/) JavaScript Programmierung
 
-## Demonstartion eines digitalen Posters 
-## für den Infotag der Universität Basel
----
+-- 
+### Verwendete Technologien
 
-# Bild Infotag
+#### Server-Seitig
 
----
-
-## Idee: Die Besucher können 
-
-* das Informatik-Poster lesen
-* sich direkt mit einem eigenen Gerät verbinden und zu programmieren beginnen.
-
---
-## Verwendete Technologien
-
-### Server-Seitig
-*
-
-### Client-Seitig
-
-
+- [Apache](http://httpd.apache.org/)
+- [hostapd](http://wireless.kernel.org/en/users/Documentation/hostapd)
+- [ISC-DHCPD](http://wiki.ubuntuusers.de/ISC-DHCPD)
+- [iptables](http://wiki.ubuntuusers.de/iptables2?redirect=no)
+- [DNS Mask](http://www.thekelleys.org.uk/dnsmasq/doc.html)
 
 ---
-#### Zum Surfen ist der Raspberry Pi langsam!
+#### Zum Surfen ist ein Raspberry Pi langsam!
 
 ![slow](media/slow.gif)
 
----
+#### Ein zweijähriges Smartphone ist bis zu 5x schneller !
+
+--
 ### Octane 2 Benchmark von Google
 
 ```
@@ -973,29 +1056,35 @@ Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performan
 [Octane Webseite](https://developers.google.com/octane/)
 
 
----
+--
 ### Octan Benchmark Iphone 5c (2013)
 
 ![iphone](media/iphone5c.png)
 
----
+--
 ### Octan Benchmark Resultat Ipad 2 (2012)
 
 ![ipad](media/ipad2.png)
 
----
+--
 ### Octan Benchmark Raspberry Pi B 
 
 ![raspi](media/raspi.png)
----
+--
 
 ### Fazit
 
 * Nach über 90 Minuten ist der Benchmark noch nicht beendet!
 * In den ersten 12 Tests ist der Raspberry Pi um einen Faktor __30 - 70__ langsamer als eine iPad2 von 2012
 * Der Raspberry Pi ist um einen Faktor __55 - 120__ langsamer als ein Iphone5c  von 2013
+
 ---
-### Access Point mit integriertem Webserver
+
+![Bild Schüler](media/learning.png)
+
+---
+### Für Serverdienste eignet sich ein Raspberry
+
 
 <br>
 
@@ -1003,11 +1092,9 @@ Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performan
 W-Lan ?```` 
 
 <small>Häufige Frage einer Schülerin oder eines Schülers</small>
----
 
-![Bild Schüler](media/learning.png)
 ---
-### Installationsschritte
+### Installation
 
 <br>
 
@@ -1015,21 +1102,34 @@ W-Lan ?````
 * DHCP Server
 * Wifi Access Point
 * Netzwerk Konfiguration
-* Alle Namen zeigen auf den Raspberry Pi (DNS Mask)
+* DNS Umleitung
 ---
-#### Detail Anleitung steht auf Github
+#### Detailierte Anleitung auf Github
 [Link auf GitHub](https://github.com/mgje/RaspberryPI)
 ![bildgithub](media/anleitung.png)
 ---
 ### Installation der Pakete
 
 ```bash
-sudo apt-get install apache2
+#web Server
+$ sudo apt-get install apache2
+
+#DHCP Server
+$ sudo apt-get install isc-dhcp-server
+
+#Access-Point
+$ sudo apt-get install hostapd iw 
+
+#DNS Weiterleitung
+$ sudo apt-get install -y dnsmasq
+
 ```
+<br>
 
+[Raspi Image mit Allem](https://github.com/mgje/RaspberryPI)
 ---
-#### Konfiguration mit nano oder vim
-
+#### Konfiguration anpassen mit Texteditor
+#### z.B. SSID und Wifi channel
 ```bash
 $ sudo nano /etc/hostapd/hostapd.conf
 ```
@@ -1066,9 +1166,10 @@ wpa_gmk_rekey=86400
 # Zugangsschluessel (PSK) / hier in Klartext (ASCII)
 wpa_passphrase=raspberrypi
 ```
----
+--
 
-Patch for the RTL8188CUS hardware driver
+#### Patch for the RTL8188CUS hardware driver
+#### Edimax 7811UN drahtloser Nano Adapter
 
 ```bash
 $ wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
@@ -1142,7 +1243,14 @@ $ sudo service apache2 restart
 $ sudo service hostapd status
 ```
 
+---
+### Tutorials + Quellen 
 
+* [Der eigene Webserver mit dem Raspberry Pi](http://www.manfred-steger.de/tuts/20-der-eigene-webserver-mit-dem-raspberry-pi)
+* [Raspberry Pi als Webserver: So gehts](http://t3n.de/news/raspberry-pi-webserver-gehts-554954/)
+* [Raspberry Pi als Webserver - Apache 2 Installation](http://www.forum-raspberrypi.de/Thread-tutorial-raspberry-pi-als-webserver-apache-2-installation)
+* [How to Make a Raspberry Pi Web Server](http://www.wikihow.com/Make-a-Raspberry-Pi-Web-Server)
+* [Setting up a Raspberry Pi as access point](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/overview)
 </script>
 </section>
 
@@ -1151,21 +1259,29 @@ $ sudo service hostapd status
 <script type="text/template" >
 
 
-Bild Zusammenfassung
+
+
+
 ---
 
 ##Zusammenfassung
 
 * Mathematica auf dem Raspberry Pi
-* Programmieren mit Python
-* Serverdienste des Raspberry Pi konfigurieren
+* Programmieren mit Python und SciPy
+* Serverdienste installieren und konfigurieren
 <br>
 <br>
-Diese und weitere Präsentation finden Sie unter <br><br>
+Die gesamte Präsentation finden Sie unter <br><br>
+[http://raspi.datzko.ch/](http://raspi.datzko.ch/)<br>
+und <br>
 [http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
 
+--
+![The End](media/the-end.png)
 ---
-#### Fragen
+![VielenDank](media/thankyou.jpg)
+---
+## Fragen
 
 <br> 
 
@@ -1174,15 +1290,14 @@ Diese und weitere Präsentation finden Sie unter <br><br>
 ## Let's start
 
 * Eigene Beispiele mit Mathematica
-	* auf dem Raspberry Pi
-	* oder mit Bildschirmfreigabe
-	* oder im Terminalfenster
 * Programmieren mit Python
-* Konfiguration der Serverdienste
+* Probleme lösen mit SciPy
+* Konfiguration von Serverdiensten
 	* neuer Webinhalt
 	* neue Zugangspasswörter
 	* andere Wifi Treiber
----
+
+--
 ## Thanks to you
 <br>
 and

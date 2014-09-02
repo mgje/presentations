@@ -114,7 +114,7 @@ Im Kurs werden die Möglichkeiten der Hardware und die Vielfalt an Software aufg
 
 ## Installation <small>(ca. 1GB Download)</small>
 
-* Raspi mit Internet verbinden
+* Raspberry Pi mit dem Internet verbinden
 * Terminalfenster / Shell öffnen
 * Folgenden Befehle ausführen
 
@@ -202,7 +202,7 @@ Out[13]= {1000003, 1000033, 1000037, 1000039}
 - Mathematica unterstützt __funktionales programmieren__ und ist __dynamisch typisiert__. 
 - In Mathematica gibt es __nur Funktionen__ und fest verbaute __Symbole__, z. B. das Zeichen ∞ für unendlich. 
 - Als weitere Abgrenzung zu anderen Sprachen ist eine __nicht auswertbare Zeile__ in Mathematica __kein Fehler__, sondern eine Rückgabe.
-- Seit 9. Juli 2014 Mathematica Version 10
+- Version 10  seit 9. Juli 2014
 
 
 ---
@@ -237,7 +237,7 @@ Out[13]= {1000003, 1000033, 1000037, 1000039}
 
 [Referenz Math Konstanten](http://reference.wolfram.com/language/tutorial/mathematicalConstants.html)
 ---
-#### Definieren von math. Funktionen
+#### Definieren von mathematischen Funktionen
 
 $$
 f1(x) \mapsto x^2+1
@@ -311,7 +311,7 @@ Out[10]= {2, 5, 10, 17, 26}
 ---
 #### Iteration
 
-Sei __f__ eine Funktion von __x__, der Befehlr __Nest[f,x,5]__ wendet die Funktion 5 Mal an.
+Sei __f__ eine Funktion von __x__, der Befehlr __Nest[f,x,5]__ wendet die Funktion 5 x an.
 
 <br>
 
@@ -329,18 +329,32 @@ In[10]:= fwurzel[x_]:= 1/2(x+2/x)
 In[11]:= f8It[x_]:=Nest[fwurzel,x,8]                               
 In[12]:= f8It[0.3]                                                 
 Out[12]= 1.41421
+In[25]:= N[Sqrt[2],10]                                                          
+Out[25]= 1.414213562
 
 ```
-
 ---
-Collatz Folge
+## Collatz Funktion
 
-![collatz](media/collatz.png)
----
+$$
+T: \mathbb{N} \to  \mathbb{N}
+$$
+<br>
+
+$$
+T(x) = \left\\{ \begin{array}{l}  3 x+1, &\mbox{für n ungerade}\\\\
+         \frac{x}{2}, &\mbox{für n gerade} \end{array} \right.
+$$
+
+--
 ### Zitat Paul Erdős
 
 
 ![Erdos](media/zitat_erdos1.png)
+---
+#### Collatz Folge
+
+![collatz](media/collatz.png)
 ---
 
 
@@ -653,11 +667,17 @@ und weitere Beispiele...
 
 ```mathematica
 Solve[11*x^3-9*x+17==0,x]
+
 Expand[(y+1)^10]
+
 Plot[{4*Sin[2*x],Cos[2*x]^2},{x,0,2*Pi}]
+
 Plot3D[Cos[x^2+y^2],{x,0,Pi},{y,0,Pi}]
+
 Sum[1/n^2,{n,1,Infinity}] 
+
 Floor[\[Pi]^E/3]
+
 Fibonacci[47] 
 ```
 ---

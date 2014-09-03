@@ -246,13 +246,13 @@ $$
 
 ```mathematica
 
-f1[x_] := x^2+1
+In[6]:= f1[x_] := x^2+1
 
 ```
 
 ```mathematica
 
-In[7]:=f1[3]  
+In[7]:= f1[3]  
 Out[7]= 10
 In[9]:= f1[t^2]
 			 4
@@ -260,7 +260,9 @@ Out[9]= 1 + t
 
 ```
 ---
-###Vektoren und Matrizen werden als Listen repräsentiert.
+### Vektoren und Matrizen werden 
+
+### als Listen repräsentiert
 
 <br>
 
@@ -283,9 +285,12 @@ Out[15]= {_______, _______, _______}
 ```
 
 ---
-#### Anwenden (map Befehl)
+## Funktionales Denken
 
-#### Syntax
+---
+### Anwenden 
+
+#### __Map[]__ 
 
 ```mathematica
 Map[function , List]
@@ -300,16 +305,19 @@ Out: {f(e1),f(e2),...,f(en)}
 #### Beispiel
 
 ```mathematica
+In[6]:= f1[x_] := x^2+1
+
+...
+
 In[10]:= Map [f1,{1,2,3,4,5}]
 Out[10]= {2, 5, 10, 17, 26}
 
 ```
 
----
-## Funktionales Denken
+
 
 ---
-#### Iteration
+### Iteration
 
 Sei __f__ eine Funktion von __x__, der Befehlr __Nest[f,x,5]__ wendet die Funktion 5 x an.
 
@@ -334,7 +342,7 @@ Out[25]= 1.414213562
 
 ```
 ---
-## Collatz Funktion
+### Collatz Funktion
 
 $$
 T: \mathbb{N} \to  \mathbb{N}
@@ -346,17 +354,12 @@ T(x) = \left\\{ \begin{array}{l}  3 x+1, &\mbox{für n ungerade}\\\\
          \frac{x}{2}, &\mbox{für n gerade} \end{array} \right.
 $$
 
---
-### Zitat Paul Erdős
 
-
-![Erdos](media/zitat_erdos1.png)
 ---
-#### Collatz Folge
+### Darstellung von Collatz Folgen
 
 ![collatz](media/collatz.png)
 ---
-
 
 ```
 Mathematics is not yet ready for such problems
@@ -365,9 +368,16 @@ Mathematics is not yet ready for such problems
 <br>
 
 <small>P. Erdős bezieht sich auf das Collatz Problem<small>
+--
+### Zitat Paul Erdős
+
+
+![Erdos](media/zitat_erdos1.png)
 
 ---
 #### Definition und Berechnung der Collatz Folge
+
+#### mit Mathematica
 
 ```mathematica
 
@@ -421,7 +431,7 @@ Out[88]= {13, 14, 15, 15, 18, 19, 19, 20, 26, 34}
 ```
 
 ---
-#### Subsitution
+### Subsitution
 
 Eine Variable in einem Ausdruck kann durch einen Wert oder
 eine neue Varible ersetzt werden.
@@ -582,6 +592,9 @@ PlotRange -> {{0, 10*Pi}, {-1, 2}}]
 ![zweif](media/zweiPlot.png)
 
 ---
+
+### Viele Darstellungsmöglichkeiten
+
 ```mathematica
 GraphicsGrid[{{Plot[Cos[x], {x, -Pi, Pi}], 
    Plot[Sin[x], {x, -Pi, Pi}]}}]
@@ -589,6 +602,29 @@ GraphicsGrid[{{Plot[Cos[x], {x, -Pi, Pi}],
 ```
 
 ![zweigraph](media/zweiGraph.png)
+--
+
+### Plot 
+
+$$
+ f(x)\mapsto x + 2 \cdot cos(x)
+$$
+
+
+```mathematica
+f[x_] := x +2 * Cos[x];
+Export["nichtlinfig.png", 
+Plot[f[x], {x, 0, 5 Pi}, 
+  PlotRange -> {{0, 5 Pi}; {-0.5, 17}}, 
+  ImageSize -> 800]]
+```
+--
+$$
+ f(x)\mapsto x + 2 \cdot cos(x)
+$$
+
+![nichtlinfig](media/nichtlinfig.png)
+
 
 ---
 
@@ -639,29 +675,6 @@ $$
 
 ![welle](media/welle.gif)
 
---
-
-### Plot 
-
-$$
- f(x)\mapsto x + 2 \cdot cos(x)
-$$
-
-
-```mathematica
-f[x_] := x +2 * Cos[x];
-Export["nichtlinfig.png", 
-Plot[f[x], {x, 0, 5 Pi}, 
-  PlotRange -> {{0, 5 Pi}; {-0.5, 17}}, 
-  ImageSize -> 800]]
-```
---
-$$
- f(x)\mapsto x + 2 \cdot cos(x)
-$$
-
-![nichtlinfig](media/nichtlinfig.png)
-
 ---
 und weitere Beispiele...
 
@@ -680,7 +693,7 @@ Floor[\[Pi]^E/3]
 
 Fibonacci[47] 
 ```
----
+--
 ![maple-mathe](media/Maple_Math.png)
 
 ---
@@ -697,7 +710,14 @@ Fibonacci[47]
 <br>
 <br>
 # Python
+
+## &
+
 # SciPy
+---
+# Python aus der Kommandozeile
+
+
 ---
 ### Komplexe Zahlen direkt in der Kommandezeile
 

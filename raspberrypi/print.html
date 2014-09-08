@@ -1,0 +1,1474 @@
+<!doctype html>
+<html lang="de">
+
+	<head>
+		<meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="icon" href="data:image/png;base64,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" type="image/x-icon"/>
+		<title>Raspberry Pi - Einsatzmöglichkeiten eines Low Budget Computers</title>
+
+		<meta name="description" content="Raspberry Pi - Einsatzmöglichkeiten eines Low Budget Computers
+		Wissenschaftliches Rechnen, Raspi als Webserver">
+		<meta name="author" content="Christian Datzko / Martin Guggisberg">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="../reveal/css/theme/mw.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/github.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<!-- START -->
+
+				<section data-background="#222A22">
+					
+					<h3>
+						Raspberry Pi - Einsatzmöglichkeiten eines Low Budget Computers
+					</h3>
+					<br>
+					<h4>Wissenschaftliches Rechnen</h4>
+					<br>
+					<h4>Raspberry Pi als Webserver und Access Point</h4>
+					<br>
+					<p>
+						<small>Christian Datzko, Martin Guggisberg, Beat Trachsler
+							<br>
+							
+							<br>
+							Gymnasium Kirschgarten, Basel, 12. September 2014,
+							<a href="https://www.wbz-cps.ch/de/raspberry-pi-einsatzmoglichkeiten-eines-low-budget-computers">WBZ Kursangebot</a>
+						</small>
+					</p>
+				</section>
+
+<!--- jj -->
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#222A22" data-background-transition="slide">
+
+<script type="text/template">
+---
+---
+---
+---
+
+## Übersicht
+
+* Wissenschaftliches Rechnen
+  * mit Mathematica 
+  * mit Python und SciPy
+
+* Raspberry Pi als Webserver und Access Point 
+
+</script>
+</section>
+<!--- jj -->
+
+<!-- Math Exploring -->
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#007766" data-background-transition="slide">
+
+<script type="text/template">
+## Wissenschaftliches Rechnen
+
+## Scientific Computing
+
+---
+### Tutorials + Quellen 
+
+* [Wolfram Mathematica| Tutorial Collection](http://www.wolfram.com/learningcenter/tutorialcollection/) <bR> (Tutorials, wissenschaftliches Rechnen, Fr. 0.-)
+* [Mathematica® in Action: Problem Solving Through Visualization and Computation](http://www.amazon.de/Mathematica%C2%AE-Action-Problem-Visualization-Computation/dp/0387753664) <br>(Buch, wissenschaftliches Rechnen, ca. Fr. 60.- )
+* [A Primer on Scientific Programming with Python](http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642302920)  <bR>(Buch, wissenschaftliches Rechnen, ca. Fr. 100.-)
+* [Skript: Wissenschaftliches Rechnen mit Python](https://github.com/mgje/Python-Mathematik-Beispiele/blob/master/Skript_Wissenschaftliches_Rechnen_mit_Python_WB_Wetzikon.pdf?raw=true)<bR> (Skript, wissenschaftliches Rechnen, Fr. 0.)
+
+---
+### Tutorials + Quellen
+* [Programmierkonzepte mit Python und der Lernumgebung TigerJython](http://www.tigerjython.ch/index.php?inhalt_links=navigation.inc.php&inhalt_mitte=home/home.inc.php) <bR>(Online Buch, Einstieg in die Programmierung mit Python, Fr. 0.-)
+* [Programmieren lernen](http://jython.tobiaskohn.ch/PythonScript.pdf) <bR>(Online Skript, Einstieg in die Programmierung mit Python, Fr. 0.-)
+* [Programmieren lernen Aufgaben für den Informatikunterricht](http://www.programmieraufgaben.ch/) <bR>(Online Aufgabensammlung und Lösungen unter anderem auch zu Python, Fr. 0.-)
+
+
+---
+## Mathematica
+---
+
+## Installation <small>(ca. 1GB Download)</small>
+
+* Raspberry Pi mit dem Internet verbinden
+* Terminalfenster / Shell öffnen
+* Folgenden Befehle ausführen
+
+
+
+```bash
+
+$ sudo apt-get update
+$ sudo apt-get install wolfram-engine
+
+# braucht ca. 20 - 30 Minuten
+```
+<br>
+#### oder [klonen vorinstallierter Programme](https://github.com/mgje/RaspberryPI)
+#### Mathematica / Scientific Python / Webserver / 
+#### Access-Point
+
+---
+
+#### Mathematica in Kommandezeile <small>(Text‐Based Interface)</small>
+
+```mathematica
+$ wolfram
+
+In[1]:= Solve[4x+x^3 == 0,x]                                                    
+
+Out[1]= {{x -> 0}, {x -> -2 I}, {x -> 2 I}}
+
+In[2]:= HilbertMatrix[4] // MatrixForm                                          
+
+Out[2]//MatrixForm=     1   1   1
+                        -   -   -
+                    1   2   3   4
+
+                    1   1   1   1
+                    -   -   -   -
+                    2   3   4   5
+
+                    1   1   1   1
+                    -   -   -   -
+                    3   4   5   6
+
+                    1   1   1   1
+                    -   -   -   -
+                    4   5   6   7     
+In[3]:= Quit[]             
+```
+---
+#### Mathematica mit graphischer Oberfläche
+
+![wolfra-graphisch](media/equation.png)
+
+--
+### Remote Desktop
+
+Am besten auf US-Tastatur stellen !
+
+![us-Tastatur](media/keyboard_us.png)
+
+
+---
+#### Beispiel: Erzeugen einer Liste ganzer Zahlen 
+#### und filtern von Primzahlen
+
+```mathematica
+
+In[12]:= Range[1000000,1000050]                                                 
+
+Out[12]= {1000000, 1000001, 1000002, 1000003, 1000004, 1000005, 1000006, 
+>    1000007, 1000008, 1000009, 1000010, 1000011, 1000012, 1000013, 1000014, 
+>    1000015, 1000016, 1000017, 1000018, 1000019, 1000020, 1000021, 1000022, 
+>    1000023, 1000024, 1000025, 1000026, 1000027, 1000028, 1000029, 1000030, 
+>    1000031, 1000032, 1000033, 1000034, 1000035, 1000036, 1000037, 1000038, 
+>    1000039, 1000040, 1000041, 1000042, 1000043, 1000044, 1000045, 1000046, 
+>    1000047, 1000048, 1000049, 1000050}
+
+In[13]:= Select[%,PrimeQ]                                                       
+
+Out[13]= {1000003, 1000033, 1000037, 1000039}
+
+```
+---
+
+### Funktionale Programmierung
+- Mathematica unterstützt funktionales programmieren und ist dynamisch typisiert. 
+- In Mathematica gibt es nur Funktionen und fest verbaute Symbole, z. B. das Zeichen ∞ für unendlich. 
+- Als weitere Abgrenzung zu anderen Sprachen ist eine nicht auswertbare Zeile in Mathematica kein Fehler, sondern eine Rückgabe.
+- Version 10  seit 9. Juli 2014
+
+
+---
+#### Texteingabe von Konstanten
+
+<table class="mgu reveal">
+	<thead>
+		<tr>
+			<th>Texteingabe</th>
+			<th>Näherung</th>
+			<th>Wert</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>\\[Pi]</td>
+			<td>\\[Pi]//N</td>
+			<td>3.14159</td>
+		</tr>
+        <tr>
+			<td>E</td>
+			<td>E//N</td>
+			<td>2.71828</td>
+		</tr>
+		<tr>
+			<td>GoldenRatio</td>
+			<td>GoldenRatio//N </td>
+			<td>1.61803</td>
+		</tr>
+	</tbody>
+</table>
+
+[Referenz Math Konstanten](http://reference.wolfram.com/language/tutorial/mathematicalConstants.html)
+---
+#### Definieren von mathematischen Funktionen
+
+$$
+f1(x) \mapsto x^2+1
+$$
+
+
+```mathematica
+
+In[6]:= f1[x_] := x^2+1
+
+```
+
+```mathematica
+
+In[7]:= f1[3]  
+Out[7]= 10
+In[9]:= f1[t^2]
+			 4
+Out[9]= 1 + t
+
+```
+---
+### Vektoren und Matrizen werden 
+
+### als Listen repräsentiert
+
+<br>
+
+Definition einer Liste 
+
+```mathematica
+In[12]:= l1 = {1,5,9,2,5,2,1}
+```
+
+Vektor definieren und normieren
+<br>
+```mathematica
+
+In[14]:= v = {1,1,1}
+Out[14]= {1, 1, 1}
+In[15]:= Normalize[v]                                                           
+             1        1        1
+Out[15]= {_______, _______, _______}
+          Sqrt[3]  Sqrt[3]  Sqrt[3]
+```
+
+---
+## Funktionales Denken
+
+---
+### Anwenden 
+
+#### Map[]
+
+```mathematica
+Map[function , List]
+
+
+Out: {f(e1),f(e2),...,f(en)}
+
+```
+
+<br>
+
+#### Beispiel
+
+```mathematica
+In[6]:= f1[x_] := x^2+1
+
+...
+
+In[10]:= Map [f1,{1,2,3,4,5}]
+Out[10]= {2, 5, 10, 17, 26}
+
+```
+
+
+
+---
+### Iteration
+
+Sei f eine Funktion von x, der Befehl Nest[f,x,5] wendet die Funktion 5 x an.
+
+<br>
+
+```mathematica
+In[23]:= Nest[f,x,5]                                                                       
+Out[23]= f[f[f[f[f[x]]]]]
+```
+
+<br>
+
+##### Iteration zur Approximation von Wurzel 2 (Newtonverfahren)
+
+```mathematica
+In[10]:= fwurzel[x_]:= 1/2(x+2/x)                                  
+In[11]:= f8It[x_]:=Nest[fwurzel,x,8]                               
+In[12]:= f8It[0.3]                                                 
+Out[12]= 1.41421
+In[25]:= N[Sqrt[2],10]                                                          
+Out[25]= 1.414213562
+
+```
+---
+### Collatz Funktion
+
+$$
+T: \mathbb{N} \to  \mathbb{N}
+$$
+<br>
+
+$$
+T(x) = \left\\{ \begin{array}{l}  3 x+1, &\mbox{für n ungerade}\\\\
+         \frac{x}{2}, &\mbox{für n gerade} \end{array} \right.
+$$
+
+
+---
+### Darstellung von Collatz Folgen
+
+![collatz](media/collatz2.png)
+---
+
+```
+Mathematics is not yet ready for such problems
+``` Paul Erdős
+
+<br>
+
+<small>P. Erdős bezieht sich auf das Collatz Problem<small>
+--
+### Zitat Paul Erdős
+
+
+![Erdos](media/zitat_erdos1.png)
+
+---
+#### Definition und Berechnung der Collatz Folge
+
+#### mit Mathematica
+
+```mathematica
+
+In[26]:= Collatz[n_] := If[n==1,1,If[EvenQ[n], n/2, 3n + 1]]  
+
+
+In[29]:= Collatz50[n_] :=NestList[Collatz,n,50]
+
+In[30]:= Collatz50[123]                                            
+
+
+Out[30]= {123, 370, 185, 556, 278, 139, 418, 209, 628, 314, 157, 
+>    472, 236, 118, 59, 178, 89, 268, 134, 67, 202, 101, 304, 152, 
+>    76, 38, 19, 58, 29, 88, 44, 22, 11, 34, 17, 52, 26, 13, 40, 
+>    20, 10, 5, 16, 8, 4, 2, 1, 1, 1, 1, 1}
+```
+---
+### Listen von Zahlen
+
+
+```mathematica
+(* Ungerade Quadratzahlen *)
+
+In[73]:= Table[i^2,{i,1,20,2}]
+
+Out[73]= {1, 9, 25, 49, 81, 121, 169, 225, 289, 361}
+
+```
+  
+<br>
+
+
+```mathematica
+(* Zufallszahlen *)
+
+In[76]:= Table[Random[Integer,{1,10}],{i,1,16}]
+
+Out[76]= {1, 5, 4, 7, 9, 10, 9, 10, 5, 5, 8, 6, 8, 4, 9, 10}
+
+```
+
+<br>
+
+
+```mathematica
+(* Sortierte Listen *)
+In[88]:= Sort[Table[Random[Integer,{1,40}],{i,1,10}]]                           
+
+Out[88]= {13, 14, 15, 15, 18, 19, 19, 20, 26, 34}
+
+```
+
+---
+### Subsitution
+
+Eine Variable in einem Ausdruck kann durch einen Wert oder
+eine neue Varible ersetzt werden.
+
+<br>
+
+```mathematica
+In[31]:= x + x^3 /. x -> 2                                        
+
+Out[31]= 10
+
+```
+
+<br>
+
+```mathematica
+In[35]:= fwurzel[x_]:= 1/2(x+2/x) 
+
+In[36]:= Nest[fwurzel,x,5] /. x -> 0.3    
+
+Out[36]= 1.41422
+```
+---
+### Substitution nutzen 
+
+### um Lösungen zu überprüfen
+
+<br>
+
+```mathematica
+In[37]:= loesungen = Solve[4x+x^3==0,x]                           
+
+Out[37]= {{x -> 0}, {x -> -2 I}, {x -> 2 I}}
+
+In[38]:= 4x+x^3 /. loesungen                                      
+
+Out[38]= {0, 0, 0}
+
+```
+
+---
+### Rechnen mit Matrizen
+
+<br>
+
+```mathematica
+In[39]:= DiagonalMatrix[{1,2,3,4}] // MatrixForm                   
+Out[39]//MatrixForm= 1   0   0   0
+
+                     0   2   0   0
+
+                     0   0   3   0
+
+                     0   0   0   4
+
+```
+
+```mathematica
+
+In[40]:= M1 = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}}     
+In[41]:= M1 // MatrixForm                                          
+Out[41]//MatrixForm= 1    2    3    4
+
+                     5    6    7    8
+
+                     9    10   11   12
+
+                     13   14   15   16
+
+```
+---
+### Bestimmen Sie die Determinante von
+
+<br>
+
+$$
+A=\begin{pmatrix} 4 & 1 \\\\ -6 & -\frac{3}{2} \end{pmatrix} \quad \mbox{und} \quad
+B=\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 0 & -1 \\\\ 0 & -4 & -7 \end{pmatrix} 
+$$
+
+
+```mathematica
+
+In[48]:= A = {{4,1},{-6,-3/2}}
+In[49]:= Det[A]
+
+Out[49]= 0
+
+In[51]:= B = {{1,2,3},{1,0,-1},{0,-4,-7}}
+In[56]:= Det[B]
+
+Out[56]= -2
+
+```
+
+---
+### Lösen Sie das lineare Gleichungssystem
+
+$$
+\begin{eqnarray}
+x+2y+\:\:4z & = & 8 \\\\
+5x+7y+15z & = & 12 \\\\
+2x+3y+\:\:7z & = & 10
+\end{eqnarray}
+$$
+
+
+
+```mathematica
+
+In[59]:= A = {{1,2,4},{5,7,15},{2,3,7}}
+In[65]:= B = {8,12,10}
+
+In[68]:= x = Inverse[A].B
+
+Out[68]= {-14, 1, 5}
+
+```
+--
+$$
+x = A^{-1}B
+$$
+<br>
+mit 
+<br>
+$$
+A=\begin{pmatrix} 1 & 2 & 4 \\\\ 5 & 7 & 15 \\\\ 2 & 3 & 7 \end{pmatrix} \quad
+B=\begin{pmatrix} 8 \\\\ 12 \\\\ 10 \end{pmatrix} 
+$$
+
+---
+#### Visualisieren 
+
+```mathematica
+Plot[Sin[x], {x, -2*Pi, 2*Pi}]
+```
+
+![sin](media/sinfunktion.png)
+
+--
+#### Es braucht etwas Geduld
+
+![plotsin](media/plotsin.png)
+--
+#### Speichern mit Kontextmenü
+
+* Rechte Maustaste (Save Graphic as)
+
+![saveas](media/save_as.png)
+
+---
+
+```mathematica
+Plot[{Sin[x]/x, Cos[x]/x}, {x, 0, 10*Pi}, 
+PlotRange -> {{0, 10*Pi}, {-1, 2}}]
+```
+
+![zweif](media/zweiPlot.png)
+
+---
+
+### Viele Darstellungsmöglichkeiten
+
+```mathematica
+GraphicsGrid[{{Plot[Cos[x], {x, -Pi, Pi}], 
+   Plot[Sin[x], {x, -Pi, Pi}]}}]
+
+```
+
+![zweigraph](media/zweiGraph.png)
+--
+
+### Plot 
+
+$$
+ f(x)\mapsto x + 2 \cdot cos(x)
+$$
+
+
+```mathematica
+f[x_] := x +2 * Cos[x];
+Export["nichtlinfig.png", 
+Plot[f[x], {x, 0, 5 Pi}, 
+  PlotRange -> {{0, 5 Pi}; {-0.5, 17}}, 
+  ImageSize -> 800]]
+```
+--
+$$
+ f(x)\mapsto x + 2 \cdot cos(x)
+$$
+
+![nichtlinfig](media/nichtlinfig.png)
+
+
+---
+
+### Animation
+
+```mathematica
+f[x_, t_] := Sin[x + t] + Sin[x - 2*t]; 
+Animate[
+ Plot[x*Sin[x*t], {x, -2*Pi, 0}, 
+ PlotRange -> {-7, 7}], {t, 0.2, 6.5}] 
+
+```
+---
+<video width="414" height="296" data-autoplay >
+	    <source src="media/movies/animatedgraph.m4v" type="video/mp4" />
+		<source src="media/movies/animatedgraph.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### Animated Gifs
+
+```mathematica
+Export["disks.gif", 
+ Table[ Graphics[ Disk[ {0.1, 0}, Sin[t]], ImageSize -> Tiny, 
+   PlotRange -> 1.2], {t, 0, Pi, 0.2} ]]
+```
+
+![disks](media/disks.gif)
+
+---
+
+### Animated Gifs 
+
+####(lange Rechenzeit mit grossen Plots)
+
+```mathematica
+f[x_, t_] := Sin[x*t];
+Export["welle.gif", 
+Table[Plot[f[x, t], {x, 0, 5 Pi}, 
+  PlotRange -> {{0, 5 Pi}; {-1, 1}}], {t, 0.1, Pi, 0.02}]]
+```
+---
+
+$$
+f(x,t) \mapsto \sin(x \cdot t)
+$$
+
+![welle](media/welle.gif)
+
+---
+und weitere Beispiele...
+
+```mathematica
+Solve[11*x^3-9*x+17==0,x]
+
+Expand[(y+1)^10]
+
+Plot[{4*Sin[2*x],Cos[2*x]^2},{x,0,2*Pi}]
+
+Plot3D[Cos[x^2+y^2],{x,0,Pi},{y,0,Pi}]
+
+Sum[1/n^2,{n,1,Infinity}] 
+
+Floor[\[Pi]^E/3]
+
+Fibonacci[47] 
+```
+--
+![maple-mathe](media/Maple_Math.png)
+
+---
+
+</script>
+</section>
+
+<!-- Python -->
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
+<script type="text/template">
+
+
+### Wissenschaftliches Rechnen mit
+<br>
+<br>
+# Python
+
+## &
+
+# SciPy
+---
+### Python aus der Kommandozeile
+
+* Terminalfenster öffnen
+* Befehl __python__ ausführen
+
+```bash
+
+$ python
+
+>>> print "hello World"
+
+```
+
+
+
+---
+### Mit Komplexe Zahlen direkt rechnen
+
+<br>
+
+```Python
+
+>>> from math import *
+>>> w = sqrt(2)
+>>> w
+1.4142135623730951
+
+>>> (1.0/w+1.0/w*1j)**6
+(-0-0.9999999999999993j)
+
+>>> (1/w+1/w*1j)**24
+(0.9999999999999973+0j)
+````
+---
+# scipy
+
+#### scientific Toolbox for Python
+---
+
+### Installation
+
+
+<br>
+
+```bash
+$ sudo apt-get install python-smbus ipython bluetooth \
+bluez-utils python-cwiid python-scipy python-numpy \
+python-pygame python-setuptools libsdl-dev
+
+
+``` 
+<br>
+
+#### oder [klonen vorinstallierter Programme](https://github.com/mgje/RaspberryPI)
+#### Mathematica / Scientific Python / Webserver / 
+#### Access-Point
+
+---
+### SciPy
+
+* ist eine wissenschaftlicher Werkzeugkasten für Mathematik und Naturwissenschaften.
+* nutzt Arrays von NumPy
+* ist open-source
+* ist auch der Name einer Konferenz
+	* [SciPy 2012](http://conference.scipy.org/scipy2012/)  
+	* [SciPy 2013](http://conference.scipy.org/scipy2013/)
+---
+
+![Sci-pi](media/SciPy-Packages.png)
+---
+### Rechnen mit Polynomen
+
+```python
+>>> from scipy import *
+>>> p = poly1d([3,4,5]) 
+>>> print p
+	2
+3 x + 4 x + 5
+
+>>> print p**2
+   
+	4 	3 	 2
+9 x + 24 x + 46 x + 40 x + 25
+
+#
+```
+
+---
+### Lösen nicht lin. Systemen 
+
+$$
+f(x) = 0
+$$
+
+
+```python
+>>> from scipy import *
+>>> from scipy.optimize import fsolve 
+
+>>> def func(x):
+	return x + 2*cos(x)
+
+>>> x0 = fsolve(func, 0.3)
+
+>>> print x0
+[-1.02986653]
+
+#
+```
+
+--
+$$
+ f(x)\mapsto x + 2 \cdot cos(x)
+$$
+
+<br> 
+
+![nichtlinfig](media/nichtlinfig.png)
+
+---
+
+## Interpolation
+
+<br>
+
+```python
+
+>>> import matplotlib
+>>> matplotlib.use("Agg") # ohne Grafikausgabe
+>>> import scipy as sp
+>>> import scipy.interpolate
+>>> import matplotlib.pyplot as plt
+>>> x = sp.arange(0, 10)
+>>> y = sp.exp(-x/3.0)
+>>> f = sp.interpolate.interp1d(x, y)
+
+>>> xnew = sp.arange(0,9, 0.1)
+>>> ynew = f(xnew)   # use interpolation function returned by `interp1d`
+
+>>> plt.plot(x, y, 'o', xnew, ynew, '-')
+>>> plt.savefig("interpolate.png")
+
+#
+```
+--
+
+<br> 
+
+![interpolate](media/interpolate.png)
+
+---
+
+#### Sinusfunktion mit kubischen Splines approximieren
+
+```python
+import matplotlib
+matplotlib.use("Agg") # ohne Grafikausgabe
+from math import *
+import scipy as sp
+import scipy.interpolate
+import matplotlib.pyplot as plt
+ 
+x = sp.arange(0,2*pi+pi/4,2*pi/8)  
+y = sp.sin(x)  
+tck = sp.interpolate.splrep(x,y,s=0)  
+xnew = sp.arange(0,2*pi,pi/50)  
+ynew = sp.interpolate.splev(xnew,tck,der=0)  
+
+plt.figure(1)
+plt.plot(x,y,'x',label="linear")
+plt.plot(xnew,ynew,label="cubic spline")
+plt.plot(xnew,sp.sin(xnew),label="True")
+plt.plot(x,y,'b')
+plt.title('Cubic-spline interpolation')
+plt.legend()
+plt.savefig('cubicspline.png')
+
+#
+```
+--- 
+
+
+
+
+## Lineare Algebra 
+
+<br>
+
+## mit scipy.linalg
+---
+#### Matrix definieren & Matrixmultiplikation
+
+```python
+>>> from scipy import linalg
+>>> import scipy as sp
+# Definition 2x2 Matrix
+>>> A = sp.mat('[1,2;3,4]')
+# oder so
+>>> A = sp.mat([[1, 2],
+			[3,4]])
+
+# Matrixmultiplikation
+>>> A * A
+matrix([[ 7, 10],
+		[15, 22]])
+
+#
+```
+
+---
+#### Invertieren
+
+```python
+>>> from scipy import linalg
+>>> import scipy as sp
+# A ist noch definiert
+>>> A
+matrix([[1, 2],
+		[3, 4]])
+
+# A^-1 der Variablen A_inv zuordnen
+>>> A_inv = sp.mat(linalg.inv(A))
+
+>>> A_inv
+matrix([[-2. , 1. ],
+		[ 1.5, -0.5]])
+
+# Test: A*A^-1
+>>> A*A_inv
+matrix([[1.00000000e+00,0.00000000e+00],
+		[8.88178420e-16,1.00000000e+00]])
+
+
+#
+```
+
+---
+## Normalprojektion 
+
+<br>
+
+### Gesucht Normalprojektion eines Punktes auf eine Ebene 
+
+---
+Sei die Ebene definert durch eine Basis 
+
+<br>
+
+
+\\(\vec{e\_1}= \begin{pmatrix}0\\\\ 0\\\\ 1\end{pmatrix},\vec{e\_2}= \begin{pmatrix}1\\\\ 2\\\\ 1\end{pmatrix}\\)
+
+$$
+Proj_{Matrix} = A(A^TA)^{-1}A^T
+$$
+<br>
+mit 
+<br>
+$$
+A = \begin{pmatrix}\\vec{e\_1}&\vec{e\_2}\end{pmatrix}=\begin{pmatrix}0&1\\\\ 0&2\\\\ 1&1\end{pmatrix}
+$$
+
+---
+
+```python
+>>> A = np.mat([[0,1],
+				[0,2],
+				[1,1]])
+
+>>> A.T
+matrix([[0, 0, 1],
+		[1, 2, 1]])
+
+>>> proj=A*np.mat(linalg.inv(A.T*A))*A.T
+
+>>> proj
+matrix([[0.2, 0.4, 0. ],
+		[0.4, 0.8, 0. ],
+		[0. , 0. , 1. ]])
+
+#
+```
+---
+
+<video width="1072" height="720" data-autoplay muted >
+	    <source src="media/movies/ProjEbene.m4v" type="video/mp4" />
+	    <source src="media/movies/ProjEbene.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+### Fourier Analyse mit SciPy
+
+[Bild und Quellcode](https://github.com/mgje/RaspberryPI/tree/master/numpy_fourier_BSP)
+
+![Der_Man_auf_dem_Mond](media/Der_Man_auf_dem_Mond.png)
+
+
+
+--
+
+
+```python
+import sys
+import numpy as np
+from matplotlib import pyplot as plt
+
+def plot_spectrum(F, amplify=1000, ax=None):
+	"""Normalise, amplify and plot an amplitude spectrum."""
+	mag = abs(F)
+	mag *= amplify/mag.max()
+	# Next, clip all values larger than one to one.
+	mag[mag > 1] = 1
+	if ax is None:
+		ax = plt.gca()
+	ax.imshow(mag, plt.cm.Blues)
+
+fname = 'moonlanding.png'
+im = plt.imread(fname).astype(float) 
+print "Image shape: %s" % str(im.shape)
+
+F = np.fft.fft2(im)
+
+```
+
+
+
+--
+
+```python
+# Define the fraction of coefficients (in each direction) we keep
+keep_fraction = 0.1
+# Call ff a copy of the original transform.  Numpy arrays have a copy
+# method for this purpose.
+ff = F.copy()
+
+# Set r and c to be the number of rows and columns of the array.
+r,c = ff.shape
+
+# Set to zero all rows with indices between r*keep_fraction and
+# r*(1-keep_fraction):
+ff[r*keep_fraction:r*(1-keep_fraction)] = 0
+
+# Similarly with the columns:
+ff[:, c*keep_fraction:c*(1-keep_fraction)] = 0
+
+im_new = np.fft.ifft2(ff).real
+```
+--
+```python
+fig, ax = plt.subplots(2, 2, figsize=(10,7))
+ax[0,0].set_title('Original image')
+ax[0,0].imshow(im, plt.cm.gray)
+ax[0,1].set_title('Fourier transform')
+plot_spectrum(F, ax=ax[0,1])
+ax[1,1].set_title('Filtered Spectrum')
+plot_spectrum(ff, ax=ax[1,1])
+ax[1,0].set_title('Reconstructed Image')
+ax[1,0].imshow(im_new, plt.cm.gray)
+plt.show()
+
+#
+```
+
+
+---
+### Quellen + Tutorials
+
+
+* [SciPy-Kursmaterial](http://nbviewer.ipython.org/github/profjsb/python-bootcamp/blob/master/Lectures/05_NumpyMatplotlib/Exercise-FourierImageDenoise.ipynb)
+* [Lecture Notes ](http://scipy-lectures.github.com/) Python scientific by many [Authors](http://scipy-lectures.github.io/AUTHORS.html) 
+* [Lecture notes by Travis Oliphant, 2004](http://www.tau.ac.il/~kineret/amit/scipy_tutorial/ )
+* [Reference guide, tutorial](http://docs.scipy.org/doc/scipy/reference/tutorial/) 
+* [Online-Kurse zu Python und weiteren Dingen](http://nbviewer.ipython.org)
+
+
+
+</script>
+</section>
+
+
+<!-- Webserver -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#CF4E79" data-background-transition="slide" >
+<script type="text/template" >
+
+## Raspberry Pi
+<br>
+<br>
+###als Webserver und Access-Point
+
+---
+
+### Projektidee: Interaktive Postersession
+
+
+![poster](media/poster2.jpg)
+
+
+
+---
+
+### Einsatz am Infotag 2014 
+### Universität Basel
+#### Besucherinnen und Besucher können auf Ihren mobilen Geräten [experimentieren](http://mgje.github.io/webprogramming/processing/zufallsbilder.html)!
+
+![webprogramming](media/demo_infotag2.png)
+
+[Link auf Infotag 2014 Demo](http://mgje.github.io/webprogramming/processing/zufallsbilder.html)
+--
+### Verwendete Technologien
+
+#### Client-Seitig
+
+- [Bootstrap](http://getbootstrap.com/about/) Icons und Knöpfe
+- [jQuerry](http://jquery.com/) Interaktion, Events und DOM
+- [Processing.js](http://processingjs.org/) Visualisierung
+- [Modernizr](http://modernizr.com/) Browser Version
+- [Spectrum.js](http://bgrins.github.io/spectrum/) Colorpicker
+- [Ace.js](http://ace.c9.io/) Editor
+- [CoffeeScript](http://coffeescript.org/) JavaScript Programmierung
+
+-- 
+### Verwendete Technologien
+
+#### Server-Seitig
+
+- [Apache](http://httpd.apache.org/)
+- [hostapd](http://wireless.kernel.org/en/users/Documentation/hostapd)
+- [ISC-DHCPD](http://wiki.ubuntuusers.de/ISC-DHCPD)
+- [iptables](http://wiki.ubuntuusers.de/iptables2?redirect=no)
+- [DNS Mask](http://www.thekelleys.org.uk/dnsmasq/doc.html)
+
+---
+#### Zum Surfen ist ein Raspberry Pi langsam!
+
+![slow](media/slow2.gif)
+
+#### Ein zweijähriges Smartphone ist bis zu 5x schneller !
+
+--
+### Octane 2 Benchmark von Google
+
+```
+Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performance by running a suite of tests representative of today’s complex and demanding web applications. 
+``` Google
+
+[Octane Webseite](https://developers.google.com/octane/)
+
+
+--
+### Octan Benchmark Iphone 5c (2013)
+
+![iphone](media/iphone5c.png)
+
+--
+### Octan Benchmark Resultat Ipad 2 (2012)
+
+![ipad](media/ipad2.png)
+
+--
+### Octan Benchmark Raspberry Pi B 
+
+![raspi](media/raspi.png)
+--
+
+### Fazit
+
+* Nach über 90 Minuten ist der Benchmark noch nicht beendet!
+* In den ersten 12 Tests ist der Raspberry Pi um einen Faktor 30 - 70 langsamer als eine iPad2 von 2012
+* Der Raspberry Pi ist um einen Faktor 55 - 120 langsamer als ein Iphone5c  von 2013
+
+---
+
+``` Schülerinnen und Schüler nutzen gerne ihre eigenen Geräte. ```
+
+---
+
+![Bild Schüler](media/learning.png)
+
+---
+<big>
+
+``` Wie kommen nun schulische Inhalte auf diese Geräte? ```
+
+</big>
+---
+### Ein Raspberry Pi kann als Server eingesetzt werden
+
+
+<br>
+
+Damit könnte die folgende Frage mit Ja beantwortet werden.
+
+<br> 
+
+````Gibt es hier ein 
+W-Lan ?```` 
+
+
+
+
+
+---
+### Installation
+
+<br>
+
+* Webserver
+* DHCP Server
+* Wifi Access Point
+* Netzwerk Konfiguration
+* DNS Umleitung
+---
+#### Detailierte Anleitung 
+#### [Link zu GitHub](https://github.com/mgje/RaspberryPI)
+![bildgithub](media/anleitung.png)
+---
+### Installation der Pakete
+
+```bash
+#web Server
+$ sudo apt-get install apache2
+
+#DHCP Server
+$ sudo apt-get install isc-dhcp-server
+
+#Access-Point
+$ sudo apt-get install hostapd iw 
+
+#DNS Weiterleitung
+$ sudo apt-get install -y dnsmasq
+
+```
+<br>
+
+#### oder [klonen vorinstallierter Programme](https://github.com/mgje/RaspberryPI)
+#### Mathematica / Scientific Python / Webserver / 
+#### Access-Point
+
+---
+### Konfiguration 
+#### mit Texteditor
+#### z.B. SSID und Wifi channel
+```bash
+$ sudo nano /etc/hostapd/hostapd.conf
+```
+
+```bash
+# Schnittstelle und Treiber
+interface=wlan0
+driver=rtl871xdrv
+# WLAN-Konfiguration
+ssid=Raspi2
+channel=9
+# ESSID sichtbar
+ignore_broadcast_ssid=0
+...
+```
+---
+#### Zugangsverschlüsselung
+
+```bash
+$ sudo nano /etc/hostapd/hostapd.conf
+```
+
+```bash
+...
+wpa_key_mgmt=WPA-PSK
+#rsn_pairwise=CCMP
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+# Schluesselintervalle / Standardkonfiguration
+wpa_group_rekey=600
+wpa_ptk_rekey=600
+wpa_gmk_rekey=86400
+# Zugangsschluessel (PSK) / hier in Klartext (ASCII)
+wpa_passphrase=raspberrypi
+```
+--
+
+#### Patch for the RTL8188CUS hardware driver
+#### Edimax 7811UN drahtloser Nano Adapter
+
+```bash
+$ wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
+$ unzip adafruit_hostapd.zip
+$ sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
+$ sudo mv hostapd /usr/sbin
+$ sudo chmod 755 /usr/sbin/hostapd
+$ sudo update-rc.d hostapd enable
+```
+
+---
+
+### Netzwerkeinstellungen
+
+```bash
+sudo nano /etc/network/interfaces
+```
+
+```bash
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+#stand alone static number
+#iface eth0 inet static
+#  address 191.168.41.1
+#  netmask 255.255.255.0
+
+allow-hotplug wlan0
+
+# static configuratin for dhcp server
+iface wlan0 inet static
+# statische  Gateway-Adresse 
+address 192.168.42.1
+netmask 255.255.255.0
+
+ up iptables-restore < /etc/iptables.ipv4.nat
+```
+---
+#### Routing mit Hilfe von iptables
+
+* wlan0 -> eth0
+
+<br>
+
+```bash
+
+$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+$ sudo iptables -A FORWARD -i eth0 -o wlan0 -m state 
+−-state RELATED,ESTABLISHED -j ACCEPT
+$ sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+$ sudo iptables -t nat -S
+$ sudo iptables -S
+$ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+
+```
+
+---
+
+### Testen der Dienste
+
+
+```bash
+$ sudo service isc-dhcp-server start
+$ sudo service isc-dhcp-server status
+$ sudo service hostapd start
+$ sudo service hostapd status
+$ sudo service apache2 restart
+$ sudo service hostapd status
+```
+
+---
+### Tutorials + Quellen 
+
+* [Der eigene Webserver mit dem Raspberry Pi](http://www.manfred-steger.de/tuts/20-der-eigene-webserver-mit-dem-raspberry-pi)
+* [Raspberry Pi als Webserver: So gehts](http://t3n.de/news/raspberry-pi-webserver-gehts-554954/)
+* [Raspberry Pi als Webserver - Apache 2 Installation](http://www.forum-raspberrypi.de/Thread-tutorial-raspberry-pi-als-webserver-apache-2-installation)
+* [How to Make a Raspberry Pi Web Server](http://www.wikihow.com/Make-a-Raspberry-Pi-Web-Server)
+* [Setting up a Raspberry Pi as access point](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/overview)
+</script>
+</section>
+
+<!-- Conclusion -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >
+<script type="text/template" >
+
+
+
+
+
+---
+
+##Zusammenfassung
+
+* Mathematica auf dem Raspberry Pi
+* Programmieren mit Python und SciPy
+* Serverdienste installieren und konfigurieren
+<br>
+<br>
+Die gesamte Präsentation finden Sie unter <br><br>
+[http://raspi.datzko.ch/](http://raspi.datzko.ch/)<br>
+und <br>
+[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
+
+--
+![The End](media/the-end.png)
+---
+![VielenDank](media/thankyou.jpg)
+---
+## Fragen
+
+<br> 
+
+# <big>?</big>
+---
+## Let's start
+
+* Eigene Beispiele mit Mathematica
+* Programmieren mit Python
+* Probleme lösen mit SciPy
+* Konfiguration von Serverdiensten
+	* neuer Webinhalt
+	* neue Zugangspasswörter
+	* andere Wifi Treiber
+
+--
+## Thanks to you
+<br>
+and
+<br>
+### Thanks to Hakim El Hattab / hakim.se for reveal.js
+</script>
+</section>
+			</div>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				keyboard: true,
+				overview: true,
+				slideNumber: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

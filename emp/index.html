@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="de">
+
+	<head>
+		<meta charset="utf-8">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+<link rel="icon" href="data:image/png;base64,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" type="image/x-icon"/>
+		<title>Sounding Ways into Mathematics</title>
+
+		<meta name="description" content="Ein EU-Projekt, das auf die Bezüge zwischen Mathematik und Musik für Schule und Unterricht fokussiert.">
+		<meta name="author" content="Martin Guggisberg">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="../reveal/css/reveal.min.css">
+		<link rel="stylesheet" href="../reveal/css/theme/mw.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="../reveal/lib/css/github.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="../reveal/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<!-- START -->
+
+				
+
+<!-- Introduction -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#222A22">
+<script type="text/template">
+
+## Sounding Ways into Mathematics
+
+### Ein EU-Projekt, das auf die Bezüge zwischen Mathematik 
+### und Musik für Schule und Unterricht fokussiert.
+
+---
+
+Das Projekt entwickelt neue kreative Unterrichtsansätze, um das integrative Lernen in den Fächern Mathematik und Musik interessanter und partizipativer zu gestalten. Der integrative Ansatz kann dabei eine besondere Förderung bedeuten für leistungsschwache Schülerinnen und Schüler.
+---
+[http://maths.emportfolio.eu/](http://maths.emportfolio.eu/)
+![webseite](media/website.png)
+---
+#### Ping-Pong ein arithmetisches Gruppenspiel
+
+![Ping-Pong](media/pingpong.png)
+
+[Artikel](http://web.fhnw.ch/ph/mathematikdidaktik/professur-mathedidaktik-s1-s2/team/martin-guggisberg/artikel/mathe-macht-musik-ping-pong)
+---
+### Spielregeln
+
+* Die ganze Klasse sitzt im Kreis. In einem gemächlichen Tempo klatschen dazu alle gemeinsam abwechselnd in die Hände und auf die Knie.
+* Dazu wird der Reihe nach fortlaufend gezählt (1,2, 3, 4 ...)
+
+* In einem ersten Schritt werden alle Dreier-Zahlen (3, 6, 9, 12, 15 ...) mit dem Wort "Ping" ersetzt. Zum Üben können verschiedene Startpunkte gewählt werden, das Tempo kann angepasst werden oder man kann die Gruppengrösse variieren.
+---
+### Spielregeln
+
+* Analog werden dann die Vierer-Zahlen (4, 8, 12, 16 ...) mit "Pong" ersetzt.
+* Nach einigem Üben kann versucht werden, die Dreier- und Vierer-Zahlen gleichzeitig zu ersetzen (12, 24 ... heisst dann Ping-Pong ).
+* Viel Übung ist erforderlich, wenn bei Ping und Pong als zusätzliche Regel jeweils ein Richtungswechsel vorgenommen wird, bei Ping-Pong (12, 24, ...) die Richtung aber beibehalten wird.
+
+---
+### Spiel 
+
+<br>
+<br>
+
+#### mit Ping = 3
+#### und Pong = 4
+--
+#1
+--
+#2
+--
+#Ping
+--
+#Pong
+--
+#5
+--
+#Ping
+--
+#7
+--
+#Pong
+--
+#Ping
+--
+#10
+--
+#11
+--
+#Ping-Pong
+--
+#13
+--
+#14
+--
+#Ping
+--
+#Pong
+--
+#17
+--
+#Ping
+--
+#19
+--
+#Pong
+--
+#Ping
+--
+#22
+--
+#23
+--
+#Ping-Pong
+--
+#25
+--
+#26
+--
+#Ping
+--
+#Pong
+--
+#29
+--
+#Ping
+--
+#31
+--
+#Pong
+--
+#Ping
+--
+#34
+---
+
+### Zweites Spiel 
+
+<br>
+<br>
+
+#### mit Ping = 3
+#### und Pong = 5
+--
+#1
+--
+#2
+--
+#Ping
+--
+#4
+--
+#Pong
+--
+#Ping
+--
+#7
+--
+#8
+--
+#Ping
+--
+#Pong
+--
+#11
+--
+#Ping
+--
+#13
+--
+#14
+--
+#Ping-Pong
+--
+#16
+--
+#17
+--
+#Ping
+--
+#19
+--
+#Pong
+--
+#Ping
+--
+#22
+--
+#23
+--
+#Ping
+--
+#Pong
+--
+#26
+--
+#Ping
+--
+#28
+--
+#29
+--
+#Ping-Pong
+--
+#31
+--
+#32
+--
+#Ping
+--
+#34
+
+---
+
+* Das Ping-Pong Spiel ist ein Beispiel für Spiele mit einer Regel, die zwar relativ einfach zu verstehen ist, deren Befolgung aber eine Herausforderung darstellt. 
+* Das Befolgen der Regel ist schwierig, weil mehreres gleichzeitig und unter Zeitdruck zu beachten ist: 
+	* Wie muss ich auf die letzte Zahl meines Nebenmanns reagieren? 
+	* Bin ich an der Reihe oder nicht? 
+	* Welche Zahl kommt als nächste? 
+	* Muss sie ersetzt werden oder nicht? 
+	* Wie geht es weiter? 
+---
+
+## Es lassen sich die folgenden Fragen formulieren
+
+---
+
+* Hängen die Positioncn von Ping-Zahlen und
+und Pong-Zahlen von der Anzahl der
+Mitspieler ab?
+
+* Wie verhält sich das Spiel, wenn anstelle
+von 3 und 4 andere Ping- und Pong-Zahlen gewählt werden?
+* Gibt es Situationen (Ping-Zahlen, Pong-Zahlen, Anzahl der Spieler) bei
+denen es Positionen im Spiel gibt, bei welchen nie ein "Ping" oder "Pong"
+erscheint?
+* Wie kann der Spielverlauf mathematisch beschrieben werden?
+---
+### Simulation 
+
+#### Mit Hilfe eines Programms
+
+```python
+ping = 3 
+pong = 4 
+step = 1 
+loc  = 1 
+zmax = 70
+# Schleife
+for i in range (zmax):
+   print i,loc
+   # Fallunterscheidung
+   if(i%ping == 0) != (i%pong == 0): 
+      step = step * (-1)
+   loc = loc + step
+```
+
+---
+<video width="732" height="720" controls autoplay >
+    <source src="http://mgje.github.io/Interaktive_Experimente/pingpong/movies/Ping-Pong.m4v" type="video/mp4" />
+    <source src="http://mgje.github.io/Interaktive_Experimente/pingpong/movies/Ping-Pong.webm" type="video/webm" />
+               
+    Your browser does not support the <code>video</code> element.
+</video>
+
+---
+
+[Link auf Simulation](http://mgje.github.io/Interaktive_Experimente/pingpong/)
+---
+### Einfache Regeln
+
+### komplexes Verhalten
+
+### Beispiel Collatz Folge
+
+---
+
+
+
+</script>
+</section>
+
+
+<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
+<script type="text/template">
+
+### Collatz Funktion
+
+$$
+T: \mathbb{N} \to  \mathbb{N}
+$$
+<br>
+
+$$
+T(x) = \left\\{ \begin{array}{l}  3 x+1, &\mbox{für n ungerade}\\\\
+         \frac{x}{2}, &\mbox{für n gerade} \end{array} \right.
+$$
+
+---
+### Darstellung von Collatz Folgen
+
+![collatz](media/collatz.png)
+---
+
+```
+Mathematics is not yet ready for such problems
+``` Paul Erdős
+
+<br>
+
+<small>P. Erdős bezieht sich auf das Collatz Problem<small>
+---
+### Zitat Paul Erdős
+
+
+![Erdos](media/zitat_erdos1.png)
+
+---
+#### Definition und Berechnung der Collatz Folge
+
+#### mit Mathematica
+
+```mathematica
+
+In[26]:= Collatz[n_] := If[n==1,1,If[EvenQ[n], n/2, 3n + 1]]  
+
+
+In[29]:= Collatz50[n_] :=NestList[Collatz,n,50]
+
+In[30]:= Collatz50[123]                                            
+
+
+Out[30]= {123, 370, 185, 556, 278, 139, 418, 209, 628, 314, 157, 
+>    472, 236, 118, 59, 178, 89, 268, 134, 67, 202, 101, 304, 152, 
+>    76, 38, 19, 58, 29, 88, 44, 22, 11, 34, 17, 52, 26, 13, 40, 
+>    20, 10, 5, 16, 8, 4, 2, 1, 1, 1, 1, 1}
+```
+--
+#### Beispiel: Erzeugen einer Liste ganzer Zahlen 
+#### und filtern von Primzahlen
+
+```mathematica
+
+In[12]:= Range[1000000,1000050]                                                 
+
+Out[12]= {1000000, 1000001, 1000002, 1000003, 1000004, 1000005, 1000006, 
+>    1000007, 1000008, 1000009, 1000010, 1000011, 1000012, 1000013, 1000014, 
+>    1000015, 1000016, 1000017, 1000018, 1000019, 1000020, 1000021, 1000022, 
+>    1000023, 1000024, 1000025, 1000026, 1000027, 1000028, 1000029, 1000030, 
+>    1000031, 1000032, 1000033, 1000034, 1000035, 1000036, 1000037, 1000038, 
+>    1000039, 1000040, 1000041, 1000042, 1000043, 1000044, 1000045, 1000046, 
+>    1000047, 1000048, 1000049, 1000050}
+
+In[13]:= Select[%,PrimeQ]                                                       
+
+Out[13]= {1000003, 1000033, 1000037, 1000039}
+
+```
+--
+##### Iteration zur Approximation von Wurzel 2 
+##### (Heron-Verfahren)
+
+```mathematica
+In[10]:= fwurzel[x_]:= 1/2(x+2/x)                                  
+In[11]:= f8It[x_]:=Nest[fwurzel,x,8]                               
+In[12]:= f8It[0.3]                                                 
+Out[12]= 1.41421
+In[25]:= N[Sqrt[2],10]                                                          
+Out[25]= 1.414213562
+
+```
+---
+
+### Tutorials + Quellen 
+<small>
+
+* [Wolfram Mathematica| Tutorial Collection](http://www.wolfram.com/learningcenter/tutorialcollection/) <bR> (Tutorials, wissenschaftliches Rechnen, Fr. 0.-)
+* [Mathematica® in Action: Problem Solving Through Visualization and Computation](http://www.amazon.de/Mathematica%C2%AE-Action-Problem-Visualization-Computation/dp/0387753664) <br>(Buch, wissenschaftliches Rechnen, ca. Fr. 60.- )
+* [A Primer on Scientific Programming with Python](http://www.amazon.com/Scientific-Programming-Computational-Science-Engineering/dp/3642302920)  <bR>(Buch, wissenschaftliches Rechnen, ca. Fr. 100.-)
+* [Skript: Wissenschaftliches Rechnen mit Python](https://github.com/mgje/Python-Mathematik-Beispiele/blob/master/Skript_Wissenschaftliches_Rechnen_mit_Python_WB_Wetzikon.pdf?raw=true)<bR> (Skript, wissenschaftliches Rechnen, Fr. 0.)
+* [Programmierkonzepte mit Python und der Lernumgebung TigerJython](http://www.tigerjython.ch/index.php?inhalt_links=navigation.inc.php&inhalt_mitte=home/home.inc.php) <bR>(Online Buch, Einstieg in die Programmierung mit Python, Fr. 0.-)
+* [Programmieren lernen](http://jython.tobiaskohn.ch/PythonScript.pdf) <bR>(Online Skript, Einstieg in die Programmierung mit Python, Fr. 0.-)
+* [Programmieren lernen Aufgaben für den Informatikunterricht](http://www.programmieraufgaben.ch/) <bR>(Online Aufgabensammlung und Lösungen unter anderem auch zu Python, Fr. 0.-)
+</small>
+---
+
+
+</script>
+</section>
+
+
+
+<section data-markdown data-separator="---" data-vertical="--" data-background="#CF4E79" data-background-transition="slide" >
+<script type="text/template" >
+
+## noch mehr
+<br>
+<br>
+### Mathematik
+
+---
+</script>
+</section>
+
+<!-- Conclusion -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >
+<script type="text/template" >
+
+---
+
+##Zusammenfassung
+---
+* Das Erleben von Mathematik durch explizites Ausführen musikalisch-mathematischer Tätigkeiten wird im Allgemeinen sehr positiv wahrgenommen. 
+* Den Einstieg in eine neue mathematisch-musikalische Problemstellung und die ersten Durchführungen im Klassenverband darf man jedoch nicht unterschätzen.
+* Die Problembeschreibungen mit Handlungsvorschlägen im Lehrmittel "Mathe macht Musik" sind wertvolle und nützliche Unterstützung bei der Vorbereitung.
+---
+<br>
+<br>
+Die gesamte Präsentation finden Sie unter <br><br>
+
+[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
+
+---
+![The End](media/the-end.png)
+---
+![VielenDank](media/thankyou.jpg)
+---
+## Fragen
+
+<br> 
+
+# <big>?</big>
+--
+## Thanks to you
+<br>
+and
+<br>
+### Thanks to Hakim El Hattab / hakim.se for reveal.js
+</script>
+</section>
+			</div>
+
+		</div>
+
+		<script src="../reveal/lib/js/head.min.js"></script>
+		<script src="../reveal/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				keyboard: true,
+				overview: true,
+				slideNumber: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'fade', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal
+				dependencies: [
+					{ src: '../reveal/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal/plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

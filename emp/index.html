@@ -287,16 +287,14 @@ for i in range (zmax):
 
 ---
 
-[Link auf Simulation](http://mgje.github.io/Interaktive_Experimente/pingpong/)
+[Link zur Simulation](http://mgje.github.io/Interaktive_Experimente/pingpong/)
 ---
 ### Einfache Regeln
 
 ### komplexes Verhalten
-
-### Beispiel Collatz Folge
-
----
-
+### am
+### Beispiel der Collatz Folge
+#### (n3+1)
 
 
 </script>
@@ -488,12 +486,240 @@ Out[25]= 1.414213562
 <section data-markdown data-separator="---" data-vertical="--" data-background="#CF4E79" data-background-transition="slide" >
 <script type="text/template" >
 
-## noch mehr
+## weitere
 <br>
 <br>
-### Mathematik
+## Untersuchungen 
+## &
+## Experimente
+---
+## Abhängigkeit von Sitzposition zur Zähl-Zahl
+#### ping=3, pong=4
+
+
+\\( f(n) \\mapsto \\mbox{pos} \\)
+
+![PingPong](media/pingpong34.png)
 
 ---
+
+### Wertetabelle
+#### ping=3, pong=4
+
+
+$$ f(n) \\mapsto \\mbox{pos} $$
+
+<br>
+
+$$  \\moveleft{1em}
+    \\tiny
+	\\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+	\\hline 
+	  n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14  \\\\ \\hline
+	  pos & 1 & 2 & 3 & 2 & 3 & 4 & 3& 2 & 3 & 2& 1 & 0 & -1 & -2   \\\\ \\hline
+	\\end{array}
+$$
+
+
+
+--
+####Collatz Algorithmus as expression
+
+1. find for every n the direction \{1,-1\}
+2. sum over all  directions 
+
+<br>
+
+Function: $dir(n) \\mapsto \\{-1,1\\}$
+<br>
+
+$$ f(n) =  \\sum\_{i=1}^{n} dir(i) $$
+
+$$ \\moveleft{1em}
+    \\tiny
+	\\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+	\\hline 
+	  n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14  \\\\ \\hline
+	  dir & 1 & 1 & -1 & 1 & 1 & -1 & -1 & 1 & -1 & -1 & -1 & -1 & -1 & -1  \\\\ \\hline
+	  pos & 1 & 2 & 3 & 2  & 3 & 4 & 3  & 2  & 3 & 2  & 1  & 0  & -1 & -2 \\\\ \\hline
+	\\end{array}
+$$
+--
+### Function for the direction
+
+<br>
+
+$$ dir(i) = (-1)^{(\\#(ping \\mbox{ }or\\mbox{ } pong))}$$
+
+<br>
+
+$$\\small{dir(i) = 
+(-1)^{\\sum\_{k=1}^{i} (((i\\mbox{ } \\bmod \\mbox{ } Ping) ≟ 0) ≟ ¬ ((i \\mbox{ }\\bmod \\mbox{ } Pong) ≟ 0))\cdot 1} } $$
+--
+### 
+
+$$ f(n) =  \\sum\_{i=1}^{n} dir(i) $$
+
+$$f(n) =  \\sum\_{i=1}^{n} (-1)^{\\# (Ping\\mbox{ xor }Pong)}   $$
+<br>
+with 
+
+$$\\moveleft{3em}{\\# (Ping\\mbox{ xor }Pong)=}$$
+
+$$ \\sum\_{k=1}^{i} (((i\\mbox{ } \\bmod \\mbox{ } Ping) ≟ 0)  ≟ ¬ ((i \\mbox{ }\\bmod \\mbox{ } Pong) ≟ 0)) \\cdot 1$$
+--
+$$ \\moveleft{1em}
+    \\tiny
+	\\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+	\\hline 
+	  n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14  \\\\ \\hline
+	  \\# & 0 & 0 & 1 & 2 & 2 & 3 & 3 & 4 & 5 & 5 & 5 & 5 & 5 & 5  \\\\ \\hline
+	  dir & 1 & 1 & -1 & 1 & 1 & -1 & -1 & 1 & -1 & -1 & -1 & -1 & -1 & -1  \\\\ \\hline
+	  pos & 1 & 2 & 3 & 2  & 3 & 4 & 3  & 2  & 3 & 2  & 1  & 0  & -1 & -2 \\\\ \\hline
+	\\end{array}
+$$
+--
+### Collatz Berechnung in GeoGebra
+<small>
+Pos = 1 + Sum[Sequence[(-1)^Sum[Sequence[(Mod[i, ping] ≟ 0) ≟ (¬(Mod[i, pong] ≟ 0)), i, 1, k]], k, 1, N]]
+</small>
+![PingPongExpression](media/PinPongExpression.png)
+[PingPongExpression.ggb](downloads/PingPongExpression.ggb)
+---
+### Erforschen
+<small>
+Sequence[(j, 1 + Sum[Sequence[(-1)^Sum[Sequence[(Mod[i, ping] ≟ 0) ≟ (¬(Mod[i, pong] ≟ 0)), i, 1, k]], k, 1, j]]), j, 1, N]
+[PingPongFunction.ggb](downloads/PingPongFunction.ggb)</small>
+<video width="1390" height="602" data-autoplay >
+	    <source src="media/movies/PingPongFunction.mp4" type="video/mp4" /> 
+		Your browser does not support the <code>video</code> element.
+</video>
+--
+### Aproximate sin(x)
+
+$$ f(t) \\mapsto \\sin(x)$$
+
+<br>
+
+compare with 
+ 
+<br>
+
+$$ f(t) \mapsto  \frac{\left(  1 + \\sum\_{i=1}^{round \left(\frac{lcm(ping,pong)}{\pi}\cdot t \right)} dir(i) \right)} {\max(1 + \\sum\_{i=1}^{N} dir(i))_{N=1..lcm(ping,pong)}} $$
+--
+### Approximating sin(x)
+<video width="826" height="480" data-autoplay >
+	    <source src="media/movies/konvergenz.mp4" type="video/mp4" /> 
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[calcApproxsin.ggb](downloads/calcApproxsin.ggb)</small>
+---
+#### Ping=18, Pong=19
+<small>[ApproxSin.ggb](downloads/ApproxSin.ggb)</small>
+![sinapprox](media/approxSin.png)
+
+--
+### Measure the difference
+
+<br><br>
+
+$$ err^2 = \frac{\sum_{1}^{lcm(ping,pong)} \left( \sin(x) - approxsin(x)  \right)^2}{lcm(ping,pong)}$$
+
+--
+### Ping= 43, Pong 44
+### $$Error^2=0.00107$$ ca. 3% Fehler !!
+
+![Ping4344](media/Ping4344.png)
+--
+```python
+import math
+from gpanel import *
+
+def ggT(a,b): # Rekursive Definition nach Euklid
+    if a==b: return a
+    if a==1 or b==1: return 1
+    if a==0: return b
+    if b==0: return a
+    if a>b: return ggT(a%b,b)
+    if a<b: return ggT(a,b%a)
+
+def kgV(a,b):
+    return a*b/ggT(a,b)
+
+def calcpp(ping,pong,pos):
+    return [ (i%ping==0)!=(i%pong==0)*1.0 \
+            for i in range(1,pos+1)]
+    
+def calcdir(ping,pong,pos):
+    return (-1)**sum(calcpp(ping,pong,pos))
+```
+--
+```python
+def pingpong(ping,pong,pos):
+    return sum([calcdir(ping,pong,i) for i in range(pos)])
+
+def pingpongfunction(ping,pong,n):
+    return [pingpong(ping,pong,i) for i in range(1,n+1)]
+
+def maxpingpong(ping,pong):
+    N = kgV(ping,pong)
+    l = sorted(pingpongfunction(ping,pong,N), reverse = True)
+    k = int(round(0.04*N+1))
+    tot = 0
+    for e in l[0:k]:
+        tot += e
+    return 1.0*tot/k   
+
+def approxsin(ping,pong,x):
+    N = kgV(ping,pong)
+    return pingpong(ping,pong,x/math.pi*N)
+```
+--
+```python
+makeGPanel(-1,8, -2, 2)
+
+# draw coordinate system
+line(0, 0, 8, 0) # x axis
+line(0, -2, 0, 2) # y axis
+
+setColor("blue")
+x=0
+while x < 2*math.pi:
+    y = math.sin(x)
+    if x == 0:
+        move(x, y)
+    else:
+        draw(x, y)
+    x = x + 0.04
+```
+--
+```python
+setColor("green")
+ping = 7;
+pong = 8;
+amp = maxpingpong(ping,pong)
+count = 0
+err = 0.0
+x=0
+while x < 2*math.pi:
+    y = approxsin(ping,pong,x)/amp
+    count += 1
+    err += (math.sin(x)-y)**2
+    if x == 0:
+        move(x, y)
+    else:
+        draw(x, y)
+    x = x + 0.01
+
+print "Error"
+print ping,pong
+print err/count
+```
+---
+<small>[Collatz_Function_String_Code.ggb](downloads/Collatz_Function_String_Code.ggb)</small>
+![Collatz N3+1](media/collatz_n3.png)
+
 </script>
 </section>
 

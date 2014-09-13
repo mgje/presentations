@@ -51,9 +51,10 @@
 ### Ein EU-Projekt, das auf die Bezüge zwischen Mathematik 
 ### und Musik für Schule und Unterricht fokussiert.
 
+Markus Cslovjecsek, Martin Guggisberg
 ---
 
-Das Projekt entwickelt neue kreative Unterrichtsansätze, um das integrative Lernen in den Fächern Mathematik und Musik interessanter und partizipativer zu gestalten. Der integrative Ansatz kann dabei eine besondere Förderung bedeuten für leistungsschwache Schülerinnen und Schüler.
+Das Projekt entwickelt neue kreative Unterrichtsansätze, um das integrative Lernen in den Fächern Mathematik und Musik interessanter und partizipativer zu gestalten. 
 ---
 [http://maths.emportfolio.eu/](http://maths.emportfolio.eu/)
 ![webseite](media/website.png)
@@ -242,11 +243,11 @@ Das Projekt entwickelt neue kreative Unterrichtsansätze, um das integrative Ler
 	* Wie geht es weiter? 
 ---
 
-## Es lassen sich die folgenden Fragen formulieren
+## Es lassen sich folgende Fragen formulieren
 
 ---
 
-* Hängen die Positioncn von Ping-Zahlen und
+* Hängen die Positionen von Ping-Zahlen und
 und Pong-Zahlen von der Anzahl der
 Mitspieler ab?
 
@@ -317,10 +318,7 @@ T(x) = \left\\{ \begin{array}{l}  3 x+1, &\mbox{für n ungerade}\\\\
          \frac{x}{2}, &\mbox{für n gerade} \end{array} \right.
 $$
 
----
-### Darstellung von Collatz Folgen
 
-![collatz](media/collatz.png)
 ---
 
 ```
@@ -335,6 +333,82 @@ Mathematics is not yet ready for such problems
 
 
 ![Erdos](media/zitat_erdos1.png)
+---
+## Collatz Spiel
+
+### Wähle eine Zahl
+
+### damit die Folge 
+### möglichst lang wird 
+---
+
+
+---
+#13
+--
+#40
+--
+#20
+--
+#10
+--
+#5
+--
+#16
+--
+#8
+--
+#4
+--
+#2
+--
+#1
+
+---
+
+#9
+--
+#28
+--
+#14
+--
+#7
+--
+#22
+--
+#11
+--
+#34
+--
+#17
+--
+#52
+--
+#26
+--
+#13
+--
+#40
+--
+#20
+--
+#10
+--
+#5
+--
+#16
+--
+#8
+--
+#4
+--
+#2
+--
+#1
+---
+### Darstellung von Collatz Folgen
+
+![collatz](media/collatz.png)
 
 ---
 #### Definition und Berechnung der Collatz Folge
@@ -467,7 +541,6 @@ and
 		<script src="../reveal/js/reveal.min.js"></script>
 
 		<script>
-
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal#configuration
 			Reveal.initialize({
@@ -484,7 +557,19 @@ and
 
 				// Parallax scrolling
 				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				parallaxBackgroundSize: '2100px 900px',
+				parallaxBackgroundSize: 'default',
+
+ 				width: 1024,
+    			height: 700,
+
+    			// Factor of the display size that should remain empty around the content
+    			margin: 0.1,
+
+    			// Bounds for smallest/largest possible scale to apply to content
+    			minScale: 0.2,
+   				maxScale: 1.0,
+
+
 
 				// Optional libraries used to extend on reveal
 				dependencies: [

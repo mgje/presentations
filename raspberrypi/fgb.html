@@ -644,7 +644,7 @@ Animate[
 		Your browser does not support the <code>video</code> element.
 </video>
 
----
+--
 ### Animated Gifs
 
 ```mathematica
@@ -1110,6 +1110,291 @@ plt.show()
 </section>
 
 
+<!-- Webserver -->
+<section data-markdown data-separator="---" data-vertical="--" data-background="#CF4E79" data-background-transition="slide" >
+<script type="text/template" >
+
+## Raspberry Pi
+<br>
+<br>
+###als Webserver und Access-Point
+
+---
+
+### Projektidee: Interaktive Postersession
+
+
+![poster](media/poster.jpg)
+
+
+
+---
+
+### Einsatz am Infotag 2014 
+### Universität Basel
+#### Besucherinnen und Besucher können auf Ihren mobilen Geräten [experimentieren](http://mgje.github.io/webprogramming/processing/zufallsbilder.html)!
+
+![webprogramming](media/demo_infotag.png)
+
+[Link auf Infotag 2014 Demo](http://mgje.github.io/webprogramming/processing/zufallsbilder.html)
+---
+### Verwendete Technologien
+
+#### Client-Seitig
+
+- [Bootstrap](http://getbootstrap.com/about/) Icons und Knöpfe
+- [jQuerry](http://jquery.com/) Interaktion, Events und DOM
+- [Processing.js](http://processingjs.org/) Visualisierung
+- [Modernizr](http://modernizr.com/) Browser Version
+- [Spectrum.js](http://bgrins.github.io/spectrum/) Colorpicker
+- [Ace.js](http://ace.c9.io/) Editor
+- [CoffeeScript](http://coffeescript.org/) JavaScript Programmierung
+
+---
+### Verwendete Technologien
+
+#### Server-Seitig
+
+- [Apache](http://httpd.apache.org/)
+- [hostapd](http://wireless.kernel.org/en/users/Documentation/hostapd)
+- [ISC-DHCPD](http://wiki.ubuntuusers.de/ISC-DHCPD)
+- [iptables](http://wiki.ubuntuusers.de/iptables2?redirect=no)
+- [DNS Mask](http://www.thekelleys.org.uk/dnsmasq/doc.html)
+
+---
+#### Zum Surfen ist ein Raspberry Pi langsam!
+
+![slow](media/slow.gif)
+
+#### Ein zweijähriges Smartphone ist bis zu 5x schneller !
+
+---
+### Octane 2 Benchmark von Google
+
+```
+Octane 2.0 is a modern benchmark that measures a JavaScript engine’s performance by running a suite of tests representative of today’s complex and demanding web applications. 
+``` Google
+
+[Octane Webseite](https://developers.google.com/octane/)
+
+
+---
+### Octan Benchmark Iphone 5c (2013)
+
+![iphone](media/iphone5c.png)
+
+--
+### Octan Benchmark Resultat Ipad 2 (2012)
+
+![ipad](media/ipad2.png)
+
+---
+### Octan Benchmark Raspberry Pi B 
+
+![raspi](media/raspi.png)
+---
+
+### Fazit
+
+* Nach über 90 Minuten ist der Benchmark noch nicht beendet!
+* In den ersten 12 Tests ist der Raspberry Pi um einen Faktor __30 - 70__ langsamer als eine iPad2 von 2012
+* Der Raspberry Pi ist um einen Faktor __55 - 120__ langsamer als ein Iphone5c  von 2013
+
+---
+
+``` Schülerinnen und Schüler nutzen gerne ihre eigenen Geräte. ```
+
+---
+
+![Bild Schüler](media/learning.png)
+
+---
+<big>
+
+``` Wie kommen nun schulische Inhalte auf diese Geräte? ```
+
+</big>
+---
+### Ein Raspberry Pi kann als Server eingesetzt werden
+
+
+<br>
+
+Damit könnte die folgende Frage mit __Ja__ beantwortet werden.
+
+<br> 
+
+````Gibt es hier ein 
+W-Lan ?```` 
+
+
+
+
+
+---
+### Installation
+
+<br>
+
+* Webserver
+* DHCP Server
+* Wifi Access Point
+* Netzwerk Konfiguration
+* DNS Umleitung
+---
+#### Detailierte Anleitung 
+#### [Link zu GitHub](https://github.com/mgje/RaspberryPI)
+![bildgithub](media/anleitung.png)
+--
+### Installation der Pakete
+
+```bash
+#web Server
+$ sudo apt-get install apache2
+
+#DHCP Server
+$ sudo apt-get install isc-dhcp-server
+
+#Access-Point
+$ sudo apt-get install hostapd iw 
+
+#DNS Weiterleitung
+$ sudo apt-get install -y dnsmasq
+
+```
+<br>
+
+#### oder [klonen vorinstallierter Programme](https://github.com/mgje/RaspberryPI)
+#### Mathematica / Scientific Python / Webserver / 
+#### Access-Point
+
+--
+### Konfiguration 
+#### mit Texteditor
+#### z.B. SSID und Wifi channel
+```bash
+$ sudo nano /etc/hostapd/hostapd.conf
+```
+
+```bash
+# Schnittstelle und Treiber
+interface=wlan0
+driver=rtl871xdrv
+# WLAN-Konfiguration
+ssid=Raspi2
+channel=9
+# ESSID sichtbar
+ignore_broadcast_ssid=0
+...
+```
+--
+#### Zugangsverschlüsselung
+
+```bash
+$ sudo nano /etc/hostapd/hostapd.conf
+```
+
+```bash
+...
+wpa_key_mgmt=WPA-PSK
+#rsn_pairwise=CCMP
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+# Schluesselintervalle / Standardkonfiguration
+wpa_group_rekey=600
+wpa_ptk_rekey=600
+wpa_gmk_rekey=86400
+# Zugangsschluessel (PSK) / hier in Klartext (ASCII)
+wpa_passphrase=raspberrypi
+```
+--
+
+#### Patch for the RTL8188CUS hardware driver
+#### Edimax 7811UN drahtloser Nano Adapter
+
+```bash
+$ wget http://www.adafruit.com/downloads/adafruit_hostapd.zip
+$ unzip adafruit_hostapd.zip
+$ sudo mv /usr/sbin/hostapd /usr/sbin/hostapd.ORIG
+$ sudo mv hostapd /usr/sbin
+$ sudo chmod 755 /usr/sbin/hostapd
+$ sudo update-rc.d hostapd enable
+```
+
+--
+
+### Netzwerkeinstellungen
+
+```bash
+sudo nano /etc/network/interfaces
+```
+
+```bash
+auto lo
+
+iface lo inet loopback
+iface eth0 inet dhcp
+#stand alone static number
+#iface eth0 inet static
+#  address 191.168.41.1
+#  netmask 255.255.255.0
+
+allow-hotplug wlan0
+
+# static configuratin for dhcp server
+iface wlan0 inet static
+# statische  Gateway-Adresse 
+address 192.168.42.1
+netmask 255.255.255.0
+
+ up iptables-restore < /etc/iptables.ipv4.nat
+```
+--
+#### Routing mit Hilfe von iptables
+
+* wlan0 -> eth0
+
+<br>
+
+```bash
+
+$ sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+$ sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+$ sudo iptables -A FORWARD -i eth0 -o wlan0 -m state 
+−-state RELATED,ESTABLISHED -j ACCEPT
+$ sudo iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
+$ sudo iptables -t nat -S
+$ sudo iptables -S
+$ sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+
+```
+
+--
+
+### Testen der Dienste
+
+
+```bash
+$ sudo service isc-dhcp-server start
+$ sudo service isc-dhcp-server status
+$ sudo service hostapd start
+$ sudo service hostapd status
+$ sudo service apache2 restart
+$ sudo service hostapd status
+```
+
+---
+### Tutorials + Quellen 
+
+* [Der eigene Webserver mit dem Raspberry Pi](http://www.manfred-steger.de/tuts/20-der-eigene-webserver-mit-dem-raspberry-pi)
+* [Raspberry Pi als Webserver: So gehts](http://t3n.de/news/raspberry-pi-webserver-gehts-554954/)
+* [Raspberry Pi als Webserver - Apache 2 Installation](http://www.forum-raspberrypi.de/Thread-tutorial-raspberry-pi-als-webserver-apache-2-installation)
+* [How to Make a Raspberry Pi Web Server](http://www.wikihow.com/Make-a-Raspberry-Pi-Web-Server)
+* [Setting up a Raspberry Pi as access point](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point/overview)
+</script>
+</section>
 
 <!-- Conclusion -->
 <section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >

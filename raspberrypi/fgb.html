@@ -56,8 +56,30 @@
 ## Raspberry Pi
 
 ![raspberry](media/RaspberryPi.jpg)
+--
+
+```javascript
+fibo = function(n){
+   var N,i,arr;
+      
+    if (typeof(n) !== "number"){
+       N = 10;
+    } else {
+       N =n-2;
+    }
+  
+    arr=[1,1];
+      
+    for (i=0;i<N;i++){
+       arr.push(arr[i]+arr[i+1])
+    }
+    return "{"+arr+"}";
+};
+
+```
 
 ---
+
 ## Einfache Installation
 ### Kopieren des Images auf die SD-Karte
 

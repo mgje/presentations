@@ -1,34 +1,43 @@
 <!doctype html>
-<html lang="en">
+<html lang="de">
 
 	<head>
 		<meta charset="utf-8">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-		<title>TITLE</title>
 
-		<meta name="description" content="XXXXXXXX.">
+		<title>Fermat-Point</title>
+
+		<meta name="description" content="Talk GDM 2014">
 		<meta name="author" content="Martin Guggisberg">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="../reveal2015/css/reveal.min.css">
+		<link rel="stylesheet" href="../reveal2015/css/reveal.css">
+		<!--
+		<link rel="stylesheet" href="../reveal2015/css/theme/black.css" id="theme">
+		-->
 
 		<!-- Fonts Definition inside -->
+	
 		<link rel="stylesheet" href="../reveal2015/css/theme/mw.css" id="theme">
+	
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="../reveal/lib/css/github.css">
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal2015/lib/css/zenburn.css">
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<!-- Printing and PDF exports -->
 		<script>
-			document.write( '<link rel="stylesheet" href="../reveal2015/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal2015/css/print/pdf.css' : '../reveal2015/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
 		<!--[if lt IE 9]>
-		<script src="../reveal/lib/js/html5shiv.js"></script>
+		<script src="../reveal2015/lib/js/html5shiv.js"></script>
 		<![endif]-->
 	</head>
 
@@ -38,11 +47,8 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
-				<!-- START -->
-
-				<!-- START -->
-
-				<section data-background="#222A22">
+				
+					<section data-background="#222A22">
 					
 					<h3>
 						Forschendes Lernen mit Hilfe von Optimierungsaufgaben am Beispiel eines klassischen Lokalisierungsproblems
@@ -59,173 +65,16 @@
 				</section>
 				<section data-background="#222A22">
 				<p>
-					„Wo ist der beste Standort für einen Spielplatz?“ (Roth-Sonnen (2005): Was ist ein Mittelpunkt?). Diese Aufgabe hat keine geschlossene algebrai-sche Lösung – und bietet damit einen Einstieg in realitätsbezogene Situati-onen des Forschenden Lernens.
-Am Beispiel des historischen Fermat-Weber-Problems soll das für den Un-terricht auf der Sekundarstufe 2 aufzeigt werden. Neben numerischen Ver-fahren werden Lösungen mit GeoGebra vorgestellt. 
+					„Wo ist der beste Standort für einen Spielplatz?“ (Roth-Sonnen (2005): Was ist ein Mittelpunkt?). Diese Aufgabe hat keine geschlossene algebraische Lösung – und bietet damit einen Einstieg in realitätsbezogene Situationen des Forschenden Lernens.
+Am Beispiel des historischen Fermat-Problems soll das für den Unterricht auf der Sekundarstufe 2 aufzeigt werden. Neben numerischen Verfahren werden Lösungen mit GeoGebra vorgestellt. 
 
 				</p>
 				</section>
 
-<!-- Introduction -->
-<section data-markdown data-separator="---" data-vertical="--" data-background="#222A22">
-<script type="text/template">
 
-# Slide 1
+<!-- Weiszfeld -->
 
----
-
-# 2
-
---
-
-next 
-
---
-
-next 2
-
-
-## Agenda
-
-* Geschichtliche Betrachtung 
-* Exakte Lösung für n=3
-* Numerisches Verfahren für n>3
-* Experimentieren mit dem Weiszfeld Algorithmus
----
-![Buch](../Budapest2014/media/buch.png)
----
-
-![Aufgabe91](../Budapest2014/media/aufgabe91.png)
-
-"Wo befindet sich ein Punkt P in einem Dreieck, wenn die Summe aller Abstände von diesem Punkt P zu den drei Ecken minimal sein soll."
-
-<small>[Dorrie, H. (1965). 100 Great problems of elementary mathematics. Dover Publications.](http://cds.cern.ch/record/1551234)</small>
-
----
-<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/81814/width/786/height/600/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="786px" height="600px" style="border:0px;"> </iframe>
----
-
-![Fig 1](../Budapest2014/media/fermat_problem_fig1.png)
-
---
-<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/52934/width/700/height/500/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="700px" height="500px" style="border:0px;"> </iframe>
---
-
-The Weber problem finds the point in a plane which minimises the sum of weighted Euclidean distances to a set of fixed points.
-
-This is interpreted as finding the factory location which minimises the total weighted distances from suppliers and customers, where weights represent relative volumes of interactions, e.g. weight of material to be transported from a supplier, or volume of finished products for a customer.
-
-* * * *
-<small>[Drezner, Z., & Hamacher, H. W. (Eds.). (2004). Facility location: applications and theory. Springer.](http://books.google.ch/books?hl=en&lr=&id=sxpcsGN7K1YC)</small>
-
---
-## Zahlreiche weitere Bezeichnungen
-
-the Fermat problem, the Fermat-Torricelli problem, the Steiner problem, the Steiner-Weber problem, the Weber problem, **the Fermat-Weber problem**, the weber facility problem, the one median problem, the median center problem, the spatial median problem, the minimum aggregate travel point problem
-</script>
-</section>
-
-<!-- Math Exploring -->
-<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#00AA99" data-background-transition="slide">
-<script type="text/template">
-# Exakte Lösung
-<br>
-###für n = 3
----
-![Hat ein Dreieck eine Mitte?](../Budapest2014/media/dreieck_mitte.png)
-
-Mathbuch Band8 LU18
----
-![Aufgabe LU18](../Budapest2014/media/aufgabe_LU18.png)
----
-![geometric solution](../Budapest2014/media/geometric_solution.png)
----
-### Geometrischer Beweis
-
-![geometric solution](../Budapest2014/media/geometric_proof.png)
-
-[Link to Geogebra Material](http://www.geogebratube.org/student/m71061)
---
-<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/71061/width/960/height/786/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="960px" height="786px" style="border:0px;"> </iframe>
----
-### Beweis mit Streckenzug 
-![Streckenzug Lösung](../Budapest2014/media/streckenzug_proof.png)
-
-<small>
-(LU 18, ICT-Zusatzmaterial)
-</small>
---
-## Vorgehen:
-
-1. Im Dreieck ABC setzen wir irgendwo den Punkt P.
-
-2. Nun drehen wir das Dreieck ABP um 60° um den Punkt B. So entsteht ein gleichseitiges Dreieck
-BPP’. Der Streckenzug A’P’PC entspricht nun der Abstandssumme von P zu den Ecken des Dreiecks ABC.
-
-3. Bewegt man den Punkt P so, dass der Streckenzug A’P’PC geradlinig wird, so hat man die minimale Abstandssumme gefunden.
---
-## Weitere Lösungen:
-
-[Approximation Algorithms for
-Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.pdf)
----
-## **Wer** hat als erstes ein numerisches Lösungsverfahren für **n>3** gefunden?
----
-### Facility Location Problems
-
-### Ein Teilgebiet der kombinatorischen Optimierung 
-
-1966 findet **M. L. Balinksi** eine approximative Lösung des Fermat-Weber Problems für n-Ecken.
-
-****
-<small>
-M. L. Balinksi. On finding integer solutions to linear programs. In Proceedings of the IBM Scientific Computing Symposium on Combinatorial Problems, pages 225–248. IBM, 1966.</small>
----
-![Andrew_Vazsonyi](../Budapest2014/media/Andrew_Vazsonyi.png)
-
-```I was sixteen when I became intrigued with the N point 
-problem``` 
-
-***Andrew Vázsonyi, 1932***
---
-
-```Cosider N points and one more 
-point, X. Measure the distances between X and the given 
-points, then add the distances. Find point X so 
-that this sum is the smallest possible.```
-
-Andrew Vázsonyi
---
-```I found the point X by using an infinite, 
-recursive algorithm, a most unusual solution 
-for a problem in geometry. You start with a
-point X0, anywhere, and search for a better 
-solution.```
-
-Andrew Vázsonyi, 1937
----
-The paper "Sur le point pour lequel les sommes
-des distances de n points donnés et minimum", 
-published in **Japan** in **1937** under the name 
-**Endre Weiszfeld** became a classic in the 
-mathematics of location analysis.
-
---
-## Modern Formulierung
-![kraftwerk](../Budapest2014/media/kraftwerk.png)
-
-[Link to GeoGebra Material](http://ulrich-steinmetz.de/geogebra/kraftwerk.html)
-* * * *
-<small>[Ulrich Steinmetz. (2014)](http://www.ulrich-steinmetz.de/)</small>
---
-### Varignon Frame
-![Varignon Frame](../Budapest2014/media/varignonFrame.png)
-
-Varignon proposed a mechanical analogue device which has actually been used in practice
-
-</script>
-</section>
-
-<section data-markdown data-separator="---" data-vertical="--" data-background="#FF5E99" data-background-transition="slide" >
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#AF0E59" data-background-transition="slide" >
 <script type="text/template" >
 
 #Weiszfeld
@@ -255,7 +104,7 @@ Adventures of a Real-Life Mathematician
 
 ---
 ### Weiszfeld Algorithmus
-Iterative Gewichtung von quadratischen Abweichungen
+Iterative Gewichtung von  Abweichungen
 
 $ $
 
@@ -325,140 +174,139 @@ def geometric_median(self,points, epsilon):
 
 
 
-<section class="weiss" data-markdown data-separator="---" data-vertical="--" data-background="#22222" data-background-transition="slide">
-<script type="text/template">
-# Numerische Experimente
+				<section data-markdown data-separator="---" data-vertical="--">
+					<script type="text/template">
+						## Markdown support
 ---
-### Konvergenzverhalten des  Weiszfeld Algorithmus
-
-<video width="1002" height="568" data-autoplay >
-        <source src="../Budapest2014/media/movies/konvergenz.mp4" type="video/mp4" />
-		<source src="../Budapest2014/media/movies/konvergenz.webm" type="video/webm" />
-		<source src="../Budapest2014/media/movies/konvergenz.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
+go go
 ---
-### Für n=3 kann ein Winkel von 120° beobachtet werden
-
-<video width="875" height="512" data-autoplay >
-	    <source src="../Budapest2014/media/movies/120degree.mp4" type="video/mp4" /> 
-		<source src="../Budapest2014/media/movies/120degree.webm" type="video/webm" />
-		<source src="../Budapest2014/media/movies/120degree.ogv" type="video/ogg" />	    
-		Your browser does not support the <code>video</code> element.
-</video>
-
+### go go
+* bla
+* bla2
+* bla3
+* gg3
 ---
-### Keine Winkelabhängigkeit für n>3
 
-<video width="876" height="512" data-autoplay >
-	    <source src="../Budapest2014/media/movies/morepoints.mp4" type="video/mp4" />
-		<source src="../Budapest2014/media/movies/morepoints.webm" type="video/webm" />
-		<source src="../Budapest2014/media/movies/morepoints.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
----
-### FP bewegt sich auf einem Orbit
-<video width="998" height="712" data-autoplay >
-	    <source src="../Budapest2014/media/movies/orbit.mp4" type="video/mp4" />
-		<source src="../Budapest2014/media/movies/orbit.webm" type="video/webm" />
-		<source src="../Budapest2014/media/movies/orbit.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
-
----
-### FP springt auf innere Punkte
-<video width="854" height="634" data-autoplay >
-	    <source src="../Budapest2014/media/movies/snaptopoint.mp4" type="video/mp4" />
-	    <source src="../Budapest2014/media/movies/snaptopoint.webm" type="video/webm" />
-	    <source src="../Budapest2014/media/movies/snaptopoint.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
----
-## Wo befindet sich der Mittelpunkt von Europa ?
----
-<video width="972" height="728" data-autoplay >
-	    <source src="../Budapest2014/media/movies/europefp.mp4" type="video/mp4" />
-	    <source src="../Budapest2014/media/movies/europefp.webm" type="video/webm" />
-	    <source src="../Budapest2014/media/movies/europefp.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
+```
+function linkify( selector ) {
+  if( supports3DTransforms ) {
+    var nodes = document.querySelectorAll( selector );
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+```
 
 
---
-### Interactive Demo (JavaScript)
-<small>GeoGebra Materials : <a href="http://www.geogebratube.org/material/show/id/66049">http://www.geogebratube.org/material/show/id/66049</a><small>
-	<a class="image" href="Fermat_Weber/index.html" target="_blank">
-		<img width="1000" height="600" src="../Budapest2014/media/fermat_weber_2.png" alt="Fermat_Weber">
-	</a>
-
---
-## Demo 2
-<small>GeoGebra Materials : <a href="http://www.geogebratube.org/student/m66688">http://www.geogebratube.org/student/m66688</a><small>
-	<a class="image" href="Fermat_Weber/fermat_europe.html" target="_blank">
-		<img width="800" height="600" src="../Budapest2014/media/fermat_weber_europe.png" alt="Fermat Weber Europe">
-	</a>
---
-<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/66688/width/1000/height/736/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="1000px" height="736px" style="border:0px;"> </iframe>
-</script>
-</section>
-
-<!-- Conclusion -->
-<section data-markdown data-separator="---" data-vertical="--" data-background="#222222" data-background-transition="slide" >
-<script type="text/template" >
-
-# weitere Experimente 
-<br>
-### z. B. Modellierung einer Kamera
----
-##Vielen Dank 
-<br> 
-<br>
-#?
+					</script>
+				</section>
 
 
-<br>
-Vortrag, Filme und interaktive Applets sind auf GitHub. <br><br>
-[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
+				<section data-markdown>
+					<script type="text/template">
+						## Markdown support
 
---
+						Write content using inline or external Markdown.
+						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
 
-<br>
-### Thanks to Hakim El Hattab / hakim.se for reveal.js
-</script>
-</section>
+						```
+						<section data-markdown>
+						  ## Markdown support
+
+						  Write content using inline or external Markdown.
+						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
+						</section>
+						```
+
+                        ```
+                        function linkify( selector ) {
+  if( supports3DTransforms ) {
+
+    var nodes = document.querySelectorAll( selector );
+
+    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
+      var node = nodes[i];
+
+      if( !node.className ) {
+        node.className += ' roll';
+      }
+    }
+  }
+}
+
+                        ```
+
+
+					</script>
+				</section>
+
+				<section>
+					<section id="fragments">
+						<h2>Fragments</h2>
+						<p>Hit the next arrow...</p>
+						<p class="fragment">... to step through ...</p>
+						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
+
+						<aside class="notes">
+							This slide has fragments which are also stepped through in the notes window.
+						</aside>
+					</section>
+					<section>
+						<h2>Fragment Styles</h2>
+						<p>There's different types of fragments, like:</p>
+						<p class="fragment grow">grow</p>
+						<p class="fragment shrink">shrink</p>
+						<p class="fragment roll-in">roll-in</p>
+						<p class="fragment fade-out">fade-out</p>
+						<p class="fragment current-visible">current-visible</p>
+						<p class="fragment highlight-red">highlight-red</p>
+						<p class="fragment highlight-blue">highlight-blue</p>
+					</section>
+				</section>
+
+				<section id="transitions">
+					<h2>Transition Styles</h2>
+					<p>
+						You can select from different transitions, like: <br>
+						<a href="?transition=none#/transitions">None</a> -
+						<a href="?transition=fade#/transitions">Fade</a> -
+						<a href="?transition=slide#/transitions">Slide</a> -
+						<a href="?transition=convex#/transitions">Convex</a> -
+						<a href="?transition=concave#/transitions">Concave</a> -
+						<a href="?transition=zoom#/transitions">Zoom</a>
+					</p>
+				</section>
+
 			</div>
 
 		</div>
 
 		<script src="../reveal2015/lib/js/head.min.js"></script>
-		<script src="../reveal2015/js/reveal.min.js"></script>
+		<script src="../reveal2015/js/reveal.js"></script>
 
 		<script>
 
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
 				controls: true,
 				progress: true,
 				history: true,
 				center: true,
-				keyboard: true,
-				overview: true,
-				slideNumber: true,
 
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				parallaxBackgroundSize: '2100px 900px',
-
-				// Optional libraries used to extend on reveal
+				// Optional reveal.js plugins
 				dependencies: [
 					{ src: '../reveal2015/lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: '../reveal2015/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal2015/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal2015/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: '../reveal2015/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: '../reveal2015/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '../reveal2015/plugin/zoom-js/zoom.js', async: true },
 					{ src: '../reveal2015/plugin/math/math.js', async: true }
 				]
 			});

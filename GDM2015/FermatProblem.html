@@ -82,11 +82,27 @@ Am Beispiel des historischen Fermat-Problems soll das für den Unterricht auf de
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#222226" data-background-transition="slide" >
 <script type="text/template" >
 
-# slide 1
----
-# slide 2
----
-# slide 3
+```
+Kann man forschen lernen?
+```&nbsp;
+
+<small>Jürgen Roth 2004</small>
+--
+<blockquote >
+    <br> 
+	&ldquo; Kann man forschen lernen? &rdquo;
+    <br>
+    &nbsp;
+</blockquote>
+<small>Jürgen Roth 2004</small>
+--
+<quote >
+    <br> 
+	&ldquo; Kann man forschen lernen? &rdquo;
+    <br>
+    &nbsp;
+</quote>
+<small>Jürgen Roth 2004</small>
 
 </script>
 </section>
@@ -96,11 +112,18 @@ Am Beispiel des historischen Fermat-Problems soll das für den Unterricht auf de
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
 <script type="text/template" >
 
-# slide 1
+## Wo ist der beste Ort für ein Spielplatz?
+
+![Ausgangslage](media/spielplatz_abb1.png)
 ---
-# slide 2
+![Spielplatz](media/spielplatz_abb2.png)
 ---
-# slide 3
+![Spielplatz](media/spielplatz_abb3.png)
+---
+![Spielplatz](media/spielplatz_abb4.png)
+---
+![Spielplatz](media/spielplatz_abb5.png)
+
 
 </script>
 </section>
@@ -111,11 +134,76 @@ Am Beispiel des historischen Fermat-Problems soll das für den Unterricht auf de
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
 <script type="text/template" >
 
-# slide 1
+## Von einem historischen Problem zu aktuellen Forschungsgebieten
 ---
-# slide 2
+![Buch](../Budapest2014/media/buch.png)
 ---
-# slide 3
+
+![Aufgabe91](../Budapest2014/media/aufgabe91.png)
+
+"Wo befindet sich ein Punkt P in einem Dreieck, wenn die Summe aller Abstände von diesem Punkt P zu den drei Ecken minimal sein soll."
+
+<small>[Dorrie, H. (1965). 100 Great problems of elementary mathematics. Dover Publications.](http://cds.cern.ch/record/1551234)</small>
+
+--
+## 91 Fermat’s Problem for Torricelli
+<blockquote >
+    <br> 
+To find the point the sum of whose distances from the vertexes of a given triangle ist the smallest possible. 
+    <br>
+    &nbsp;
+</blockquote>
+
+Dies entspricht der Nummer 91 der historischen mathematischen Problemen aus dem Buch von Dörrie. 
+---
+<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/81814/width/786/height/600/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="786px" height="600px" style="border:0px;"> </iframe>
+---
+![Hat ein Dreieck eine Mitte?](../Budapest2014/media/dreieck_mitte.png)
+
+Mathbuch Band8 LU18
+--
+![Aufgabe LU18](../Budapest2014/media/aufgabe_LU18.png)
+--
+![geometric solution](../Budapest2014/media/geometric_solution.png)
+--
+### Geometrischer Beweis
+
+![geometric solution](../Budapest2014/media/geometric_proof.png)
+
+[Link to Geogebra Material](http://www.geogebratube.org/student/m71061)
+--
+<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/71061/width/960/height/786/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="960px" height="786px" style="border:0px;"> </iframe>
+--
+### Beweis mit Streckenzug 
+![Streckenzug Lösung](../Budapest2014/media/streckenzug_proof.png)
+
+<small>
+(LU 18, ICT-Zusatzmaterial)
+</small>
+--
+## Vorgehen:
+
+1. Im Dreieck ABC setzen wir irgendwo den Punkt P.
+
+2. Nun drehen wir das Dreieck ABP um 60° um den Punkt B. So entsteht ein gleichseitiges Dreieck
+BPP’. Der Streckenzug A’P’PC entspricht nun der Abstandssumme von P zu den Ecken des Dreiecks ABC.
+
+3. Bewegt man den Punkt P so, dass der Streckenzug A’P’PC geradlinig wird, so hat man die minimale Abstandssumme gefunden.
+--
+## Weitere Lösungen:
+
+[Approximation Algorithms for
+Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.pdf)
+---
+
+![Fig 1](../Budapest2014/media/fermat_problem_fig1.png)
+
+--
+
+## Zahlreiche weitere Bezeichnungen
+
+the Fermat problem, the Fermat-Torricelli problem, the Steiner problem, the Steiner-Weber problem, the Weber problem, **the Fermat-Weber problem**, the weber facility problem, the one median problem, the median center problem, the spatial median problem, the minimum aggregate travel point problem
+
 
 </script>
 </section>
@@ -165,98 +253,110 @@ $ $
 
 
 
+</script>
+</section>
+
+
+<!-- weitere Fragen? forschung? -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
+<script type="text/template" >
+
+# Numerische Experimente
 ---
-## Calculate next interation Position of FP
+### Konvergenzverhalten des  Weiszfeld Algorithmus
 
-```python
-	def median_approx(self,P, points):
-		"""
-		Return a new approximation to the geometric median 
-		of `points` by applying one iteration of Weiszfeld's 
-		algorithm to the old appromixation P.
-    	"""
-		W = x = y = 0.0
-		for Q in points:
-			d = self.distance(P, Q)
-			if d != 0:
-				w = 1.0 / d
-				W += w
-				x += Q[0] * w
-				y += Q[1] * w
-		return x / W, y / W
-
-```
+<video width="1002" height="568" data-autoplay >
+        <source src="../Budapest2014/media/movies/konvergenz.mp4" type="video/mp4" />
+		<source src="../Budapest2014/media/movies/konvergenz.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/konvergenz.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
 ---
+### Für n=3 kann ein Winkel von 120° beobachtet werden
 
-### Main Loop
-
-```python
-def geometric_median(self,points, epsilon):
-	"""
-	Return an approximation to the geometric median for 
-	`points`. Start with the centroid and apply Weiszfeld's 
-	algorithm until the distance between steps is less 
-	than `epsilon`.
-	"""
-	n = float(len(points))
-		P = tuple(sum(P[i] for P in points) / n for i in range(2))
-		while True:
-			Q = self.median_approx(P, points)
-			if self.distance(P, Q) < epsilon:
-				return Q
-			P = Q
-
-```
-
----
-### Interaktiv Programmieren (beta)
-<video width="960" height="540" data-autoplay >
-	    <source src="../Budapest2014/media/movies/interaktiv.mp4" type="video/mp4" />
-	    <source src="../Budapest2014/media/movies/interaktiv.webm" type="video/webm" />
-	    <source src="../Budapest2014/media/movies/interaktiv.ogv" type="video/ogg" />
+<video width="875" height="512" data-autoplay >
+	    <source src="../Budapest2014/media/movies/120degree.mp4" type="video/mp4" /> 
+		<source src="../Budapest2014/media/movies/120degree.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/120degree.ogv" type="video/ogg" />	    
 		Your browser does not support the <code>video</code> element.
 </video>
 
+---
+### Keine Winkelabhängigkeit für n>3
+
+<video width="876" height="512" data-autoplay >
+	    <source src="../Budapest2014/media/movies/morepoints.mp4" type="video/mp4" />
+		<source src="../Budapest2014/media/movies/morepoints.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/morepoints.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+### FP bewegt sich auf einem Orbit
+<video width="998" height="712" data-autoplay >
+	    <source src="../Budapest2014/media/movies/orbit.mp4" type="video/mp4" />
+		<source src="../Budapest2014/media/movies/orbit.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/orbit.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### FP springt auf innere Punkte
+<video width="854" height="634" data-autoplay >
+	    <source src="../Budapest2014/media/movies/snaptopoint.mp4" type="video/mp4" />
+	    <source src="../Budapest2014/media/movies/snaptopoint.webm" type="video/webm" />
+	    <source src="../Budapest2014/media/movies/snaptopoint.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+## Wo befindet sich der Mittelpunkt von Europa ?
+---
+<video width="972" height="728" data-autoplay >
+	    <source src="../Budapest2014/media/movies/europefp.mp4" type="video/mp4" />
+	    <source src="../Budapest2014/media/movies/europefp.webm" type="video/webm" />
+	    <source src="../Budapest2014/media/movies/europefp.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+```
+Kann man forschen lernen?
+```&nbsp;
+
+--
+```
+Kann man forschen lernen?
+```&nbsp;
+
+<blockquote>
+<br> 
+	Subjektiv neue Bereiche können mit Hilfe von interaktiven 
+	Experimenten erforscht werden.
+    <br>
+    &nbsp;
+</blockquote>
+
+
+
+---
+<iframe scrolling="no" src="https://tube.geogebra.org/material/iframe/id/52934/width/1024/height/700/border/252222/rc/true/ai/false/sdz/false/smb/false/stb/false/stbh/true/ld/false/sri/false/at/preferhtml5" width="1024px" height="700px" style="border:0px;"> </iframe>
+---
+##Vielen Dank 
+<br> 
+<br>
+#?
+
+
+<br>
+Vortrag, Filme und interaktive Applets sind auf GitHub. <br><br>
+[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
+
+--
+
+<br>
+### Thanks to Hakim El Hattab / hakim.se for reveal.js
+
 </script>
 </section>
-<!-- from default presentation -->
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
 			</div>
 
 		</div>

@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Fermat-Point</title>
+		<title>Fermat-Punkt</title>
 
 		<meta name="description" content="Talk GDM 2014">
 		<meta name="author" content="Martin Guggisberg">
@@ -14,7 +14,8 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<link rel="stylesheet" href="../reveal2015/css/reveal.css">
+		<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+		<link rel="stylesheet" href="../reveal2015/css/reveal.min.css">
 		<!--
 		<link rel="stylesheet" href="../reveal2015/css/theme/black.css" id="theme">
 		-->
@@ -50,13 +51,13 @@
 				<!-- Title Abstract -->
 					<section data-background="#222422">
 					
-					<h2>
+					<h3>
 						Forschendes Lernen mit Hilfe von
-					</h2><h2>
+					</h3><h3>
 						 Optimierungsaufgaben am Beispiel eines  
-					</h2><h2>
+					</h3><h3>
 						klassischen Lokalisierungsproblems
-					</h2>
+					</h3>
 					<br>
 					<p>
 						<small><strong>Martin Guggisberg</strong>  
@@ -116,13 +117,47 @@ Kann man forschen lernen?
 
 ![Ausgangslage](media/spielplatz_abb1.png)
 ---
-![Spielplatz](media/spielplatz_abb2.png)
+## SuS schlüpfen in die Rolle eines Gutachers
+
+<br>
+
+```Was sind die Kriterien?```
+
+```Möglichst kurzer Weg?```
+
+```Direkt oder einer Strasse nach?```
+
+```Sollen Häuser mit mehr Kinder stärker gewichtet werden?```
+
 ---
-![Spielplatz](media/spielplatz_abb3.png)
+##6 Häuser, je 2 Kinder, direkter Weg
+
+[![Spielplatz](media/spielplatz_abb2.png)](http://www.geogebratube.org/material/show/id/320855)
+
+<small>[Link auf GeoGebraTube](http://www.geogebratube.org/material/show/id/320855)</small>
 ---
-![Spielplatz](media/spielplatz_abb4.png)
----
-![Spielplatz](media/spielplatz_abb5.png)
+##Eckenhausen, Wege entlang eines quadratischen Gitters 
+
+[![Spielplatz](media/spielplatz_abb3.png)](http://www.geogebratube.org/material/show/id/320903)
+
+<small>[Link auf GeoGebraTube](http://www.geogebratube.org/material/show/id/320903)</small>
+--
+## Integer Animation
+
+```javascript
+(function(){
+	"use strict";
+	var x_,y_,x_new,y_new;
+	x_ = ggbApplet.getXcoord("S");
+	y_ = ggbApplet.getYcoord("S");
+	x_new = Math.round(x_);
+	y_new = Math.round(y_);
+	ggbApplet.setCoords("S",x_new,y_new);
+})();
+
+```
+
+![Integer Animation](media/integer_bewg.png)
 
 
 </script>
@@ -134,7 +169,11 @@ Kann man forschen lernen?
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
 <script type="text/template" >
 
-## Von einem historischen Problem zu aktuellen Forschungsgebieten
+## Von einem 
+
+##historischen Problem 
+
+##zu aktuellen Forschungsgebieten
 ---
 ![Buch](../Budapest2014/media/buch.png)
 ---
@@ -156,23 +195,37 @@ To find the point the sum of whose distances from the vertexes of a given triang
 
 Dies entspricht der Nummer 91 der historischen mathematischen Problemen aus dem Buch von Dörrie. 
 ---
-<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/81814/width/786/height/600/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="786px" height="600px" style="border:0px;"> </iframe>
+
+[![Kraftwerk](media/kraftwerk.png)](http://tube.geogebra.org/student/m81814)
+
+<small>[Link auf GeoGebraTube](http://tube.geogebra.org/student/m81814)</small>
+---
+```Wo befindet sich der beste Standort für ein Kraftwerk?```
+
+```Wo soll ein Spielplatz gebaut werden?```
+
+<br>
+
+```äquivalent ? ```
+
+```Alltagsbezug ?```
+
 ---
 ![Hat ein Dreieck eine Mitte?](../Budapest2014/media/dreieck_mitte.png)
 
-Mathbuch Band8 LU18
---
-![Aufgabe LU18](../Budapest2014/media/aufgabe_LU18.png)
---
-![geometric solution](../Budapest2014/media/geometric_solution.png)
+Schweizer Mathbuch Band8 LU18
+---
+[![Aufgabe LU18](../Budapest2014/media/aufgabe_LU18.png)](http://tube.geogebra.org/student/m53008)
+
+<small>[Link auf GeoGebraTube](http://tube.geogebra.org/student/m53008)</small>
+
 --
 ### Geometrischer Beweis
 
-![geometric solution](../Budapest2014/media/geometric_proof.png)
+[![geometric solution](../Budapest2014/media/geometric_proof.png)](http://www.geogebratube.org/student/m71061)
 
 [Link to Geogebra Material](http://www.geogebratube.org/student/m71061)
---
-<iframe scrolling="no" src="https://www.geogebratube.org/material/iframe/id/71061/width/960/height/786/border/888888/rc/false/ai/false/sdz/true/smb/false/stb/false/stbh/true/ld/false/sri/true/at/preferhtml5" width="960px" height="786px" style="border:0px;"> </iframe>
+
 --
 ### Beweis mit Streckenzug 
 ![Streckenzug Lösung](../Budapest2014/media/streckenzug_proof.png)
@@ -195,6 +248,7 @@ BPP’. Der Streckenzug A’P’PC entspricht nun der Abstandssumme von P zu den
 [Approximation Algorithms for
 Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.pdf)
 ---
+### Betrachtung als Optimierungsproblem
 
 ![Fig 1](../Budapest2014/media/fermat_problem_fig1.png)
 
@@ -213,14 +267,16 @@ the Fermat problem, the Fermat-Torricelli problem, the Steiner problem, the Stei
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#AF0E59" data-background-transition="slide" >
 <script type="text/template" >
 
-#Weiszfeld
-<br>
-### Algorithmus
----
+
+# Weiszfeld Algorithmus 
 
 ![Andrew Vázsonyi](../Budapest2014/media/Vazsonyi_Px.jpg) 
 
-by Endre Weiszfeld, alias Andrew Vázsonyi (1916–2003), born in Budapest
+von Andrew Vázsonyi, 
+
+alias  Endre Weiszfeld (1916–2003) 
+
+geboren in Budapest
 --
 
 ![Which Door has the Cadillac](../Budapest2014/media/whichdoor.jpg)
@@ -250,6 +306,74 @@ $ $
 <small>
 [H. Üster, R.F. Love, The convergence of the Weiszfeld algorithm, Computers & Mathematics with Applications, Volume 40, Issues 4–5, August–September 2000, Pages 443-451, ISSN 0898-1221](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
 </small>
+--
+### Weiszfeld Algorithmus
+### in JavaScript
+
+```javascript
+geometric_median = function(epsilon) {
+    var P,Q;
+    P={};
+    P.x=gb.getXcoord("CM");
+    P.y=gb.getYcoord("CM");
+
+    while (true){
+    	Q = median_approx(P);
+    	if (eukl_distance(P, Q) < epsilon){
+    		return Q;
+    	}
+    	P = Q;
+    }
+};
+```
+--
+### Weiszfeld Algorithmus
+### in JavaScript
+
+```javascript
+median_approx = function(P) {
+    var W,x,y,d,w,_len,_i,Q;
+    W=x=y=0.0;
+    Q={};
+    _len=xl.length
+    for (_i = 0; _i < _len; _i++) {
+    	Q.x = xl[_i];
+    	Q.y = yl[_i];
+    	d=eukl_distance(Q,P);
+    	if (d != 0){
+    		w =1.0/d;
+    		W+= w;
+    		x+=Q.x*w;
+    		y+=Q.y*w;
+    	}
+    }
+    Q.x = x/W;
+    Q.y = y/W;
+    return Q;
+  };
+```
+---
+### Für n=3 kann ein Winkel von 120° beobachtet werden
+
+<video width="875" height="512" data-autoplay >
+	    <source src="../Budapest2014/media/movies/120degree.mp4" type="video/mp4" /> 
+		<source src="../Budapest2014/media/movies/120degree.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/120degree.ogv" type="video/ogg" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+### Konvergenzverhalten des  Weiszfeld Algorithmus
+
+<video width="1002" height="568" data-autoplay >
+        <source src="../Budapest2014/media/movies/konvergenz.mp4" type="video/mp4" />
+		<source src="../Budapest2014/media/movies/konvergenz.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/konvergenz.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[Link auf GeoGebraTube](http://tube.geogebra.org/material/show/id/53072)</small>
+--
+![Spielplatz](media/spielplatz_abb4.png)
 
 
 
@@ -262,37 +386,8 @@ $ $
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
 <script type="text/template" >
 
-# Numerische Experimente
+# weitere Experimente
 ---
-### Konvergenzverhalten des  Weiszfeld Algorithmus
-
-<video width="1002" height="568" data-autoplay >
-        <source src="../Budapest2014/media/movies/konvergenz.mp4" type="video/mp4" />
-		<source src="../Budapest2014/media/movies/konvergenz.webm" type="video/webm" />
-		<source src="../Budapest2014/media/movies/konvergenz.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
----
-### Für n=3 kann ein Winkel von 120° beobachtet werden
-
-<video width="875" height="512" data-autoplay >
-	    <source src="../Budapest2014/media/movies/120degree.mp4" type="video/mp4" /> 
-		<source src="../Budapest2014/media/movies/120degree.webm" type="video/webm" />
-		<source src="../Budapest2014/media/movies/120degree.ogv" type="video/ogg" />	    
-		Your browser does not support the <code>video</code> element.
-</video>
-
----
-### Keine Winkelabhängigkeit für n>3
-
-<video width="876" height="512" data-autoplay >
-	    <source src="../Budapest2014/media/movies/morepoints.mp4" type="video/mp4" />
-		<source src="../Budapest2014/media/movies/morepoints.webm" type="video/webm" />
-		<source src="../Budapest2014/media/movies/morepoints.ogv" type="video/ogg" />
-		Your browser does not support the <code>video</code> element.
-</video>
----
-### FP bewegt sich auf einem Orbit
 <video width="998" height="712" data-autoplay >
 	    <source src="../Budapest2014/media/movies/orbit.mp4" type="video/mp4" />
 		<source src="../Budapest2014/media/movies/orbit.webm" type="video/webm" />
@@ -300,14 +395,19 @@ $ $
 		Your browser does not support the <code>video</code> element.
 </video>
 
----
-### FP springt auf innere Punkte
+<small>[Link auf GeoGebraTube](http://tube.geogebra.org/material/show/id/52934)</small>
+--
+![Spielplatz](media/spielplatz_abb5.png)
+--
+### Der FP springt auf innere Punkte
 <video width="854" height="634" data-autoplay >
 	    <source src="../Budapest2014/media/movies/snaptopoint.mp4" type="video/mp4" />
 	    <source src="../Budapest2014/media/movies/snaptopoint.webm" type="video/webm" />
 	    <source src="../Budapest2014/media/movies/snaptopoint.ogv" type="video/ogg" />
 		Your browser does not support the <code>video</code> element.
 </video>
+
+<small>[Link auf GeoGebraTube](http://tube.geogebra.org/material/show/id/52934)</small>
 ---
 ## Wo befindet sich der Mittelpunkt von Europa ?
 ---
@@ -317,6 +417,8 @@ $ $
 	    <source src="../Budapest2014/media/movies/europefp.ogv" type="video/ogg" />
 		Your browser does not support the <code>video</code> element.
 </video>
+
+<small>[Link auf GeoGebraTube](http://tube.geogebra.org/material/show/id/66688)</small>
 ---
 ```
 Kann man forschen lernen?
@@ -335,20 +437,21 @@ Kann man forschen lernen?
     &nbsp;
 </blockquote>
 
-
-
 ---
-<iframe scrolling="no" src="https://tube.geogebra.org/material/iframe/id/52934/width/1024/height/700/border/252222/rc/true/ai/false/sdz/false/smb/false/stb/false/stbh/true/ld/false/sri/false/at/preferhtml5" width="1024px" height="700px" style="border:0px;"> </iframe>
----
-##Vielen Dank 
+## Vielen Dank 
 <br> 
-<br>
-#?
 
 
+
+# ?
+
+
+
 <br>
-Vortrag, Filme und interaktive Applets sind auf GitHub. <br><br>
-[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)
+<small>Die Vortragsfolien und alle GeoGebra Applets finden Sie im Internet. <br>
+[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)</small>
+
+<small>Kontakt: martin dot guggisberg at fhnw dot ch</small>
 
 --
 
@@ -362,7 +465,7 @@ Vortrag, Filme und interaktive Applets sind auf GitHub. <br><br>
 		</div>
 
 		<script src="../reveal2015/lib/js/head.min.js"></script>
-		<script src="../reveal2015/js/reveal.js"></script>
+		<script src="../reveal2015/js/reveal.min.js"></script>
 
 		<script>
 

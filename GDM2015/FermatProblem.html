@@ -457,9 +457,49 @@ Kann man forschen lernen?
 
 --
 
+## Interaktive
+<br>
+
+# Experimente
+
+<br>
+
+## mit GeoGebra
+--
+### z.B. Algorithmen interaktiv testen
+
+<video class="stretch" width="984" height="720" data-autoplay >
+	    <source src="media/movies/movingTurtle.m4v" type="video/mp4" />
+	    <source src="media/movies/movingTurtle.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[Link zu GeoGebraTube](http://tube.geogebra.org/material/show/id/617719)</small>
+--
+## Ein Schritt vorwärts 
+<br>
+### JavaScript Funktion innerhalb GeoGebra
+<br>
+```javascript
+fw = function(){
+(function(){
+    "use strict";
+    var x_,y_
+    x_ = ggbApplet.getXcoord("P");
+    y_ = ggbApplet.getYcoord("P");
+    ggbApplet.setCoords("P",x_+1,y_);
+})();
+};
+```
+
+
+
+
+--
 <br>
 ### Thanks to Hakim El Hattab / hakim.se for reveal.js
 
+### Thanks to GeoGebra Team
 </script>
 </section>
 			</div>

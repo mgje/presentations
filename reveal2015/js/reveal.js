@@ -530,6 +530,8 @@
 				if( numberOfPages === 1 && config.center || slide.classList.contains( 'center' ) ) {
 					top = Math.max( ( pageHeight - contentHeight ) / 2, 0 );
 				}
+				//mgu print hack
+				
 
 				// Position the slide inside of the page
 				slide.style.left = left + 'px';

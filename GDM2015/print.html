@@ -502,9 +502,9 @@ fw = function(){
 </script>
 </section>
 			</div>
-			<div class='header'>
+			<!--<div class='header'>
 			   <img src="media/logo_white_small.png" alt="logo"> 
-			</div>
+			</div>-->
             <div class='footer'>
     			<p>© 2015 &nbsp;&nbsp;&nbsp;Martin &nbsp;&nbsp;Guggisberg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&nbsp; &nbsp;&nbsp;Torsten &nbsp;&nbsp;Linnemann &nbsp;&nbsp;&nbsp;&nbsp;PH FHNW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp; &nbsp;&nbsp;&nbsp;&nbsp;Beat &nbsp;&nbsp;Trachsler  &nbsp;&nbsp;Kantonsschule &nbsp;&nbsp;Zürcher&nbsp;&nbsp; Oberland</p>
   			</div>
@@ -540,8 +540,27 @@ fw = function(){
 					{ src: '../reveal2015/plugin/math/math.js', async: true }
 				]
 			});
+            
+            
+            
 
 		</script>
 
+
 	</body>
+	<script>
+	    var changedom = function(){
+			var header = document.createElement("div");
+            header.className = 'header';
+            header.innerHTML = '<img src="media/logo_white_small.png" alt="logo">';
+            
+
+
+			var slides = document.getElementsByTagName("section");
+			for (var i = slides.length - 1; i >= 0; i--) {
+				slides[i].insertBefore(header.cloneNode(true), slides[i].childNodes[0]); 
+			};
+		};
+		window.setTimeout(changedom, 2300);
+	</script>
 </html>

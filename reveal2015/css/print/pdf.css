@@ -155,3 +155,19 @@ ul, ol, div, p {
 	z-index: 1;
 }
 
+.reveal .header{
+  position: absolute;
+  top: 0.5em;
+  left: 1em;
+  font-size: 0.3em;
+  z-index: 22;
+}
+
+
+.reveal .footer {
+  position: absolute;
+  bottom: 3.2em;
+  left: 1em;
+  font-size: 0.45em;
+  z-index: 22;
+}

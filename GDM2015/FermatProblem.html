@@ -91,19 +91,14 @@ Am Beispiel des historischen Fermat-Problems soll das für den Unterricht auf de
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#222226" data-background-transition="slide" >
 <script type="text/template" >
 
-```
-Kann man Forschen lernen?
-```&nbsp;
+## Agenda
+1. Fallbeispiel
+2. Generalisierung einer Problemstellung
+3. Einsatz von numerischen Methoden 
+4. Interaktive Experimente
 
-<br>
-
-<small>
-
-* Bruder, R. (2014). Forschen, Explorieren, Problemlösen. In Linneweber-Lammerskitten, H. (Hrsg.). Fachdidaktik Mathematik. Grundbildung und Kompetenzaufbau im Unterricht der Sek. I und II. Seelze: Klett/Kallmeyer.
-
-* Roth, J., & Weigand, H. G. (2014). Forschendes Lernen im Mathematikunterricht: Eine Annäherung. Beiträge zum Mathematikunterricht 2014 (S. 999–1002). Münster: WTM-Verlag
-
-</small>
+---
+## Ein Fallbeispiel zu Forschendem Lernen
 
 
 </script>
@@ -115,6 +110,7 @@ Kann man Forschen lernen?
 <script type="text/template" >
 
 ## Wo ist der beste Ort für einen Spielplatz?
+
 
 ![Ausgangslage](media/spielplatz_abb1.png)
 
@@ -136,11 +132,15 @@ Roth-Sonnen Nicole, Leuders, T., Barzel, B., & Hußmann, (2005). Computer, Inter
 ---
 ##Direkter Weg
 
+to do movie
+
 [![Spielplatz](media/spielplatz_abb2.png)](http://www.geogebratube.org/material/show/id/320855)
 
 <small>[Link zu GeoGebraTube](http://www.geogebratube.org/material/show/id/320855)</small>
 ---
 ##Eckenhausen, Wege entlang eines quadratischen Gitters 
+
+to do movie
 
 [![Spielplatz](media/spielplatz_abb3.png)](http://www.geogebratube.org/material/show/id/320903)
 
@@ -172,6 +172,9 @@ Roth-Sonnen Nicole, Leuders, T., Barzel, B., & Hußmann, (2005). Computer, Inter
 
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
 <script type="text/template" >
+
+analoges Problem bereist im 
+17. Jahrhunder gestellt
 
 ## Von einem 
 
@@ -208,6 +211,8 @@ Dörrie, H. (2013). 100 great problems of elementary mathematics. Courier Dover 
 ```Alltagsbezug ?```
 
 ---
+Ausblick über die Schulmathematik
+
 ![Hat ein Dreieck eine Mitte?](../Budapest2014/media/dreieck_mitte.png)
 
 Schweizer Mathbuch Band8 LU18
@@ -216,7 +221,7 @@ Schweizer Mathbuch Band8 LU18
 
 <small>[Link zu GeoGebraTube](http://tube.geogebra.org/student/m53008)</small>
 
---
+---
 ### Geometrischer Beweis
 
 [ <img src="../Budapest2014/media/geometric_proof.png" alt="bw" height="570" width="661"> ](http://www.geogebratube.org/student/m71061)
@@ -247,6 +252,8 @@ BPP’. Der Streckenzug A’P’PC entspricht nun der Abstandssumme von P zu den
 Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.pdf)
 ---
 ### Eine weitere Betrachtungsweise 
+
+Reduktion und Generalisierung
 
 ![Fig 1](../Budapest2014/media/fermat_problem_fig1.png)
 
@@ -425,10 +432,64 @@ Wirkende Kräfte
 <small>[Link zu GeoGebraTube](http://tube.geogebra.org/material/show/id/66688)</small>
 
 ---
-```
-Kann man Forschen lernen?
-```&nbsp;
 
+## Interaktive
+<br>
+
+# Experimente
+
+<br>
+
+## mit GeoGebra
+---
+
+<video class="stretch" width="984" height="720" data-autoplay >
+	    <source src="media/movies/movingTurtle.m4v" type="video/mp4" />
+	    <source src="media/movies/movingTurtle.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[Link zu GeoGebraTube](http://tube.geogebra.org/material/show/id/617719)</small>
+---
+## Interaktionen Programmieren
+### Einen Schritt vorwärt
+### JavaScript Funktion innerhalb GeoGebra
+<br>
+```javascript
+fw = function(){
+(function(){
+    "use strict";
+    var x_,y_
+    x_ = ggbApplet.getXcoord("P");
+    y_ = ggbApplet.getYcoord("P");
+    ggbApplet.setCoords("P",x_+1,y_);
+})();
+};
+```
+
+---
+## Thanks to 
+* Torsten Linnemann
+* Beat Trachsler
+
+[GeoGebra institute PH FHNW Switzerland](http://www.geogebra.org/institutes/)
+
+![end](media/end.png)
+---
+## Vielen Dank 
+<br> 
+
+
+
+# ?
+
+
+
+<br>
+<small>Die Vortragsfolien und alle GeoGebra Applets finden Sie im Internet. <br>
+[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)</small>
+
+<small>Kontakt: martin dot guggisberg at fhnw dot ch</small>
 --
 ```
 Kann man Forschen lernen?
@@ -457,69 +518,6 @@ Literatur<small>
 * Weiszfeld, E. (1937). Sur le point pour lequel la somme des distances de n points donnés est minimum. Tôhoku Mathematical Journal, 43, 355–386.
 
 </small>
----
-## Thanks to 
-* Torsten Linnemann
-* Beat Trachsler
-
-[GeoGebra institute PH FHWN Switzerland](http://www.geogebra.org/institutes/)
-
-![end](media/end.png)
----
-## Vielen Dank 
-<br> 
-
-
-
-# ?
-
-
-
-<br>
-<small>Die Vortragsfolien und alle GeoGebra Applets finden Sie im Internet. <br>
-[http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)</small>
-
-<small>Kontakt: martin dot guggisberg at fhnw dot ch</small>
-
---
-
-## Interaktive
-<br>
-
-# Experimente
-
-<br>
-
-## mit GeoGebra
---
-
-<video class="stretch" width="984" height="720" data-autoplay >
-	    <source src="media/movies/movingTurtle.m4v" type="video/mp4" />
-	    <source src="media/movies/movingTurtle.webm" type="video/webm" />
-		Your browser does not support the <code>video</code> element.
-</video>
-
-<small>[Link zu GeoGebraTube](http://tube.geogebra.org/material/show/id/617719)</small>
---
-## Ein Schritt vorwärts 
-<br>
-### JavaScript Funktion innerhalb GeoGebra
-<br>
-```javascript
-fw = function(){
-(function(){
-    "use strict";
-    var x_,y_
-    x_ = ggbApplet.getXcoord("P");
-    y_ = ggbApplet.getYcoord("P");
-    ggbApplet.setCoords("P",x_+1,y_);
-})();
-};
-```
-
-
-
-
 --
 <br>
 ### Thanks to Hakim El Hattab / hakim.se for reveal.js

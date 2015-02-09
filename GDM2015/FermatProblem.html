@@ -120,15 +120,19 @@ Am Beispiel des historischen Fermat-Problems soll das für den Unterricht auf de
 Roth-Sonnen Nicole, Leuders, T., Barzel, B., & Hußmann, (2005). Computer, Internet und co im Mathematikunterricht. (S. 190) Berlin: Cornelsen.
 </small>
 ---
-## Schülerinnen und Schüler schlüpfen in die Rolle eines Gutachers
+### Schülerinnen und Schüler 
 
-```Möglichst kurzer Weg?```
+###schlüpfen in die Rolle eines Gutachters
 
-```Direkt oder einer Strasse nach?```
+<br>
 
-```Sollen Häuser mit mehr Kindern äquivalent gewichtet werden?```
+<ul>
+<li class="fragment" data-fragment-index="1">Möglichst kurzer Weg?</li>
+<li class="fragment" data-fragment-index="2">Direkt oder einer Strasse nach?</li>
+<li class="fragment" data-fragment-index="3">Sollen Häuser mit mehr Kindern äquivalent gewichtet werden?</li>
+<li class="fragment" data-fragment-index="4">Wie lauten die Kriterien?</li>
+</ul>
 
-```Wie lauten die Kriterien?```
 ---
 ##Direkter Weg
 
@@ -180,13 +184,17 @@ Roth-Sonnen Nicole, Leuders, T., Barzel, B., & Hußmann, (2005). Computer, Inter
 ## Reduzierung der Problemstellung auf 3 Punkte
 ---
 
+## aus dem 17. Jahrhundert 
+
+<br>
+
 ## Historischen Problemstellung 
 
 <br>
 ## von Fermat
 
-<br>
-## aus dem 17. Jahrhundert 
+
+
 
 ---
 
@@ -210,9 +218,15 @@ the Fermat problem, the Fermat-Torricelli problem, the Steiner problem, the Stei
 
 ### Moderne Formulierung
 
-[![Kraftwerk](media/kraftwerk.png)](http://tube.geogebra.org/student/m81814)
+<video class="stretch" width="798" height="610" data-autoplay controls>
+        <source src="media/movies/Kraftwerk.m4v" type="video/mp4" />
+		<source src="media/movies/Kraftwerk.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
 
-<small>[Link zu GeoGebraTube](http://tube.geogebra.org/student/m81814)</small>
+
+
+<small>[Link zu GeoGebraTube: Der Neubau des Kraftwerks](http://tube.geogebra.org/student/m81814)&nbsp;&nbsp; von &nbsp;&nbsp; [Ulrich Steinmetz](http://tube.geogebra.org/user/profile/id/34514)</small>
 ---
 ```Wo befindet sich der beste Standort für ein Kraftwerk?```
 
@@ -240,7 +254,7 @@ Schweizer Mathbuch Band8 LU18
 <small>[Link zu GeoGebraTube](http://tube.geogebra.org/student/m53008)</small>
 
 ---
-### Geometrischer Beweis
+### Ein Geometrischer Beweis für N=3
 
 [ <img src="../Budapest2014/media/geometric_proof.png" alt="bw" height="570" width="661"> ](http://www.geogebratube.org/student/m71061)
 
@@ -329,13 +343,16 @@ Adventures of a Real-Life Mathematician
 
 ---
 ### Weiszfeld Algorithmus
-Iterative Gewichtung von  Abweichungen
 
-$ $
+$$ k \mbox{ Iterationsschritte} $$
 
-$$  y_{k+1} = \frac{\sum_i^N  \frac{x_i}{\|| x_i-y_k \||}}{\sum_i^N  \frac{1}{\|| x_i-y_k \||} } $$
+$$ \mbox{Ortsvektoren: } \vec{x_1} \cdots \vec{x_N} $$
 
-$ $
+$$ \mbox{Startpunkt } \vec{y_0} \mbox{ im Schwerpunkt}$$
+
+$$  \vec{y\_{k+1}} = \frac{ \sum\_{i=1}^{N}  \frac{\vec{x\_i}}{\|| \vec{x\_i}-\vec{y\_k} \||}}{\sum\_{i=1}^N  \frac{1}{\|| \vec{x\_i}-\vec{y\_k} \||} } $$
+
+
 <small>
 [H. Üster, R.F. Love, The convergence of the Weiszfeld algorithm, Computers & Mathematics with Applications, Volume 40, Issues 4–5, August–September 2000, Pages 443-451, ISSN 0898-1221](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
 </small>
@@ -407,7 +424,7 @@ median_approx = function(P) {
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
 <script type="text/template" >
 
-# Weitere Experimente
+# Experimentieren
 ---
 <video class="stretch" width="998" height="712" data-autoplay controls >
 	    <source src="../Budapest2014/media/movies/orbit.mp4" type="video/mp4" />
@@ -420,11 +437,15 @@ median_approx = function(P) {
 <br>
 <small>[Link zu GeoGebraTube: &nbsp; Fermat-Punkt, verallgemeinerte Problemstellung](http://tube.geogebra.org/material/show/id/52934) </small>
 --
-### physikalische Betrachtungsweise 
 
-Wirkende Kräfte
+Varignon Frame von Pierre de Varignon
 
-![varignonFrame](../Budapest2014/media/varignonFrame.png)
+
+<img src="../Budapest2014/media/varignonFrame.png" class="stretch" alt="Varignon Frame">
+
+<small>
+Canbolat, M. S., & Wesolowsky, G. O. (2012). On the use of the Varignon frame for single facility Weber problems in the presence of convex barriers. European Journal of Operational Research, 217(2), 241-247. [Link](http://www.sciencedirect.com/science/article/pii/S0377221711008095)
+</small>
 
 --
 ### Der FP springt auf innere Punkte
@@ -435,18 +456,20 @@ Wirkende Kräfte
 		Your browser does not support the <code>video</code> element.
 </video>
 <small> <span style="color:rgb(34,221,172)"> ● Fermat-Punkt </span>&nbsp;&nbsp; <span style="color:rgb(255, 0, 0)"> ● Schwerpunkt</span></small>
-<small>[Link zu GeoGebraTube: &nbsp; Fermat-Punkt, verallgemeinerte Problemstellung](http://tube.geogebra.org/material/show/id/52934)&nbsp; &nbsp; von &nbsp; &nbsp;[Martin Guggisberg](http://tube.geogebra.org/mgje)</small>
+
 
 ---
-## Interaktive
+## Weiteres Potenzial von
 <br>
 
-# Experimente
+# interaktiven Experimenten
 
 <br>
 
-## mit GeoGebra
+
 ---
+
+### z.B. Bewegungen Visualisieren 
 
 <video class="stretch" width="984" height="720" data-autoplay controls>
 	    <source src="media/movies/movingTurtle.m4v" type="video/mp4" />
@@ -504,7 +527,7 @@ fw = function(){
 
 
 <br>
-<small>Die Vortragsfolien und alle GeoGebra Applets finden Sie im Internet. <br>
+<small>Den Vortrag und alle GeoGebra Materialien finden Sie im Internet. <br>
 [http://mgje.github.io/presentations/](http://mgje.github.io/presentations/)</small>
 
 <small>Kontakt: martin dot guggisberg at fhnw dot ch</small>

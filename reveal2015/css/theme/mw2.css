@@ -54,11 +54,11 @@ body {
   font-size: 44px;
   font-weight: 350;
   letter-spacing: -0.02em;
-  color: #c4c4c4; }
+  color: #141414; }
 
 ::selection {
-  color: #fff;
-  background: #ccc;
+  color: #666;
+  background: #222;
   text-shadow: none; }
 
 /*********************************************

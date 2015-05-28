@@ -219,7 +219,7 @@ body {
  * LINKS
  *********************************************/
 .reveal a:not(.image) {
-  color: #AAA;
+  color: #777777;
   text-decoration: underline;
   -webkit-transition: color .15s ease;
   -moz-transition: color .15s ease;

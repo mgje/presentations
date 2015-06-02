@@ -75,7 +75,7 @@
 						<p>That's it, time to go back up.</p>
 						<br>
 						<a href="#/2">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
+							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="transform: rotate(180deg); -webkit-transform: rotate(180deg);">
 						</a>
 					</section>
 				</section>
@@ -104,36 +104,6 @@
 					</p>
 				</section>
 
-
-								<section data-markdown data-separator="---" data-vertical="--">
-					<script type="text/template">
-						## Markdown support
----
-go go
-
----
-
-```
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-    var nodes = document.querySelectorAll( selector );
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-```
-
-
-					</script>
-				</section>
-
-
-
-
 				<section data-markdown>
 					<script type="text/template">
 						## Markdown support
@@ -149,26 +119,6 @@ function linkify( selector ) {
 						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
 						</section>
 						```
-
-                        ```
-                        function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) {
-        node.className += ' roll';
-      }
-    }
-  }
-}
-
-                        ```
-
-
 					</script>
 				</section>
 
@@ -188,7 +138,6 @@ function linkify( selector ) {
 						<p>There's different types of fragments, like:</p>
 						<p class="fragment grow">grow</p>
 						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
 						<p class="fragment fade-out">fade-out</p>
 						<p class="fragment current-visible">current-visible</p>
 						<p class="fragment highlight-red">highlight-red</p>
@@ -221,6 +170,7 @@ function linkify( selector ) {
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
+						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
 						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
@@ -250,6 +200,9 @@ function linkify( selector ) {
 							<h2>Video Backgrounds</h2>
 							<pre><code style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
 						</div>
+					</section>
+					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+						<h2>... and GIFs!</h2>
 					</section>
 				</section>
 

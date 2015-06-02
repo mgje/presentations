@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="de">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Urbane Bauten als Grenzgänge zwischen Fiktion und Wirklichkeit</title>
+
+		<meta name="description" content="Talk uDayXIII, FH Vorarlberg">
+		<meta name="author" content="Martin Guggisberg">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="shortcut icon" type="image/x-icon" href="unibas.ico" />
+		<link rel="stylesheet" href="../reveal2015/css/reveal.min.css">
+		<!--
+		<link rel="stylesheet" href="../reveal2015/css/theme/black.css" id="theme">
+		-->
+
+		<!-- Fonts Definition inside -->
+	
+		<link rel="stylesheet" href="../reveal2015/css/theme/sky.css" id="theme">
+	
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal2015/lib/css/github.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal2015/css/print/pdf.css' : '../reveal2015/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal2015/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+		    
+
+			
+			<div class="slides">
+				<!-- Title Abstract -->
+			<section>
+				<section data-background="#222226">
+					
+					<h3>
+						Forschendes Lernen mit Hilfe von
+					</h3><h3>
+						 Optimierungsaufgaben am Beispiel eines  
+					</h3><h3>
+						klassischen Lokalisierungsproblems
+					</h3>
+					<br>
+					<p>
+						<small><strong>Martin Guggisberg</strong>  
+							<br>
+							Torsten Linnemann
+							
+							<br>
+							Beat Trachsler
+							
+						</small>
+					</p>
+					<p><small> 49. GDM-Jahrestagung Basel 2015</small></p>
+
+				</section>
+
+
+               <section data-background="#222226">
+				<p>
+					„ Wo ist der beste Standort für einen Spielplatz ? “ Diese Aufgabe hat keine geschlossene algebraische Lösung – und bietet damit einen Einstieg in realitätsbezogene Situationen des Forschenden Lernens.
+Am Beispiel des historischen Fermat-Problems soll das für den Unterricht auf der Sekundarstufe 2 aufzeigt werden. Neben numerischen Verfahren werden Lösungen mit GeoGebra vorgestellt. 
+
+				</p>
+				</section>
+			</section>
+				
+
+<!-- Einleitung / Gutachten -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#222226" data-background-transition="slide" >
+<script type="text/template" >
+
+## Agenda
+- Fallbeispiel Spielplatz
+- Reduzierung der Problemgrösse
+- Formulierung als Optimierungsproblem
+- Einsatz von numerischen Methoden 
+- Interaktive Experimente
+
+---
+## Ein Fallbeispiel zu Forschendem Lernen
+
+
+</script>
+</section>
+
+<!-- Was ist der beste Ort ? -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
+<script type="text/template" >
+
+## Wo ist der beste Ort für einen Spielplatz?
+
+
+![Ausgangslage](media/spielplatz_abb1.png)
+
+<br>
+
+<small>
+Roth-Sonnen Nicole, Leuders, T., Barzel, B., & Hußmann, (2005). Computer, Internet und co im Mathematikunterricht. (S. 190) Berlin: Cornelsen.
+</small>
+---
+### Schülerinnen und Schüler 
+
+###schlüpfen in die Rolle eines Gutachters
+
+<br>
+
+<ul>
+<li class="fragment" data-fragment-index="1">Möglichst kurzer Weg ?</li>
+<li class="fragment" data-fragment-index="2">Direkt (durch das Gelände) oder einer Strasse nach ?</li>
+<li class="fragment" data-fragment-index="3">Sollen Häuser mit mehr Kindern äquivalent gewichtet werden ?</li>
+</ul>
+
+---
+##Direkter Weg
+
+<video class="stretch" width="550" height="340" data-autoplay  controls>
+        <source data-src="media/movies/spielplatzeuklid.m4v" type="video/mp4" />
+		<source data-src="media/movies/spielplatzeuklid.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+
+<small>[Link zu GeoGebraTube: Spielplatz_Entfernung](http://www.geogebratube.org/material/show/id/320855) &nbsp;&nbsp; von &nbsp;&nbsp; [Torsten Linnemann](http://www.geogebratube.org/torsten_linnemann)</small>
+---
+##Eckenhausen, Wege entlang eines quadratischen Gitters 
+
+<video class="stretch" width="830" height="360" data-autoplay controls>
+        <source src="media/movies/Eckenhausen.m4v" type="video/mp4" />
+		<source src="media/movies/Eckenhausen.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[Link zu GeoGebraTube: &nbsp; spielplatz_Eckenhausen](http://www.geogebratube.org/material/show/id/320903) &nbsp;&nbsp; von &nbsp;&nbsp; [Torsten Linnemann](http://www.geogebratube.org/torsten_linnemann)</small>
+--
+## Ganzzahl-Arithmetik mit GeoGebra
+
+```javascript
+(function(){
+	"use strict";
+	var x_,y_,x_new,y_new;
+	x_ = ggbApplet.getXcoord("S");
+	y_ = ggbApplet.getYcoord("S");
+	x_new = Math.round(x_);
+	y_new = Math.round(y_);
+	ggbApplet.setCoords("S",x_new,y_new);
+})();
+
+```
+
+![Integer Animation](media/integer_bewg.png)
+
+
+</script>
+</section>
+
+
+<!-- Vom historischen math Problem zu aktuellen FG -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
+<script type="text/template" >
+## Reduzierung der Problemgrösse 
+
+## auf 3 Punkte
+---
+
+## aus dem 17. Jahrhundert 
+
+<br>
+
+# Fermat&rsquo;s Problem
+
+
+
+
+
+
+---
+
+![Aufgabe91](../Budapest2014/media/aufgabe91.png)
+
+"Wo befindet sich ein Punkt P in einem Dreieck, wenn die Summe aller Abstände von diesem Punkt P zu den drei Ecken minimal sein soll."
+
+<br>
+
+<small>
+Dörrie, H. (2013). 100 great problems of elementary mathematics. Courier Dover Publications.
+</small>
+--
+
+## Zahlreiche weitere Bezeichnungen
+
+the Fermat problem, the Fermat-Torricelli problem, the Steiner problem, the Steiner-Weber problem, the Weber problem, **the Fermat-Weber problem**, the weber facility problem, the one median problem, the median center problem, the spatial median problem, the minimum aggregate travel point problem
+---
+![Buch](../Budapest2014/media/buch.png)
+---
+
+### Moderne Formulierung
+
+<video class="stretch" width="798" height="610" data-autoplay controls>
+        <source src="media/movies/Kraftwerk.m4v" type="video/mp4" />
+		<source src="media/movies/Kraftwerk.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+
+
+<small>[Link zu GeoGebraTube: Der Neubau des Kraftwerks](http://tube.geogebra.org/student/m81814)&nbsp;&nbsp; von &nbsp;&nbsp; [Ulrich Steinmetz](http://tube.geogebra.org/user/profile/id/34514)</small>
+--
+```Wo befindet sich der beste Standort für ein Kraftwerk?```
+
+```Wo soll ein Spielplatz gebaut werden?```
+
+<br>
+
+```äquivalente Fragestellung ? ```
+
+```Alltagsbezug ?```
+
+---
+
+![Hat ein Dreieck eine Mitte?](../Budapest2014/media/dreieck_mitte.png)
+
+Schweizer Mathbuch Band8 LU18
+
+```
+Es gibt verschiedene Möglichkeiten die Mitte des Dreiecks zu definieren.
+```&nbsp;
+
+---
+[![Aufgabe LU18](../Budapest2014/media/aufgabe_LU18.png)](http://tube.geogebra.org/student/m53008)
+
+<small>[Link zu GeoGebraTube](http://tube.geogebra.org/student/m53008)</small>
+
+---
+### Ein Geometrischer Beweis für N=3
+
+[ <img src="../Budapest2014/media/geometric_proof.png" alt="bw" height="570" width="661"> ](http://www.geogebratube.org/student/m71061)
+
+[Link to Geogebra Material](http://www.geogebratube.org/student/m71061)
+
+--
+### Beweis mit Streckenzug 
+<img src="../Budapest2014/media/streckenzug_proof.png" alt="bw" height="488" width="686">
+
+
+<small>
+(LU 18, ICT-Zusatzmaterial)
+</small>
+--
+## Vorgehen:
+
+1. Im Dreieck ABC setzen wir irgendwo den Punkt P.
+
+2. Nun drehen wir das Dreieck ABP um 60° um den Punkt B. So entsteht ein gleichseitiges Dreieck
+BPP’. Der Streckenzug A’P’PC entspricht nun der Abstandssumme von P zu den Ecken des Dreiecks ABC.
+
+3. Bewegt man den Punkt P so, dass der Streckenzug A’P’PC geradlinig wird, so hat man die minimale Abstandssumme gefunden.
+--
+## Weitere Lösungen:
+
+[Approximation Algorithms for
+Facility Location Problems](http://www.or.uni-bonn.de/cards/home/vygen/files/fl.pdf)
+---
+#### Betrachtungsweise als Optimierungsproblem 
+
+![Fig 1](../Budapest2014/media/fermat_problem_fig1.png)
+
+---
+
+``` Das so formulierte Optimierungsproblem ist  
+für Schülerinnen und Schüler verständlich, jedoch nicht 
+ohne Hilfsmittel lösbar```
+
+---
+#### Für n=3 kann ein Winkel von 120° beobachtet werden
+
+<video width="875" height="512" data-autoplay  controls>
+	    <source src="../Budapest2014/media/movies/120degree.mp4" type="video/mp4" /> 
+		<source src="../Budapest2014/media/movies/120degree.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/120degree.ogv" type="video/ogg" />	    
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<span style="color:rgb(34,221,172)"> ● Fermat-Punkt </span>&nbsp;&nbsp; <span style="color:rgb(255, 0, 0)"> ● Schwerpunkt</span>
+
+</script>
+</section>
+
+<!-- Weiszfeld -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#AF0E59" data-background-transition="slide" >
+<script type="text/template" >
+
+
+# Weiszfeld Algorithmus 
+
+![Andrew Vázsonyi](../Budapest2014/media/Vazsonyi_Px.jpg) 
+
+
+
+von Andrew Vázsonyi, 
+
+alias  Endre Weiszfeld (1916–2003) 
+
+geboren in Budapest
+--
+
+<img src="../Budapest2014/media/whichdoor.jpg" alt="bw" height="726" width="480">
+
+--
+
+```Computers have the potential to turn the biggest math-phobe into a math user,
+if not a lover.``` 
+<br>
+<br>
+
+Andrew Vázsonyi in his book:
+
+Which Door has the Cadillac 
+Adventures of a Real-Life Mathematician
+
+---
+### Weiszfeld Algorithmus
+
+$$ k \mbox{ Iterationsschritte} $$
+
+$$ \mbox{Ortsvektoren: } \vec{x_1} \cdots \vec{x_N} $$
+
+$$ \mbox{Startpunkt } \vec{y_0} \mbox{ im Schwerpunkt}$$
+
+$$  \vec{y\_{k+1}} = \frac{ \sum\_{i=1}^{N}  \frac{\vec{x\_i}}{\|| \vec{x\_i}-\vec{y\_k} \||}}{\sum\_{i=1}^N  \frac{1}{\|| \vec{x\_i}-\vec{y\_k} \||} } $$
+
+
+<small>
+[H. Üster, R.F. Love, The convergence of the Weiszfeld algorithm, Computers & Mathematics with Applications, Volume 40, Issues 4–5, August–September 2000, Pages 443-451, ISSN 0898-1221](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
+</small>
+---
+![weiszfeld](media/weiszfeld.png)
+--
+### Weiszfeld Algorithmus
+### mit JavaScript (I)
+
+```javascript
+geometric_median = function(epsilon) {
+    var P,Q;
+    P={};
+    P.x=gb.getXcoord("CM");
+    P.y=gb.getYcoord("CM");
+
+    while (true){
+    	Q = median_approx(P);
+    	if (eukl_distance(P, Q) < epsilon){
+    		return Q;
+    	}
+    	P = Q;
+    }
+};
+```
+--
+### Weiszfeld Algorithmus
+### mit JavaScript (II)
+
+```javascript
+median_approx = function(P) {
+    var W,x,y,d,w,_len,_i,Q;
+    W=x=y=0.0;
+    Q={};
+    _len=xl.length
+    for (_i = 0; _i < _len; _i++) {
+    	Q.x = xl[_i];
+    	Q.y = yl[_i];
+    	d=eukl_distance(Q,P);
+    	if (d != 0){
+    		w =1.0/d;
+    		W+= w;
+    		x+=Q.x*w;
+    		y+=Q.y*w;
+    	}
+    }
+    Q.x = x/W;
+    Q.y = y/W;
+    return Q;
+  };
+```
+
+---
+### Konvergenzverhalten 
+
+<video class="stretch" width="1002" height="568" data-autoplay controls>
+        <source src="../Budapest2014/media/movies/konvergenz.mp4" type="video/mp4" />
+		<source src="../Budapest2014/media/movies/konvergenz.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/konvergenz.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[Link zu GeoGebraTube: &nbsp; Weiszfeld Algorithmus](http://tube.geogebra.org/material/show/id/53072) &nbsp; &nbsp; von &nbsp; &nbsp;[Martin Guggisberg](http://tube.geogebra.org/mgje)</small>
+
+</script>
+</section>
+
+
+<!-- weitere Fragen? forschung? -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
+<script type="text/template" >
+
+# Experimentieren
+
+<br>
+
+## Phänomenologie
+---
+<video class="stretch" width="998" height="712" data-autoplay controls >
+	    <source src="../Budapest2014/media/movies/orbit.mp4" type="video/mp4" />
+		<source src="../Budapest2014/media/movies/orbit.webm" type="video/webm" />
+		<source src="../Budapest2014/media/movies/orbit.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small> <span style="color:rgb(34,221,172)"> ● Fermat-Punkt </span>&nbsp;&nbsp; <span style="color:rgb(255, 0, 0)"> ● Schwerpunkt</span> </small>
+<br>
+<small>[Link zu GeoGebraTube: &nbsp; Fermat-Punkt, verallgemeinerte Problemstellung](http://tube.geogebra.org/material/show/id/52934) </small>
+--
+
+Varignon Frame von Pierre de Varignon
+
+
+<img src="../Budapest2014/media/varignonFrame.png" class="stretch" alt="Varignon Frame">
+
+<small>
+Canbolat, M. S., & Wesolowsky, G. O. (2012). On the use of the Varignon frame for single facility Weber problems in the presence of convex barriers. European Journal of Operational Research, 217(2), 241-247. [Link](http://www.sciencedirect.com/science/article/pii/S0377221711008095)
+</small>
+
+--
+### Der FP springt auf innere Punkte
+<video class="stretch" width="854" height="634" data-autoplay controls>
+	    <source src="../Budapest2014/media/movies/snaptopoint.mp4" type="video/mp4" />
+	    <source src="../Budapest2014/media/movies/snaptopoint.webm" type="video/webm" />
+	    <source src="../Budapest2014/media/movies/snaptopoint.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+<small> <span style="color:rgb(34,221,172)"> ● Fermat-Punkt </span>&nbsp;&nbsp; <span style="color:rgb(255, 0, 0)"> ● Schwerpunkt</span></small>
+
+
+---
+## Weiteres Potenzial von
+<br>
+
+# interaktiven Experimenten
+
+<br>
+
+
+---
+
+### z.B. Bewegungen Visualisieren 
+
+<video class="stretch" width="984" height="720" data-autoplay controls>
+	    <source src="media/movies/movingTurtle.m4v" type="video/mp4" />
+	    <source src="media/movies/movingTurtle.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[Link zu GeoGebraTube &nbsp; Moving a turtle with JavaScript commands](http://tube.geogebra.org/material/show/id/617719)&nbsp; &nbsp; von &nbsp; &nbsp;[Martin Guggisberg](http://tube.geogebra.org/mgje)</small>
+
+---
+
+### Programmierung innerhalb von GeoGebra
+
+### Einen Schritt vorwärt
+
+```javascript
+fw = function(){
+(function(){
+    "use strict";
+    var x_,y_
+    x_ = ggbApplet.getXcoord("P");
+    y_ = ggbApplet.getYcoord("P");
+    ggbApplet.setCoords("P",x_+1,y_);
+})();
+};
+```
+```Dank der Programmierschnittstelle können Abläufe simuliert oder gesteuert 
+werden.```
+
+
+---
+## Wo befindet die Mitte von Europa ?
+---
+
+<video class="stretch" width="972" height="728" data-autoplay controls>
+	    <source src="../Budapest2014/media/movies/europefp.mp4" type="video/mp4" />
+	    <source src="../Budapest2014/media/movies/europefp.webm" type="video/webm" />
+	    <source src="../Budapest2014/media/movies/europefp.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+<small>[Link zu GeoGebraTube](http://tube.geogebra.org/material/show/id/66688)</small>
+
+---
+## Thanks to 
+* Torsten Linnemann
+* Beat Trachsler
+
+[GeoGebra institute PH FHNW Switzerland](http://www.geogebra.org/institutes/)
+
+![end](media/end.png)
+---
+## Vielen Dank 
+<br> 
+
+
+
+# ?
+
+
+
+<br>
+<small>Den Vortrag und alle GeoGebra Materialien finden Sie im Internet.</small> <br>
+<a href="http://mgje.github.io/" style="text-decoration:none;"> http://mgje.github.io</a>
+
+<br>
+
+<small>Kontakt: martin dot guggisberg at fhnw dot ch</small>
+--
+```
+Kann man Forschen lernen?
+```&nbsp;
+
+<blockquote>
+<br> 
+	Subjektiv neue Bereiche können mit Hilfe von interaktiven 
+	Experimenten erforscht werden.
+    <br>
+    &nbsp;
+</blockquote>
+--
+Literatur<small>
+
+* Balinski, M. L., (1966). On finding integer solutions to linear programs. In Proc. IBM Scientific Computing Symposium on Combinatorial Problems (S. 225-248)
+* Bruder, R. (2014). Forschen, Explorieren, Problemlösen. In Linneweber-Lammerskitten, H. (Hrsg.). Fachdidaktik Mathematik. Grundbildung und Kompetenzaufbau im Unterricht der Sek. I und II. Seelze: Klett/Kallmeyer.
+* Barzel, B., Büchter, A., & Leuders, T. (2014). Mathematik Methodik, Handbuch für die Sekundarstufe I und II. 11. Auflage Berlin: Cornelsen Verlag.
+* Dörrie, H. (2013). 100 great problems of elementary mathematics. Courier Dover Publications.
+* Engelhaupt, H. (2004). Kürzeste Wege, Teil I. Mathematikinformation, 41, 24-61.
+* Gassner, C., & Hohenwarter, M. (2012). GeoGebraTube & GeoGebraWeb. Beiträge zum Mathematikunterricht 2012.
+* Kaenders, R., & Schmidt, R. (2011). Mit GeoGebra mehr Mathematik verstehen. Vieweg+ Teubner, Wiesbaden.
+* Ludwig, M., Oldenburg, R. (2007). Lernen durch Experimentieren – Handlungsorientierte Zugänge zur Mathematik. mathematik lehren, 141, 4-11
+* Roth, J., & Weigand, H. G. (2014). Forschendes Lernen im Mathematikunterricht: Eine Annäherung. Beiträge zum Mathematikunterricht 2014 (S. 999–1002). Münster: WTM-Verlag
+* Roth-Sonnen N., Leuders, T., Barzel, B., & Hußmann, (2005). Computer, Internet und co im Mathematikunterricht. (S. 190) Berlin: Cornelsen.
+* Weiszfeld, E. (1937). Sur le point pour lequel la somme des distances de n points donnés est minimum. Tôhoku Mathematical Journal, 43, 355–386.
+
+</small>
+--
+<br>
+### Thanks to Hakim El Hattab / hakim.se for reveal.js
+
+### Thanks to GeoGebra Team
+</script>
+</section>
+			</div>
+			<div class='header'>
+			   <img src="media/logo_white_small.png" alt="logo"> 
+			</div>
+            <div class='footer'>
+    			<p>49. GDM-Jahrestagung&nbsp; Basel&nbsp;&nbsp; © 2015 &nbsp;&nbsp;&nbsp;Martin &nbsp;&nbsp;Guggisberg &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;&nbsp; &nbsp;&nbsp;Torsten &nbsp;&nbsp;Linnemann &nbsp;&nbsp;&nbsp;&nbsp;PH FHNW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &amp; &nbsp;&nbsp;&nbsp;&nbsp;Beat &nbsp;&nbsp;Trachsler  &nbsp;&nbsp;Kantonsschule &nbsp;&nbsp;Zürcher&nbsp;&nbsp; Oberland</p>
+  			</div>
+		</div>
+
+		<script src="../reveal2015/lib/js/head.min.js"></script>
+		<script src="../reveal2015/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				width: 1024,
+    			height: 768,
+    			
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				parallaxBackgroundSize: '2100px 900px',
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal2015/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal2015/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal2015/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal2015/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal2015/plugin/zoom-js/zoom.js', async: true },
+					{ src: '../reveal2015/plugin/math/math.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

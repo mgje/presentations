@@ -51,6 +51,12 @@
 			<div class="slides">
 				<!-- Title Abstract -->
 			<section>
+				<section data-background="media/udayxiii.png">
+					
+				</section>
+			</section>
+
+			<section>
 				<section data-background="#222226">
 					
 					<h2>
@@ -157,9 +163,19 @@ TO Do
 
 ---
 
-
+![uebersicht](media/lifeclipper.jpg)
 ---
 
+Stand heute
+---
+
+
+<small>
+[H. Üster, R.F. Love, The convergence of the Weiszfeld algorithm, Computers & Mathematics with Applications, Volume 40, Issues 4–5, August–September 2000, Pages 443-451, ISSN 0898-1221](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
+</small>
+
+
+---
 </script>
 </section>
 
@@ -177,51 +193,39 @@ TO Do
 ---
 
 
-```Computers have the potential to turn the biggest math-phobe into a math user,
-if not a lover.``` 
-<br>
-<br>
+### Industriegebiet Basel
 
-Andrew Vázsonyi in his book:
-
-Which Door has the Cadillac 
-Adventures of a Real-Life Mathematician
+![karte](media/standort.png)
 
 ---
-### Weiszfeld Algorithmus
-
-$$ k \mbox{ Iterationsschritte} $$
-
-$$ \mbox{Ortsvektoren: } \vec{x_1} \cdots \vec{x_N} $$
-
-$$ \mbox{Startpunkt } \vec{y_0} \mbox{ im Schwerpunkt}$$
-
-$$  \vec{y\_{k+1}} = \frac{ \sum\_{i=1}^{N}  \frac{\vec{x\_i}}{\|| \vec{x\_i}-\vec{y\_k} \||}}{\sum\_{i=1}^N  \frac{1}{\|| \vec{x\_i}-\vec{y\_k} \||} } $$
-
-
-<small>
-[H. Üster, R.F. Love, The convergence of the Weiszfeld algorithm, Computers & Mathematics with Applications, Volume 40, Issues 4–5, August–September 2000, Pages 443-451, ISSN 0898-1221](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
-</small>
+![frosch](media/gebiet.jpg)
 ---
-### Weiszfeld Algorithmus
-### mit JavaScript (I)
 
-```
-geometric_median = function(epsilon) {
-    var P,Q;
-    P={};
-    P.x=gb.getXcoord("CM");
-    P.y=gb.getYcoord("CM");
+![uebersicht](media/uebersicht.png)
 
-    while (true){
-    	Q = median_approx(P);
-    	if (eukl_distance(P, Q) < epsilon){
-    		return Q;
-    	}
-    	P = Q;
-    }
-};
-```
+
+---
+
+![vogel](media/GebaeudeAGrossVogel.jpg)
+
+---
+
+![frosch](media/GebaeudeAGross.jpg)
+
+
+---
+
+![querschnitt](media/querschnitte.png)
+
+---
+
+![querschnitt](media/querschnittePlan.png)
+
+
+---
+
+![zukunft](media/voltanordplatt.png)
+
 
 </script>
 </section>

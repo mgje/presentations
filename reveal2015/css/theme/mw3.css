@@ -193,6 +193,7 @@ body {
 
 .reveal table th, .reveal table td {
   text-align: left;
+  vertical-align: top;
   padding: 0.2em 0.5em 0.2em 0.5em;
   border-bottom: 1px solid; }
 
@@ -380,4 +381,9 @@ table.mgu th, table.mgu td {
 
 table.mgu {
     /*border: 1px solid white;*/
+}
+
+
+img.smallerimg{
+  max-width: 88%
 }

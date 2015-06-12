@@ -441,6 +441,31 @@ Besuchen Sie uns in Basel für eine Oculus-Rift Demo
 				]
 			});
 
+			Reveal.addEventListener( 'fragmentshown', function( event ) {
+    			var ep = event.fragment,
+    			    img = null,
+    			    src = "",
+    			    id = ep.getAttribute("data-image-change-id");
+    			    if (typeof(id)==="string"){
+    			    	img = document.getElementById(id);
+    			    	src = ep.getAttribute("data-image-url");
+    			    	img.src = src;
+    			    }
+			} );
+
+			Reveal.addEventListener( 'fragmenthidden', function( event ) {
+    			var ep = event.fragment,
+    			    img = null,
+    			    src = "",
+    			    id = ep.getAttribute("data-image-change-id");
+    			    if (typeof(id)==="string"){
+    			    	img = document.getElementById(id);
+    			    	src = ep.getAttribute("data-image-url-back");
+    			    	img.src = src;
+    			    }
+			} );
+
+
 		</script>
 
 	</body>

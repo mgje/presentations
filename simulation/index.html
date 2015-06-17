@@ -158,6 +158,31 @@ Simulation in der Medizin,Grundlegende Konzepte – Klinische Anwendung, Springe
 
 ---
 
+#  randomisierte Modelle
+
+---
+
+##  Modellierung und Simulation dynamischer Systeme
+
+## mit 
+
+## Zelluläre Automaten
+
+---
+
+## Zelluläre Automaten - diskrete Zeitschritte
+
+Zustände werden zu festen Zeitpunkten berechnet.
+
+$$
+t_0 \to t_1 \to t_2 \to t_3 \to t_4 \to t_5 \to \cdots
+$$
+
+
+--- 
+
+
+
 </script>
 </section>
 
@@ -167,6 +192,83 @@ Simulation in der Medizin,Grundlegende Konzepte – Klinische Anwendung, Springe
 
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
 <script type="text/template" >
+
+# Zelluläre 
+
+# Automaten
+
+---
+
+## Waldbrandmodell
+
+- 3 Zustände:
+	- Baum
+	- Feuer 
+	- Asche
+- 2 Parameter: 
+	- Baumwachstum
+	- Blitzeinschlag
+
+Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, welches sich durch gewisse Simulationsparameter steuern lässt.
+
+---
+### Regeln
+
+
+1. Befindet sich x<sub><sub>ij</sub></sub>  im Zustand Asche, dann wächst x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von α, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt ein Baum ist.<br><br>
+2. Befindet sich x<sub><sub>ij</sub></sub> im Zustand Baum und ist mindestens ein Pixel in der Nachbarschaft von x<sub><sub>ij</sub></sub> im Zustand Feuer dann fängt auch x<sub><sub>ij</sub></sub> Feuer.<br><br>
+3. Falls x<sub><sub>ij</sub></sub> ein Baum ist und kein Feuer durch einen Nachbarn fängt, dann wird x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von γ von einem Blitz getroffen.<br><br>
+4. Befindet sich x<sub><sub>ij</sub></sub> im Zustand Feuer, dann erlischt das Feuer, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt Asche ist.
+
+
+---
+### Algorithnmus Zellulärer Automat zum Waldbrandmodell
+* (1) Wähle ein zweidimensionales Spielfeld der Grösse m×n so wie die Wahrscheinlichkeiten α und γ. Setze k = 0.
+* (2) Erzeuge eine Startkonfiguration zumZeitpunkt $t_0$ ,die nur aus Asche besteht.
+* (3) Führe, wie zuvor beschrieben, einen Schritt durch.
+* (4) Setze k = k + 1 und speichere das Spielfeld zum Zeitpunkt $t_k$ als Generation $G_k$ .
+* (5) Gehe zu Schritt (3) oder beende, falls $k$ eine zu vordefinierte Grenze überschritten hat.
+---
+## Erweitertes Waldbrandmodell
+
+![erweitertes modell](media/waldmodellerw.png)
+
+
+
+---
+## Erweitertes Waldbrandmodell
+
+[![Waldbrand](media/waldbrand.png)](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert)
+
+
+---
+
+## Populationsdynamik
+<small>Einfache Dominanz bei 5 Spezies</small>
+
+[![Pop](media/populationsdynmik.png)](http://www.mehr-davon.de/za/content/canvas.php?go=populationsdynamik-5-1)
+
+---
+
+Modell für biologisches wachstum
+
+---
+
+![dynModell](media/dynmodell.png)
+
+
+---
+
+## Reaktions-Diffusionsgleichung
+
+[![wachstum](media/reaktionsdiffusion.png)](http://www.mehr-davon.de/za/content/canvas.php?go=reaktion-beispiel)
+
+---
+
+### Vogelschwarm
+
+
+
 
 </script>
 </section>
@@ -241,8 +343,8 @@ Simulation in der Medizin,Grundlegende Konzepte – Klinische Anwendung, Springe
 				center: true,
 				slideNumber: true,
 
-				width: 960,
-    			height: 700,
+				width: 1200,
+    			height: 960,
     			
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom
@@ -252,11 +354,12 @@ Simulation in der Medizin,Grundlegende Konzepte – Klinische Anwendung, Springe
 				// Optional reveal.js plugins
 				dependencies: [
 					{ src: '../reveal2015/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal2015/plugin/math/math.js', async: true },
 					{ src: '../reveal2015/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal2015/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../reveal2015/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: '../reveal2015/plugin/zoom-js/zoom.js', async: true }
-					//{ src: '../reveal2015/plugin/math/math.js', async: true }
+					
 				]
 			});
 

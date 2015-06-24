@@ -57,7 +57,7 @@
 				<section data-background="#222226">
 					
 					<h2>
-						Virtuelle Modelle und Simulationen: 
+						Virtuelle Modelle und Simulationen 
 					</h2><h2>
 						 Mittels Informatik die Welt verstehen und planen 
 					</h2>
@@ -100,19 +100,21 @@
 - Was sind Simulationen ?
 - Beispiele:
 	- Flugsimmulator
-	- Wetter
+	- Wettervorhersage
 	- Medizin
-	- Optimierung
-	- Simulation von Prozessen (Operations Research)
 	- Verkehrssimulation
+
+- Zelluläre Automaten Bausteine von Simulationen
+
+- High Performance Computing
 	- Materialsimulation (Blechverformung)
-	- fluid dynamics / Numerische Strömungsmechanik
-	- molecular dynamics  
-	
+	- Strömungsmechanik
+	- Molekulardynamik 
 
-- Prinzip einer Simulation
+- IPython - Baukasten für Simulationen
 
-- Baukasten Simulation
+- IPython Labor: mit Simulationen Experimentieren
+
 </script>
 </section>
 
@@ -126,6 +128,15 @@
 # Simulationen ?
 ---
 
+ TODO Definition Simulation
+
+---
+
+# Beispiele
+
+
+---
+
 ## Flugsimmulator
 
 <small> Beispiel Flugsimmulator A320, Zürich Airport, [YouTube](https://www.youtube.com/watch?v=-xkoXX44eFY)</small>
@@ -134,57 +145,30 @@
 
 
 ---
-
 ## Simulation in der Medizin
-
-### VR-Simulator en in der Kardiologie 
 
 ![medizin](media/simmedizin.png)
 
 ---
-
-
-<small>
-Simulation in der Medizin, Grundlegende Konzepte – Klinische Anwendung, Springer, 2013
-</small>
+### Virtual Reality Simulator 
+<small>Simulation in der Medizin, Grundlegende Konzepte – Klinische Anwendung, Springer, 2013</small>
 
 ![medizin](media/simmedizin2.png)
-
 ---
 
-# Optimierung
+# Verkehrssimulationen
 
 ---
-
-# Beste Verbindung ?
-
-# Kürzester Weg ?
-
-# Wo liegt der beste Ort ?
-
----
-
-## Exkurs:
-
-
-Das Problem von Fermat
-
-[Wo ist der beste Ort für einen Spielplatz?](http://mgje.github.io/presentations/GDM2015/#/3)
-
-
----
-
-# Simulation von Prozessen (Operations Research)
-
----
-
-# Verkehrssimulation
-
----
-## Ereignisorientierte Simulation der Warteschlange an einer Ampel
+##  Warteschlange an einer Ampel
 
 ![Ampel](media/ampel.png)
 
+
+--- 
+
+# High Performance Simulationen
+
+TODO
 
 ---
 
@@ -193,30 +177,9 @@ Das Problem von Fermat
 ---
 
 # Strömungsmechanik
-
-
 ---
 
-##  Modellierung und Simulation dynamischer Systeme
-
-## mit 
-
-## Zelluläre Automaten
-
----
-
-## Zelluläre Automaten - diskrete Zeitschritte
-
-Zustände werden zu festen Zeitpunkten berechnet.
-
-$$
-t_0 \to t_1 \to t_2 \to t_3 \to t_4 \to t_5 \to \cdots
-$$
-
-
---- 
-
-# molecular dynamics
+# Molekulardynamik
 
 
 </script>
@@ -229,13 +192,38 @@ $$
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
 <script type="text/template" >
 
-# Zelluläre 
+# Zelluläre Automaten 
 
-# Automaten
+<br>
+
+## als Bausteine von Simulationen
+
+<br>
+
+### Geringe Rechenleistung nötig
 
 ---
 
-## Waldbrandmodell
+TODO Definition Zelluläre Automaten
+
+1. Regelsystem
+2. Brechnen verschiedener Zeitschritte 
+
+---
+
+## Zelluläre Automaten 
+
+Zustandsvariablen werden nach definierten Regeln zu diskreten Zeitschritten berechnet.
+
+$$
+t_0 \to t_1 \to t_2 \to t_3 \to t_4 \to t_5 \to \cdots
+$$
+
+---
+# Beispiel I - Waldbrandmodell
+---
+
+## Einfaches Waldbrandmodell
 
 - 3 Zustände:
 	- Baum
@@ -243,13 +231,15 @@ $$
 	- Asche
 	<br><br>
 - 2 Parameter: 
-	- Baumwachstum
-	- Blitzeinschlag
-<br><br>
+	- α : Wahrscheinlichkeit Baumwachstum
+	- γ : Wahrscheinlichkeit Blitzeinschlag
+
+<br>
+
 Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, welches sich durch die Simulationsparameter steuern lässt.
 
 ---
-### Regeln
+### Simulationsschritt / Regeln
 
 
 1. Befindet sich x<sub><sub>ij</sub></sub>  im Zustand Asche, dann wächst x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von α, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt ein Baum ist.<br><br>
@@ -259,21 +249,23 @@ Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, wel
 
 
 ---
-### Algorithnmus: Waldbrandmodell
-* (1) Wähle ein zweidimensionales Spielfeld der Grösse m×n so wie die Wahrscheinlichkeiten α und γ. Setze k = 0.
-* (2) Erzeuge eine Startkonfiguration zumZeitpunkt $t_0$ ,die nur aus Asche besteht.
-* (3) Führe, wie zuvor beschrieben, einen Schritt durch.
-* (4) Setze k = k + 1 und speichere das Spielfeld zum Zeitpunkt $t_k$ als Generation $G_k$ .
-* (5) Gehe zu Schritt (3) oder beende, falls $k$ eine zu vordefinierte Grenze überschritten hat.
+### Simulationskreislauf
+1. Wähle ein zweidimensionales Spielfeld der Grösse m×n und die Parameter α und γ (Wahrscheinlichkeiten). Setze $k = 0$.
+
+1. Erzeuge eine Startkonfiguration zum Zeitpunkt $t_0$ ,die nur aus Asche besteht.
+
+1. Führe, wie zuvor beschrieben, einen Schritt durch.
+
+1. Setze $k = k + 1$ und speichere das Spielfeld zum Zeitpunkt $t_k$ als Generation $G_k$ .
+
+1. Gehe zu Schritt (3) oder beende, falls $k$ eine zu vordefinierte Grenze überschritten hat.
 ---
-## Erweitertes Waldbrandmodell
+### Erweiterung des Waldbrandmodells auf 7 Zustände
 
 ![erweitertes modell](media/waldmodellerw.png)
 
-
-
 ---
-## Erweitertes Waldbrandmodell
+## Interaktive Simulation im Browser
 
 <small>[Link zur Simulation](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert)</small>
 
@@ -282,21 +274,7 @@ Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, wel
 
 ---
 
-## Populationsdynamik
-<small>[Einfache Dominanz bei 5 Spezies](http://www.mehr-davon.de/za/content/canvas.php?go=populationsdynamik-5-1)</small>
-
-[![Pop](media/populationsdynmik.png)](http://www.mehr-davon.de/za/content/canvas.php?go=populationsdynamik-5-1)
-
----
-
-# Wachstum
-
-# Modelle
-
-Biologie, Oberflächenphysik
----
-
-![dynModell](media/dynmodell.png)
+# Beispiel II - Musterbildung
 
 
 ---
@@ -309,29 +287,9 @@ Biologie, Oberflächenphysik
 
 ---
 
-## Schwarmverhalten
-
-[Simulation und Quelle](http://interactivepython.org/courselib/static/everyday/2013/02/3_school.html)
-
-[YouTube Video](https://www.youtube.com/watch?t=21&v=DfoeFzCWrDE)
-
-![Schwarm](media/schwarm.png)
-
-[weitere Informationen zum Schwarmverhalten (engl. boids)](http://www.red3d.com/cwr/boids/)
+TODO Alain Turing Motivation
 
 
-
----
-# Scientific Computing
-
-## Programmieren mit Python
-
-
-[Kurs von Greg Wilson](http://swcarpentry.github.io/python-novice-inflammation/)
-
-[Ipython Notebooks: Gallery of interesting IPython Notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)
-
-[Beispiele: Cookbook-code](https://github.com/ipython-books/cookbook-code)
 
 </script>
 </section>
@@ -340,23 +298,33 @@ Biologie, Oberflächenphysik
 
 <!-- Section 3 -->
 
-<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#8F0E39" data-background-transition="slide" >
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#14384C" data-background-transition="slide" >
 <script type="text/template" >
 
+## IPython - Baukasten für Simulationen
 
-# Modellierung dynamischer Systeme
+[Vorlesung (2014) SciPy - Library of scientific algorithms for Python, von J.R. Johansson, Hirosawa, Wako-shi, JAPAN ](https://github.com/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-Scipy.ipynb)
 
-[Quelle: Computational Modelling in Neuroscience](http://www.gribblelab.org/compneuro/2_Modelling_Dynamical_Systems.html) 
+[Programming with Python, G. Wilson](http://swcarpentry.github.io/python-novice-inflammation/)
+
+[Gallery of interesting IPython Notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)
+
+
+[Computational Modelling in Neuroscience](http://www.gribblelab.org/compneuro/2_Modelling_Dynamical_Systems.html) 
+
+[weitere Beispiele: Cookbook-code](https://github.com/ipython-books/cookbook-code)
 
 ---
 
-[Dynamische Systeme Simulation mit Python](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/notebook/Modellierung%20dynamischer%20Systeme.ipynb)
 
 ![dynsys](media/dynsystem.png)
 
----
-### Schwarmverhalten
 
+[Dynamische Systeme mit Python simulieren](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Modellierung%20dynamischer%20Systeme.ipynb)
+
+
+---
+### Schwarmverhalten
 
 <video class="stretch" width="864" height="578" data-autoplay controls>
         <source data-src="media/movies/Schwarm.m4v" type="video/mp4" />
@@ -373,26 +341,44 @@ Biologie, Oberflächenphysik
 </video>
 
 ---
-## Dynamik
 
 ### Schwarmveralten mit Python simulieren
 
-[Schwarmsimulation](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/notebook/Schwarm.ipynb)
+
+[YouTube Video](https://www.youtube.com/watch?t=21&v=DfoeFzCWrDE)
+
+![Schwarm](media/schwarm.png)
+
+
+[IPython Notebook Schwarmsimulation](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Schwarm.ipynb)
+
+[Quelle (engl): Flocking Implementation](http://interactivepython.org/courselib/static/everyday/2013/02/3_school.html)
+
+[weitere Informationen zum Schwarmverhalten (engl. boids)](http://www.red3d.com/cwr/boids/)
+
+
+
 ---
 
 
-# Reaktion / Diffusion
+### Reaktion-Diffusion Simulation
 
-[Reaktions-Diffusionsgleichung](http://ipython-books.github.io/featured-05/)
 
-[Quelle ipython cookbook](https://github.com/ipython-books/cookbook-code)
+
+[IPython Notebook zu Reaktion-Diffusion Simulationen](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Reaktions-Diffusions-System.ipynb)
+
+![turnin](media/turing.jpg)
+
+[Quelle (engl): reaction-diffusion systems and Turing patterns](http://ipython-books.github.io/featured-05/)
+
+
 
 
 
 ---
-# Strömungsdynamik 
+### Strömungsdynamik 
 
-[ipython Notebook 12 steps to Navier-Stokes](https://github.com/barbagroup/CFDPython/tree/master/lessons)
+[IPython Notebook 12 steps to Navier-Stokes](https://github.com/barbagroup/CFDPython/tree/master/lessons)
 
 ![navStokes](media/navstokes.png)
 ![FlussRohr](media/flussrohr.png)
@@ -404,13 +390,26 @@ Biologie, Oberflächenphysik
 ![Gitter](media/gitter.png)
 
 ---
-# Stabilität 
 
-### [Modellierung mit Hilfe eines Federmodels](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/notebook/Federmodell.ipynb)
+[IPython Notebook: Statik Modellierung mit Hilfe eines Federmodels](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Federmodell.ipynb)
+
+[Quelle (engl): Simulating a physical system in Python by minimizing an energy](http://ipython-books.github.io/featured-02/)
 
 
 ![Federketten](media/federketten.png)
 
+
+
+
+--
+
+# Operations Research
+
+
+### Exkurs: Wo liegt der beste Ort ?
+
+
+[Wo ist der beste Ort für einen Spielplatz?](http://mgje.github.io/presentations/GDM2015/#/3)
 
 --
 
@@ -428,12 +427,6 @@ Biologie, Oberflächenphysik
 - Spherical Pendulum
 
 
-
-
-
-
-
-https://github.com/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-Scipy.ipynb
 
 
 </script>
@@ -460,7 +453,19 @@ https://github.com/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-
 
 <small>Kontakt: martin dot guggisberg at unibas dot ch</small>
 
+---
 
+# IPython Labor: mit Simulationen Experimentieren
+
+* [Anleitung und Arbeitsaufträge](https://github.com/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/README.md)
+
+* [Dynamische Systeme mit Python simulieren](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Modellierung%20dynamischer%20Systeme.ipynb)
+
+* [IPython Notebook Schwarmsimulation](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Schwarm.ipynb)
+
+* [IPython Notebook zu Reaktion-Diffusion Simulationen](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Reaktions-Diffusions-System.ipynb)
+
+* [IPython Notebook: Statik Modellierung mit Hilfe eines Federmodels](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Federmodell.ipynb)
 
 
 --
@@ -470,6 +475,10 @@ https://github.com/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-
 ### for THE HTML PRESENTATION FRAMEWORK 
 
 ### reveal.js
+
+---
+
+
 
 
 </script>

@@ -82,12 +82,7 @@
 
 				
 
-               <section data-background="#222226">
-               	<h3>Abstract</h3>
-				<small>
-					TO DO ...
-				</small>
-				</section>
+               
 			</section>
 				
 
@@ -97,19 +92,9 @@
 <script type="text/template" >
 
 ## Agenda
-- Was sind Simulationen ?
-- Beispiele:
-	- Flugsimmulator
-	- Wettervorhersage
-	- Medizin
-	- Verkehrssimulation
+- Was heisst simulieren?
 
 - Zelluläre Automaten Bausteine von Simulationen
-
-- High Performance Computing
-	- Materialsimulation (Blechverformung)
-	- Strömungsmechanik
-	- Molekulardynamik 
 
 - IPython - Baukasten für Simulationen
 
@@ -123,19 +108,35 @@
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
 <script type="text/template" >
 
-# Was sind 
-
-# Simulationen ?
+# Theorie - Experiment - Berechnung
+- Planetenbeispiel, Galilei, 
+- Mondlandung, Philae
 ---
 
- TODO Definition Simulation
+# Was heisst 
 
----
+# simulieren?
 
+--
+
+# Grosse Simulationen: 
+- Autocrash
+- Flugzeugflügel 
+- Bahnhöfe
+
+--
+
+# Grosse Rechner - kleine Rechner
+
+--
+
+# Unterscheidung: Ereignisorientierte — Numerische Simulation
+
+--
 # Beispiele
 
 
----
+--
 
 ## Flugsimmulator
 
@@ -144,42 +145,28 @@
 [![A320](media/A320cockpit.png)](https://www.youtube.com/watch?v=-xkoXX44eFY)
 
 
----
+--
 ## Simulation in der Medizin
 
 ![medizin](media/simmedizin.png)
 
----
+--
 ### Virtual Reality Simulator 
 <small>Simulation in der Medizin, Grundlegende Konzepte – Klinische Anwendung, Springer, 2013</small>
 
 ![medizin](media/simmedizin2.png)
----
+--
 
 # Verkehrssimulationen
 
----
+--
 ##  Warteschlange an einer Ampel
 
 ![Ampel](media/ampel.png)
 
 
---- 
 
-# High Performance Simulationen
 
-TODO
-
----
-
-# Materialsimulation
-
----
-
-# Strömungsmechanik
----
-
-# Molekulardynamik
 
 
 </script>
@@ -204,20 +191,31 @@ TODO
 
 ---
 
-TODO Definition Zelluläre Automaten
-
-1. Regelsystem
-2. Brechnen verschiedener Zeitschritte 
-
----
-
 ## Zelluläre Automaten 
 
-Zustandsvariablen werden nach definierten Regeln zu diskreten Zeitschritten berechnet.
+Zelluläre Automaten dienen der Modellierung räumlich diskreter dynamischer Systeme, wobei die Entwicklung einzelner Zellen zum Zeitpunkt t+1 primär von den Zellzuständen in einer vorgegebenen Nachbarschaft und vom eigenen Zustand zum Zeitpunkt t abhängt.
+
+
+Zustandsvariablen werden nach Regeln zu diskreten Zeitpunkten berechnet.
+
 
 $$
 t_0 \to t_1 \to t_2 \to t_3 \to t_4 \to t_5 \to \cdots
 $$
+
+---
+Ein Zellulärer Automat besteht aus:
+
+- einem Raum $R$
+- einer endlichen Nachbarschaft $N$
+- einer Zustandmenge Q
+- eine lokale Überführungsfunktion $f: Q^n \to Q$
+
+---
+
+Beispiele von Stephen Wolfram
+
+
 
 ---
 # Beispiel I - Waldbrandmodell

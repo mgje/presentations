@@ -118,6 +118,7 @@
 
 ### Geringe Rechenleistung nötig
 
+
 ---
 
 ## Zelluläre Automaten 
@@ -128,19 +129,33 @@
 
 * hängen von den Zellzuständen in einer vorgegebenen Nachbarschaft zum Zeitpunkt **t** ab.
 
+---
 
 
 $$
-t_0 \to t_1 \to t_2 \to t_3 \to t_4 \to t_5 \to \cdots
+t_0 \to t_1 \to t_2 \to t_3 \to \cdots
 $$
+
+![timesteps](media/timesteps.png)
 
 ---
-Ein Zellulärer Automat besteht aus:
+
+
+## Ein Zellulärer Automat besteht aus:
 
 - einem Raum $R$
+
 - einer endlichen Nachbarschaft $N$
-- einer Zustandmenge Q
-- eine lokale Überführungsfunktion $f: Q^n \to Q$
+
+- einer Zustandmenge $Q$
+
+- eine lokale Überführungsfunktion $f: Q^n \to Q$ mit $n \in \mathbb{N}$
+
+
+![spielfeld.png](media/spielfeld.png)
+
+
+
 
 ---
 
@@ -163,7 +178,7 @@ Ein Zellulärer Automat besteht aus:
 
 ![stroemung2](media/stroemung2.png)
 
-
+[Youtube Link Simulation Flüssigkeit](https://www.youtube.com/watch?v=txqcePmnTVU)
 
 ---
 # Waldbrandmodell
@@ -185,25 +200,21 @@ Quelle: Pixelspiele - Modellieren und Simulieren mit zellulären Automaten von D
 	- α : Wahrscheinlichkeit Baumwachstum
 	- γ : Wahrscheinlichkeit Blitzeinschlag
 
-<br>
-
-Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, welches sich durch die Simulationsparameter steuern lässt.
-
 ---
-### Simulationsschritt / Regeln
+### Regeln / Simulationsschritt
 
 
-1. Befindet sich x<sub><sub>ij</sub></sub>  im Zustand Asche, dann wächst x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von α, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt ein Baum ist.<br><br>
-2. Befindet sich x<sub><sub>ij</sub></sub> im Zustand Baum und ist mindestens ein Pixel in der Nachbarschaft von x<sub><sub>ij</sub></sub> im Zustand Feuer dann fängt auch x<sub><sub>ij</sub></sub> Feuer.<br><br>
-3. Falls x<sub><sub>ij</sub></sub> ein Baum ist und kein Feuer durch einen Nachbarn fängt, dann wird x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von γ von einem Blitz getroffen.<br><br>
-4. Befindet sich x<sub><sub>ij</sub></sub> im Zustand Feuer, dann erlischt das Feuer, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt Asche ist.
+1. Befindet sich x<sub><sub>ij</sub></sub>  im Zustand **Asche**, dann wächst x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von α, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt ein **Baum** ist.<br><br>
+2. Befindet sich x<sub><sub>ij</sub></sub> im Zustand **Baum** und ist mindestens ein Pixel in der Nachbarschaft von x<sub><sub>ij</sub></sub> im Zustand Feuer dann fängt auch x<sub><sub>ij</sub></sub> **Feuer**.<br><br>
+3. Falls x<sub><sub>ij</sub></sub> ein **Baum** ist und **kein Feuer** durch einen Nachbarn fängt, dann wird x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von γ von einem **Blitz** getroffen und fängt **Feuer**<br><br>
+4. Befindet sich x<sub><sub>ij</sub></sub> im Zustand **Feuer**, dann erlischt das Feuer, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt **Asche** ist.
 
 
 ---
 ### Verlauf der Simulation
 1. Wähle ein zweidimensionales Spielfeld der Grösse m×n und die Parameter α und γ (Wahrscheinlichkeiten). Setze $k = 0$.
 
-1. Erzeuge eine Startkonfiguration zum Zeitpunkt $t_0$ ,die nur aus Asche besteht.
+1. Erzeuge eine Startkonfiguration zum Zeitpunkt $t_0$ ,die nur aus **Asche** besteht.
 
 1. Führe, wie zuvor beschrieben, einen Schritt durch.
 

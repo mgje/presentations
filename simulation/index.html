@@ -93,7 +93,7 @@
 
 ## Agenda
 
-- Zelluläre Automaten Bausteine von Simulationen
+- Simulationen mit Zelluläre Automaten
 
 - IPython - Baukasten für Simulationen
 
@@ -122,10 +122,12 @@
 
 ## Zelluläre Automaten 
 
-Zelluläre Automaten dienen der Modellierung räumlich diskreter dynamischer Systeme, wobei die Entwicklung einzelner Zellen zum Zeitpunkt t+1 primär von den Zellzuständen in einer vorgegebenen Nachbarschaft und vom eigenen Zustand zum Zeitpunkt t abhängt.
+* Zelluläre Automaten dienen der Modellierung **räumlich** **diskreter** dynamischer Systeme
 
+* die Entwicklung einzelner **Zellen** zum Zeitpunkt **t+1** 
 
-Zustandsvariablen werden nach Regeln zu diskreten Zeitpunkten berechnet.
+* hängen von den Zellzuständen in einer vorgegebenen Nachbarschaft zum Zeitpunkt **t** ab.
+
 
 
 $$
@@ -208,30 +210,10 @@ Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, wel
 1. Setze $k = k + 1$ und speichere das Spielfeld zum Zeitpunkt $t_k$ als Generation $G_k$ .
 
 1. Gehe zu Schritt (3) oder beende, falls $k$ eine zu vordefinierte Grenze überschritten hat.
+---
+### Erweiterung des Waldbrandmodells auf 7 Zustände
 
-
-
---
-# Theorie - Experiment - Berechnung
-- Planetenbeispiel, Galilei, 
-- Mondlandung, Philae
-
-
-
---
-
-# Grosse Simulationen: 
-- Autocrash
-- Flugzeugflügel 
-- Bahnhöfe
-
---
-
-# Grosse Rechner - kleine Rechner
-
---
-
-# Unterscheidung: Ereignisorientierte — Numerische Simulation
+![erweitertes modell](media/waldmodellerw.png)
 
 
 --
@@ -241,7 +223,6 @@ Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, wel
 <small> Beispiel Flugsimmulator A320, Zürich Airport, [YouTube](https://www.youtube.com/watch?v=-xkoXX44eFY)</small>
 
 [![A320](media/A320cockpit.png)](https://www.youtube.com/watch?v=-xkoXX44eFY)
-
 
 --
 ## Simulation in der Medizin
@@ -277,12 +258,7 @@ Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, wel
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
 <script type="text/template" >
 
----
-### Erweiterung des Waldbrandmodells auf 7 Zustände
 
-![erweitertes modell](media/waldmodellerw.png)
-
----
 ## Interaktive Simulation im Browser
 
 <small>[Link zur Simulation](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert)</small>

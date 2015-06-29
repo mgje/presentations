@@ -92,7 +92,6 @@
 <script type="text/template" >
 
 ## Agenda
-- Was heisst simulieren?
 
 - Zelluläre Automaten Bausteine von Simulationen
 
@@ -108,76 +107,6 @@
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
 <script type="text/template" >
 
-# Theorie - Experiment - Berechnung
-- Planetenbeispiel, Galilei, 
-- Mondlandung, Philae
----
-
-# Was heisst 
-
-# simulieren?
-
---
-
-# Grosse Simulationen: 
-- Autocrash
-- Flugzeugflügel 
-- Bahnhöfe
-
---
-
-# Grosse Rechner - kleine Rechner
-
---
-
-# Unterscheidung: Ereignisorientierte — Numerische Simulation
-
---
-# Beispiele
-
-
---
-
-## Flugsimmulator
-
-<small> Beispiel Flugsimmulator A320, Zürich Airport, [YouTube](https://www.youtube.com/watch?v=-xkoXX44eFY)</small>
-
-[![A320](media/A320cockpit.png)](https://www.youtube.com/watch?v=-xkoXX44eFY)
-
-
---
-## Simulation in der Medizin
-
-![medizin](media/simmedizin.png)
-
---
-### Virtual Reality Simulator 
-<small>Simulation in der Medizin, Grundlegende Konzepte – Klinische Anwendung, Springer, 2013</small>
-
-![medizin](media/simmedizin2.png)
---
-
-# Verkehrssimulationen
-
---
-##  Warteschlange an einer Ampel
-
-![Ampel](media/ampel.png)
-
-
-
-
-
-
-</script>
-</section>
-<!--
-<section data-background="media/reaktionsdiffusion.png"></section>
--->
-<!-- Section II -->
-
-<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
-<script type="text/template" >
 
 # Zelluläre Automaten 
 
@@ -224,9 +153,11 @@ Ein Zellulärer Automat besteht aus:
 
 ---
 
+## Komplexität
+
 ![stroemung](media/stroemung.png)
 
---
+---
 
 ![stroemung2](media/stroemung2.png)
 
@@ -267,7 +198,7 @@ Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, wel
 
 
 ---
-### Simulationskreislauf
+### Verlauf der Simulation
 1. Wähle ein zweidimensionales Spielfeld der Grösse m×n und die Parameter α und γ (Wahrscheinlichkeiten). Setze $k = 0$.
 
 1. Erzeuge eine Startkonfiguration zum Zeitpunkt $t_0$ ,die nur aus Asche besteht.
@@ -277,6 +208,75 @@ Es stellt sich mit der Zeit ein kritisches, aber stabiles Gleichgewicht ein, wel
 1. Setze $k = k + 1$ und speichere das Spielfeld zum Zeitpunkt $t_k$ als Generation $G_k$ .
 
 1. Gehe zu Schritt (3) oder beende, falls $k$ eine zu vordefinierte Grenze überschritten hat.
+
+
+
+--
+# Theorie - Experiment - Berechnung
+- Planetenbeispiel, Galilei, 
+- Mondlandung, Philae
+
+
+
+--
+
+# Grosse Simulationen: 
+- Autocrash
+- Flugzeugflügel 
+- Bahnhöfe
+
+--
+
+# Grosse Rechner - kleine Rechner
+
+--
+
+# Unterscheidung: Ereignisorientierte — Numerische Simulation
+
+
+--
+
+## Flugsimmulator
+
+<small> Beispiel Flugsimmulator A320, Zürich Airport, [YouTube](https://www.youtube.com/watch?v=-xkoXX44eFY)</small>
+
+[![A320](media/A320cockpit.png)](https://www.youtube.com/watch?v=-xkoXX44eFY)
+
+
+--
+## Simulation in der Medizin
+
+![medizin](media/simmedizin.png)
+
+--
+### Virtual Reality Simulator 
+<small>Simulation in der Medizin, Grundlegende Konzepte – Klinische Anwendung, Springer, 2013</small>
+
+![medizin](media/simmedizin2.png)
+--
+
+# Verkehrssimulationen
+
+--
+##  Warteschlange an einer Ampel
+
+![Ampel](media/ampel.png)
+
+
+
+
+
+
+</script>
+</section>
+<!--
+<section data-background="media/reaktionsdiffusion.png"></section>
+-->
+<!-- Section II -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
+<script type="text/template" >
+
 ---
 ### Erweiterung des Waldbrandmodells auf 7 Zustände
 

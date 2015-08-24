@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="de">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title></title>
+
+		<meta name="description" content="Virtuelle Modelle und Simulationen: Mittels Informatik die Welt verstehen und planen">
+		<meta name="author" content="H. Burkhart, M. Guggisberg">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="shortcut icon" type="image/x-icon" href="unibas.ico" />
+		<link rel="stylesheet" href="../reveal2015/css/reveal.min.css">
+		<!--
+		<link rel="stylesheet" href="../reveal2015/css/theme/black.css" id="theme">
+		-->
+
+		<!-- Fonts Definition inside -->
+	
+		<link rel="stylesheet" href="../reveal2015/css/theme/mw3.css" id="theme">
+	
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal2015/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal2015/css/print/pdf.css' : '../reveal2015/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal2015/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+		    
+
+			
+			<div class="slides">
+				<!-- Title Abstract -->
+			
+			
+
+			<section>
+				<section data-background="#222226">
+					
+					<h2>
+						Virtuelle Modelle und Simulationen 
+					</h2><h2>
+						 Mittels Informatik die Welt verstehen und planen 
+					</h2>
+					<br>
+					<p>
+						<small>Helmar Burkhart
+							<br>
+							Martin Guggisberg  
+							
+							<br>
+							<strong>Universität Basel</strong>
+							
+						</small><br>
+						
+					</p>
+
+					<br>
+
+					<p><small> 30.6.2015<br> Schülerinnen und Schüler des Gymnasiums Muttenz zu Besuch</small></p>
+
+				</section>
+
+				
+
+               
+			</section>
+				
+
+<!-- Einleitung / Gutachten -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#222226" data-background-transition="slide" >
+<script type="text/template" >
+
+## Agenda
+
+- Simulationen mit Zellulären Automaten
+
+- IPython - Baukasten für Simulationen
+
+- IPython Labor: mit Simulationen Experimentieren
+
+</script>
+</section>
+
+<!-- Section I -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
+<script type="text/template" >
+
+
+# Zelluläre Automaten 
+
+<br>
+
+## als Bausteine von Simulationen
+
+<br>
+
+### Geringe Rechenleistung nötig
+
+
+---
+
+## Zelluläre Automaten 
+
+* Zelluläre Automaten dienen der Modellierung **räumlich** **diskreter** dynamischer Systeme
+
+* die Entwicklung einzelner **Zellen** zum Zeitpunkt **t+1** 
+
+* hängen von den Zellzuständen in einer vorgegebenen Nachbarschaft zum Zeitpunkt **t** ab.
+
+---
+
+
+$$
+t_0 \to t_1 \to t_2 \to t_3 \to \cdots
+$$
+
+![timesteps](media/timesteps.png)
+
+---
+
+
+## Ein Zellulärer Automat besteht aus:
+
+- einem Raum $R$
+
+- einer endlichen Nachbarschaft $N$
+
+- einer Zustandmenge $Q$
+
+- eine lokale Überführungsfunktion $f: Q^n \to Q$ mit $n \in \mathbb{N}$
+
+
+![spielfeld.png](media/spielfeld.png)
+
+
+
+
+---
+
+## Beispiele von Stephen Wolfram
+
+## A new kind of science (2002)
+
+[Link](http://www.wolframscience.com/nksonline/toc.html)
+
+
+### Simulation von Strömungen
+
+---
+
+## Komplexität
+
+![stroemung](media/stroemung.png)
+
+---
+
+![stroemung2](media/stroemung2.png)
+
+[Youtube Link Simulation Flüssigkeit](https://www.youtube.com/watch?v=txqcePmnTVU)
+
+---
+# Waldbrandmodell
+
+Quelle: Pixelspiele - Modellieren und Simulieren mit zellulären Automaten von Daniel Scholz, Springer 2014 
+
+[Online-Beispiele](http://www.mehr-davon.de/za/)
+
+---
+
+## Einfaches Waldbrandmodell
+
+- 3 Zustände:
+	- Baum
+	- Feuer 
+	- Asche
+	<br><br>
+- 2 Parameter: 
+	- α : Wahrscheinlichkeit Baumwachstum
+	- γ : Wahrscheinlichkeit Blitzeinschlag
+
+---
+### Regeln / Simulationsschritt
+
+
+1. Befindet sich x<sub><sub>ij</sub></sub>  im Zustand **Asche**, dann wächst x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von α, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt ein **Baum** ist.<br><br>
+2. Befindet sich x<sub><sub>ij</sub></sub> im Zustand **Baum** und ist mindestens ein Pixel in der Nachbarschaft von x<sub><sub>ij</sub></sub> im Zustand Feuer dann fängt auch x<sub><sub>ij</sub></sub> **Feuer**.<br><br>
+3. Falls x<sub><sub>ij</sub></sub> ein **Baum** ist und **kein Feuer** durch einen Nachbarn fängt, dann wird x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von γ von einem **Blitz** getroffen und fängt **Feuer**<br><br>
+4. Befindet sich x<sub><sub>ij</sub></sub> im Zustand **Feuer**, dann erlischt das Feuer, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt **Asche** ist.
+
+
+---
+### Verlauf der Simulation
+1. Wähle ein zweidimensionales Spielfeld der Grösse m×n und die Parameter α und γ (Wahrscheinlichkeiten). Setze $k = 0$.
+
+1. Erzeuge eine Startkonfiguration zum Zeitpunkt $t_0$ ,die nur aus **Asche** besteht.
+
+1. Führe, wie zuvor beschrieben, einen Schritt durch.
+
+1. Setze $k = k + 1$ und speichere das Spielfeld zum Zeitpunkt $t_k$ als Generation $G_k$ .
+
+1. Gehe zu Schritt (3) oder beende, falls $k$ eine zu vordefinierte Grenze überschritten hat.
+---
+### Erweiterung des Waldbrandmodells auf 7 Zustände
+
+![erweitertes modell](media/waldmodellerw.png)
+
+
+--
+
+## Flugsimmulator
+
+<small> Beispiel Flugsimmulator A320, Zürich Airport, [YouTube](https://www.youtube.com/watch?v=-xkoXX44eFY)</small>
+
+[![A320](media/A320cockpit.png)](https://www.youtube.com/watch?v=-xkoXX44eFY)
+
+--
+## Simulation in der Medizin
+
+![medizin](media/simmedizin.png)
+
+--
+### Virtual Reality Simulator 
+<small>Simulation in der Medizin, Grundlegende Konzepte – Klinische Anwendung, Springer, 2013</small>
+
+![medizin](media/simmedizin2.png)
+--
+
+# Verkehrssimulationen
+
+--
+##  Warteschlange an einer Ampel
+
+![Ampel](media/ampel.png)
+
+
+
+
+
+
+</script>
+</section>
+<!--
+<section data-background="media/reaktionsdiffusion.png"></section>
+-->
+<!-- Section II -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
+<script type="text/template" >
+
+
+## Interaktive Simulation im Browser
+
+<small>[Link zur Simulation](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert)</small>
+
+[![Waldbrand](media/waldbrand.png)](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert)
+
+
+---
+
+# Musterbildung in der Natur
+
+
+
+---
+
+![muster](media/musterbildung2.png)
+--
+
+![muster](media/musterbildung.png)
+
+---
+
+
+![schneeflocke](media/schneeflocke2.PNG)
+
+
+---
+
+![schneeflocke](media/schneeflocke.PNG)
+
+
+
+---
+
+## Reaktions-Diffusionsgleichung
+
+[Simulation](http://www.mehr-davon.de/za/content/canvas.php?go=reaktion-beispiel)
+
+[![wachstum](media/reaktionsdiffusion.png)](http://www.mehr-davon.de/za/content/canvas.php?go=reaktion-beispiel)
+
+
+
+
+
+</script>
+</section>
+
+<!-- <section data-background="media/gebiet.jpg"></section> -->
+
+<!-- Section 3 -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#14384C" data-background-transition="slide" >
+<script type="text/template" >
+
+## IPython - Baukasten für Simulationen
+
+[Vorlesung (2014) SciPy - Library of scientific algorithms for Python, von J.R. Johansson, Hirosawa, Wako-shi, JAPAN ](https://github.com/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-Scipy.ipynb)
+
+[Programming with Python, G. Wilson](http://swcarpentry.github.io/python-novice-inflammation/)
+
+[Gallery of interesting IPython Notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)
+
+
+[Computational Modelling in Neuroscience](http://www.gribblelab.org/compneuro/2_Modelling_Dynamical_Systems.html) 
+
+[weitere Beispiele: Cookbook-code](https://github.com/ipython-books/cookbook-code)
+
+---
+
+
+![dynsys](media/dynsystem.png)
+
+
+[Dynamische Systeme mit Python simulieren](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Modellierung%20dynamischer%20Systeme.ipynb)
+
+
+---
+### Schwarmverhalten
+
+<video class="stretch" width="864" height="578" data-autoplay controls>
+        <source data-src="media/movies/Schwarm.m4v" type="video/mp4" />
+        <source data-src="media/movies/Schwarm.webm" type="video/webm" />
+        Your browser does not support the <code>video</code> element.
+</video>
+---
+### Schwarmverhalten mit Jägger
+
+<video class="stretch" width="864" height="578" data-autoplay controls>
+        <source data-src="media/movies/jaegger.m4v" type="video/mp4" />
+        <source data-src="media/movies/jaegger.webm" type="video/webm" />
+        Your browser does not support the <code>video</code> element.
+</video>
+
+---
+
+### Schwarmveralten mit Python simulieren
+
+
+[YouTube Video](https://www.youtube.com/watch?t=21&v=DfoeFzCWrDE)
+
+![Schwarm](media/schwarm.png)
+
+
+[IPython Notebook Schwarmsimulation](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Schwarm.ipynb)
+
+[Quelle (engl): Flocking Implementation](http://interactivepython.org/courselib/static/everyday/2013/02/3_school.html)
+
+[weitere Informationen zum Schwarmverhalten (engl. boids)](http://www.red3d.com/cwr/boids/)
+
+
+
+---
+
+
+### Reaktion-Diffusion Simulation
+
+
+
+[IPython Notebook zu Reaktion-Diffusion Simulationen](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Reaktions-Diffusions-System.ipynb)
+
+![turnin](media/turing.jpg)
+
+[Quelle (engl): reaction-diffusion systems and Turing patterns](http://ipython-books.github.io/featured-05/)
+
+
+
+
+
+--
+### Strömungsdynamik 
+
+[IPython Notebook 12 steps to Navier-Stokes](https://github.com/barbagroup/CFDPython/tree/master/lessons)
+
+![navStokes](media/navstokes.png)
+![FlussRohr](media/flussrohr.png)
+
+--
+
+# Gitterprobleme
+
+![Gitter](media/gitter.png)
+
+--
+
+[IPython Notebook: Statik Modellierung mit Hilfe eines Federmodels](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Federmodell.ipynb)
+
+[Quelle (engl): Simulating a physical system in Python by minimizing an energy](http://ipython-books.github.io/featured-02/)
+
+
+![Federketten](media/federketten.png)
+
+
+
+
+--
+
+# Operations Research
+
+
+### Exkurs: Wo liegt der beste Ort ?
+
+
+[Wo ist der beste Ort für einen Spielplatz?](http://mgje.github.io/presentations/GDM2015/#/3)
+
+--
+
+# Ideales Gas
+
+[IPython Notebook Ideales Gas](http://nbviewer.ipython.org/url/media.usm.maine.edu/~pauln/ScipyScriptRepo/IdealGasInABox.ipynb)
+
+--
+### Weitere Themen
+
+- ODE lösen mit Runge-Kutta
+- Mobile Phone Networks
+- Optimization with Nelder–Mead
+- Elektrostatische Simulation
+- Spherical Pendulum
+
+
+
+
+</script>
+</section>
+
+
+<!-- weitere Fragen? forschung? -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
+<script type="text/template" >
+
+# Vielen Dank
+
+
+
+---
+
+
+<br>
+<small>Die Folien finden Sie im Internet.</small> <br>
+<a href="http://mgje.github.io/presentations/simulation" style="text-decoration:none;"> http://mgje.github.io/presentations/simulation</a>
+
+
+
+<small>Kontakt: martin dot guggisberg at unibas dot ch</small>
+
+---
+
+# IPython Labor: mit Simulationen Experimentieren
+
+* [Anleitung und Arbeitsaufträge](https://github.com/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/README.md)
+
+* [Dynamische Systeme mit Python simulieren](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Modellierung%20dynamischer%20Systeme.ipynb)
+
+* [IPython Notebook Schwarmsimulation](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Schwarm.ipynb)
+
+* [IPython Notebook zu Reaktion-Diffusion Simulationen](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Reaktions-Diffusions-System.ipynb)
+
+* [IPython Notebook: Statik Modellierung mit Hilfe eines Federmodels](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Federmodell.ipynb)
+
+
+--
+<br>
+### Thanks to Hakim El Hattab / hakim.se 
+
+### for THE HTML PRESENTATION FRAMEWORK 
+
+### reveal.js
+
+
+
+
+</script>
+</section>
+			</div>
+			<div class='header'>
+			   <img src="media/uni-basel-logo.svg" alt="logo"> 
+			</div>
+            <div class='footer'>
+    			<small><h3>
+    				Helmar Burkhart, Martin Guggisberg &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Departement Mathematik und Informatik , Universität Basel&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;HTML5-Slides: <a href="http://mgje.github.io/presentations/udayxiii">http://mgje.github.io</a></h3>
+
+    			</small>
+  			</div>
+		</div>
+
+		<script src="../reveal2015/lib/js/head.min.js"></script>
+		<script src="../reveal2015/js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+
+				width: 1200,
+    			height: 960,
+    			
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				parallaxBackgroundSize: '2100px 900px',
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal2015/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal2015/plugin/math/math.js', async: true },
+					{ src: '../reveal2015/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal2015/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal2015/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal2015/plugin/zoom-js/zoom.js', async: true }
+					
+				]
+			});
+
+			Reveal.addEventListener( 'fragmentshown', function( event ) {
+    			var ep = event.fragment,
+    			    img = null,
+    			    src = "",
+    			    id = ep.getAttribute("data-image-change-id");
+    			    if (typeof(id)==="string"){
+    			    	img = document.getElementById(id);
+    			    	src = ep.getAttribute("data-image-url");
+    			    	img.src = src;
+    			    }
+			} );
+
+			Reveal.addEventListener( 'fragmenthidden', function( event ) {
+    			var ep = event.fragment,
+    			    img = null,
+    			    src = "",
+    			    id = ep.getAttribute("data-image-change-id");
+    			    if (typeof(id)==="string"){
+    			    	img = document.getElementById(id);
+    			    	src = ep.getAttribute("data-image-url-back");
+    			    	img.src = src;
+    			    }
+			} );
+
+
+		</script>
+
+	</body>
+</html>

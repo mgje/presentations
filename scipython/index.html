@@ -16,9 +16,7 @@
 
 		<link rel="shortcut icon" type="image/x-icon" href="unibas.ico" />
 		<link rel="stylesheet" href="../reveal2015/css/reveal.min.css">
-		<!--
-		<link rel="stylesheet" href="../reveal2015/css/theme/black.css" id="theme">
-		-->
+		
 
 		<!-- Fonts Definition inside -->
 	
@@ -93,170 +91,112 @@
 
 ## Agenda
 
-- Wozu wissenschaftliches Programmieren
-- Einfache Beispiele
-- Umgebung Jupyter nutzen
-- Simulationen
-- wissenschaftliche Bibliotheken
-- eigene Tests
+- Wozu Programmieren im wissenschaftlichen Kontext?
+- iPython & JuPyter, Interaktives Programmieren direkt im Browser
+- Ipython Notebook Baukasten für Simulationen 
+- Beispiele:
+	1. Grosse Zahlen
+	- Boolsche Arithmetik
+	- Numerisch Differenzieren
+	- Funktionen Darstellen
+	- Dichte der Primzahlen
+	- Lineare Algebra mit numpy
+	- Wachstum
+		- Unbegrenztes Wachstum
+		- Begrenztes Wachstum
+		- Logistisches Wachstum
+		- Wachstum mit Gift
+		- Wachstum mit Gift optimistischeres Modell
+	- Diskrete Optimierung
+		- Fermat-Punkt
+		- Kranausleger
+		- Hängende Kette
+
 
 ---
-# TODO 
+# Programmieren in  
+# der Wissenschaft
 
-numerische Verfahren -> Wissenschaftliches Rechnen
-Simulationen
-Auswertung von Resultaten
-Erstellung von Visualisierungen 
-Nutzung von wissenschaftlichen Bibliotheken
-
+# wieso ?
 ---
 
-Quellen Inspiration
+# Anworten
 
-FHNW Kurs 
-„Wissenschabliches Rechnen mit Python“ 
+1. Numerische Verfahren in Natur und Ingenieurwissenschaften
+- Simulationen ersetzen Experimente
+- Komplexe Datensäte erfordern interaktive Visualisierungen
+- Mächtige wissenschaftliche Bibliotheken
+	NumPy, SciPy,
 
-basiert auf den ersten Kapitel von
+---
+## Mein Bezug zum wissenschaftlichen Rechnen
+
+Seit 2011 leite ich die Veranstaltung
+
+'''Einstieg ins wissenschaftliche Rechnen mit 
+Python'''
+
+Mein Skript basiert auf den ersten Kapitel des 
+Buchs  
+
 „A Primer on Scientific Programming with
-Python“ von 
+Python“ 
 
-Hans Petter Langtangen
+von Hans Petter Langtangen
+
+
+
+---
+## iPython (JuPyter) Notebook, Interaktives Programmieren direkt im Browser
+
+```Wir leben in aufregenden Rechenzeiten. Die Kombination aus preiswerter und leistungsfähiger Hardware und erweiterte Bibliotheken, welche mit IPython Notebook einfach zugänglich gemacht werden können, erlauben in wenigen Zeilen komplexe Berechnungen``L. Felipe Martins, Author von
+
 
 ---
 
-# WOZU Python ?
+## Testen ohne Anmeldung
 
-# WOZU Python ?
+[https://try.jupyter.org/](https://try.jupyter.org/)
 
----
+![JuPyter](media/jupyter.png)
 
-Einfache Beispiele
+--
+## Cloud Lösung Wakari
 
----
-
-Grosse+Zahlen+
-z.B.)Falkultät)49)
->>>import math
->>>math.factorial(49)
-608281864034267560872252163321295376887552831379210240000000000L
->>> float(math.factorial(49))
-6.082818640342675e+62
->>> format(math.pi, '.49g')
-'3.141592653589793115997963468544185161590576171875'
+- [Wakari.io Webseite](https://www.wakari.io/)
+- [Zahlreiche Beispiele](https://www.wakari.io/gallery) 
 
 ---
 
-Komplexe Zahlen
+## Lokale Lösung:
 
->>> z1 = 1.0 + 1.0j
->>> abs(z1)
-1.4142135623730951
->>> from cmath import phase,pi
->>> ph = phase(z1)
->>> print ph/pi*180
-45.0 
-
+- IPython installieren, z.B. mit [Anaconda](http://continuum.io/downloads), [Anleitung (engl)](http://docs.continuum.io/anaconda/install)
+- Terminal Fenster öffnen
+- Kommando: ```ipython notebook```
 ---
 
-Logik Summenbeispiel Checkio
+![ip](media/runipython.png)
+
 
 ---
+## Hauptmerkmale iPython Notebook
 
-num Ableiten
-
-from math import pi,exp,sqrt,sin,cos,tan,log
-def ableitung(x,f,h=0.001):
- return (f(x+h)-f(x-h))/(2*h)
-def f1(x):
- return exp(-2*x*x)
-print "Die Ableitung von y=exp(-2x^2) an der \
-Stelle %g beträgt %g" % (0,ableitung(0,f1)) 
+- direkt im Browser editieren mit sytax highlighting und tab completion
+- Ausführbares Program und Ergebnisse werden zusammen abgespeichert (elektronische Protokollierung)
+- Ergebnisse können auf in allen gängigen Medien-Formate ausgegeben werden, wie z.B. HTML, SVG, LATEX, PNG, usw.
+- MathJax für die Visualsierung mathematischer Formeln (Latex)
+- MarkDown für formatierte und verlinkte Inhalte
 
 ---
+## SciPy und NumPy, wissenschaftliche Bibliotheken
 
-Dichte der Primzahlen
+- NumPy erweitert Python mit Effizenten numerischen Methoden zu N-dimenoalen Arrays
+- SciPy baut auf NumPy auf und erweitert Python in den Bereichen:
+	- Effizentes lösen von Gleichungssystemen
+	- Lösen von diskreten Optimierungsproblemen
+	- Numerische Integration
+	- gewöhnliche Diff. Gl.
 
-Dichte_Primzahlen.py++
-N = 100000000 # Obere Grenze
-be = 100000 # Intervall / Bereich
-gestrichen = [False]*(N+1)
-# Sieb des Eratosthenes
-for i in range(2,N+1):
- if not gestrichen[i]:
- for j in range(2*i,N+1,i):
- gestrichen[j] = True
-gestrichen[0]=True
-gestrichen[1]=True
-# Liste Anzahl Primzahlen pro Intervall
-d=[] 
-
-# Zu jedem Intervall
-for j in range(N/be):
- sum =0
- # Summe der Primzahlen in diesem Intervall
- for k in range(j*be,(j+1)*be):
- if not gestrichen[k]:
- sum=sum+1
- d.append(sum)
-# x-Skala gleichmaessig von 0 bis N
-x = np.linspace(0, N, N/be)
-y = np.array(d)
-plot(x,y)
-show() 
-
----
-
-Logis2sches_Wachstum.py
-w=0.0099
-G=8.0
-def f(x):
- return x+w*x*(G-x)
-def genPopulation(x0,n):
- x=[x0]
- # calculate 1..n-1 values
- for i in range(1,n):
- tmp = f(x[i-1])
- x.append(tmp)
- return x
-popul=genPopulation(x0,80)
-pp.plot(range(len(popul)),popul,'o')
-
----
-
-Energieminimierung.py
-import scipy.optimize as optimize
-from math import sqrt
-P1=[0.0,5.0] # P1 (0 | 5)
-P2=[3.0,2.0] # P2 (3 | 2)
-L=8 # Laenge
-def potEnergie(X):
- e=X[1]+(L-sqrt((P1[0]-X[0])**2+(P1[1]-X[1])**2) \
- -sqrt((P2[0]-X[0])**2+(P2[1]-X[1])**2))**2*1000
- return e
-x0=[2.0,2.5]
-xopt = optimize.fmin(potEnergie,x0, xtol=1e-9,
-disp=True)
-print(xopt) 
-
----
-
-Hängende Kette
-
-N=17
-lg = 12.0/N
-…
-def potEnergie(X):
- …
- #Sum pot energy of every element
- sum=0.0
- for i in range(N):
- x=2*i
- y=2*i+1
- # ll calculated length, lg correct length
- ll =sqrt((w[x]-w[x+2])**2+(w[y]-w[y+2])**2)
- sum+=ll*(w[y]+w[y+2])/2.0+70*(lg-ll)**2
-
- return sum
 
 
 </script>
@@ -267,24 +207,22 @@ def potEnergie(X):
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
 <script type="text/template" >
 
+## IPython - Baukasten für Simulationen
+- [Vorlesung (2014) SciPy - Library of scientific algorithms for Python, von J.R. Johansson, Hirosawa, Wako-shi, JAPAN ](https://github.com/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-Scipy.ipynb)
 
-# Simulationen 
-
----
+- [Programming with Python, G. Wilson](http://swcarpentry.github.io/python-novice-inflammation/)
 
 
----
+- [Wakari.io Beispiele](https://www.wakari.io/gallery) 
 
-## Flugsimmulator
+- [Gallery of interesting IPython Notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)
 
-<small> Beispiel Flugsimmulator A320, Zürich Airport, [YouTube](https://www.youtube.com/watch?v=-xkoXX44eFY)</small>
 
-[![A320](media/A320cockpit.png)](https://www.youtube.com/watch?v=-xkoXX44eFY)
+- [Computational Modelling in Neuroscience](http://www.gribblelab.org/compneuro/2_Modelling_Dynamical_Systems.html) 
 
----
-##  Warteschlange an einer Ampel
+- [weitere Beispiele: Cookbook-code](https://github.com/ipython-books/cookbook-code)
 
-![Ampel](media/ampel.png)
+
 
 ---
 
@@ -303,15 +241,40 @@ def potEnergie(X):
 <script type="text/template" >
 
 
-## Interaktive Simulation im Browser
 
-<small>[Link zur Simulation](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert)</small>
+# Operations Research
 
-[![Waldbrand](media/waldbrand.png)](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert)
+
+### Exkurs: Wo liegt der beste Ort ?
+
+
+[Wo ist der beste Ort für einen Spielplatz?](http://mgje.github.io/presentations/GDM2015/#/3)
+
+
+
+</script>
+</section>
+
+<!-- <section data-background="media/gebiet.jpg"></section> -->
+
+<!-- Section 3 -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#14384C" data-background-transition="slide" >
+<script type="text/template" >
+
+
+# Simulationen 
 
 
 ---
 
+## Flugsimmulator
+
+<small> Beispiel Flugsimmulator A320, Zürich Airport, [YouTube](https://www.youtube.com/watch?v=-xkoXX44eFY)</small>
+
+[![A320](media/A320cockpit.png)](https://www.youtube.com/watch?v=-xkoXX44eFY)
+
+---
 # Musterbildung in der Natur
 
 
@@ -333,42 +296,6 @@ def potEnergie(X):
 
 ![schneeflocke](media/schneeflocke.PNG)
 
-
-
----
-
-## Reaktions-Diffusionsgleichung
-
-[Simulation](http://www.mehr-davon.de/za/content/canvas.php?go=reaktion-beispiel)
-
-[![wachstum](media/reaktionsdiffusion.png)](http://www.mehr-davon.de/za/content/canvas.php?go=reaktion-beispiel)
-
-
-
-
-
-</script>
-</section>
-
-<!-- <section data-background="media/gebiet.jpg"></section> -->
-
-<!-- Section 3 -->
-
-<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#14384C" data-background-transition="slide" >
-<script type="text/template" >
-
-## IPython - Baukasten für Simulationen
-
-[Vorlesung (2014) SciPy - Library of scientific algorithms for Python, von J.R. Johansson, Hirosawa, Wako-shi, JAPAN ](https://github.com/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-Scipy.ipynb)
-
-[Programming with Python, G. Wilson](http://swcarpentry.github.io/python-novice-inflammation/)
-
-[Gallery of interesting IPython Notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)
-
-
-[Computational Modelling in Neuroscience](http://www.gribblelab.org/compneuro/2_Modelling_Dynamical_Systems.html) 
-
-[weitere Beispiele: Cookbook-code](https://github.com/ipython-books/cookbook-code)
 
 ---
 
@@ -459,13 +386,7 @@ def potEnergie(X):
 
 --
 
-# Operations Research
 
-
-### Exkurs: Wo liegt der beste Ort ?
-
-
-[Wo ist der beste Ort für einen Spielplatz?](http://mgje.github.io/presentations/GDM2015/#/3)
 
 --
 

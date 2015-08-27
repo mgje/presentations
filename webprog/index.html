@@ -89,11 +89,178 @@
 - Automatisierte Webanfragen
 - Web Data Extraction
 
+---
+## Web: Von der Vergangenheit zur Gegenwart 
 
+<img class="stretch" src="media/entwicklung_Web1.png" alt="Vergangenheit zur Gegenwart "></img>
+
+<small> Grafik von H. Burkhart aus Veranstaltung Web Data Management HS 2014 </small>
+
+---
+## Web: Von der Vergangenheit zur Gegenwart II
+
+<img class="stretch" src="media/entwicklung_Web1.png" alt="Vergangenheit zur Gegenwart "></img>
+
+<small> Grafik von H. Burkhart aus Veranstaltung Web Data Management HS 2014 </small>
+
+---
+## Webprogrammierung
+
+### Welche Programmiersprache ?
+
+<table class="mgu">
+<tr><td>
+
+__Front-End__:<br>
+<ul>
+<li> ~~Adobe Flash~~ </li>
+<li> ~~Java~~ </li>
+<li> __JavaScript__ </li>
+</ul>
+</td><td>
+__Back-End__:<br>
+
+<ul>
+<li> Java (J2EE, Business) </li>
+<li> PHP (hiphop PHP Compiler FB) </li>
+<li> __Python__ (Django,Zope2,Flask) </li>
+<li> JavaScript (nodeJs) </li>
+</ul>
+</td></tr>
+<tr></tr>
+</table>
 
 ---
 
+## Dieser Block fokussiert auf
+
+## der Extrahierung von verschiedenen Daten aus dem Web 
+
+## ein wichtiger Teil im modernen Forschungsfeld Data Science
 ---
+## Web Architektur
+
+<img  src="media/www_architektur.png" alt="Architektur"></img>
+---
+## OSI-Referenz Modell
+<img src="media/osi-ref.png" alt="osi"></img>
+
+---
+### HyperText Transfer Protocol (HTTP)
+
+* HTTP basiert auf Frage - Anwort Prinzip
+
+* HTTP ist zustandslos
+
+* HTTP Kommunikation verläuft über TCP/IP Sockets
+
+[http://www.w3.org/Protocols/](http://www.w3.org/Protocols/)
+
+
+---
+### Typische Frage (Request)
+
+```
+GET /index.html HTTP/1.1     
+Host: www.unibas.ch 
+User-Agent: Mozilla/4.0
+```
+
+### Mögliche Antwort (Response)
+```
+HTTP/1.1 200 OK 
+Content-Length: 2579
+Content-Type: text/html 
+
+<!doctype html>
+<html lang="de">
+   <head>
+          . . .
+   </head>
+</html>
+
+```
+---
+## HTTP Anfrage mit Python und httplib
+
+<small> http_ex_1.py </small>
+
+```
+from httplib import HTTPConnection
+
+conn = HTTPConnection("www.tigerjython.ch")
+
+conn.request("GET","/index.html")
+res = conn.getresponse()
+print(res.status, res.reason)
+
+for header in res.getheaders():
+    print(header[0]+" : "+header[1])
+
+conn.close()
+```
+
+
+---
+## HTTP Anfrage mit Python, urllib2
+
+<small> http_ex_2.py </small>
+
+```
+from urllib2 import urlopen
+
+conn = urlopen("http://www.tigerjython.ch")
+status = conn.getcode()
+reason = conn.msg
+
+print(status,reason)
+print(con.headers)
+
+conn.close()
+```
+
+---
+## Response HEADER 
+
+```
+(200, 'OK')
+Date: Thu, 27 Aug 2015 15:52:06 GMT
+Server: Apache
+Last-Modified: Sat, 26 Jul 2014 16:05:28 GMT
+ETag: "129000000003925-e1-4ff1adbc7fa0e"
+Accept-Ranges: bytes
+Content-Length: 225
+Content-Type: text/html
+Age: 354
+X-Cache: HIT from login.fdxtended.com
+Via: 1.0 login.fdxtended.com (squid/3.0.STABLE20)
+Proxy-Connection: close
+```
+---
+
+# Was ist nun der Inhalt der Antwort ?
+
+---
+## Inhalt der Antwort
+
+<small> http_ex_3.py </small>
+
+```
+from urllib2 import urlopen
+endpoint = "http://www.tigerjython.ch"
+response = urlopen(endpoint)
+html = response.read()
+print(html)
+```
+
+```
+<html>
+<body>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta HTTP-EQUIV="REFRESH" content="0; url=index.php?inhalt_links=navigation.inc.php&inhalt_mitte=home/home.inc.php">
+</body>
+</html>
+```
 
 
 
@@ -102,10 +269,77 @@
 
 <!-- Section I -->
 
-<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#004A49" data-background-transition="slide" >
 <script type="text/template" >
 
-TO DO
+
+## Sprachen für die Daten- und Dokumentspezifikation
+
+<div class="bigger">
+<ul>
+<li>XML</li>
+<li>HTML</li>
+<li>JSON</li>
+</ul>
+ 
+ </div>
+
+---
+## Wohlgeformt 
+
+XML,HTML Dokumente müssen wohlgeformt (well-formed) sein: 
+* Die __erste Zeile__ identifiziert das Dokument als xml,html.
+* Es gibt __ein äusserstes Element__, das alle anderen umschliesst.
+* __Reguläre Schachtelung__: Jedes Element hat entweder Beginn und Ende oder ist ein "leeres" Element.
+* Attribute eines Elements sind __eindeutig__.
+* Attributwerte stehen in __Anführungszeichen__.
+
+[http://www.w3.org/TR/REC-xml/](http://www.w3.org/TR/REC-xml/)
+
+---
+## Was ist hier falsch?
+
+```html
+<head>
+<meta charset="utf-8">
+<title>Welcome to Python.org</head></title>
+<body class="python" class="home" id="homepage">
+<div class=small started>
+<h2 class="widget title">Get Started</h2>
+<p>Whether you are new ... Python.
+<p><a href="/about/gettingstarted/">Start ..</p>
+</div>
+</body>
+</html>
+```
+---
+
+## wohlgeformt
+
+```html
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Welcome to Python.org</title>
+</head>
+<body class="python home" id="homepage">
+<div class="small started">
+<h2 class="widget-title">Get Started</h2>
+<p>Whether you are new ... Python.</p>
+<p><a href="/about/gettingstarted/">Start ..</a></p>
+</div>
+</body>
+</html>
+```
+---
+
+
+
+
+---
+
+
 
 </script>
 </section>

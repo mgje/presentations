@@ -312,7 +312,7 @@ XML,HTML Dokumente müssen wohlgeformt (well-formed) sein:
 </body>
 </html>
 ```
----
+--
 
 ## wohlgeformt
 
@@ -334,12 +334,21 @@ XML,HTML Dokumente müssen wohlgeformt (well-formed) sein:
 ```
 ---
 
+Ein korrektes HTML Dokument kann als Syntaxbaum gezeichnet
+werden.
 
+![syntaxbau](media/syntaxbau.png)
+
+---
+Ein Parser hilft Inhalte aus einem html Dokument
+geziehlt zu extrahieren.
+
+![catch a fish](media/catch_a_fisch.jpg)
 
 
 ---
 
-
+# TO Do Simple Parser
 
 </script>
 </section>
@@ -351,10 +360,57 @@ XML,HTML Dokumente müssen wohlgeformt (well-formed) sein:
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
 <script type="text/template" >
 
+# JSON 
 
-# Demo
+Maschinen lesbare Daten
 
-TO DO
+---
+
+google Beispiel Plüs
+
+---
+
+JSON Beispiel
+>>> import requests
+>>> url = 'https://maps.googleapis.com/maps/api/geocode/json'
+>>> params = {'sensor': 'false', 'address': 'Mountain View, CA'}
+>>> r = requests.get(url, params=params)
+>>> results = r.json()['results']
+>>> location = results[0]['geometry']['location']
+>>> location['lat'], location['lng']
+(37.3860517, -122.0838511)
+---
+
+Wolframalpha API
+
+Temperatur im July  vergleich 
+Bern Zürich Basel
+
+
+---
+Web Scrapeing
+
+---
+Beispiel Zeitungen
+
+
+Extract Data From the web
+---
+
+netflix beispiel
+
+
+---
+
+# Number of Links of a website
+
+---
+
+# Verify external Links
+
+---
+
+
 
 
 </script>

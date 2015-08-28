@@ -287,11 +287,15 @@ print(html)
 ---
 ## Wohlgeformt 
 
-XML,HTML Dokumente müssen wohlgeformt (well-formed) sein: 
+XML,HTML sind wohlgeformt (well-formed): 
 * Die __erste Zeile__ identifiziert das Dokument als xml,html.
+
 * Es gibt __ein äusserstes Element__, das alle anderen umschliesst.
-* __Reguläre Schachtelung__: Jedes Element hat entweder Beginn und Ende oder ist ein "leeres" Element.
+
+* __Reguläre Schachtelung__
+
 * Attribute eines Elements sind __eindeutig__.
+
 * Attributwerte stehen in __Anführungszeichen__.
 
 [http://www.w3.org/TR/REC-xml/](http://www.w3.org/TR/REC-xml/)
@@ -337,7 +341,7 @@ XML,HTML Dokumente müssen wohlgeformt (well-formed) sein:
 Ein korrektes HTML Dokument kann als Syntaxbaum gezeichnet
 werden.
 
-![syntaxbau](media/syntaxbau.png)
+![syntaxbau](media/syntaxbaum.jpg)
 
 ---
 Ein Parser hilft Inhalte aus einem html Dokument
@@ -348,7 +352,68 @@ geziehlt zu extrahieren.
 
 ---
 
-# TO Do Simple Parser
+# Digital News Parser
+
+![digital](media/digitalnews.png)
+
+[http://www.20min.ch/digital](http://www.20min.ch/digital/)
+
+---
+
+<small> Parser_Digital_Headline.py</small> 
+
+
+```python
+class DigitalHeadLine(HTMLParser):
+   capture_txt = False
+   headlines = []
+   def handle_starttag(self, tag, attrs):
+   	if tag == "h2":
+   		if "data-vr-contentbox" in dict(attrs):
+   			self.capture_txt = True
+
+   def handle_endtag(self, tag):
+   	if tag == "h2":
+   		if self.capture_txt == True:
+   			self.capture_txt = False
+
+   def handle_data(self, data):
+   	if self.capture_txt == True:
+   		self.headlines.append(data)
+```
+
+
+--
+
+```python
+from HTMLParser import HTMLParser
+import urllib2
+class DigitalHeadLine(HTMLParser):
+	capture_txt=False
+	headlines =[]
+	def handle_starttag(self, tag, attrs):
+		if tag == "h2":
+			if "data-vr-contentbox" in dict(attrs):
+				self.capture_txt = True
+	def handle_endtag(self, tag):
+		if tag == "h2":
+			if self.capture_txt == True:
+				self.capture_txt=False
+	def handle_data(self, data):
+		if self.capture_txt == True:
+			self.headlines.append(data)
+	def getheadlines(self):
+		print self.headlines[0]
+
+url="http://www.20min.ch/digital/"
+res = urllib2.urlopen(url)
+encoding = "iso-8859-1"
+html = res.read().decode(encoding)
+parser = DigitalHeadLine()
+parser.feed(html)
+parser.getheadlines()
+```
+
 
 </script>
 </section>
@@ -482,8 +547,11 @@ oder
 				center: true,
 				slideNumber: true,
 
-				width: 1200,
-    			height: 960,
+				//width: 1200,
+    			//height: 960,
+
+    			width: 1024,
+    			height: 796,
     			
 
 				transition: 'slide', // none/fade/slide/convex/concave/zoom

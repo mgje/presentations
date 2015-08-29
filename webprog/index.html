@@ -104,6 +104,22 @@
 <small> Grafik von H. Burkhart aus Veranstaltung Web Data Management HS 2014 </small>
 
 ---
+## Information zu Webtechnologien
+
+* [Web Platform Docs](https://docs.webplatform.org/wiki/Main_Page/de)
+
+* [Webtechnologien für Entwickler](https://developer.mozilla.org/de/docs/Web)
+
+* [W3C Standards](http://www.w3.org/standards/)
+
+* [DIVE INTO HTML5](http://fortuito.us/diveintohtml5/)
+
+* [Codeacademy HTML CSS](https://www.codecademy.com/tracks/web)
+
+
+
+
+---
 ## Webprogrammierung
 
 ### Welche Programmiersprache ?
@@ -283,11 +299,108 @@ print(html)
 </ul>
  
  </div>
+---
+# JSON
 
 ---
-## Wohlgeformt 
+# JSON (JavaScript Object Notation)
 
-XML,HTML sind wohlgeformt (well-formed): 
+![Robot](media/robot.png)
+
+---
+## Google Search
+
+[TigerJython Beispiel aus dem Modul Internet](http://www.tigerjython.ch/index.php?inhalt_links=navigation.inc.php&inhalt_mitte=internet/search.inc.php)
+
+
+```python
+import urllib2, json
+search = input("Enter a search ...")
+url = "http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=" + search
+responseStr = urllib2.urlopen(url).read()
+response = json.loads(responseStr)
+responseData = response["responseData"]
+results = responseData["results"]
+
+for result in results:
+	title = result["title"]
+	url = result["url"]
+	print title + " **** " + url
+```
+
+
+	
+	
+---
+
+Welche Geo-Koordinaten hat die Adresse
+
+__Universitätstrasse 6 ETH Zürich__ ?
+
+<small> geolocation.py </small>
+
+```python
+import urllib2
+import pprint
+import json
+add = "Universitätstrasse 6 ETH Zürich"
+add = urllib2.quote(add.encode('utf-8'))
+geocode_url = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false" % add
+req = urllib2.urlopen(geocode_url)
+jsonResponse = json.loads(req.read())
+pprint.pprint(jsonResponse)
+```
+
+---
+## Reverse Geolocation
+
+Ich brauche Information zu der Geo-Koordinate
+
+__(47.3783606,8.5488485)__
+
+<small> reverse_geolocation.py </small>
+
+```python
+import urllib2
+import pprint
+import json
+lat="47.3783606"
+lon="8.5488485"
+geocode_url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=%s,%s&sensor=false" % (lat,lon)
+req = urllib2.urlopen(geocode_url)
+jsonResponse = json.loads(req.read())
+print jsonResponse["results"][0]["formatted_address"]
+```
+---
+### Wie komme ich von A nach B ?
+
+<small> wegbeschreibung.py </small>
+
+![wegout](media/wegout.png)
+
+---
+## Wolfram|Alpha API
+
+[Test Wolfram|Alpha API](http://products.wolframalpha.com/api/explorer.html)
+
+![wolframalpha.png](media/wolframalpha.png)
+
+
+</script>
+</section>
+<!--
+<section data-background="media/reaktionsdiffusion.png"></section>
+-->
+<!-- Section II -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
+<script type="text/template" >
+
+
+# XML , HTML
+---
+## XML,HTML sind wohlgeformt
+
 * Die __erste Zeile__ identifiziert das Dokument als xml,html.
 
 * Es gibt __ein äusserstes Element__, das alle anderen umschliesst.
@@ -413,82 +526,59 @@ parser = DigitalHeadLine()
 parser.feed(html)
 parser.getheadlines()
 ```
+---
 
-
-</script>
-</section>
-<!--
-<section data-background="media/reaktionsdiffusion.png"></section>
--->
-<!-- Section II -->
-
-<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#252222" data-background-transition="slide" >
-<script type="text/template" >
-
-# JSON 
-
-Maschinen lesbare Daten
+### Reaktionen auf Zeitungsartikel auswerten
 
 ---
 
-google Beispiel Plüs
+### Automatische Überprüfung externer Links
 
----
+<small> check_external_links </small>
 
-JSON Beispiel
->>> import requests
->>> url = 'https://maps.googleapis.com/maps/api/geocode/json'
->>> params = {'sensor': 'false', 'address': 'Mountain View, CA'}
->>> r = requests.get(url, params=params)
->>> results = r.json()['results']
->>> location = results[0]['geometry']['location']
->>> location['lat'], location['lng']
-(37.3860517, -122.0838511)
----
+```python
 
-Wolframalpha API
+class LinksExtractor(HTMLParser): # derive new HTML parser
+	def __init__(self) :        # class constructor
+		HTMLParser.__init__(self)  # base class constructor
+		self.links = []        # create an empty list for storing hyperlinks
 
-Temperatur im July  vergleich 
-Bern Zürich Basel
+    def handle_starttag(self, tag, attrs):
+        if tag != 'a':
+            return
+        else:
+            if len(attrs) > 0 :
+                for attr in attrs :
+                    if attr[0] == "href" :         # ignore all non HREF attributes
+                        self.links.append(attr[1])
+```
+--
+
+```python
+for link in links:
+    s = link[:7]
+    if s.lower() == 'http://':
+        try:
+            conn = urlopen(link,timeout=4)
+            code = conn.getcode()
+            msg = conn.msg
+            conn.close()
+            if code != 200:
+                print "******** ERROR *********"
+                print  msg + "  >>> " + link 
+                print "************************"+ "\n"
+            else:
+                print "OK: " + link + "\n"
+        except:
+            print   "******** No Answer *********"
+            print   "Fail >>> " + link 
+            print   "****************************"+ "\n"
+        
+        sys.stdout.flush()
+```
 
 
----
-Web Scrapeing
 
----
-Beispiel Zeitungen
-
-
-Extract Data From the web
----
-
-netflix beispiel
-
-
----
-
-# Number of Links of a website
-
----
-
-# Verify external Links
-
----
-
-
-
-
-</script>
-</section>
-
-<!-- <section data-background="media/gebiet.jpg"></section> -->
-
-<!-- Section 3 -->
-
-<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#14384C" data-background-transition="slide" >
-<script type="text/template" >
-
-TO DO
 
 </script>
 </section>

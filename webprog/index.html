@@ -544,39 +544,43 @@ parser.getheadlines()
 
 * Joël Simonet & Alexander Gröflin von der Universität Basel untersuchen das Potenzial von Rückmeldungen auf einen News-Artikel für eine möglich Kategorisierung.
 
-* z.B. ein kontroverse diskutiert, sachlich, emotional, usw.
+* z.B. kontrovers, sachlich, emotional, uninteressant, usw.
 
-[Simonet2015] Joël Simonet XXXX XXX XXX
+<small>
+[Simonet2015] Joël Simonet, Leserkommentare des Newsportals 20 Minuten - Analyse von Webinhalten mithilfe des Condition Action Tools WebAPI ECA-Engine, Abschlussarbeit Informatik, Universität Basel </small>
+
+---
+### Ein Artikel 554 Wortmeldungen
+
+[artikel20min](media/schweizerjugendliche.png)
 
 ---
 
-Beispiel aus 20 min
+### Automatisierte Datenerhebung
+
+* Ist Zustand: Quantitative Auswertung der Rückmeldungen 
+	* Totale Anzahl
+	* Anzahl Erstkommentare
+	* Anzahl unterschiedlicher Autoren
+	* Up Votes
+	* Down Votes
+
+* Dynamik: Zeitlicher Verlauf der Kennwerte während 24 Studen aufzeichnen.
+
 
 ---
 
-Beispiel 2 aus 20 min
-
----
-## Story Fingerprint
 
 <small> [check_external_links.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/story_20min_fingerprint.py) </small>
 
-```python
-...
-zeitung = 'http://www.20min.ch';
+[fingerprint](media/tiger_jugendlich.png)
 
-## Rubrik Schweiz wählen
-storyid = '18322505' #Aendern Sie diese ID
 
-kommentare = zeitung + '/community/storydiscussion/messageoverview.tmpl?storyid=' + storyid
-...
-response = urlopen(kommentare,timeout=3)
-html = response.read()
-p = ArticleParser()
-p.feed(html) 
-article_comments = p.get_comments()
-...
-```
+
+
+
+
+
 
 --
 

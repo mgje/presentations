@@ -84,27 +84,29 @@
 
 ## Agenda
 
-- Webentwicklung von 1999 - 2015
-- Basistechnologie
-- Automatisierte Webanfragen
-- Web Data Extraction
+- Fakten und Grundlagen zum Web
+
+- Strukturierte Daten (JSON) anfragen und auswerten
+
+- Webseiten parsen und Daten sammeln
+
 
 ---
-## Web: Von der Vergangenheit zur Gegenwart 
+### Web: Von der Vergangenheit zur Gegenwart 
 
 <img  src="media/entwicklung_Web1.png" alt="Vergangenheit zur Gegenwart "></img>
 
 <small> Grafik von H. Burkhart aus Veranstaltung Web Data Management HS 2014 </small>
 
 ---
-## Web: Von der Vergangenheit zur Gegenwart II
+### Web: Von der Vergangenheit zur Gegenwart II
 
-<img  src="media/entwicklung_Web1.png" alt="Vergangenheit zur Gegenwart "></img>
+<img  src="media/entwicklung_Web2.png" alt="Vergangenheit zur Gegenwart "></img>
 
 <small> Grafik von H. Burkhart aus Veranstaltung Web Data Management HS 2014 </small>
 
 ---
-## Nützliche Informationen im Internet
+### Online-Informationen zum Web
 
 * [Web Platform Docs](https://docs.webplatform.org/wiki/Main_Page/de)
 
@@ -115,8 +117,6 @@
 * [DIVE INTO HTML5](http://fortuito.us/diveintohtml5/)
 
 * [Codeacademy HTML CSS](https://www.codecademy.com/tracks/web)
-
-
 
 
 ---
@@ -150,7 +150,7 @@ __Back-End__:<br>
 
 ## Catch the fish
 
-![fishing](mdia/fishing_boy.jpg)
+![fishing](media/fishing_boy.jpg)
 
 ---
 
@@ -158,11 +158,12 @@ __Back-End__:<br>
 
 <br>
 
-## der Extrahierung von Daten aus dem Web 
+## die Extrahierung von Daten aus dem Web 
 
 <br> 
 
-## ein Teilgebiet von ___Data Science___
+## ein Teilgebiet von 
+##___Data Science___
 ---
 ## Web Architektur
 
@@ -207,7 +208,7 @@ Content-Type: text/html
 
 ```
 ---
-## HTTP Anfrage mit Python und httplib
+### HTTP Anfrage __(httplib)__
 
 <small> [http_ex_1.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/http_ex_1.py) </small>
 
@@ -228,7 +229,7 @@ conn.close()
 
 
 ---
-## HTTP Anfrage mit Python, urllib2
+### HTTP Anfrage __(urllib2)__
 
 <small> [http_ex_2.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/http_ex_2.py) </small>
 
@@ -246,7 +247,7 @@ conn.close()
 ```
 
 ---
-## Response HEADER 
+### Response HEADER 
 
 ```
 (200, 'OK')
@@ -264,10 +265,12 @@ Proxy-Connection: close
 ```
 ---
 
-# Was ist nun der Inhalt der Antwort ?
+# Was ist nun  
+
+# die Antwort ?
 
 ---
-## Inhalt der Antwort
+### Antwort
 
 <small> [http_ex_3.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/http_ex_3.py) </small>
 
@@ -299,12 +302,15 @@ print(html)
 <script type="text/template" >
 
 
-## Sprachen für die Daten- und Dokumentspezifikation
+### Sprachen für die Daten- und Dokumentspezifikation
 
 <div class="bigger">
 <ul>
 <li>XML</li>
+<br>
+
 <li>HTML</li>
+<br>
 <li>JSON</li>
 </ul>
  
@@ -320,7 +326,7 @@ print(html)
 ![Robot](media/robot.png)
 
 ---
-## Google Search
+### Google Search
 
 [TigerJython Beispiel aus dem Modul Internet](http://www.tigerjython.ch/index.php?inhalt_links=navigation.inc.php&inhalt_mitte=internet/search.inc.php)
 
@@ -345,7 +351,7 @@ for result in results:
 	
 ---
 
-Welche Geo-Koordinaten hat die Adresse
+Welche Geo-Koordinaten hat die Adresse:
 
 __Universitätstrasse 6 ETH Zürich__ ?
 
@@ -364,11 +370,11 @@ pprint.pprint(jsonResponse)
 ```
 
 ---
-## Reverse Geolocation
+### Reverse Geolocation
 
 Ich brauche Information zu der Geo-Koordinate
 
-__(47.3783606,8.5488485)__
+__( 47.3783606 , 8.5488485 )__
 
 <small> [reverse_geolocation.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/reverse_geolocation.py) </small>
 
@@ -390,7 +396,7 @@ print jsonResponse["results"][0]["formatted_address"]
 
 ![wegout](media/wegout.png)
 
----
+--
 ## Wolfram|Alpha API
 
 [Test Wolfram|Alpha API](http://products.wolframalpha.com/api/explorer.html)
@@ -540,11 +546,12 @@ parser.getheadlines()
 ```
 ---
 
-## Projekt __story fingerprint__
+### Projekt: 
+###__story fingerprint__
 
-* Joël Simonet & Alexander Gröflin von der Universität Basel untersuchen das Potenzial von Rückmeldungen auf einen News-Artikel für eine möglich Kategorisierung.
+* Joël Simonet & Alexander Gröflin (Universität Basel) untersuchen das Potenzial von Rückmeldungen auf Online-Artikel (z.B. 20Min). 
 
-* z.B. kontrovers, sachlich, emotional, uninteressant, usw.
+* Eines der Forschungsziele ist die Suche nach einer automatisierten Zuordnung in Kategorien wie z. B. 'kontrovers', 'sachlich', 'emotional', 'uninteressant', usw.
 
 <small>
 [Simonet2015] Joël Simonet, Leserkommentare des Newsportals 20 Minuten - Analyse von Webinhalten mithilfe des Condition Action Tools WebAPI ECA-Engine, Abschlussarbeit Informatik, Universität Basel </small>
@@ -552,7 +559,7 @@ parser.getheadlines()
 ---
 ### Ein Artikel 554 Wortmeldungen
 
-[artikel20min](media/schweizerjugendliche.png)
+![artikel20min](media/schweizerjugendliche.png)
 
 ---
 
@@ -565,22 +572,13 @@ parser.getheadlines()
 	* Up Votes
 	* Down Votes
 
-* Dynamik: Zeitlicher Verlauf der Kennwerte während 24 Studen aufzeichnen.
-
+* Dynamik: Zeitlicher Verlauf dieser Kennwerte während 24 Studen aufzeichnen.
 
 ---
 
-
 <small> [check_external_links.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/story_20min_fingerprint.py) </small>
 
-[fingerprint](media/tiger_jugendlich.png)
-
-
-
-
-
-
-
+![fingerprint](media/tiger_jugendlich.png)
 
 --
 

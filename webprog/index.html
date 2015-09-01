@@ -148,11 +148,17 @@ __Back-End__:<br>
 
 ---
 
+## Catch the fish
+
+![fishing](mdia/fishing_boy.jpg)
+
+---
+
 ## Dieser Block fokussiert auf
 
 <br>
 
-## der Extrahierung von verschiedenen Daten aus dem Web 
+## der Extrahierung von Daten aus dem Web 
 
 <br> 
 
@@ -203,7 +209,7 @@ Content-Type: text/html
 ---
 ## HTTP Anfrage mit Python und httplib
 
-<small> http_ex_1.py </small>
+<small> [http_ex_1.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/http_ex_1.py) </small>
 
 ```
 from httplib import HTTPConnection
@@ -224,7 +230,7 @@ conn.close()
 ---
 ## HTTP Anfrage mit Python, urllib2
 
-<small> http_ex_2.py </small>
+<small> [http_ex_2.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/http_ex_2.py) </small>
 
 ```
 from urllib2 import urlopen
@@ -263,7 +269,7 @@ Proxy-Connection: close
 ---
 ## Inhalt der Antwort
 
-<small> http_ex_3.py </small>
+<small> [http_ex_3.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/http_ex_3.py) </small>
 
 ```
 from urllib2 import urlopen
@@ -343,7 +349,7 @@ Welche Geo-Koordinaten hat die Adresse
 
 __Universitätstrasse 6 ETH Zürich__ ?
 
-<small> geolocation.py </small>
+<small> [geolocation.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/geolocation.py) </small>
 
 ```python
 import urllib2
@@ -364,7 +370,7 @@ Ich brauche Information zu der Geo-Koordinate
 
 __(47.3783606,8.5488485)__
 
-<small> reverse_geolocation.py </small>
+<small> [reverse_geolocation.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/reverse_geolocation.py) </small>
 
 ```python
 import urllib2
@@ -380,7 +386,7 @@ print jsonResponse["results"][0]["formatted_address"]
 ---
 ### Wie komme ich von A nach B ?
 
-<small> wegbeschreibung.py </small>
+<small> [wegbeschreibung.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/wegbeschreibung.py) </small>
 
 ![wegout](media/wegout.png)
 
@@ -479,7 +485,7 @@ geziehlt zu extrahieren.
 
 ---
 
-<small> Parser_Digital_Headline.py</small> 
+<small> [Parser_Digital_Headline.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/Parser_Digital_Headline.py)</small> 
 
 
 ```python
@@ -553,12 +559,22 @@ Beispiel 2 aus 20 min
 ---
 ## Story Fingerprint
 
-<small> check_external_links.py </small>
+<small> [check_external_links.py](https://github.com/mgje/PIUMP/blob/master/webprogrammierung_mit_python/src/story_20min_fingerprint.py) </small>
 
 ```python
 ...
+zeitung = 'http://www.20min.ch';
 
+## Rubrik Schweiz wählen
+storyid = '18322505' #Aendern Sie diese ID
 
+kommentare = zeitung + '/community/storydiscussion/messageoverview.tmpl?storyid=' + storyid
+...
+response = urlopen(kommentare,timeout=3)
+html = response.read()
+p = ArticleParser()
+p.feed(html) 
+article_comments = p.get_comments()
 ...
 ```
 

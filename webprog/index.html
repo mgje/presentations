@@ -221,10 +221,10 @@ conn = HTTPConnection("www.tigerjython.ch")
 
 conn.request("GET","/index.html")
 res = conn.getresponse()
-print(res.status, res.reason)
+print res.status, res.reason
 
 for header in res.getheaders():
-    print(header[0]+" : "+header[1])
+    print header[0] + " : " + header[1]
 
 conn.close()
 ```
@@ -242,8 +242,8 @@ conn = urlopen("http://www.tigerjython.ch")
 status = conn.getcode()
 reason = conn.msg
 
-print(status,reason)
-print(con.headers)
+print status, reason
+print con.headers
 
 conn.close()
 ```
@@ -252,7 +252,7 @@ conn.close()
 ### Response HEADER 
 
 ```
-(200, 'OK')
+200, "OK"
 Date: Thu, 27 Aug 2015 15:52:06 GMT
 Server: Apache
 Last-Modified: Sat, 26 Jul 2014 16:05:28 GMT
@@ -281,7 +281,7 @@ from urllib2 import urlopen
 endpoint = "http://www.tigerjython.ch"
 response = urlopen(endpoint)
 html = response.read()
-print(html)
+print html
 ```
 
 ```
@@ -333,18 +333,18 @@ print(html)
 
 ```javascript
 {
-	'firstName':'John',
-	'lastName': 'Smith',
-	'address': {
-		'streetAddress': '21 2nd Street',
-		'city': 'New York'},
-	'phoneNumber': [
+	"firstName":"John",
+	"lastName": "Smith",
+	"address": {
+		"streetAddress": "21 2nd Street",
+		"city": "New York"},
+	"phoneNumber": [
 		{
-			'type': 'home',
-			'number': '212 555-1234'},
+			"type": "home",
+			"number": "212 555-1234"},
  		{
- 			'type': 'fax',
- 			'number': '646 555-4567'}
+ 			"type": "fax",
+ 			"number": "646 555-4567"}
  		]
 }
 ```
@@ -386,7 +386,7 @@ import urllib2
 import pprint
 import json
 add = "Universitätstrasse 6 ETH Zürich"
-add = urllib2.quote(add.encode('utf-8'))
+add = urllib2.quote(add.encode("utf-8"))
 geocode_url = "http://maps.googleapis.com/maps/api/geocode/json?address=%s&sensor=false" % add
 req = urllib2.urlopen(geocode_url)
 jsonResponse = json.loads(req.read())
@@ -544,8 +544,8 @@ class DigitalHeadLine(HTMLParser):
 from HTMLParser import HTMLParser
 import urllib2
 class DigitalHeadLine(HTMLParser):
-	capture_txt=False
-	headlines =[]
+	capture_txt = False
+	headlines = []
 	def handle_starttag(self, tag, attrs):
 		if tag == "h2":
 			if "data-vr-contentbox" in dict(attrs):
@@ -553,20 +553,20 @@ class DigitalHeadLine(HTMLParser):
 	def handle_endtag(self, tag):
 		if tag == "h2":
 			if self.capture_txt == True:
-				self.capture_txt=False
+				self.capture_txt = False
 	def handle_data(self, data):
 		if self.capture_txt == True:
 			self.headlines.append(data)
 	def getheadlines(self):
 		print self.headlines[0]
 
-url="http://www.20min.ch/digital/"
+url = "http://www.20min.ch/digital/"
 res = urllib2.urlopen(url)
 encoding = "iso-8859-1"
 html = res.read().decode(encoding)
 parser = DigitalHeadLine()
 parser.feed(html)
-parser.getheadlines()
+print parser.getheadlines()
 ```
 ---
 
@@ -618,7 +618,7 @@ class LinksExtractor(HTMLParser): # derive new HTML parser
 		self.links = []        # create an empty list for storing hyperlinks
 
     def handle_starttag(self, tag, attrs):
-        if tag != 'a':
+        if tag != "a":
             return
         else:
             if len(attrs) > 0 :
@@ -631,7 +631,7 @@ class LinksExtractor(HTMLParser): # derive new HTML parser
 ```python
 for link in links:
     s = link[:7]
-    if s.lower() == 'http://':
+    if s.lower() == "http://":
         try:
             conn = urlopen(link,timeout=4)
             code = conn.getcode()

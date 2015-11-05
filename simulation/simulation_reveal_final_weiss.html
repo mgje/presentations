@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="de">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Virtuelle Modelle und Simulationen</title>
+
+		<meta name="description" content="Virtuelle Modelle und Simulationen: Mittels Informatik die Welt verstehen und planen">
+		<meta name="author" content="H. Burkhart, M. Guggisberg">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="shortcut icon" type="image/x-icon" href="unibas.ico" />
+		<link rel="stylesheet" href="../reveal2015/css/reveal.min.css">
+		<!--
+		<link rel="stylesheet" href="../reveal2015/css/theme/black.css" id="theme">
+		-->
+
+		<!-- Fonts Definition inside -->
+	
+		<link rel="stylesheet" href="../reveal2015/css/theme/mw2w.css" id="theme">
+	
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../reveal2015/lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../reveal2015/css/print/pdf.css' : '../reveal2015/css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="../reveal2015/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+		    
+
+			
+			<div class="slides">
+				<!-- Title Abstract -->
+			
+			
+
+			<section>
+				<section data-background="#ffffff">
+					
+					<h2>
+						Virtuelle Modelle und Simulationen 
+					</h2><h2>
+						 Mittels Informatik die Welt verstehen und planen 
+					</h2>
+					<br>
+					<p>
+						<small>Helmar Burkhart
+							<br>
+							Martin Guggisberg  
+							
+							<br>
+							<strong>Universität Basel</strong>
+							
+						</small><br>
+						
+					</p>
+
+					<br>
+
+					<p><small> 4.11.2015<br> Volkshochschule Basel</small></p>
+
+				</section>
+
+				
+
+               
+			</section>
+				
+
+<!-- Einleitung / Gutachten -->
+
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#ffffff" data-background-transition="slide" >
+<script type="text/template" >
+
+
+##Begriffliches: Simulieren (1)
+
+<img id="simul" src="media/chmonat.png"/>
+<img class="fragment fade-in" data-image-change-id="simul" data-image-url="media/simulant.png"
+data-image-url-back="media/chmonat.png"/>
+
+<aside class="notes">
+Ruft die Krankenschwester: "Herr Doktor, Herr Doktor! Der Simulant in Zimmer 7 ist gestorben." Darauf der Doktor: "Langsam übertreibt er aber..."
+</aside>
+---
+
+## Begriffliches: Simulieren (2)
+
+Ursprung: lateinisch simulare, eigentlich = ähnlich machen, nachbilden; nachahmen. 
+
+
+1. vortäuschen
+
+2. (bildungssprachlich, Fachsprache) Sachverhalte, Vorgänge [mit technischen, naturwissenschaftlichen Mitteln] modellhaft zu Übungs-, Erkenntniszwecken nachbilden, wirklichkeitsgetreu nachahmen
+
+--
+
+## Flugsimulator
+
+<small> Beispiel Flugsimmulator A320, Zürich Airport, [YouTube](https://www.youtube.com/watch?v=-xkoXX44eFY)</small>
+
+[![A320](media/A320cockpit.png)](https://www.youtube.com/watch?v=-xkoXX44eFY)
+
+--
+## Simulation in der Medizin
+
+![medizin](media/simmedizin.png)
+
+---
+
+## Inhalt des heutigen Vortrags
+
+- Der Weg zum 3 Säulenmodell der Wissenschaft
+
+- Virtuelles Modell und Simulation: Was ist das?
+
+- Schaukasten: Simulationen mit JavaScript und Python 
+
+- Simulationen in Wirtschaft und Gesellschaft
+
+- Simulationen in Technik und  Wissenschaft
+
+- Schlussbemerkungen: Die Rolle der Informatik 
+
+---
+
+## Die Welt verstehen ...
+
+**Ptolemäus**
+
+![planeten1](media/planeten1.png)
+
+
+---
+
+## Die Welt verstehen ...
+
+Ptolemäus, **Kopernikus** 
+
+![planeten2](media/planeten2.png)
+
+---
+
+## Die Welt verstehen ...
+
+Ptolemäus, Kopernikus, **Kepler, Galilei**
+
+![planeten3](media/planeten3.png)
+
+---
+## Das klassische Wissenschaftsmodell
+ 
+<img id="saeule1" src="media/saeule1.png"/>
+<img class="fragment fade-in" data-image-change-id="saeule1" data-image-url="media/saeule2.png"
+data-image-url-back="media/saeule1.png"/>
+---
+
+## ... und planen
+
+**Sputnik** 
+
+![sputnik](media/sputnik.png)
+
+---
+
+## ... und planen
+
+Sputnik, **Apollo** 
+
+![apollo](media/apollo.png)
+
+--
+## 2014: 45 Jahre Mondlandung!
+<table>
+<tr>
+<td> ![scode](media/acg.png)  </td>
+<td> ![hamilton](media/interface.png) </td>
+</tr>
+</table>
+<aside class="notes">
+16Bit Wortlänge, 2KB RAM, 36KB ROM, Kernspeicher, 55W, ... 
+</aside>
+
+--
+## Quellcode veröffentlicht: Stapelweise Assembler
+<table>
+<tr>
+<td> ![scode](media/scode.png)  </td>
+<td> ![hamilton](media/hamilton.png)  </td>
+</tr>
+</table>
+
+--
+## Neil Armstrong hatte nur 1 Versuch
+
+<video class="stretch" width="640" height="358" data-autoplay controls>
+        <source data-src="media/movies/apollo11.mp4" type="video/mp4" />
+        Your browser does not support the <code>video</code> element.
+</video>
+
+
+---
+## ... und planen
+
+Sputnik, Apollo, **Philae**
+
+![philae](media/philae.png)
+
+---
+
+##3 Säulenmodell der Naturwissenschaft
+
+![dreisäulen](media/saeule3.png)
+
+---
+##Vorgehensweise beim Modellieren und Simulieren
+
+<p><img id="dia" src="media/approach1.png"/></p>
+
+<p><img class="fragment fade-in" data-image-change-id="dia" data-image-url="media/approach2.png"
+data-image-url-back="media/approach1.png" /></p>
+
+<p><img class="fragment fade-in" data-image-change-id="dia" data-image-url="media/approach3.png"
+data-image-url-back="media/approach2.png" /></p>
+
+<p><img class="fragment fade-in" data-image-change-id="dia" data-image-url="media/approach4.png"
+data-image-url-back="media/approach3.png" /></p>
+
+---
+
+## Simulationstyp 1: Zeitdiskretes Ereignismodell
+
+
+![Ampel](media/ampel.png)
+  <ul>
+   <li> Ampelsteuerung</li>
+   <li> Liftsteuerung </li>
+   <li> Virtuelle Fabrik </li>
+   </ul>
+
+--
+## Verkehrssimulation 1
+
+[![kreuzung1](media/kreuzung1.png)](https://www.youtube.com/watch?v=ZYx33ppwTJE)
+
+
+--
+## Verkehrssimulation 2
+
+[![kreuzung2](media/kreuzung2.png)](https://www.youtube.com/watch?v=eER9Ur_uIgs)
+
+---
+
+## Simulationstyp 2: Numerisches Modell
+![numerisch](media/numerisch.png)
+
+---
+
+# Zelluläre Automaten 
+
+<br>
+
+## als Bausteine von Simulationen
+
+<br>
+
+### Geringe Rechenleistung nötig
+
+---
+
+## Zelluläre Automaten 
+
+* Zelluläre Automaten dienen der Modellierung **räumlich** **diskreter** dynamischer Systeme
+
+* die Entwicklung einzelner **Zellen** zum Zeitpunkt **t+1** 
+
+* hängen von den Zellzuständen in einer vorgegebenen Nachbarschaft zum Zeitpunkt **t** ab.
+
+---
+
+$$
+t_0 \to t_1 \to t_2 \to t_3 \to \cdots
+$$
+
+![timesteps](media/timesteps.png)
+
+
+Beispiel Game of Life 
+
+<small> [YouTube Game of Life](https://www.youtube.com/watch?v=CgOcEZinQ2I)</small>
+
+---
+
+Im Buch ___A new kind of science___
+werden zahlreiche Beispiele von zellulären Automaten beschrieben.
+
+![wolfram](media/s_wolfram.png)
+
+
+<small> [Wolfram, Stephen. A new kind of science. Vol. 5. Champaign: Wolfram media, 2002.](http://www.wolframscience.com/nksonline/toc.html)</small>
+
+<small> 
+[Talk: A New Kind of Science - Stephen Wolfram](https://www.youtube.com/watch?v=_eC14GonZnU)</small>
+
+---
+### 
+
+![pixelspiele](media/pixelspiele.png)
+
+
+<small>
+Quelle: Pixelspiele - Modellieren und Simulieren mit zellulären Automaten von Daniel Scholz, Springer 2014 </small>
+
+[Online-Beispiele](http://www.mehr-davon.de/za/)
+
+--
+
+## Ein Zellulärer Automat besteht aus:
+
+- einem Raum $R$
+
+- einer endlichen Nachbarschaft $N$
+
+- einer Zustandmenge $Q$
+
+- eine lokale Überführungsfunktion $f: Q^n \to Q$ mit $n \in \mathbb{N}$
+
+
+![spielfeld.png](media/spielfeld.png)
+
+---
+# Waldbrand
+
+---
+
+## Waldbrandmodell
+
+- Spielfeld mit 380 x 380 Zellen
+
+- Jede Zelle kann 7 Zustände annehmen
+
+- Spielregeln mit 3 Parameter
+	- α : Wahrscheinlichkeit Baumwachtstum
+	- β : Wahrscheinlichkeit das ein Feuer übergreift
+	- γ : BlitzeinschlagWahrscheinlichkeit
+
+--
+### Regeln / Simulationsschritt
+
+
+1. Befindet sich x<sub><sub>ij</sub></sub>  im Zustand **Asche**, dann wächst x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von α, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt ein **Baum** ist.<br><br>
+2. Befindet sich x<sub><sub>ij</sub></sub> im Zustand **Baum** und ist mindestens ein Pixel in der Nachbarschaft von x<sub><sub>ij</sub></sub> im Zustand Feuer dann fängt auch x<sub><sub>ij</sub></sub> **Feuer**.<br><br>
+3. Falls x<sub><sub>ij</sub></sub> ein **Baum** ist und **kein Feuer** durch einen Nachbarn fängt, dann wird x<sub><sub>ij</sub></sub> mit einer Wahrscheinlichkeit von γ von einem **Blitz** getroffen und fängt **Feuer**<br><br>
+4. Befindet sich x<sub><sub>ij</sub></sub> im Zustand **Feuer**, dann erlischt das Feuer, sodass der Zustand von x<sub><sub>ij</sub></sub> im folgenden Schritt **Asche** ist.
+
+---
+##7 Zustände
+
+![erweitertes modell](media/waldmodellerw.png)
+---
+
+### Verlauf der Simulation
+
+<br>
+<ol>
+<li>
+Wähle ein zweidimensionales Spielfeld mit m×n Felder und die Parameter α, β, γ. Setze $k = 0$.
+</li>
+<br>
+<li class="fragment fade-in">
+Erzeuge eine Startkonfiguration zum Zeitpunkt $t_0$.
+</li>
+<br>
+<li class="fragment fade-in">
+Wende die Regeln auf jedes Feld an.
+</li>
+<br>
+<li class="fragment fade-in">
+Erhöhe den Zähler $k = k + 1$ und speichere das Spielfeld zum Zeitpunkt $t_k$.
+</li>
+<br>
+<li class="fragment fade-in">
+Gehe zu Schritt (3) oder beende
+</li>
+
+---
+
+## Interaktive Simulation
+
+<small>[Link zur Simulation](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert) α : Baumwachtstum, β : Feuer greift über, γ : Blitzeinschlag </small>
+
+[![Waldbrand](media/waldbrand.png)](http://www.mehr-davon.de/za/content/canvas.php?go=waldbrand-erweitert)
+
+
+---
+
+# Musterbildung in der Natur
+
+---
+
+![muster](media/musterbildung2.png)
+
+---
+### Modell zweidimensionalen Reaktions-Diffusionsgleichung
+
+<br>
+
+<ul>
+<li>
+Es handelt sich um ein System mit zwei in einer Flüssigkeit gelösten Stoffen
+</li>
+<br>
+
+<li class="fragment fade-in">
+Beide Stoffe unterliegen einer Diffusion
+</li>
+<br>
+
+<li class="fragment fade-in">
+Die Stoffe können miteinader reagieren
+</li>
+<br>
+
+<li class="fragment fade-in">
+Modelliert wird dieses Verhalten durch ein System aus zwei gekoppelten partiellen Differentialgleichungen.
+</li>
+</ul>
+
+---
+
+# Parametrisierung
+
+- $D_u$ Diffusionskonstante von Stoff u
+
+- $D_v$ Diffusionskonstante von Stoff v
+
+- α, β : Reaktionsparameter
+
+- Beispiel 1: $D_u=0.24$, $D_v=0.10$, α=0.032, β=0.096
+
+- Beispiel 2: $D_u=0.24$, $D_v=0.10$, α=0.032, β=0.092
+
+- Beispiel 3: $D_u=0.24$, $D_v=0.10$, α=0.036, β=0.096
+
+- Beispiel 4: $D_u=0.24$, $D_v=0.10$, α=0.038, β=0.100
+
+- Beispiel 5: $D_u=0.24$, $D_v=0.10$, α=0.040, β=0.098
+
+- Beispiel 6: $D_u=0.24$, $D_v=0.08$, α=0.040, β=0.096
+
+---
+### Konzentrierte Schülerinnen und Schüler im Computerlabor
+
+<img class="stretch" src="media/IMG_0002.jpg"/>
+
+---
+
+<img  src="media/IMG_0003.jpg"/>
+
+---
+
+## Reaktions-Diffusionsgleichung
+
+[Simulation](http://www.mehr-davon.de/za/content/canvas.php?go=reaktion-beispiel)
+
+[![wachstum](media/reaktionsdiffusion.png)](http://www.mehr-davon.de/za/content/canvas.php?go=reaktion-beispiel)
+
+---
+
+
+## IPython 
+## - 
+## Baukasten für Simulationen
+
+![baukasten](media/baukasten.jpg)
+
+---
+
+## Ausführbare Bücher 
+
+<br>
+
+## mit IPython Notebooks
+
+[Vorlesung (2014) SciPy - Library of scientific algorithms for Python, von J.R. Johansson, Hirosawa, Wako-shi, JAPAN ](https://github.com/jrjohansson/scientific-python-lectures/blob/master/Lecture-3-Scipy.ipynb)
+
+[Programming with Python, G. Wilson](http://swcarpentry.github.io/python-novice-inflammation/)
+
+[Gallery of interesting IPython Notebooks](https://github.com/ipython/ipython/wiki/A-gallery-of-interesting-IPython-Notebooks)
+
+
+[Computational Modelling in Neuroscience](http://www.gribblelab.org/compneuro/2_Modelling_Dynamical_Systems.html) 
+
+[weitere Beispiele: Cookbook-code](https://github.com/ipython-books/cookbook-code)
+
+---
+
+
+![dynsys](media/dynsystem.png)
+
+
+[Dynamische Systeme mit Python simulieren](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Modellierung%20dynamischer%20Systeme.ipynb)
+
+
+---
+### Schwarmverhalten
+
+
+<p><img id="schwarmid" src="media/schwarm1.png"/></p>
+
+<p><img class="fragment fade-in" data-image-change-id="schwarmid" data-image-url="media/schwarm2.png"
+data-image-url-back="media/schwarm1.png" /></p>
+
+<p><img class="fragment fade-in" data-image-change-id="schwarmid" data-image-url="media/schwarm3.png"
+data-image-url-back="media/schwarm2.png" /></p>
+
+
+[YouTube Beispiel](https://www.youtube.com/watch?t=21&v=DfoeFzCWrDE)
+
+[Informationen zum Schwarmverhalten (engl. boids)](http://www.red3d.com/cwr/boids/)
+
+---
+
+### Simulation ohne Jäger
+
+<video class="stretch" width="864" height="578" data-autoplay controls>
+        <source data-src="media/movies/Schwarm.m4v" type="video/mp4" />
+        <source data-src="media/movies/Schwarm.webm" type="video/webm" />
+        Your browser does not support the <code>video</code> element.
+</video>
+
+---
+### Simulation mit Jäger
+
+<video class="stretch" width="864" height="578" data-autoplay controls>
+        <source data-src="media/movies/jaegger.m4v" type="video/mp4" />
+        <source data-src="media/movies/jaegger.webm" type="video/webm" />
+        Your browser does not support the <code>video</code> element.
+</video>
+
+
+---
+
+
+### Reaktion-Diffusion Simulation
+
+
+
+[IPython Notebook zu Reaktion-Diffusion Simulationen](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Reaktions-Diffusions-System.ipynb)
+
+![turnin](media/turing.jpg)
+
+[Quelle (engl): reaction-diffusion systems and Turing patterns](http://ipython-books.github.io/featured-05/)
+
+
+--
+
+[IPython Notebook: Statik Modellierung mit Hilfe eines Federmodels](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Federmodell.ipynb)
+
+[Quelle (engl): Simulating a physical system in Python by minimizing an energy](http://ipython-books.github.io/featured-02/)
+
+
+![Federketten](media/federketten.png)
+
+---
+
+
+## IPython Beispiele Online 
+
+
+* [Dynamische Systeme mit Python simulieren](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Modellierung%20dynamischer%20Systeme.ipynb)
+
+* [IPython Notebook Schwarmsimulation](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Schwarm.ipynb)
+
+* [IPython Notebook zu Reaktion-Diffusion Simulationen](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Reaktions-Diffusions-System.ipynb)
+
+* [IPython Notebook: Statik Modellierung mit Hilfe eines Federmodels](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Federmodell.ipynb)
+
+
+---
+
+## Wirtschaft und Gesellschaft
+<ul>
+<li> Beispiel 1: Verkehrsplanung S21</li>
+<table>
+<tr>
+<td>![S21](media/S21.jpg)</td>
+
+<td> <video class="stretch" width="480" height="358" data-autoplay controls>
+        <source data-src="media/movies/S21.mp4" type="video/mp4" />
+        Your browser does not support the <code>video</code> element.
+</video></td>
+</tr>
+</table>
+
+<li>Beispiel 2: Schuldenquote einer Staatswirtschaft</li>
+</ul>
+
+---
+## Technik und Wissenschaft
+
+Beispiel Wetter und Klima
+
+![wettermodell](media/wettermodell.png)
+
+
+---
+## Die schnellsten Rechner
+
+![top500](media/top500.png)
+
+---
+## Die Rolle der Informatik
+
+![rolle1](media/Rolle_Informatik.png)
+
+---
+## Rolle von Simulation
+![rolle2](media/Rolle_Simulation.png)
+---
+## Schlussbemerkungen
+
+<img id="zitat" src="media/ps.png"/>
+<img class="fragment fade-in" data-image-change-id="zitat" data-image-url="media/hb.png"
+data-image-url-back="media/ps.png"/>
+
+---
+<img id="zitat" src="media/vortrag.jpg"/>
+
+<p>Vielen Dank. Wir freuen uns auf Fragen!</p>
+
+
+--
+### Strömungsdynamik 
+
+[IPython Notebook 12 steps to Navier-Stokes](https://github.com/barbagroup/CFDPython/tree/master/lessons)
+
+![navStokes](media/navstokes.png)
+![FlussRohr](media/flussrohr.png)
+
+--
+
+# Gitterprobleme
+
+![Gitter](media/gitter.png)
+
+--
+
+[IPython Notebook: Statik Modellierung mit Hilfe eines Federmodels](http://nbviewer.ipython.org/github/mgje/Python-Mathematik-Beispiele/blob/master/Python-Notebooks/Federmodell.ipynb)
+
+[Quelle (engl): Simulating a physical system in Python by minimizing an energy](http://ipython-books.github.io/featured-02/)
+
+
+![Federketten](media/federketten.png)
+
+
+
+
+--
+
+# Operations Research
+
+
+### Exkurs: Wo liegt der beste Ort ?
+
+
+[Wo ist der beste Ort für einen Spielplatz?](http://mgje.github.io/presentations/GDM2015/#/3)
+
+--
+
+# Ideales Gas
+
+[IPython Notebook Ideales Gas](http://nbviewer.ipython.org/url/media.usm.maine.edu/~pauln/ScipyScriptRepo/IdealGasInABox.ipynb)
+
+--
+### Weitere Themen
+
+- ODE lösen mit Runge-Kutta
+- Mobile Phone Networks
+- Optimization with Nelder–Mead
+- Elektrostatische Simulation
+- Spherical Pendulum
+
+
+
+--
+<br>
+### Thanks to Hakim El Hattab / hakim.se 
+
+### for THE HTML PRESENTATION FRAMEWORK 
+
+### reveal.js
+
+
+
+
+</script>
+</section>
+
+
+	</div>		
+	<!-- unibas header / footer -->
+	<div class='header'>
+		<img src="media/uni-basel-logo_s.svg" alt="logo"> 
+	</div>
+    <div class='footer'>
+    	<!-- <small> -->
+    		<h4>
+    				Helmar Burkhart, Martin Guggisberg &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Uni Basel&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Virtuelle Modelle und Simulationen&nbsp;
+    		</h4>
+
+    	<!-- </small> -->
+	</div>
+	<!-- END FOOTER HEADER -->	
+</div>
+
+		<script src="../reveal2015/lib/js/head.min.js"></script>
+		<script src="../reveal2015/js/reveal.js"></script>
+
+		<script>
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				slideNumber: true,
+				width: 1200,
+    			height: 960,
+    			fragments: true,
+    			
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				parallaxBackgroundSize: '2100px 900px',
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../reveal2015/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../reveal2015/plugin/math/math.js', async: true },
+					{ src: '../reveal2015/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal2015/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../reveal2015/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../reveal2015/plugin/zoom-js/zoom.js', async: true }
+					
+				]
+			});
+			Reveal.addEventListener( 'fragmentshown', function( event ) {
+    			var ep = event.fragment,
+    			    img = null,
+    			    src = "",
+    			    id = ep.getAttribute("data-image-change-id");
+    			    if (typeof(id)==="string"){
+    			    	img = document.getElementById(id);
+    			    	src = ep.getAttribute("data-image-url");
+    			    	img.src = src;
+    			    }
+			} );
+			Reveal.addEventListener( 'fragmenthidden', function( event ) {
+    			var ep = event.fragment,
+    			    img = null,
+    			    src = "",
+    			    id = ep.getAttribute("data-image-change-id");
+    			    if (typeof(id)==="string"){
+    			    	img = document.getElementById(id);
+    			    	src = ep.getAttribute("data-image-url-back");
+    			    	img.src = src;
+    			    }
+			} );
+		</script>
+
+	</body>
+</html>

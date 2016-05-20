@@ -14,6 +14,13 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
+		<!-- change to https -->
+		<script>
+			if (window.location.host.indexOf('github.io') > -1 && window.location.protocol != "https:"){
+    			window.location.protocol = "https";
+			}
+		</script>
+
 		<link rel="shortcut icon" type="image/x-icon" href="unibas.ico" />
 		<link rel="stylesheet" href="../reveal2015/css/reveal.min.css">
 		<!--

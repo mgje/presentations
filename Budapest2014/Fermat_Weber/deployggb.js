@@ -364,7 +364,7 @@ var GGBApplet = function() {
 
         appendParam(applet, "framePossible", "false");
         if (! isJavaOffline)
-            appendParam(applet, "image", "http://www.geogebra.org/webstart/loading.gif");
+            appendParam(applet, "image", "https://www.geogebra.org/webstart/loading.gif");
 
         appendParam(applet, "codebase_lookup", "false");
 
@@ -691,7 +691,7 @@ var GGBApplet = function() {
         if (javaCodebaseVersion == '4.0' || javaCodebaseVersion == '4.2')
             codebase += 'jnlp/';
 
-        applet.setJNLPBaseDir('http://www.geogebratube.org/webstart/');
+        applet.setJNLPBaseDir('https://www.geogebratube.org/webstart/');
 
         doSetJavaCodebase(codebase, false);
     }

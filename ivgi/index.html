@@ -257,7 +257,7 @@ Ausschnitt Mission Impossible 4
 Mechanical creation of a perspective image by [Albrecht Dürer](http://www.uh.edu/engines/epi138.htm)
 
 ---
-### perspektivische Abbildung <small> Quader auf Ebene</small>
+### perspektivische Abbildung  eines Quaders
 <video width="1122" height="646" data-autoplay controls>
 	    <source data-src="https://mgje.github.io/presentations/ivgi/media/movies/zentralprojektion.m4v" type="video/mp4" />
 	    <source data-src="https://mgje.github.io/presentations/ivgi/media/movies/zentralprojektion.webm" type="video/webm" />
@@ -267,14 +267,48 @@ Mechanical creation of a perspective image by [Albrecht Dürer](http://www.uh.ed
 
 ### Mathematisierung mit Hilfe von homogenen Koordinaten
 
+1. Homgene Koordinaten
+1. Projektionsmatrix erstellen
+2. Projektionsmatrix auf einen Vektor anwenden
+3. Rücktransformation in kartesische Koordinaten
 
-* Annahme das Zentrum der Abbildung ist im Ursprung
-* Blickrichtung entlang der Z-Achse
-* Verwenden homogene Koordinaten
 
+Das Zentrum der Abbildung liegt im Ursprung
+
+Die Blickrichtung ist entlang der Z-Achse
 
 ---
-### ZentralProjektion auf Ebene normal zur Z-Achse
+## Homogene Koordinaten 
+### für $\vec{v}\in\mathbb{R}^3$
+
+Transformation
+$$
+\left(
+\begin{matrix}
+P_x\\\\
+P_y\\\\
+P_z
+\end{matrix}\right)\to
+\left(
+\begin{matrix}
+Q_x\\\\
+Q_y\\\\
+Q_z\\\\
+Q_w
+\end{matrix}
+\right)=
+\left(
+\begin{matrix}
+P_x\\\\
+P_y\\\\
+P_z\\\\
+1
+\end{matrix}
+\right)
+$$
+
+---
+### ZentralProjektion auf eine Normalebene zu z
 mit Brennweite f
 
 <br>
@@ -288,7 +322,7 @@ $$P=\left( \begin{matrix}
         \end{matrix} 
         \right) $$
 ---
-### Projektion auf homogenen Vektor anwenden
+### Projektion auf Vektor anwenden
 
 <br>
 
@@ -317,8 +351,8 @@ $$P\cdot \overrightarrow{r}=\left( \begin{matrix}
          $$
 
 ---
-## Übergang von homogenen Koordinaten zu kartesischen Koordinaten
----
+## Rücktransformation in kartesische Koordinaten
+
 
 $$ \left( \begin{matrix} 
         x \\\\
@@ -334,14 +368,19 @@ $$ \left( \begin{matrix}
         \end{matrix}\right)
 $$ 
 ---
-## Zahlenbeispiel
+## An einem Zahlenbeispiel
 
-* Sei  f = 10  
-* Ein Punkt (8,4,20) soll auf die Normalebene zur Z-Achse im Abstand von 10 abgebildet werden.
+mit
+
+* f = 10  
+* P = (8,4,20)
+
+Gesucht P' auf der Ebene  z=10
+
 ---
 ![Beispiel](media/Beispiel_proj.png)
 
-
+[Link zu GeoGebra](https://www.geogebra.org/m/kTMphXaw)
 ---
 $$ \left( \begin{matrix} 
         8 \\\\
@@ -365,114 +404,7 @@ $$ \left( \begin{matrix}
 $$ 
 
 ---
-<span style="float:left;">
-![xz](media/xzplane.png)
-![xz](media/yzplane.png)
-</span>
-
----
-### Zentralprojektion <small>auf Ebene normal zur Z-Achse mit Brennweite f</small>
-<video width="1012" height="720" data-autoplay controls>
-	    <source src="https://mgje.github.io/LinAlg/slides/media/movies/Zentralprojektion_Tetraeder.m4v" type="video/mp4" />
-	    <source src="https://mgje.github.io/LinAlg/slides/
-	    media/movies/Zentralprojektion_Tetraeder.webm" type="video/webm" />
-		Your browser does not support the <code>video</code> element.
-</video>
-
-
-
----
-## Homogene Koordinaten 
-### für $\vec{v}\in\mathbb{R}^2$
-
-Transformation
-$$
-\left(
-\begin{matrix}
-P_x\\\\
-P_y
-\end{matrix}\right)\to
-\left(
-\begin{matrix}
-Q_x\\\\
-Q_y\\\\
-Q_z
-\end{matrix}
-\right)=
-\left(
-\begin{matrix}
-P_x\\\\
-P_y\\\\
-1
-\end{matrix}
-\right)
-$$
-
-Rücktransformation
-$$
-\left(
-\begin{matrix}
-Q_x\\\\
-Q_y\\\\
-Q_z
-\end{matrix}
-\right)\to \left(
-\begin{matrix}
-P_x\\\\
-P_y
-\end{matrix}\right)
-=\left(\begin{matrix}
-Q_x /( Q_z )\\\\
-Q_y /( Q_z )
-\end{matrix}
-\right)
-$$
----
-## Zentralprojektion
-### $\mathbb{R}^2\to\mathbb{R}^2$ 
-#### homogene Koordinaten
-
-<br>
-
-$$P=\left( \begin{matrix} 
-        1 & 0& 0 \\\\
-        0 & 1 & 0 \\\\
-        0 & 1/n & 0 \\\\
-        \end{matrix} 
-        \right)$$ 
----
-## Rotation
-
-<br>
-
-$$R=\left( \begin{matrix} 
-        \cos(\Theta) & \sin(\Theta)& 0 \\\\
-        -\sin(\Theta)& \cos(\Theta) & 0 \\\\
-        0 & 0 & 1\\\\
-        \end{matrix} 
-        \right)$$
-
----
-## Translation
-
-<br>
-
-$$T=\left( \begin{matrix} 
-        1 & 0& T_x \\\\
-        0 & 1 & T_y \\\\
-        0 & 0 & 1 \\\\
-        \end{matrix} 
-        \right)
-         $$
----
-### Zentralprojektion 
-
-
-![Zentralprojektion](media/Zentralprojektion.png)
-
-[Link auf GeoGebraTube](https://tube.geogebra.org/student/m119327)
-
-
+### Zurück zum Film
 
 ---
 

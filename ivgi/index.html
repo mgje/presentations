@@ -69,9 +69,9 @@
 						
 					</p>
 
-					<br>
 
-					<p><small> 30.11.2016 @ Institut Vermessung und Geoinformation </small></p>
+
+					<p><small> 30.11.2016,   Institut Vermessung und Geoinformation </small></p>
 
 				</section>
 
@@ -225,9 +225,10 @@ Dünngitter-Kombinationstechnik.
 [Link auf Online-Materialien](https://mgje.github.io/presentations/GDM2016/index.html)
 
 ---
-### Rechnen mit Matrizen: Zentralprojektion
+### Rechnen mit Matrizen 
 
----
+### Zentralprojektion
+
 ---
 ## Zentralprojektion im Kino
 
@@ -404,9 +405,28 @@ $$ \left( \begin{matrix}
 $$ 
 
 ---
-### Zurück zum Film
+
+### 2D Modell 
+
+### des Filmausschnitts
 
 ---
+
+![MIP](media/MIP.png)
+
+[Link GeoGebraTube](https://tube.geogebra.org/material/show/id/120897)
+
+---
+
+### Lesson learnt
+
+- Mit Hilfe 4 dimensionalen Matrizen kann eine Zentrallprojektion berechnet werden.
+
+- Die Simulation in 2D lösst vermuten, dass der Trick
+funktionieren könnte
+
+TO DO Simuulation in 3D
+
 
 
 
@@ -419,30 +439,128 @@ $$
 <script type="text/template" >
 
 ### Operations Research - Fermat-Punkt
----
 
-Operations Research
-
-resp.
-
-mathematische Planungsrechnung
-
-geht es meistens um die mathematische Optimierung
-
+An welcher Stelle soll ein Kraftwerk gebaut werden?
 
 ---
 
-An welcher Stelle soll ein Kraftwerk gebaut werden, dass möglichst wenig Stromleitungen gebaut werden müssen.
+## Gesucht: Optimale Position eines Kraftwerks
 
+
+<video class="stretch" width="798" height="610" data-autoplay controls>
+        <source data-src="https://mgje.github.io/presentations/GDM2015/media/movies/Kraftwerk.m4v" type="video/mp4" />
+    <source data-src="https://mgje.github.io/presentations/GDM2015/media/movies/Kraftwerk.webm" type="video/webm" />
+    Your browser does not support the <code>video</code> element.
+</video>
+--
+<small>[Link zu GeoGebraTube: Der Neubau des Kraftwerks](https://tube.geogebra.org/student/m81814)&nbsp;&nbsp; von &nbsp;&nbsp; [Ulrich Steinmetz](https://tube.geogebra.org/user/profile/id/34514)</small>
 
 ---
 
+![Aufgabe91](media/aufgabe91.png)
+
+"Wo befindet sich ein Punkt P in einem Dreieck, wenn die Summe aller Abstände von diesem Punkt P zu den drei Ecken minimal sein soll."
+
+<small>[Dorrie, H. (1965). 100 Great problems of elementary mathematics. Dover Publications.](http://cds.cern.ch/record/1551234)</small>
+
+--
+
+![Buch](media/buch.png)
+---
+
+![Fig 1](media/fermat_problem_fig1.png)
+
+--
+Für **n=3** gibt es eine geometrische Lösung
+
+![geometric solution](media/geometric_solution.png)
+---
+## Für **n>3** braucht es ein approximatives Verfahren
+
+---
+Budapest 1932 im Alter von 16 Jahren hat sich ***Andrew Vázsonyi*** Gedanken zu diesem mathematische Problem gemacht.
+
+Und eine Arbeit unter dem Namen **Endre Weiszfeld** bei einem japanischen Journal eingereicht.
+
+![Andrew_Vazsonyi](media/Andrew_Vazsonyi.png)
+---
+
+### Weiszfeld Algorithmus
+
+$$ k \mbox{ Iterationsschritte} $$
+
+$$ \mbox{Ortsvektoren: } \vec{x_1} \cdots \vec{x_N} $$
+
+$$ \mbox{Startpunkt } \vec{y_0} \mbox{ im Schwerpunkt}$$
+
+$$  \vec{y\_{k+1}} = \frac{ \sum\_{i=1}^{N}  \frac{\vec{x\_i}}{\|| \vec{x\_i}-\vec{y\_k} \||}}{\sum\_{i=1}^N  \frac{1}{\|| \vec{x\_i}-\vec{y\_k} \||} } $$
+
+
+<small>
+[H. Üster, R.F. Love, The convergence of the Weiszfeld algorithm, Computers & Mathematics with Applications, Volume 40, Issues 4–5, August–September 2000, Pages 443-451, ISSN 0898-1221](http://www.sciencedirect.com/science/article/pii/S0898122100001723)
+</small>
+
+--
+```
+def fermatpunkt(punkte, epsilon):
+    """
+    Return an approximation to the geometric median for 
+    `points`. Start with the centroid and apply Weiszfeld's 
+    algorithm until the distance between steps is less 
+    than `epsilon`.
+    """
+    P = schwerpunkt(punkte)
+    while True:
+        Q = WeiszmanIteration(P, punkte)
+        if distanz(P, Q) < epsilon:
+            return Q
+        P = Q
+        
+```
+
+
+--
+
+```
+def WeiszmanIteration(P, punkte):
+
+    W = x = y = 0.0
+    for Q in punkte:
+        d = distanz(P, Q)
+        if d != 0:
+            w = 1.0 / d
+            W += w
+            x += Q[0] * w
+            y += Q[1] * w
+    return x / W, y / W
+```
+
+---
+![Fermat-Weber](media/fermatweber7.png)
+
+[Link GeoGebraTube](https://tube.geogebra.org/material/show/id/52934)
 
 ---
 
-
+### FP bewegt sich auf einem Orbit
+<video width="998" height="712" data-autoplay controls>
+	    <source data-src="https://mgje.github.io/presentations/Budapest2014/media/movies/orbit.mp4" type="video/mp4" />
+		<source data-src="https://mgje.github.io/presentations/Budapest2014/media/movies/orbit.webm" type="video/webm" />
+		<source data-src="https://mgje.github.io/presentations/Budapest2014/media/movies/orbit.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
 
 ---
+## Wo befindet sich der Mittelpunkt von Europa ?
+---
+<video width="972" height="728" data-autoplay controls>
+	    <source data-src="https://mgje.github.io/presentations/Budapest2014/media/movies/europefp.mp4" type="video/mp4" />
+	    <source data-src="https://mgje.github.io/presentations/Budapest2014/media/movies/europefp.webm" type="video/webm" />
+	    <source data-src="https://mgje.github.io/presentations/Budapest2014/media/movies/europefp.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+[Link GeoGebraTube](https://tube.geogebra.org/material/show/id/66049)
 
 
 
@@ -586,7 +704,7 @@ Atome gehen Bindungen dann ein, wenn der gebundene Zustand **energetisch** **gü
 
 <!-- Section V -->
 
-<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#1D2731"data-background-transition="slide" >
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#262228"data-background-transition="slide" >
 <script type="text/template" >
 
 
@@ -619,7 +737,7 @@ Tabelle  von commons.wikimedia.org
 
 <!-- Section VI -->
 
-<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#cd5360'" data-background-transition="slide" >
+<section data-markdown data-separator="---" data-separator-vertical="--" data-background="#cd5360" data-background-transition="slide" >
 <script type="text/template" >
 
 
@@ -695,7 +813,7 @@ Kontakt: martin dot guggisberg at unibas dot ch
 
 </script>
 </section>
-<section data-background="media/3dvis.png"></section>
+
 
 
 

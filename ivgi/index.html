@@ -3,15 +3,11 @@
 
 	<head>
 		<meta charset="utf-8">
-
 		<title>Data Science</title>
-
 		<meta name="description" content="Talk ">
 		<meta name="author" content="Martin Guggisberg">
-
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<!-- change to https -->
@@ -53,12 +49,8 @@
 	<body>
 
 		<div class="reveal">
-		    
-
-			
 			<div class="slides">
 				<!-- Title Abstract -->
-			
 			<section>
 				<section data-background="#222226">
 					<h2>
@@ -86,23 +78,18 @@
 				
 			</section>
 				
-
-<!-- Einleitung / Gutachten -->
 <!-- FARB CoDES 
   black:       '#111111'
   white:       '#f8f8f8'
   
-
   azure:       '#01abaa'
   breeze:      '#438496'
   starynight:   #344177
   posy:        '#813772'
 
-
   purple:      '#c869bf'
   ivory:       '#1D2731'
   warmpeach:   '#cd5360'
-
 
   evening:     '#262228'
   ink:         '#062f4f'
@@ -118,9 +105,6 @@
   turquoise: '#0fbfcf'
 -->
 
-
-
-
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#006A54" data-background-transition="slide" >
 <!-- Section Antike -->
 <script type="text/template" >
@@ -128,44 +112,60 @@
 ## Agenda
 
 - Fokus Lehre
-
-- Exkurs
-  - Rechnen mit Matrizen
+  - Rechnen mit Matrizen: Zentralprojektion
   - Operations Research:  Fermat-Punkt
-
 - Wichtige Zukunftsfragen
-
 - Lösungs Beiträge
-
 - Fokus Forschung 
-
 - DataScience
-
 - Themen für mögliche Projektarbeiten
 
---
+---
 
 ### Herausforderung einer moderner Hochschullehre im Spannungsfeld von Theorie und Anwendungsbezug
 
 ---
 
-Hochschulelehre verbindet Wissen, Lösungsmethodik, und die Leidenschaft für das Fach.
 
 
-- Durch Verifikation der Lösungsmethoden an konkreten Beispielen
-- Von einfachen zum komplexen
-- Überfachliche Zusammenhänge nutzen
-- Am einfachsten können mathematische Methoden erlernt werden, wenn diese Schritt für Schritt oder automatisiert mit Hilfe von Mathematik Werkzeugen erprobt werden können.
+Meine Hochschullehre besteht darin, das Lernen der Studierenden durch  praxisnahe Lernumgebungen zu fördern, insbesondere ist es mir ein Anliegen höhere reflektierten Denkstrategien der Studierenden zu fördern und ihre Meinungen und Kritik zu respektieren.
 
-- Das mathematische Wissen ist über Jahrhunderte entstanden, entlang historischen Pfaden lässt ....
+
+(Learning and Teaching Philosophy)
+ ---
+
+
+### Story Telling
+
+Lerninhalte verpackt in Geschichten können einfacher memorisiert werden. 
+
+
+&nbsp;
+
+### Learning by Doing
+
+Das Lernen neuer Methoden gelingt am besten an konkreten Beispielen.
+
 
 ---
 
-## Quara.com Frage
 
-“How do I learn statistics for data science?”
+```Example isn't another way to teach, it is the only way to teach.```
 
-[https://www.quora.com/How-do-I-learn-statistics-for-data-science](https://www.quora.com/How-do-I-learn-statistics-for-data-science)
+Albert Einstein
+
+&nbsp;
+
+```Give the pupils something to do, not something to learn; and the doing is of such a nature as to demand thinking; learning naturally results.``` 
+
+John Dewey
+
+---
+
+### Quara.com Frage
+
+```How do I learn statistics for data science?```
+
 
 For any aspiring data scientist, I would highly recommend learning statistics with a heavy focus on coding up examples, preferably in Python or R.
 
@@ -207,18 +207,274 @@ Dünngitter-Kombinationstechnik.
 - Parametrisierte Kurven
 ---
 
-## Mathematik Werkzeuge aktive in der Lehre einsetzen
+## Digitale Werkzeuge in der Lehre nutzen
 
 - JuPyter Notebooks (R, SciPy)
+
 - Matlab
+
 - Wolfram Alpha
+
 - GeoGebra
 ---
 
-JuPyter Notebooks zwei Beispiele
+### Mathematisches Experimentieren mit JuPyter Notebooks
+
+![sinapprox.png](media/sinapprox.png)
+
+[Link auf Online-Materialien](https://mgje.github.io/presentations/GDM2016/index.html)
 
 ---
-Matrizenrechnung mit GeoGebra
+### Rechnen mit Matrizen: Zentralprojektion
+
+---
+---
+## Zentralprojektion im Kino
+
+Zwei Agenten versuchen in einen Tresorraum einzudringen,
+ohne dass sie von einem Wärter entdeckt werden.
+
+Sie projizieren dafür den hinteren Teil eines schmalen Gangs perspektivisch auf eine Leinwand (Bildebene).
+
+
+Ausschnitt Mission Impossible 4
+---
+
+<video width="960" height="540" data-autoplay controls>
+	    <source src="https://mgje.github.io/presentations/Budapest2014/media/movies/MIP2.m4v" type="video/mp4" />
+	    <source src="https://mgje.github.io/presentations/Budapest2014/media/movies/MIP.webm" type="video/webm" />
+	    <source src="https://mgje.github.io/presentations/Budapest2014/media/movies/MIP.ogv" type="video/ogg" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+---
+
+### Verananschaulichung der Zentralprojektion
+
+![Dürer](media/durer1.gif)
+
+
+Mechanical creation of a perspective image by [Albrecht Dürer](http://www.uh.edu/engines/epi138.htm)
+
+---
+### perspektivische Abbildung <small> Quader auf Ebene</small>
+<video width="1122" height="646" data-autoplay controls>
+	    <source data-src="https://mgje.github.io/presentations/ivgi/media/movies/zentralprojektion.m4v" type="video/mp4" />
+	    <source data-src="https://mgje.github.io/presentations/ivgi/media/movies/zentralprojektion.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+---
+
+### Mathematisierung mit Hilfe von homogenen Koordinaten
+
+
+* Annahme das Zentrum der Abbildung ist im Ursprung
+* Blickrichtung entlang der Z-Achse
+* Verwenden homogene Koordinaten
+
+
+---
+### ZentralProjektion auf Ebene normal zur Z-Achse
+mit Brennweite f
+
+<br>
+
+
+$$P=\left( \begin{matrix} 
+        1 & 0& 0 & 0\\\\
+        0 & 1 & 0 & 0\\\\
+        0 & 0 & 1 & 0\\\\
+        0 & 0 & 1/f & 0\\\\
+        \end{matrix} 
+        \right) $$
+---
+### Projektion auf homogenen Vektor anwenden
+
+<br>
+
+
+$$P\cdot \overrightarrow{r}=\left( \begin{matrix} 
+        1 & 0& 0 & 0\\\\
+        0 & 1 & 0 & 0\\\\
+        0 & 0 & 1 & 0\\\\
+        0 & 0 & 1/f & 0\\\\
+        \end{matrix} 
+        \right)
+        \left( \begin{matrix} 
+        x \\\\
+        y \\\\
+        z \\\\
+        1 \\\\
+        \end{matrix} 
+        \right)=
+        \left( \begin{matrix} 
+        x \\\\
+        y \\\\
+        z \\\\
+        z/f \\\\
+        \end{matrix} 
+        \right)
+         $$
+
+---
+## Übergang von homogenen Koordinaten zu kartesischen Koordinaten
+---
+
+$$ \left( \begin{matrix} 
+        x \\\\
+        y \\\\
+        z \\\\
+        z/f \\\\
+        \end{matrix}\right)
+        \mapsto
+        \left( \begin{matrix} 
+        f/z \cdot x \\\\
+        f/z \cdot y \\\\
+        f/z \cdot z \\\\
+        \end{matrix}\right)
+$$ 
+---
+## Zahlenbeispiel
+
+* Sei  f = 10  
+* Ein Punkt (8,4,20) soll auf die Normalebene zur Z-Achse im Abstand von 10 abgebildet werden.
+---
+![Beispiel](media/Beispiel_proj.png)
+
+
+---
+$$ \left( \begin{matrix} 
+        8 \\\\
+        4 \\\\
+        20 \\\\
+        1 \\\\
+        \end{matrix}\right)
+        \to
+        \left( \begin{matrix} 
+        8 \\\\
+        4 \\\\
+        20 \\\\
+        2 \\\\
+        \end{matrix}\right)
+        \to
+        \left( \begin{matrix} 
+        4 \\\\
+        2 \\\\
+        10 \\\\
+        \end{matrix}\right)
+$$ 
+
+---
+<span style="float:left;">
+![xz](media/xzplane.png)
+![xz](media/yzplane.png)
+</span>
+
+---
+### Zentralprojektion <small>auf Ebene normal zur Z-Achse mit Brennweite f</small>
+<video width="1012" height="720" data-autoplay controls>
+	    <source src="https://mgje.github.io/LinAlg/slides/media/movies/Zentralprojektion_Tetraeder.m4v" type="video/mp4" />
+	    <source src="https://mgje.github.io/LinAlg/slides/
+	    media/movies/Zentralprojektion_Tetraeder.webm" type="video/webm" />
+		Your browser does not support the <code>video</code> element.
+</video>
+
+
+
+---
+## Homogene Koordinaten 
+### für $\vec{v}\in\mathbb{R}^2$
+
+Transformation
+$$
+\left(
+\begin{matrix}
+P_x\\\\
+P_y
+\end{matrix}\right)\to
+\left(
+\begin{matrix}
+Q_x\\\\
+Q_y\\\\
+Q_z
+\end{matrix}
+\right)=
+\left(
+\begin{matrix}
+P_x\\\\
+P_y\\\\
+1
+\end{matrix}
+\right)
+$$
+
+Rücktransformation
+$$
+\left(
+\begin{matrix}
+Q_x\\\\
+Q_y\\\\
+Q_z
+\end{matrix}
+\right)\to \left(
+\begin{matrix}
+P_x\\\\
+P_y
+\end{matrix}\right)
+=\left(\begin{matrix}
+Q_x /( Q_z )\\\\
+Q_y /( Q_z )
+\end{matrix}
+\right)
+$$
+---
+## Zentralprojektion
+### $\mathbb{R}^2\to\mathbb{R}^2$ 
+#### homogene Koordinaten
+
+<br>
+
+$$P=\left( \begin{matrix} 
+        1 & 0& 0 \\\\
+        0 & 1 & 0 \\\\
+        0 & 1/n & 0 \\\\
+        \end{matrix} 
+        \right)$$ 
+---
+## Rotation
+
+<br>
+
+$$R=\left( \begin{matrix} 
+        \cos(\Theta) & \sin(\Theta)& 0 \\\\
+        -\sin(\Theta)& \cos(\Theta) & 0 \\\\
+        0 & 0 & 1\\\\
+        \end{matrix} 
+        \right)$$
+
+---
+## Translation
+
+<br>
+
+$$T=\left( \begin{matrix} 
+        1 & 0& T_x \\\\
+        0 & 1 & T_y \\\\
+        0 & 0 & 1 \\\\
+        \end{matrix} 
+        \right)
+         $$
+---
+### Zentralprojektion 
+
+
+![Zentralprojektion](media/Zentralprojektion.png)
+
+[Link auf GeoGebraTube](https://tube.geogebra.org/student/m119327)
+
+
+
+---
 
 
 

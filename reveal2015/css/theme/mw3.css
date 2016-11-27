@@ -4,7 +4,7 @@
 @font-face {
   font-family: 'Lato';
   font-style: normal;
-  font-weight: 350;
+  /*font-weight: 350;*/
   src: local('Lato Light'), local('Lato-Light'), url(../../../reveal/fonts/lato/v6/kcf5uOXucLcbFOydGU24WALUuEpTyoUstqEm5AMlJo4.woff) format('woff');
 }
 @font-face {
@@ -22,7 +22,7 @@
 @font-face {
   font-family: 'Lato';
   font-style: italic;
-  font-weight: 750;
+  /*font-weight: 750;*/
   src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(../../../reveal/fonts/lato/v6/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
 }
 
@@ -52,15 +52,15 @@ body {
 .reveal {
   font-family: "Lato", sans-serif;
   font-size: 44px;
-  font-weight: 350;
+/*  font-weight: 350;*/
   letter-spacing: -0.02em;
   color: #c4c4c4; }
 
-::selection {
+/*::selection {
   color: #fff;
   background: #ccc;
   text-shadow: none; }
-
+*/
 /*********************************************
  * HEADERS
  *********************************************/
@@ -90,11 +90,11 @@ body {
 
 .reveal h4 {
   font-size: 1em; }
-
+/*
 .reveal h1 {
-  text-shadow: 0 0 0 #cccccc, 
+  text-shadow: 0 0 0 #ccc;
 }
-
+*/
 /*********************************************
  * OTHER
  *********************************************/

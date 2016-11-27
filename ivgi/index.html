@@ -671,38 +671,26 @@ $$
 
 ---
 
-Freiwilliger Auftrag: 
+### Freiwilliger Auftrag: 
 
-Erstellen Sie eine Zentralpojektion
+Erstellen Sie eine Zentralpojektion eines Tetraeders mit den Ecken
 
-- eines Tetraeders mit $ A = (-10,5,16)$, $B = (0,5,16)$,
-$C = (-5,-3.66,16)$ und $D=(-5,2.11,24.16) 
+$ A = (-10,5,16)$, $B = (0,5,16)$,
+$C = (-5,-3.66,16)$ und $D = (-5,2.11,24.16)$ 
 
 in die Ebene $z=10$
 
-bezüglich des Zentralpunktes im Ursprung
+Der Zentralpunkt soll sich im Ursprung  $O = (0,0,0)$ befinden.
 
-
-
-Die Verwendung eines digialen Werkzeugs ist erlaubt.
-
-Entwickeln Sie eine Simulation mit 
-MATLAB oder in einer Programmiersprache ... die ...
-
-
-
+Lösen Sie die Aufgabe mit einem mathematischen Werkzeug wie 
+z.B. GeoGebra, R, SciPy oder MATLAB.
 ---
 
 ### Lesson learnt
 
+- Mit dem mathematischen Werkzeug GeoGebra lassen sich einfache geometrische Modelle erstellen.
+
 - Mit Hilfe 4D Matrizen kann eine 3D Zentrallprojektion berechnet werden.
-
-- Mit dem Werkzeug GeoGebra lassen sich einfache Simualtionen erstellen
-
-
-
-D' = (Element[DH', 1, 1] / Element[DH', 4, 1], Element[DH', 2, 1] / Element[DH', 4, 1], Element[DH', 3, 1] / Element[DH', 4, 1])
-
 
 
 </script>
@@ -712,12 +700,10 @@ D' = (Element[DH', 1, 1] / Element[DH', 4, 1], Element[DH', 2, 1] / Element[DH',
 
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#882601" data-background-transition="slide" >
 <script type="text/template" >
-
----
-
 ### Operations Research - Fermat-Punkt
 
-An welcher Stelle soll ein Kraftwerk gebaut werden?
+Die Suche nach optimalen Standorten für Logistikzentren oder
+Energiewerken
 
 ---
 
@@ -736,7 +722,7 @@ An welcher Stelle soll ein Kraftwerk gebaut werden?
 
 ![Aufgabe91](media/aufgabe91.png)
 
-"Wo befindet sich ein Punkt P in einem Dreieck, wenn die Summe aller Abstände von diesem Punkt P zu den drei Ecken minimal sein soll."
+Wo befindet sich ein Punkt P in einem Dreieck, wenn die Summe aller Abstände von diesem Punkt P zu den drei Ecken minimal sein soll.
 
 <small>[Dorrie, H. (1965). 100 Great problems of elementary mathematics. Dover Publications.](http://cds.cern.ch/record/1551234)</small>
 
@@ -744,6 +730,7 @@ An welcher Stelle soll ein Kraftwerk gebaut werden?
 
 ![Buch](media/buch.png)
 ---
+### Optimierungsaufgabe
 
 ![Fig 1](media/fermat_problem_fig1.png)
 
@@ -755,9 +742,9 @@ Für **n=3** gibt es eine geometrische Lösung
 ## Für **n>3** braucht es ein approximatives Verfahren
 
 ---
-Budapest 1932 im Alter von 16 Jahren hat sich ***Andrew Vázsonyi*** Gedanken zu diesem mathematische Problem gemacht.
+***Andrew Vázsonyi*** findet ein numerisches Verfahren im Alter von 16 Jahren.  
 
-Und eine Arbeit unter dem Namen **Endre Weiszfeld** bei einem japanischen Journal eingereicht.
+1933 veröffentlicht er seinen Algorithmus in einem japanischen Journal unter seinem jüdischen Namen **Endre Weiszfeld**.
 
 ![Andrew_Vazsonyi](media/Andrew_Vazsonyi.png)
 ---
@@ -768,7 +755,7 @@ $$ k \mbox{ Iterationsschritte} $$
 
 $$ \mbox{Ortsvektoren: } \vec{x_1} \cdots \vec{x_N} $$
 
-$$ \mbox{Startpunkt } \vec{y_0} \mbox{ im Schwerpunkt}$$
+$$ \mbox{Startpunkt } \vec{p_0} \mbox{ im Schwerpunkt}$$
 
 $$  \vec{p\_{t+1}} = \frac{ \sum\_{i=1}^{N}  \frac{\vec{x\_i}}{\| \vec{x\_i}-\vec{p\_t} \|}}{\sum\_{i=1}^N  \frac{1}{\| \vec{x\_i}-\vec{p\_t} \|} } $$
 
@@ -840,29 +827,25 @@ def WeiszmanIteration(P, punkte):
 [Link GeoGebraTube](https://tube.geogebra.org/material/show/id/66049)
 ---
 
-Freiwilliger Auftrag: 
+### Freiwilliger Auftrag: 
 
-Gegeben 3 Punkte in der Ebene $A = (3,10)$, $B = (4,9)$, $C = (6,10)$
+Gegeben 3 Punkte 
 
+$A = (3,10)$, $B = (4,9)$, $C = (6,10)$
 
-
-
-- Berechnen Sie im rechteckigen Bereich $(0,0)$ bis $(12,12)$ die Summe der Abstände zu den 3 Punkten und visulisieren sie diese in einer Falschfarben Darstellung
-
+- Berechnen Sie für Punkte im rechteckigen Bereich $(0,0)$ bis $(12,12)$ 
+die Summe der Abstände und stellen Sie diesen Wert in einer Falschfarbendarstellung (Heatmap) dar.
 
 - Berechnen Sie mit Hilfe des Weizfeld Verfahrens den Fermat Punkt
 
 ---
 ### Lesson learnt
 
-- Die Bedeutung von Optimierungsverfahren für die Geomatik
-
-
-- Die Angewandte Mathematik kann Problem, welche keine analytische Lösung besitzen, näherungsweise lösen. 
-
+- Die Angewandte Mathematik kann Probleme, welche keine analytische Lösung besitzen, näherungsweise lösen. 
 
 - Abhängigkeiten von 2D Parameter, wie z.B. der Ort, können dynamisch visualisiert werden. 
 
+- Optimierungsverfahren können bei Standortsuche verwendet werden
 
 </script>
 </section>
@@ -872,11 +855,13 @@ Gegeben 3 Punkte in der Ebene $A = (3,10)$, $B = (4,9)$, $C = (6,10)$
 <section data-markdown data-separator="---" data-separator-vertical="--" data-background="#262228" data-background-transition="slide" >
 <script type="text/template" >
 
---- 
+
 ### Transparenz in der Lehre
 
 - **Lernziele**: Übersicht über Lernziele und Inhalte der Lehrveranstaltungen am Anfang des Semesters, veröffentlichung der Veranstaltungsinhalte
+
 -	**Standortbestimmung**: Lernstandserhebung in der Semestermitte
+
 -	**Rückmeldung**: Evaluation der Lehrveranstaltung und Gespräch mit den Studierenden
 --
 
@@ -887,29 +872,13 @@ Digitalisierung von Bildung
 - zielorientierten Einsatz digitaler Medien
 ---
 
-Wichtige Zukunftsfragen für die Gesellschaft und die Geomatik
+Mögliche interdisziplinäre Zusammenarbeiten mit der Geomatik
 
-
-Wo und wie kann die angewandte Mathematik und Statistik helfen?
-
---
-
-## 1. Geomonitoring & Hochpräzisions Messungen
-
-Klimaerwärmung wie auch Grossbauprojekte können Defomationen der Landschaft verursachen. 
-
-Automatisierte Datenerfassung mit neuen hochpräzsions Messmethoden sind zukünftige Herausforderungen.
-
---
-
-Wöhrend meiner Assistenzzeit am physikalischen Institut der Universität Basel konnte ich bei der Entwicklung neuer Messverfahren mit helfen. 
-
-Insbesonere haben wir ein Messverfahren basierend auf einer 2d-Histogramm Technik zur ermittlung des Reibungskoeffitienten auf atomarer Skala entwickelt.
 
 ---
 ### Open Science Initiative 
 
-![](media/horizonte)
+![](media/horizonte.png)
 
 
 --
@@ -947,47 +916,27 @@ http://www.acm.org/publications/policies/artifact-review-badging
 
 ---
 
-Reproduzierbarkeit numerischen Simulationen
+# Mögliche interdisziplinäre Zusammenarbeiten (z.B. mit Life Science)
 
-PROVA - Cloud basiertes Science Portal 
-mit Fokus auf Reproduzierbarkeit (Danilo Guerrera & Antonio Maffia)
+- Science Portale für HPC Simulationen
+- Data Science für **Precise Medicine**
+- Mobile Personalized Healthcare
+
+---
 
 ![](media/prova.png)
 
 
---
+Reproduzierbarkeit numerischer Simulationen
 
-
-# Interdisziplinäre Zusammenarbeiten mit Life Science
-
-- Die Pharmaforschung im digitalen Wandel
-	- Science Portale für HPC Simulationen
-	- Data Science für **Precise Medicine**
-	- Mobile Personalized Healthcare
-	- Untersuchung von Umwelteinflüssen auf die Gesundheit
-
+(Danilo Guerrera & Antonio Maffia)
 
 ---
-###
+### Lösungen der freiwilligen Aufträge
 
-Freiwilige Auftröge 
+- Zentralprojektion eines Tetraeders [https://www.geogebra.org/m/aYtjPYf3](https://www.geogebra.org/m/aYtjPYf3)
 
-Zentralprojektion eines Tetraeders
-
-https://www.geogebra.org/m/aYtjPYf3
-
-
-
-
-mögliche Lösung zum Fermat-Problem
-
-https://github.com/mgje/PIUMP/blob/master/Beispiele_Skript_SciComputing/Fermat-Punkt.ipynb
-
-
-
-
-
-
+- Heatmap und Fermat-Punkt [JuPyter Notebook](https://github.com/mgje/PIUMP/blob/master/Beispiele_Skript_SciComputing/Fermat-Punkt.ipynb)
 
 
 </script>
@@ -1025,16 +974,9 @@ https://github.com/mgje/PIUMP/blob/master/Beispiele_Skript_SciComputing/Fermat-P
 
 <br>
 Diesen Vortrag finden Sie im Internet unter<br>
-<a href="https://mgje.github.io/presentations/welt_der_atome" style="text-decoration:none;"> https://mgje.github.io/presentations/ivgi</a>
-
+<a href="https://mgje.github.io/presentations/ivgi" style="text-decoration:none;"> https://mgje.github.io/presentations/ivgi</a>
 
 Kontakt: martin dot guggisberg at unibas dot ch
-
-
-
-
-
-
 
 --
 <br>
@@ -1043,11 +985,6 @@ Kontakt: martin dot guggisberg at unibas dot ch
 ### for THE HTML PRESENTATION FRAMEWORK 
 
 ### reveal.js
-
----
-
-
-
 
 </script>
 </section>

@@ -260,12 +260,16 @@ Disziplinen Geodäsie, Mathematik, Physik und Informatik.
 - Geodäsie & Photogrammetrie
 - Geomonitoring & Deformationsmessungen
 <!-- .element: class="fragment" data-fragment-index="1" --> 
+
 - Geosensorik & Ingenieurgeodäsie
 <!-- .element: class="fragment" data-fragment-index="2" -->
+
 - Geo Daten & Geo Referenzierung
 <!-- .element: class="fragment" data-fragment-index="3" -->
+
 - Raumentwicklung & Planung Urbanen Systemen
 <!-- .element: class="fragment" data-fragment-index="4" -->
+ 
 - 3D-Rekonstruktion & Geovisualisierungen
 <!-- .element: class="fragment" data-fragment-index="5" -->
 
@@ -380,7 +384,7 @@ Mit Hilfe von numerischen Simulationen (Luftströmung und Schattenwurf) konnte M
 
 
 
-## Potenzial von Echtzeit-Daten für Smart Cities
+### Potenzial von Echtzeit-Daten für Smart Cities
 
 MIT Forschungsprojekt: Real Time Rome, 2006
 
@@ -437,6 +441,7 @@ Doktorarbeit von Alexander Gröflin
 Bachelor Projekt von Christian Frei
 
 ![](media/catch_a_car.png)
+
 
 Welche der beiden Visualisierungen zeigt den Abstellort, welche den Abfahrtsort ?
 
@@ -972,7 +977,7 @@ Kontakt: martin dot guggisberg at unibas dot ch
 			   <img src="media/logo_white_small.png" alt="logo"> 
 			</div>
             <p class='footer'>
-    			Dr. Martin Guggisberg &nbsp;&nbsp;&nbsp;&nbsp; https://mgje.github.io/ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Twitter: @mgje&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    			<span id="actTime"></span> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Dr. Martin Guggisberg &nbsp;&nbsp;&nbsp;&nbsp; https://mgje.github.io/ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Twitter: @mgje
     			
   			</p>
 		</div>
@@ -1043,9 +1048,22 @@ Kontakt: martin dot guggisberg at unibas dot ch
 				
 			// }, 300);
 
+      
+      function setActTime(){
+        var el = document.getElementById('actTime');
+        var currentdate = new Date();
+        var s = currentdate.getDate() + "/"+(currentdate.getMonth()+1) 
+        + "/" + currentdate.getFullYear() + " @ " 
+        +currentdate.getHours() + ":"+ currentdate.getMinutes();
+        el.innerHTML = s;
+      }
+      setActTime();
 
-			
-
+      Reveal.addEventListener( 'slidechanged', function( event ) {
+        setActTime();
+      } );
+      
+  		
 		</script>
 	</body>
 </html>

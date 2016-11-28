@@ -3882,7 +3882,8 @@
 		// Prioritize revealing fragments
 		if( nextFragment() === false ) {
 			if( availableRoutes().down ) {
-				navigateDown();
+				//navigateDown();
+				navigateRight();
 			}
 			else if( config.rtl ) {
 				navigateLeft();

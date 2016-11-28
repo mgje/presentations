@@ -2616,7 +2616,8 @@ var Reveal = (function(){
 
 		// Prioritize revealing fragments
 		if( nextFragment() === false ) {
-			availableRoutes().down ? navigateDown() : navigateRight();
+			//availableRoutes().down ? navigateDown() : navigateRight();
+			navigateRight();
 		}
 
 		// If auto-sliding is enabled we need to cue up

@@ -319,6 +319,13 @@ body {
   z-index: 22;
 }
 
+@media screen and (max-width: 800px) {
+    .reveal .footer  {
+    /* do what you want here */
+             display: none !important;
+    }
+}
+
 
 .mug {
 	width: 20%;

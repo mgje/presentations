@@ -320,6 +320,13 @@ body {
 }
 
 
+@media screen and (max-width: 800px) {
+    .reveal .footer  {
+    /* do what you want here */
+             display: none !important;
+    }
+}
+
 .mug {
 	width: 20%;
 	border-radius: 50%;
